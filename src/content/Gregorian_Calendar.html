@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="date" content="2025-12-31">
+    <meta name="category" content="Fun">
+    <title>The Gregorian Calendar: A Historical & Mathematical Deep Dive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@400;700&display=swap');
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f5f5f4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a8a29e;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716c;
+        }
+
+        /* Mandatory Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Mobile height */
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px; /* Tablet/Desktop height */
+            }
+        }
+
+        /* Classical Roman Font Feel */
+        .font-serif-header {
+            font-family: 'Cinzel', serif;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+
+        /* Logic Flow Steps */
+        .logic-step {
+            transition: all 0.3s ease;
+        }
+        .logic-step.active {
+            border-color: #b91c1c; /* Red-700 */
+            background-color: #fef2f2; /* Red-50 */
+            transform: scale(1.02);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .logic-step.success {
+            border-color: #15803d; /* Green-700 */
+            background-color: #f0fdf4; /* Green-50 */
+        }
+
+        /* Month Card Hover */
+        .month-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .month-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <!-- Chosen Palette: "Roman Stone & Imperial Red"
+         - Backgrounds: Warm neutrals (Stone/Zinc) representing marble/parchment.
+         - Primary Text: Dark Grey/Black for readability.
+         - Accents: Deep Red (Imperial Rome) and Gold/Amber (Emperors).
+         - Visual Hierarchy: Clear distinctions between "Mythology" sections and "Math" sections.
+    -->
+
+    <!-- Application Structure Plan:
+         1. Hero Section: Sets the stage with the "Frankenstein" metaphor from the source report.
+         2. The Messy Months (Interactive Dashboard):
+            - Grid of months clickable to reveal origin stories (Gods vs Emperors vs Math Fails).
+            - Chart.js Bar Chart: Visualizes the "Ego Trip" (July/Aug length) vs Feb's shortness.
+         3. The Linguistic Time Machine (Toggle Interaction):
+            - A comparison section for the "Name Game".
+            - Toggle switch changes content from Modern English to Classical Latin pronunciation (Hard C, V=W).
+         4. The Math Patch (Leap Year Lab):
+            - Interactive Calculator: Users enter a year to see the logic flow (div by 4, 100, 400).
+            - Chart.js Line Chart: Visualizes the Julian Drift vs Gregorian stability.
+         5. The Missing Days (Visual Artifact):
+            - A specific visualization of Oct 1582 showing the deleted dates.
+    -->
+
+    <!-- Visualization & Content Choices:
+         1. Bar Chart (Days per Month):
+            - Goal: Inform & Compare.
+            - Justification: The text describes the uneven distribution due to egos. A bar chart makes the "July/Aug bump" and "Feb dip" instantly visible.
+            - Library: Chart.js (Canvas).
+         2. Line Chart (Calendar Drift):
+            - Goal: Change/Trend.
+            - Justification: The concept of "11 minutes per year" seems small. A line chart showing it accumulating to 10 days over centuries makes the problem concrete.
+            - Library: Chart.js (Canvas).
+         3. Logic Flow Visualization (HTML/CSS):
+            - Goal: Organize/Logic.
+            - Justification: The leap year rules (/4, /100, /400) are an algorithm. A visual step-by-step highlighter is better than text.
+            - Method: CSS classes toggled via JS.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-stone-100/95 backdrop-blur shadow border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl text-red-800"><i class="fas fa-landmark"></i></span>
+                    <span class="font-serif-header font-bold text-lg md:text-xl tracking-wide text-stone-900">Gregorian <span class="text-red-800">Chronicles</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wider text-stone-600">
+                    <button onclick="scrollToId('months')" class="hover:text-red-800 transition-colors">Month History</button>
+                    <button onclick="scrollToId('linguistics')" class="hover:text-red-800 transition-colors">Name Origins</button>
+                    <button onclick="scrollToId('math')" class="hover:text-red-800 transition-colors">Leap Logic</button>
+                    <button onclick="scrollToId('missing')" class="hover:text-red-800 transition-colors">Missing Days</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-white border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
+            <div class="inline-block p-2 px-4 rounded-full bg-red-100 text-red-800 text-xs font-bold uppercase tracking-widest mb-4">Historical Analysis</div>
+            <h1 class="text-4xl md:text-6xl font-serif-header font-bold text-stone-900 mb-6 leading-tight">
+                A Mix of Roman Egos &<br><span class="text-red-800">Mathematical Patches</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-stone-600 leading-relaxed">
+                The calendar on your phone isn't a perfect design. It is a historical "Frankenstein's monster" stitched together by mythology, politics, and a desperate 16th-century fix to keep us aligned with the sun.
+            </p>
+            <div class="mt-10">
+                <button onclick="scrollToId('months')" class="px-8 py-3 bg-stone-900 text-white font-bold rounded hover:bg-red-800 transition-colors shadow-lg">
+                    Uncover the History
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+
+        <!-- SECTION 1: THE MESSY MONTHS -->
+        <section id="months" class="scroll-mt-24">
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="text-3xl font-serif-header font-bold mb-4 text-stone-900 border-b-4 border-red-800 inline-block pb-1">The Messy Months</h2>
+                <div class="text-stone-600 text-lg mt-4 max-w-4xl space-y-4">
+                    <p>
+                        The Gregorian calendar is fundamentally a <strong>Solar Calendar</strong>, meaning its primary goal is to keep our year aligned with the Earth's orbit around the Sun. Unlike the Lunar Calendar, which strictly follows the moon phases (New Moon = 1st day), the Gregorian calendar’s months are completely arbitrary. Why does February only have 28 days while July and August have 31?
+                    </p>
+                    <div class="bg-stone-100 p-4 rounded-lg border-l-4 border-stone-400">
+                        <h3 class="font-bold text-stone-800 mb-2">The "Month of Death"</h3>
+                        <p class="mb-2">
+                            In the original Roman calendar, the year actually began in March. This meant February was the very last month of the year. When the Romans were assigning days to months, they filled up the earlier months first. Whatever was left over got dumped into February.
+                        </p>
+                        <p>
+                            To make matters worse, February was considered the month of purification and honoring the dead (from the god <em>Februus</em>). Because it was an "unlucky" month associated with death, nobody minded that it was the shortest.
+                        </p>
+                    </div>
+                    <p>
+                        Later, Roman politics and "The Emperor's Ego Trip" (Caesar and Augustus) further distorted the calendar, cementing the irregular month lengths we use today.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Interactive Month Grid -->
+                <div class="lg:col-span-7 grid grid-cols-3 sm:grid-cols-4 gap-3">
+                    <!-- JS will populate buttons here -->
+                    <div id="monthButtons" class="contents"></div>
+                </div>
+
+                <!-- Detail Panel -->
+                <div class="lg:col-span-5">
+                    <div id="monthDetailCard" class="bg-white p-8 rounded-xl shadow-lg border border-stone-200 h-full flex flex-col justify-center transition-all">
+                        <div class="text-center text-stone-400">
+                            <i class="fas fa-hand-pointer text-4xl mb-3"></i>
+                            <p class="text-lg">Select a month to reveal its secret history.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart: The Ego Gap -->
+            <div class="mt-12 bg-white p-6 rounded-xl shadow border border-stone-200">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-stone-900">Visualizing "The Ego Trip"</h3>
+                        <p class="text-sm text-stone-500">Notice the spike for July/August and the dip for February.</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="daysChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: LINGUISTICS -->
+        <section id="linguistics" class="scroll-mt-24 bg-stone-200 rounded-3xl p-8 md:p-12">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-serif-header font-bold mb-4 text-stone-900">Part II: The Name Game</h2>
+                <p class="text-stone-700 text-lg max-w-3xl mx-auto">
+                    The names of our months are a time capsule of Latin. But there's a problem: the "numbered" months (Sept-Dec) are mathematically wrong because the year used to start in March.
+                </p>
+            </div>
+
+            <!-- Toggle Switch -->
+            <div class="flex justify-center mb-10">
+                <div class="bg-white p-2 rounded-full shadow-md flex items-center gap-4">
+                    <span class="text-sm font-bold text-stone-500 pl-4">Modern English</span>
+                    <button id="langToggle" class="w-16 h-8 rounded-full bg-stone-300 relative transition-colors focus:outline-none" aria-label="Toggle Language">
+                        <div id="toggleCircle" class="w-6 h-6 bg-white rounded-full absolute top-1 left-1 shadow transform transition-transform duration-300"></div>
+                    </button>
+                    <span class="text-sm font-bold text-stone-900 pr-4">Classical Latin</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="linguisticCards">
+                <!-- Cards populated by JS -->
+            </div>
+            
+            <div class="mt-8 text-center bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                <p class="text-amber-900 text-sm">
+                    <i class="fas fa-lightbulb mr-2"></i> <strong>Fun Fact:</strong> In Classical Latin, 'C' is always hard (like K) and 'V' is pronounced like 'W'. "December" sounded like <em>"De-kem-ber"</em>!
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE MATH PATCH -->
+        <section id="math" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Left: Explainer & Calculator -->
+                <div>
+                    <h2 class="text-3xl font-serif-header font-bold mb-4 text-stone-900 border-b-4 border-red-800 inline-block pb-1">Part III: The Leap Year Logic</h2>
+                    
+                    <!-- Added Julian Calendar Explanation -->
+                    <div class="bg-stone-100 p-4 rounded-lg border-l-4 border-stone-400 mb-6 shadow-sm">
+                        <h3 class="font-bold text-stone-800 mb-2 text-sm uppercase tracking-wide flex items-center">
+                            <i class="fas fa-history mr-2"></i> Predecessor: The Julian Calendar
+                        </h3>
+                        <p class="text-sm text-stone-600 mb-2 leading-relaxed">
+                            Proposed by <strong>Julius Caesar in 46 BC</strong>, the Julian calendar revolutionized timekeeping by establishing a 365-day year with a simple rule: add one leap day every 4 years.
+                        </p>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            <strong>The Flaw:</strong> It assumed the solar year was exactly 365.25 days. The actual solar year is ~365.2422 days. This tiny <strong>11-minute discrepancy</strong> caused the calendar to drift by about 3 days every 400 years, eventually misaligning Easter with the equinox.
+                        </p>
+                    </div>
+
+                    <p class="text-stone-600 mb-6">
+                        By 1582, that error had accumulated to 10 days. Pope Gregory XIII fixed it with this refined algorithm:
+                    </p>
+
+                    <!-- Calculator -->
+                    <div class="bg-white border-2 border-stone-800 rounded-xl p-6 shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-stone-800 text-white text-xs font-bold px-3 py-1 rounded-bl">The Algorithm</div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold text-stone-700 mb-2 uppercase">Test a Year</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="yearInput" placeholder="e.g., 1900" class="w-full p-3 border border-stone-300 rounded font-mono text-lg focus:ring-2 focus:ring-red-800 outline-none">
+                                <button onclick="checkLeapYear()" class="bg-red-800 text-white px-6 rounded font-bold hover:bg-red-900 transition-colors">CHECK</button>
+                            </div>
+                        </div>
+
+                        <!-- Logic Visualization -->
+                        <div class="space-y-3">
+                            <div id="step1" class="logic-step border rounded p-3 flex justify-between items-center bg-stone-50">
+                                <div>
+                                    <span class="font-bold text-sm">Rule 1:</span>
+                                    <span class="text-sm">Divisible by 4?</span>
+                                </div>
+                                <i class="fas fa-circle text-stone-200 text-xs icon"></i>
+                            </div>
+                            <div id="step2" class="logic-step border rounded p-3 flex justify-between items-center bg-stone-50">
+                                <div>
+                                    <span class="font-bold text-sm">Rule 2:</span>
+                                    <span class="text-sm">Divisible by 100? (The Century Trap)</span>
+                                </div>
+                                <i class="fas fa-circle text-stone-200 text-xs icon"></i>
+                            </div>
+                            <div id="step3" class="logic-step border rounded p-3 flex justify-between items-center bg-stone-50">
+                                <div>
+                                    <span class="font-bold text-sm">Rule 3:</span>
+                                    <span class="text-sm">Divisible by 400? (The Exception)</span>
+                                </div>
+                                <i class="fas fa-circle text-stone-200 text-xs icon"></i>
+                            </div>
+                        </div>
+
+                        <!-- Result -->
+                        <div id="resultBox" class="mt-6 p-4 text-center font-bold text-xl rounded hidden"></div>
+                    </div>
+                </div>
+
+                <!-- Right: Drift Chart -->
+                <div class="flex flex-col justify-center">
+                    <div class="bg-white p-6 rounded-xl shadow border border-stone-200">
+                        <h3 class="text-xl font-bold text-stone-900 mb-2">The Accumulating Error</h3>
+                        <p class="text-sm text-stone-500 mb-6">Without the "Rule of 100/400", the Julian calendar drifts significantly from the solar year. By the year 3000, we would be weeks off.</p>
+                        <div class="chart-container">
+                            <canvas id="driftChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THE MISSING DAYS -->
+        <section id="missing" class="scroll-mt-24">
+            <div class="bg-stone-900 text-stone-100 rounded-3xl p-8 md:p-16 relative overflow-hidden">
+                <!-- Background decoration -->
+                <div class="absolute top-0 right-0 text-stone-800 opacity-20 transform translate-x-1/4 -translate-y-1/4">
+                    <i class="fas fa-hourglass-half text-[400px]"></i>
+                </div>
+
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-serif-header font-bold mb-6 text-amber-500">Part IV: The Missing 10 Days</h2>
+                        <p class="text-stone-300 text-lg mb-6 leading-relaxed">
+                            To reset the calendar and wipe out the accumulated error, Pope Gregory XIII took drastic action. He decreed that <strong>Thursday, October 4, 1582</strong> would be followed immediately by <strong>Friday, October 15, 1582</strong>.
+                        </p>
+                        <p class="text-stone-400 italic">
+                            The days between Oct 5th and Oct 14th simply vanished into history.
+                        </p>
+                    </div>
+
+                    <!-- Visual Artifact Calendar -->
+                    <div class="bg-stone-100 text-stone-900 p-6 rounded shadow-2xl transform rotate-2 max-w-sm mx-auto">
+                        <div class="text-center font-serif-header font-bold text-2xl border-b-2 border-stone-300 pb-2 mb-4 text-red-900">
+                            OCTOBER 1582
+                        </div>
+                        <div class="grid grid-cols-7 gap-1 text-center font-mono text-sm">
+                            <div class="font-bold text-stone-500">Sun</div>
+                            <div class="font-bold text-stone-500">Mon</div>
+                            <div class="font-bold text-stone-500">Tue</div>
+                            <div class="font-bold text-stone-500">Wed</div>
+                            <div class="font-bold text-stone-500">Thu</div>
+                            <div class="font-bold text-stone-500">Fri</div>
+                            <div class="font-bold text-stone-500">Sat</div>
+                            
+                            <!-- Days -->
+                            <div class="p-2 text-stone-400">30</div> <!-- Sept -->
+                            <div class="p-2">1</div>
+                            <div class="p-2">2</div>
+                            <div class="p-2">3</div>
+                            <div class="p-2 bg-red-200 font-bold rounded ring-2 ring-red-500">4</div>
+                            <div class="p-2 bg-green-200 font-bold rounded ring-2 ring-green-500">15</div>
+                            <div class="p-2">16</div>
+                            
+                            <div class="p-2">17</div>
+                            <div class="p-2">18</div>
+                            <div class="p-2">19</div>
+                            <div class="p-2">20</div>
+                            <div class="p-2">21</div>
+                            <div class="p-2">22</div>
+                            <div class="p-2">23</div>
+                            
+                            <div class="p-2">24</div>
+                            <div class="p-2">25</div>
+                            <div class="p-2">26</div>
+                            <div class="p-2">27</div>
+                            <div class="p-2">28</div>
+                            <div class="p-2">29</div>
+                            <div class="p-2">30</div>
+                            
+                            <div class="p-2">31</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-stone-100 border-t border-stone-200 mt-24 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-stone-600 font-serif-header mb-2">"Next time you check the date, remember: you are looking at thousands of years of history!"</p>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        // --- DATA ---
+        const monthData = [
+            { id: 1, name: 'January', days: 31, origin: 'Janus (God of Beginnings)', type: 'god', desc: "Named after Janus, the two-faced Roman god of beginnings, gates, transitions, and endings. One face looks back to the past year, while the other looks forward to the new one." },
+            { id: 2, name: 'February', days: 28, origin: 'Februus (Purification)', type: 'bad', desc: "Named after Februus, the Etruscan god of purification. It coincided with the 'Februa' festival to wash away sins and honor the dead. As the last month of the original calendar, it was considered unlucky and short-changed." },
+            { id: 3, name: 'March', days: 31, origin: 'Mars (God of War)', type: 'god', desc: "Named after Mars, the Roman God of War and guardian of agriculture. It was originally the 1st month of the year because the arrival of spring meant military campaigns could resume after winter." },
+            { id: 4, name: 'April', days: 30, origin: 'Aperire (To Open)', type: 'nature', desc: "Likely derived from the Latin verb 'aperire' meaning 'to open,' referencing the opening of flower buds. Some theories also link it to Aphrodite, the Greek goddess of love." },
+            { id: 5, name: 'May', days: 31, origin: 'Maia (Goddess of Growth)', type: 'god', desc: "Named after Maia, the Roman goddess of growth and nurturer of plants. She was associated with the earth's fertility and the warmth of late spring." },
+            { id: 6, name: 'June', days: 30, origin: 'Juno (Queen of Gods)', type: 'god', desc: "Named after Juno, the wife of Jupiter and Queen of the Roman Gods. She is the patroness of marriage and childbirth, which is why June is traditionally considered a lucky month for weddings." },
+            { id: 7, name: 'July', days: 31, origin: 'Julius Caesar', type: 'emperor', desc: "Originally named 'Quintilis' (the 5th month). It was renamed to honor Julius Caesar after his assassination, as it was his birth month. He ensured it kept 31 days to reflect his importance." },
+            { id: 8, name: 'August', days: 31, origin: 'Augustus', type: 'emperor', desc: "Originally named 'Sextilis' (the 6th month). Renamed by Emperor Augustus. Legend says he stole a day from February to make his month 31 days long, equal to Caesar's, because he refused to have a shorter month." },
+            { id: 9, name: 'September', days: 30, origin: 'Septem (7)', type: 'fail', desc: "Linguistic Fail: 'Septem' is Latin for 'Seven'. It was the 7th month in the original 10-month Roman calendar (starting in March), but became the 9th when Jan/Feb were added." },
+            { id: 10, name: 'October', days: 31, origin: 'Octo (8)', type: 'fail', desc: "Linguistic Fail: 'Octo' is Latin for 'Eight' (like Octopus). It was the 8th month originally, but is now the 10th." },
+            { id: 11, name: 'November', days: 30, origin: 'Novem (9)', type: 'fail', desc: "Linguistic Fail: 'Novem' is Latin for 'Nine'. It was the 9th month originally, but is now the 11th." },
+            { id: 12, name: 'December', days: 31, origin: 'Decem (10)', type: 'fail', desc: "Linguistic Fail: 'Decem' is Latin for 'Ten' (like Decade). It was the 10th month originally, but is now the 12th." }
+        ];
+
+        const linguisticData = [
+            { modern: 'January', latin: 'Ianuarius', modSound: 'JAN-yoo-air-ee', latSound: 'ya-nu-AH-ri-us', meaning: 'Janus (God)' },
+            { modern: 'February', latin: 'Februarius', modSound: 'FEB-roo-air-ee', latSound: 'feb-ru-AH-ri-us', meaning: 'Purification' },
+            { modern: 'March', latin: 'Martius', modSound: 'march', latSound: 'MAR-ti-us', meaning: 'Mars (God)' },
+            { modern: 'April', latin: 'Aprilis', modSound: 'AY-pril', latSound: 'a-PREE-lis', meaning: 'To Open' },
+            { modern: 'May', latin: 'Maius', modSound: 'may', latSound: 'MY-us', meaning: 'Maia (Goddess)' },
+            { modern: 'June', latin: 'Iunius', modSound: 'joon', latSound: 'YOO-ni-us', meaning: 'Juno (Goddess)' },
+            { modern: 'July', latin: 'Iulius', modSound: 'joo-LY', latSound: 'YOO-li-us', meaning: 'Julius Caesar' },
+            { modern: 'August', latin: 'Augustus', modSound: 'AW-gust', latSound: 'ow-GUS-tus', meaning: 'Emp. Augustus' },
+            { modern: 'September', latin: 'September', modSound: 'sep-TEM-ber', latSound: 'sep-TEM-ber', meaning: 'Seven (7)' },
+            { modern: 'October', latin: 'October', modSound: 'ok-TO-ber', latSound: 'ok-TO-ber', meaning: 'Eight (8)' },
+            { modern: 'November', latin: 'November', modSound: 'no-VEM-ber', latSound: 'no-WEM-ber', meaning: 'Nine (9)' },
+            { modern: 'December', latin: 'December', modSound: 'di-SEM-ber', latSound: 'de-KEM-ber', meaning: 'Ten (10)' }
+        ];
+
+        // --- INIT ---
+        window.addEventListener('DOMContentLoaded', () => {
+            renderMonthButtons();
+            renderCharts();
+            renderLinguistics(false); // Default Modern
+        });
+
+        function scrollToId(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- MONTHS LOGIC ---
+        function renderMonthButtons() {
+            const container = document.getElementById('monthButtons');
+            monthData.forEach(m => {
+                const btn = document.createElement('button');
+                // Color coding buttons based on type
+                let colorClass = 'bg-stone-100 hover:bg-stone-200 text-stone-600';
+                if(m.type === 'emperor') colorClass = 'bg-amber-100 hover:bg-amber-200 text-amber-800 border border-amber-300';
+                if(m.type === 'fail') colorClass = 'bg-red-50 hover:bg-red-100 text-red-800';
+                if(m.type === 'bad') colorClass = 'bg-stone-800 hover:bg-stone-900 text-stone-100';
+
+                btn.className = `${colorClass} p-3 rounded shadow month-card font-bold text-sm truncate transition-colors`;
+                btn.textContent = m.name;
+                btn.onclick = () => showMonthDetail(m);
+                container.appendChild(btn);
+            });
+        }
+
+        function showMonthDetail(month) {
+            const card = document.getElementById('monthDetailCard');
+            let icon = 'fa-calendar-day';
+            let titleColor = 'text-stone-900';
+            
+            if(month.type === 'emperor') { icon = 'fa-crown'; titleColor = 'text-amber-700'; }
+            if(month.type === 'fail') { icon = 'fa-calculator'; titleColor = 'text-red-700'; }
+            if(month.type === 'bad') { icon = 'fa-skull'; titleColor = 'text-stone-700'; }
+
+            card.innerHTML = `
+                <div class="animate-pulse-once">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-3xl font-serif-header font-bold ${titleColor}">${month.name}</h3>
+                        <span class="text-4xl font-bold text-stone-200">${month.days}</span>
+                    </div>
+                    <div class="mb-6">
+                        <span class="bg-stone-100 text-stone-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            <i class="fas ${icon} mr-1"></i> ${month.origin}
+                        </span>
+                    </div>
+                    <p class="text-lg text-stone-700 leading-relaxed border-l-4 border-red-800 pl-4">
+                        ${month.desc}
+                    </p>
+                </div>
+            `;
+            
+            // Highlight chart bar
+            highlightChart(month.id - 1);
+        }
+
+        // --- CHARTS ---
+        let daysChartInstance;
+        function renderCharts() {
+            // 1. Days Bar Chart
+            const ctxDays = document.getElementById('daysChart').getContext('2d');
+            daysChartInstance = new Chart(ctxDays, {
+                type: 'bar',
+                data: {
+                    labels: monthData.map(m => m.name.substring(0,3)),
+                    datasets: [{
+                        label: 'Days',
+                        data: monthData.map(m => m.days),
+                        backgroundColor: monthData.map(m => {
+                            if(m.type === 'emperor') return '#d97706'; // Amber
+                            if(m.type === 'bad') return '#292524'; // Stone-800
+                            return '#e5e5e5'; // Light grey default
+                        }),
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { min: 25, max: 32 }
+                    }
+                }
+            });
+
+            // 2. Drift Line Chart
+            const ctxDrift = document.getElementById('driftChart').getContext('2d');
+            
+            // Generate data: 0 to 3000 years
+            const labels = [1582, 1800, 2100, 2400, 2700, 3000];
+            const julianData = labels.map(year => ((year - 1582) * 0.0078).toFixed(1)); // Approx error accumulation
+            const gregorianData = labels.map(() => 0.1); // Flatline
+
+            new Chart(ctxDrift, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Julian Drift (Days Error)',
+                            data: julianData,
+                            borderColor: '#dc2626', // Red
+                            backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Gregorian Correction',
+                            data: gregorianData,
+                            borderColor: '#16a34a', // Green
+                            borderDash: [5, 5],
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { title: { display: true, text: 'Days of Error' } }
+                    }
+                }
+            });
+        }
+
+        function highlightChart(index) {
+            const colors = monthData.map((m, i) => {
+                if (i === index) return '#b91c1c'; // Highlight Red
+                if(m.type === 'emperor') return '#d97706';
+                if(m.type === 'bad') return '#292524';
+                return '#e5e5e5';
+            });
+            daysChartInstance.data.datasets[0].backgroundColor = colors;
+            daysChartInstance.update();
+        }
+
+        // --- LINGUISTICS ---
+        let isLatin = false;
+        document.getElementById('langToggle').addEventListener('click', () => {
+            isLatin = !isLatin;
+            const circle = document.getElementById('toggleCircle');
+            const btn = document.getElementById('langToggle');
+            
+            if(isLatin) {
+                circle.classList.add('translate-x-8');
+                btn.classList.remove('bg-stone-300');
+                btn.classList.add('bg-red-800');
+            } else {
+                circle.classList.remove('translate-x-8');
+                btn.classList.add('bg-stone-300');
+                btn.classList.remove('bg-red-800');
+            }
+            renderLinguistics(isLatin);
+        });
+
+        function renderLinguistics(showLatin) {
+            const container = document.getElementById('linguisticCards');
+            container.innerHTML = '';
+            
+            linguisticData.forEach(d => {
+                const title = showLatin ? d.latin : d.modern;
+                const sound = showLatin ? d.latSound : d.modSound;
+                const highlightClass = showLatin ? 'text-red-800 font-serif-header' : 'text-stone-800';
+                const label = showLatin ? 'Classical Latin' : 'Modern English';
+                
+                const card = document.createElement('div');
+                card.className = 'bg-white p-5 rounded-lg shadow border border-stone-200 hover:shadow-lg transition-shadow';
+                card.innerHTML = `
+                    <div class="text-xs font-bold text-stone-400 uppercase mb-2">${d.meaning}</div>
+                    <div class="text-xl font-bold ${highlightClass} mb-2">${title}</div>
+                    <div class="text-sm bg-stone-100 p-2 rounded inline-block font-mono text-stone-600">
+                        <i class="fas fa-volume-up mr-2 opacity-50"></i>/${sound}/
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // --- LEAP YEAR LOGIC ---
+        function checkLeapYear() {
+            const input = document.getElementById('yearInput');
+            const year = parseInt(input.value);
+            const resultBox = document.getElementById('resultBox');
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const step3 = document.getElementById('step3');
+
+            if(!year) return;
+
+            // Reset UI
+            [step1, step2, step3].forEach(el => {
+                el.className = 'logic-step border rounded p-3 flex justify-between items-center bg-stone-50';
+                el.querySelector('.icon').className = 'fas fa-circle text-stone-200 text-xs icon';
+            });
+            resultBox.classList.add('hidden');
+            resultBox.className = "mt-6 p-4 text-center font-bold text-xl rounded hidden";
+
+            // Logic
+            let isLeap = false;
+            let failureReason = "";
+
+            // Step 1: Div by 4
+            const divBy4 = (year % 4 === 0);
+            updateStepUI(step1, divBy4);
+
+            if (!divBy4) {
+                isLeap = false;
+                showResult(false, year, "Not divisible by 4");
+                return;
+            }
+
+            // Step 2: Div by 100
+            const divBy100 = (year % 100 === 0);
+            updateStepUI(step2, divBy100);
+
+            if (!divBy100) {
+                // Divisible by 4, but NOT 100 -> Leap!
+                isLeap = true;
+                step2.classList.add('success'); // It's a "good" thing here for the leap calculation
+                showResult(true, year, "Divisible by 4, but not 100");
+                return;
+            }
+
+            // Step 3: Div by 400
+            const divBy400 = (year % 400 === 0);
+            updateStepUI(step3, divBy400);
+
+            if (divBy400) {
+                isLeap = true;
+                showResult(true, year, "Divisible by 400 (The Exception)");
+            } else {
+                isLeap = false;
+                showResult(false, year, "Century year not divisible by 400");
+            }
+        }
+
+        function updateStepUI(element, isTrue) {
+            element.classList.add('active');
+            const icon = element.querySelector('.icon');
+            if(isTrue) {
+                icon.className = 'fas fa-check text-green-600 icon';
+                element.classList.add('success');
+            } else {
+                icon.className = 'fas fa-times text-red-600 icon';
+            }
+        }
+
+        function showResult(isLeap, year, reason) {
+            const box = document.getElementById('resultBox');
+            box.classList.remove('hidden');
+            
+            if(isLeap) {
+                box.classList.add('bg-green-100', 'text-green-800');
+                box.innerHTML = `<i class="fas fa-check-circle mr-2"></i> ${year} IS a Leap Year<br><span class="text-sm font-normal text-green-700">${reason}</span>`;
+            } else {
+                box.classList.add('bg-red-100', 'text-red-800');
+                box.innerHTML = `<i class="fas fa-times-circle mr-2"></i> ${year} is NOT a Leap Year<br><span class="text-sm font-normal text-red-700">${reason}</span>`;
+            }
+        }
+
+    </script>
+</body>
+</html>

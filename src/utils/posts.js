@@ -12,27 +12,67 @@ export function parseFrontmatter(text) {
         if (parts.length >= 2) {
             const key = parts[0].trim();
             const value = parts.slice(1).join(':').trim();
-            data[key] = value;
+            // Remove quotes if present
+            data[key] = value.replace(/^['"](.*)['"]$/, '$1');
         }
     });
 
     return { data, content };
 }
 
+export function parseHtmlMetadata(html) {
+    const titleMatch = html.match(/<title>(.*?)<\/title>/i);
+    const title = titleMatch ? titleMatch[1] : 'Untitled';
+
+    const getMeta = (name) => {
+        const match = html.match(new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["'](.*?)["']`, 'i'));
+        return match ? match[1] : '';
+    };
+
+    const description = getMeta('description');
+    const date = getMeta('date') || new Date().toISOString().split('T')[0];
+    const category = getMeta('category') || 'Uncategorized';
+
+    return {
+        title,
+        description,
+        date,
+        category,
+        content: html,
+        type: 'html'
+    };
+}
+
 export function getPosts() {
-    const modules = import.meta.glob('/src/content/*.md', { query: '?raw', eager: true });
+    const mdModules = import.meta.glob('/src/content/*.md', { query: '?raw', eager: true });
+    const htmlModules = import.meta.glob('/src/content/*.html', { query: '?raw', eager: true });
+
     const posts = [];
 
-    for (const path in modules) {
-        const { default: raw } = modules[path];
+    // Process Markdown files
+    for (const path in mdModules) {
+        const { default: raw } = mdModules[path];
         const { data, content } = parseFrontmatter(raw);
         const slug = path.split('/').pop().replace('.md', '');
         posts.push({
             slug,
             ...data,
-            content
+            content,
+            type: 'markdown'
         });
     }
+
+    // Process HTML files
+    for (const path in htmlModules) {
+        const { default: raw } = htmlModules[path];
+        const metadata = parseHtmlMetadata(raw);
+        const slug = path.split('/').pop().replace('.html', '');
+        posts.push({
+            slug,
+            ...metadata
+        });
+    }
+
     return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 

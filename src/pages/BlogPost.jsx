@@ -16,6 +16,18 @@ export default function BlogPost() {
         );
     }
 
+    if (post.type === 'html') {
+        return (
+            <div style={{ width: '100vw', height: '100vh', margin: 0, padding: 0, overflow: 'hidden' }}>
+                <iframe
+                    srcDoc={post.content}
+                    style={{ width: '100%', height: '100%', border: 'none' }}
+                    title={post.title}
+                />
+            </div>
+        );
+    }
+
     return (
         <div style={{ maxWidth: '65ch', margin: '0 auto' }}>
             <header style={{ marginBottom: 'var(--space-lg)', borderBottom: '1px solid var(--bg-card)', paddingBottom: 'var(--space-md)' }}>

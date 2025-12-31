@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import { getPost } from '../utils/posts';
 
 export default function Layout() {
     const location = useLocation();
@@ -24,6 +25,21 @@ export default function Layout() {
     });
 
     const isHome = location.pathname === '/';
+
+    // Check if we are viewing an HTML post
+    const isHtmlPost = React.useMemo(() => {
+        const match = location.pathname.match(/^\/blog\/([^/]+)$/);
+        if (match) {
+            const slug = match[1];
+            const post = getPost(slug);
+            return post && post.type === 'html';
+        }
+        return false;
+    }, [location.pathname]);
+
+    if (isHtmlPost) {
+        return <Outlet />;
+    }
 
     return (
         <>
