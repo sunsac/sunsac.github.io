@@ -23,6 +23,8 @@ export default function Layout() {
         borderBottom: 'none'
     });
 
+    const isHome = location.pathname === '/';
+
     return (
         <>
             <aside>
@@ -51,16 +53,17 @@ export default function Layout() {
                     <div style={{ marginBottom: '0.5rem' }}>
                         &copy; {year} All rights reserved.
                     </div>
-                    <div>
-                        Template inspired by Colorlib
-                    </div>
                 </footer>
             </aside>
 
-            <main>
-                <div className="container">
+            <main style={{ padding: isHome ? 0 : 'var(--space-lg)' }}>
+                {isHome ? (
                     <Outlet />
-                </div>
+                ) : (
+                    <div className="container">
+                        <Outlet />
+                    </div>
+                )}
             </main>
         </>
     );

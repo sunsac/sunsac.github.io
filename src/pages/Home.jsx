@@ -1,50 +1,64 @@
 import React from 'react';
 import Section from '../components/Section';
 
+import homeBackgroundImage from '../assets/home_page.png';
+
 export default function Home() {
     return (
-        <div style={{ padding: '2rem 0' }}>
-            <header style={{ marginBottom: '4rem' }}>
+        <div style={{
+            padding: '4rem',
+            backgroundImage: `url(${homeBackgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '100vh',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
+        }}>
+            <header style={{
+                marginBottom: '2rem',
+                background: 'rgba(255, 255, 255, 0.1)', // Glass background
+                backdropFilter: 'blur(12px)',            // Blur effect
+                WebkitBackdropFilter: 'blur(12px)',      // Safari support
+                padding: '3rem',
+                borderRadius: '16px',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                maxWidth: '800px',
+                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)'
+            }}>
                 <h1 style={{
-                    fontSize: '4rem',
+                    fontSize: '4.5rem',
                     fontWeight: '900',
-                    lineHeight: '1.2',
+                    lineHeight: '1.1',
                     letterSpacing: '-0.02em',
                     marginBottom: '1.5rem',
-                    fontFamily: 'var(--font-serif)'
+                    fontFamily: 'var(--font-serif)',
+                    color: '#fff',
+                    textShadow: '0 2px 4px rgba(0,0,0,0.3)' // Subtle text shadow for white text
                 }}>
-                    I am a<br />
-                    <span style={{ color: 'var(--primary)' }}>Researcher &<br />Developer</span>
+                    This is my<br />
+                    <span style={{
+                        color: '#60A5FA', // Lighter, glowing blue
+                        textShadow: '0 0 20px rgba(96, 165, 250, 0.5)' // Glow effect
+                    }}>
+                        Little Knowledge Reservoir
+                    </span>
                 </h1>
                 <p style={{
-                    fontSize: '1.25rem',
-                    color: 'var(--text-muted)',
-                    maxWidth: '500px',
-                    lineHeight: '1.6'
+                    fontSize: '1.5rem',
+                    color: 'rgba(255, 255, 255, 0.9)', // High contrast white
+                    maxWidth: '600px',
+                    lineHeight: '1.6',
+                    fontWeight: '500',
+                    textShadow: '0 1px 2px rgba(0,0,0,0.2)'
                 }}>
-                    Simplicity is the ultimate sophistication. I build intelligent agents and performant web systems.
-                    Based in the Cloud.
+                    Simplicity is the ultimate sophistication.
                 </p>
-                <div style={{ marginTop: '2rem' }}>
-                    <button style={{
-                        padding: '1rem 2rem',
-                        background: 'none',
-                        border: '2px solid var(--text-main)',
-                        fontSize: '0.9rem',
-                        fontWeight: '600',
-                        letterSpacing: '0.1em',
-                        textTransform: 'uppercase',
-                        cursor: 'pointer'
-                    }}>
-                        View My Work
-                    </button>
-                </div>
             </header>
 
-            {/* Kept minimal as requested - removed detailed bio/experience lists for now 
-          to match the "too private" request. Could add them back in a "About" page later if needed.
-      */}
-
+            {/* Keeping the note in source but cleaner */}
         </div>
     );
 }
