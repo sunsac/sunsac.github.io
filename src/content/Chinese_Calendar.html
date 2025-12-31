@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="date" content="2025-12-31">
+    <meta name="category" content="Fun">
+    <title>農曆深度解析：中國人的時間智慧</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Updated Fonts: Noto Serif TC for text/titles, Noto Sans TC for UI/Charts */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;700;900&display=swap');
+
+        :root {
+            --chinese-red: #c0392b;
+            --imperial-gold: #d4ac0d;
+            --ink-black: #2c3e50;
+            --paper-bg: #fdfbf7;
+        }
+
+        body {
+            background-color: var(--paper-bg);
+            font-family: 'Noto Serif TC', serif; /* Base font is Serif for traditional feel */
+            color: var(--ink-black);
+            background-image: radial-gradient(#e5e5e5 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* UI Elements use Sans-Serif for readability */
+        button, .text-xs, .text-sm, nav {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        /* Titles use Heavy Serif instead of Calligraphy to ensure character support */
+        .title-font {
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900; /* Black weight for impact */
+            letter-spacing: 0.05em;
+        }
+
+        /* Chart Container Styling - Mandatory */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Card Hover Effects */
+        .info-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--chinese-red);
+        }
+
+        /* Moon Phase Animation */
+        .moon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: inset -10px 0px 5px rgba(0,0,0,0.2);
+            transition: background 0.5s ease;
+        }
+        
+        .tab-active {
+            background-color: var(--chinese-red);
+            color: white;
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+    <!-- Chosen Palette: Traditional Chinese - Rice Paper Background (#fdfbf7), Ink Black Text (#2c3e50), Chinese Red Accents (#c0392b), Imperial Gold Highlights (#d4ac0d) -->
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#fdfbf7]/95 backdrop-blur shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl text-red-700 mr-2"><i class="fas fa-yin-yang"></i></span>
+                    <span class="font-bold text-xl tracking-wider text-gray-800 font-serif">農曆 <span class="text-red-700">深度解析</span></span>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+                    <button onclick="scrollToSection('misconception')" class="hover:text-red-700 transition">曆法分類</button>
+                    <button onclick="scrollToSection('yin-yang')" class="hover:text-red-700 transition">陰陽原理</button>
+                    <button onclick="scrollToSection('ancient-wisdom')" class="hover:text-red-700 transition text-yellow-700">古法智慧</button>
+                    <button onclick="scrollToSection('leap-month')" class="hover:text-red-700 transition">置閏法</button>
+                    <button onclick="scrollToSection('sixty-cycle')" class="hover:text-red-700 transition">六十甲子</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden py-16 sm:py-24 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block p-2 px-4 rounded-full bg-red-50 text-red-800 text-sm font-bold tracking-widest mb-4 border border-red-200 font-sans">中國傳統曆法</div>
+            <h1 class="text-5xl md:text-6xl title-font font-bold text-gray-900 mb-6 leading-tight">
+                農曆的<span class="text-red-700">構造原理</span><br>
+                是一部<span class="text-yellow-600">陰陽合曆</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
+                它結合了月相變化與太陽回歸年的規律。這是中國傳統文化中重要的時間計量體系。
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 pb-20">
+
+        <!-- Section 1: Core Misconception -->
+        <section id="misconception" class="scroll-mt-24">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 border-b-4 border-red-700 inline-block pb-1 title-font">1. 曆法體系分類</h2>
+                <p class="text-lg text-gray-600">農曆並非純粹的陰曆，世界上主要存在三種曆法體系。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Lunar -->
+                <div class="info-card bg-white p-6 rounded-xl shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-blue-100 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:bg-blue-200"></div>
+                    <div class="relative z-10">
+                        <div class="text-4xl text-blue-600 mb-4"><i class="fas fa-moon"></i></div>
+                        <h3 class="text-xl font-bold mb-2 title-font">純陰曆 (Lunar)</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-sans">代表：伊斯蘭曆</p>
+                        <ul class="text-gray-600 space-y-2 text-sm font-sans">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>依據月亮圓缺制定</li>
+                            <li><i class="fas fa-minus text-gray-400 mr-2"></i>不參照太陽回歸年</li>
+                            <li><i class="fas fa-clock text-gray-400 mr-2"></i>一年約 354 天</li>
+                            <li class="font-bold text-blue-600">特點：節日在公曆季節中循環</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 2: Solar -->
+                <div class="info-card bg-white p-6 rounded-xl shadow-sm relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-orange-100 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:bg-orange-200"></div>
+                    <div class="relative z-10">
+                        <div class="text-4xl text-orange-500 mb-4"><i class="fas fa-sun"></i></div>
+                        <h3 class="text-xl font-bold mb-2 title-font">純陽曆 (Solar)</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-sans">代表：公曆</p>
+                        <ul class="text-gray-600 space-y-2 text-sm font-sans">
+                            <li><i class="fas fa-minus text-gray-400 mr-2"></i>不參照月亮圓缺</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>依據太陽回歸年制定</li>
+                            <li><i class="fas fa-clock text-gray-400 mr-2"></i>一年 365/366 天</li>
+                            <li class="font-bold text-orange-600">特點：日期與季節對應固定</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Card 3: Lunisolar -->
+                <div class="info-card bg-white p-6 rounded-xl shadow-md border-2 border-red-100 relative overflow-hidden transform md:-translate-y-4">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-red-700"></div>
+                    <div class="relative z-10">
+                        <div class="text-4xl text-red-700 mb-4 flex gap-2">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-plus text-sm self-center"></i>
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 title-font">陰陽合曆 (Lunisolar)</h3>
+                        <p class="text-sm text-gray-500 mb-4 font-sans">代表：中國農曆</p>
+                        <ul class="text-gray-600 space-y-2 text-sm font-sans">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>月亮定月份 (陰)</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>太陽定節氣 (陽)</li>
+                            <li><i class="fas fa-clock text-gray-400 mr-2"></i>平年354天 / 閏年384天</li>
+                            <li class="font-bold text-red-700">特點：兼顧月相變化與季節更替</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Yin (Moon) & Yang (Sun) -->
+        <section id="yin-yang" class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6 title-font">2. 農曆的「陰」：月相定日</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        農曆的月份嚴格遵循月相變化。從一次新月到下一次新月，平均需要 <strong>29.53天</strong>。因此農曆月份分為大月（30天）和小月（29天）。
+                    </p>
+                    
+                    <div class="flex space-x-8 mb-6 font-sans">
+                        <div class="text-center">
+                            <div class="moon bg-gray-900 mx-auto mb-2 border border-gray-200"></div>
+                            <h4 class="font-bold">初一 (朔)</h4>
+                            <p class="text-xs text-gray-500">日月合朔</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="moon bg-yellow-300 mx-auto mb-2 border border-yellow-400"></div>
+                            <h4 class="font-bold">十五 (望)</h4>
+                            <p class="text-xs text-gray-500">滿月</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 bg-gray-50 p-4 rounded-lg border-l-4 border-gray-800">
+                        「朔」發生的時刻定為初一。因此初一通常無月光，十五或十六為滿月。
+                    </p>
+                </div>
+                
+                <!-- Solar Terms Interactive -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <h2 class="text-3xl font-bold text-gray-900 title-font">3. 農曆的「陽」：二十四節氣</h2>
+                    </div>
+                    
+                    <!-- NEW: Jie vs Qi Explanation -->
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-3 mb-4 rounded-r text-sm text-gray-700">
+                        <p><strong>概念說明：</strong>二十四節氣由「12個節」和「12個氣」交替組成。</p>
+                        <ul class="mt-1 list-disc list-inside text-xs text-gray-600 font-sans">
+                            <li><span class="inline-block px-1 bg-blue-100 text-blue-800 rounded mr-1">節氣</span> (單數項)：立春、驚蟄... 多出現在<strong>月初</strong>。</li>
+                            <li><span class="inline-block px-1 bg-red-100 text-red-800 rounded mr-1">中氣</span> (雙數項)：雨水、春分... 多出現在<strong>月中</strong>，用於<strong>標定月份</strong>。</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-gray-600 mb-4 text-sm">
+                        這是基於太陽運行的曆法成分。將太陽黃道平分24份，用以指導農耕與季節劃分。
+                    </p>
+                    
+                    <!-- Filters -->
+                    <div class="flex flex-wrap gap-2 mb-6" id="termFilters">
+                        <button class="px-3 py-1 text-sm rounded-full border border-gray-300 hover:bg-gray-100 tab-active" data-filter="all">全部</button>
+                        <button class="px-3 py-1 text-sm rounded-full border border-gray-300 hover:bg-gray-100" data-filter="season">定季節</button>
+                        <button class="px-3 py-1 text-sm rounded-full border border-gray-300 hover:bg-gray-100" data-filter="temp">反映氣溫</button>
+                        <button class="px-3 py-1 text-sm rounded-full border border-gray-300 hover:bg-gray-100" data-filter="precip">反映降水</button>
+                        <button class="px-3 py-1 text-sm rounded-full border border-gray-300 hover:bg-gray-100" data-filter="farm">物候農事</button>
+                    </div>
+
+                    <!-- Terms Grid -->
+                    <div class="grid grid-cols-4 sm:grid-cols-6 gap-2" id="solarTermsGrid">
+                        <!-- JS populated -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Section: Ancient Wisdom (How Solar Terms were Determined) -->
+        <section id="ancient-wisdom" class="scroll-mt-24 bg-[#f8f6f2] rounded-3xl p-8 border border-gray-200">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-2 title-font">番外篇：節氣測定方法的演變</h2>
+                <p class="text-gray-600">古代天文觀測與數學推算的智慧</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Step 1: Winter Solstice Anchor -->
+                <div class="info-card bg-white p-6 rounded-xl relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-red-50 text-red-700 rounded-full text-xl"><i class="fas fa-ruler-vertical"></i></div>
+                        <span class="text-xs font-bold text-gray-400 font-sans">步驟一</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800 title-font">基準測定：測冬至</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed font-sans">
+                        古人使用<strong>土圭 (Tugui)</strong> 測量正午日影。日影<strong>最長</strong>的一天定為<strong>冬至</strong>，最短為夏至，確立太陽週期的起點。
+                    </p>
+                </div>
+
+                <!-- Step 2: Average Method -->
+                <div class="info-card bg-white p-6 rounded-xl relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-yellow-50 text-yellow-700 rounded-full text-xl"><i class="fas fa-divide"></i></div>
+                        <span class="text-xs font-bold text-gray-400 font-sans">步驟二</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800 title-font">方法一：平氣法</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed font-sans">
+                        將回歸年約365.25天平均分為24等份，每份約 <strong>15.2天</strong>。這種方法計算簡便，但未考慮地球公轉速度的變化。
+                    </p>
+                </div>
+
+                <!-- Step 3: Precise Method -->
+                <div class="info-card bg-white p-6 rounded-xl relative overflow-hidden">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-3 bg-blue-50 text-blue-700 rounded-full text-xl"><i class="fas fa-star"></i></div>
+                        <span class="text-xs font-bold text-gray-400 font-sans">步驟三</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-gray-800 title-font">方法二：定氣法 (清代)</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed font-sans">
+                        考慮到地球公轉軌道為橢圓（冬快夏慢），改為按<strong>太陽黃經角度</strong>（每15度）劃分節氣，更為精確。
+                    </p>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-500 italic border-t border-gray-200 pt-4 inline-block px-8">
+                    註：曆法計算由歷代欽天監負責，頒布《皇曆》（黃曆）供民間使用。
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3: Leap Month Logic -->
+        <section id="leap-month" class="scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4 border-b-4 border-red-700 inline-block pb-1 title-font">4. 曆法調整：置閏法</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        太陽年（公曆）與陰曆年長度不同。陰曆年平均約354天，比回歸年少約11天。若不調整，積累三年便會產生約一個月的差異，導致季節與月份脫節。
+                    </p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-700">
+                            <h4 class="font-bold text-red-800 mb-2 flex items-center">
+                                <i class="fas fa-search-location mr-2"></i> 置閏規則：無中氣置閏
+                            </h4>
+                            <p class="text-sm text-gray-700 mb-2">
+                                <strong>中氣 (Zhongqi)</strong> 是決定月份排序的關鍵（如雨水定正月，春分定二月）。
+                            </p>
+                            <p class="text-sm text-gray-700">
+                                由於農曆月比節氣間隔短，中氣在月份裡的日子會不斷後移。當某個月<strong>未包含中氣</strong>，它便被設定為<strong>閏月</strong>，附屬於上個月。
+                            </p>
+                        </div>
+
+                        <!-- NEW: Visual Demo for No Zhongqi -->
+                        <div class="bg-white border-2 border-gray-200 rounded-xl p-4 shadow-sm relative overflow-hidden">
+                            <!-- Removed Badge Here -->
+                            <h4 class="font-bold text-gray-800 mb-4 text-sm">直觀演示：中氣與月份的偏移</h4>
+                            
+                            <!-- Timeline Container -->
+                            <div id="leapRuleDemo">
+                                <!-- JS will render the timeline here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-center">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                        <h3 class="text-center font-bold text-gray-800 mb-2">19年輪迴演示：累積差異與修正</h3>
+                        <p class="text-center text-xs text-gray-500 mb-6 font-sans">折線向下代表累積差異，向上代表置閏修正</p>
+                        <div class="chart-container">
+                            <canvas id="timeGapChart"></canvas>
+                        </div>
+                        <div class="mt-4 flex justify-center gap-4 text-xs text-gray-500 font-sans">
+                            <div class="flex items-center"><span class="w-3 h-3 bg-red-500 rounded-full mr-1"></span> 閏年 (加一個月)</div>
+                            <div class="flex items-center"><span class="w-3 h-3 bg-gray-300 rounded-full mr-1"></span> 平年 (累積中)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: 60 Year Cycle -->
+        <section id="sixty-cycle" class="scroll-mt-24 bg-[#fcf8e3] rounded-3xl p-8 md:p-12 border border-yellow-200 relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 text-9xl text-yellow-100 font-serif opacity-50 select-none pointer-events-none -mr-10 -mt-10 font-serif">甲子</div>
+
+            <div class="text-center mb-10 relative z-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 title-font">5. 天干地支：60年的輪迴</h2>
+                <p class="text-gray-700 max-w-2xl mx-auto">
+                    為什麼是60年而不是120年？因為<strong>「陽干配陽支，陰乾配陰支」</strong>。
+                    這就像兩個齒輪咬合，一個是10齒，一個是12齒。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
+                <!-- Interactive Gears Visualization -->
+                <div class="flex flex-col items-center">
+                    <div class="chart-container" style="height: 300px; max-width: 300px;">
+                        <canvas id="gearsChart"></canvas>
+                    </div>
+                    <div class="mt-4 flex gap-4 font-sans">
+                        <button id="prevYearBtn" class="px-4 py-2 bg-white border border-gray-300 rounded shadow hover:bg-gray-50 text-sm"><i class="fas fa-arrow-left"></i> 上一年</button>
+                        <div id="currentYearDisplay" class="px-6 py-2 bg-red-700 text-white font-bold rounded shadow text-xl title-font min-w-[120px] text-center">甲子</div>
+                        <button id="nextYearBtn" class="px-4 py-2 bg-white border border-gray-300 rounded shadow hover:bg-gray-50 text-sm">下一年 <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 font-sans">點擊按鈕轉動「齒輪」</p>
+                </div>
+
+                <!-- Math Explanation -->
+                <div class="bg-white/80 backdrop-blur p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-lg mb-4 text-yellow-800">番外篇：數學原理</h3>
+                    <div class="space-y-4 text-sm text-gray-700">
+                        <div>
+                            <span class="font-bold block">1. 奇偶分類</span>
+                            天干(10)和地支(12)都分陰陽（奇偶）。奇數只能遇奇數。
+                            <br>例：<span class="text-red-600">甲(1)</span> 只能遇 <span class="text-red-600">子(1)、寅(3)...</span>
+                            <br>不存在 <span class="text-gray-400 line-through">甲醜(1配2)</span> 的組合。
+                        </div>
+                        <div class="h-px bg-gray-200 w-full"></div>
+                        <div>
+                            <span class="font-bold block">2. 最小公倍數</span>
+                            求 10 和 12 的最小公倍數。
+                            <br>10的倍數: 10, 20, 30, 40, 50, <span class="text-red-600 font-bold">60</span>...
+                            <br>12的倍數: 12, 24, 36, 48, <span class="text-red-600 font-bold">60</span>...
+                            <br>它們在第60年第一次重合，輪迴結束。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 text-center">
+        <p class="mb-2 text-lg text-gray-200 title-font">傳統智慧，陰陽合曆</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- DATA: Solar Terms ---
+        const solarTerms = [
+            { name: "立春", cat: "season", desc: "春季開始" }, { name: "雨水", cat: "precip", desc: "降雨開始" },
+            { name: "驚蟄", cat: "farm", desc: "春雷驚蟲" }, { name: "春分", cat: "season", desc: "晝夜平分" },
+            { name: "清明", cat: "farm", desc: "天朗氣清" }, { name: "穀雨", cat: "precip", desc: "雨生百穀" },
+            { name: "立夏", cat: "season", desc: "夏季開始" }, { name: "小滿", cat: "farm", desc: "麥粒飽滿" },
+            { name: "芒種", cat: "farm", desc: "有芒播種" }, { name: "夏至", cat: "season", desc: "白晝最長" },
+            { name: "小暑", cat: "temp", desc: "炎熱開始" }, { name: "大暑", cat: "temp", desc: "最熱時候" },
+            { name: "立秋", cat: "season", desc: "秋季開始" }, { name: "處暑", cat: "temp", desc: "炎熱結束" },
+            { name: "白露", cat: "precip", desc: "露凝為白" }, { name: "秋分", cat: "season", desc: "晝夜平分" },
+            { name: "寒露", cat: "precip", desc: "露氣寒冷" }, { name: "霜降", cat: "precip", desc: "霜凍開始" },
+            { name: "立冬", cat: "season", desc: "冬季開始" }, { name: "小雪", cat: "precip", desc: "開始下雪" },
+            { name: "大雪", cat: "precip", desc: "雪量變大" }, { name: "冬至", cat: "season", desc: "白晝最短" },
+            { name: "小寒", cat: "temp", desc: "寒冷開始" }, { name: "大寒", cat: "temp", desc: "最冷時候" }
+        ];
+
+        // --- DATA: Stems & Branches ---
+        const stems = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
+        const branches = ["子", "醜", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+        let stemIndex = 0; // Starts at 0 (Jia)
+        let branchIndex = 0; // Starts at 0 (Zi)
+
+        // --- INIT ---
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSolarTerms('all');
+            initTimeGapChart();
+            initGearsChart();
+            renderLeapRuleDemo(); // Call the new visualizer
+            updateYearDisplay();
+        });
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- LOGIC: Solar Terms Filters ---
+        const filters = document.getElementById('termFilters').querySelectorAll('button');
+        filters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // UI Toggle
+                filters.forEach(b => b.classList.remove('tab-active', 'bg-red-700', 'text-white'));
+                filters.forEach(b => b.classList.add('hover:bg-gray-100', 'text-gray-600'));
+                
+                btn.classList.add('tab-active', 'bg-red-700', 'text-white');
+                btn.classList.remove('hover:bg-gray-100', 'text-gray-600');
+                
+                renderSolarTerms(btn.dataset.filter);
+            });
+        });
+
+        function renderSolarTerms(filter) {
+            const container = document.getElementById('solarTermsGrid');
+            container.innerHTML = '';
+
+            solarTerms.forEach((term, index) => {
+                if (filter !== 'all' && term.cat !== filter) return;
+
+                // Color coding for categories
+                let color = "bg-gray-50 text-gray-600";
+                if(term.cat === 'season') color = "bg-green-50 text-green-700 border-green-200";
+                if(term.cat === 'temp') color = "bg-red-50 text-red-700 border-red-200";
+                if(term.cat === 'precip') color = "bg-blue-50 text-blue-700 border-blue-200";
+                if(term.cat === 'farm') color = "bg-yellow-50 text-yellow-700 border-yellow-200";
+
+                // Logic for Jie vs Qi
+                // Array is 0-indexed. 
+                // 0 (Lichun) -> 1st -> Jie (Odd)
+                // 1 (Yushui) -> 2nd -> Qi (Even)
+                const isQi = (index % 2 !== 0); 
+                const typeLabel = isQi ? "中氣" : "節氣";
+                const typeBadgeClass = isQi ? "bg-red-100 text-red-800" : "bg-blue-100 text-blue-800";
+
+                const div = document.createElement('div');
+                div.className = `p-2 rounded-lg border text-center transition-transform hover:scale-105 ${color} flex flex-col justify-between h-full relative overflow-hidden`;
+                
+                // Adding a small badge for Jie/Qi
+                const badgeHtml = `<span class="absolute top-0 right-0 text-[10px] px-1 rounded-bl ${typeBadgeClass} font-sans">${typeLabel}</span>`;
+
+                div.innerHTML = `
+                    ${badgeHtml}
+                    <div class="font-bold text-lg title-font mt-2">${term.name}</div>
+                    <div class="text-xs opacity-80 leading-tight font-sans">${term.desc}</div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // --- NEW: Leap Rule Visualizer (Dual Track) ---
+        function renderLeapRuleDemo() {
+            const container = document.getElementById('leapRuleDemo');
+            
+            // Visual Config
+            const lWidth = 90;
+            const solarGap = 140; 
+            const solarStart = 50;
+            const pxPerDay = solarGap / 30.44; // Approx pixels per day
+
+            // Data Setup: Actual Zhongqi Names for Spring Sequence
+            const solarP = [solarStart, solarStart + solarGap, solarStart + solarGap*2, solarStart + solarGap*3];
+            const zhongqiNames = ["雨水", "春分", "穀雨", "小滿"]; // Specific names
+
+            const lMonths = [
+                {start: 0, w: lWidth, name: '正月'},      
+                {start: lWidth, w: lWidth, name: '二月'}, 
+                {start: lWidth*2, w: lWidth, name: '二月'}, 
+                {start: lWidth*3, w: lWidth, name: '三月'}  
+            ];
+
+            // Gregorian Axis Data 
+            const gregAxis = [
+                { label: "3月1日", left: solarStart + (9 * pxPerDay) },
+                { label: "4月1日", left: solarStart + solarGap + (11 * pxPerDay) },
+                { label: "5月1日", left: solarStart + solarGap*2 + (10 * pxPerDay) },
+                { label: "6月1日", left: solarStart + solarGap*3 + (11 * pxPerDay) }
+            ];
+
+            let html = `
+                <!-- Container changed to Flex Column to prevent bottom clipping -->
+                <div class="relative w-full bg-white rounded-lg border border-gray-200 overflow-hidden shadow-inner flex flex-col" style="height: 280px;">
+                    <!-- Legend -->
+                    <div class="flex-none flex justify-between px-4 py-2 bg-gray-50 border-b border-gray-100 text-xs z-30 relative font-sans">
+                        <div class="flex items-center font-bold text-red-700">
+                            <span class="w-0.5 h-4 border-r-2 border-dashed border-red-400 mr-2"></span>
+                            太陽中氣 (固定)
+                        </div>
+                        <div class="flex items-center font-bold text-blue-700">
+                            <span class="w-3 h-3 rounded bg-blue-100 border border-blue-300 mr-2"></span>
+                            農曆月份 (變動)
+                        </div>
+                        <div class="flex items-center font-bold text-gray-600">
+                            <span class="w-px h-3 bg-gray-500 mr-1"></span>
+                            <span>公曆參考</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Scrollable Area takes remaining height -->
+                    <div class="flex-1 relative overflow-x-auto no-scrollbar">
+                        <div class="relative h-full" style="min-width: 600px; width: 100%;">
+                            
+                            <!-- Solar Track (Top Layer Markers) -->
+                            <div class="absolute top-8 bottom-12 left-4 right-4 pointer-events-none z-10 font-sans">
+            `;
+            
+            solarP.forEach((pos, i) => {
+                html += `
+                    <div class="absolute top-0 bottom-0 w-px border-r-2 border-dashed border-red-300" style="left: ${pos}px;">
+                        <div class="absolute -top-6 -left-3 bg-red-100 text-red-700 text-[10px] px-1.5 py-0.5 rounded-full font-bold whitespace-nowrap shadow-sm border border-red-200">
+                            ${zhongqiNames[i]}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `       </div>
+                            <!-- Lunar Track (Blocks) -->
+                            <div class="absolute top-14 left-4 right-4 h-16 z-20 font-sans">
+            `;
+            
+            lMonths.forEach((m, i) => {
+                const start = m.start;
+                const end = m.start + m.w;
+                const hasZ = solarP.some(p => p >= start && p < end); 
+                
+                let displayLabel = m.name;
+                let subLabel = hasZ ? '<i class="fas fa-check text-green-600"></i> 含中氣' : '<i class="fas fa-times text-red-600"></i> 無中氣';
+                let styleClass = hasZ ? 'bg-blue-50 border-blue-200 text-blue-800' : 'bg-red-50 border-red-400 text-red-800 font-bold shadow-md transform scale-105 z-30';
+                
+                if (!hasZ) {
+                    displayLabel = "閏月"; 
+                }
+
+                html += `
+                    <div class="absolute top-0 h-full border rounded-lg flex flex-col items-center justify-center text-xs transition-all hover:opacity-90 ${styleClass}" 
+                         style="left: ${start}px; width: ${m.w-2}px;">
+                        <span class="text-sm mb-1">${displayLabel}</span>
+                        <span class="scale-75 opacity-75 whitespace-nowrap">${subLabel}</span>
+                    </div>
+                `;
+            });
+            
+            html += `
+                            </div>
+                            
+                            <!-- Gregorian Axis (Bottom) -->
+                            <div class="absolute bottom-0 left-0 right-0 h-10 border-t border-gray-300 bg-gray-100 z-10 font-sans">
+                                <div class="relative w-full h-full left-4 right-4">
+            `;
+
+            gregAxis.forEach(g => {
+                html += `
+                    <div class="absolute top-0 w-px h-3 bg-gray-500" style="left: ${g.left}px;"></div>
+                    <div class="absolute top-4 text-[11px] font-bold text-gray-600 transform -translate-x-1/2 whitespace-nowrap" style="left: ${g.left}px;">
+                        ${g.label}
+                    </div>
+                `;
+            });
+
+            html += `           </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded border border-gray-100 leading-relaxed text-center font-sans">
+                    <span class="font-bold text-gray-700">圖解原理：</span>
+                    請觀察底部的公曆時間軸。因為農曆月(藍塊)比節氣間隔(紅線間距)短，
+                    <span class="text-red-600 font-bold">閏月</span> 那個方塊剛好落在了「春分」和「穀雨」之間，
+                    未包含任何紅色虛線（中氣），因此被設定為閏月。
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // --- CHART: Time Gap (19 Years Cycle) ---
+        function initTimeGapChart() {
+            const ctx = document.getElementById('timeGapChart').getContext('2d');
+            
+            // Generate 19-year data
+            // Use more precise astronomical averages for better accuracy
+            // Solar Year - Lunar Year (12 months) = 365.2422 - 354.3672 ≈ 10.875 days
+            // Leap Month (Synodic Month) ≈ 29.5306 days
+            const LAG_PER_YEAR = 10.88; 
+            const LEAP_MONTH_ADD = 29.53;
+
+            const labels = Array.from({length: 20}, (_, i) => i === 0 ? '起點' : `第${i}年`);
+            const leapYears = [3, 6, 9, 11, 14, 17, 19]; 
+            
+            let currentGap = 0;
+            const dataPoints = [0];
+            const pointColors = ['#e5e7eb']; // Start point color
+            const pointRadiuses = [4];
+
+            for (let i = 1; i <= 19; i++) {
+                // Natural lag
+                currentGap -= LAG_PER_YEAR;
+                
+                // Check if it's a leap year
+                let isLeap = leapYears.includes(i);
+                
+                if (isLeap) {
+                    currentGap += LEAP_MONTH_ADD; // Add leap month
+                    pointColors.push('#c0392b'); // Red for leap catch-up
+                    pointRadiuses.push(6);
+                } else {
+                    pointColors.push('#9ca3af'); // Gray for lagging
+                    pointRadiuses.push(4);
+                }
+                
+                // Use simplified float for display
+                dataPoints.push(parseFloat(currentGap.toFixed(2)));
+            }
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: '陰曆與太陽年的差距 (天)',
+                            data: dataPoints,
+                            borderColor: '#2c3e50', // Ink Black line
+                            borderWidth: 2,
+                            backgroundColor: 'rgba(212, 172, 13, 0.1)', // Gold fill
+                            pointBackgroundColor: pointColors,
+                            pointBorderColor: '#fff',
+                            pointRadius: pointRadiuses,
+                            pointHoverRadius: 8,
+                            fill: true,
+                            tension: 0.1 // Straighter lines for sawtooth effect
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { 
+                            beginAtZero: false,
+                            min: -35,
+                            max: 15,
+                            grid: { color: '#f3f4f6' },
+                            title: { display: true, text: '累計差距 (天)' },
+                            ticks: {
+                                callback: function(value) {
+                                    return value > 0 ? '+' + value : value;
+                                }
+                            }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: {
+                                maxTicksLimit: 20,
+                                font: { size: 10 }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => {
+                                    const yearIdx = ctx.dataIndex;
+                                    const isLeap = leapYears.includes(yearIdx);
+                                    let status = isLeap ? "置閏調整" : "累積差異...";
+                                    if(yearIdx === 0) status = "起點";
+                                    // Formatting: show + for positive numbers
+                                    const val = ctx.raw > 0 ? '+' + ctx.raw : ctx.raw;
+                                    return ` ${status} (${val}天)`;
+                                },
+                                title: (ctx) => ctx[0].label
+                            }
+                        },
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // --- CHART: 60 Year Cycle Gears ---
+        let gearsChart;
+        function initGearsChart() {
+            const ctx = document.getElementById('gearsChart').getContext('2d');
+            
+            // Data for Outer Ring (12 Branches)
+            const branchesData = new Array(12).fill(1);
+            // Data for Inner Ring (10 Stems)
+            const stemsData = new Array(10).fill(1);
+
+            gearsChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: branches, // Tooltip labels will be messy if not handled, but visual is key here
+                    datasets: [
+                        {
+                            label: '地支 (12)',
+                            data: branchesData,
+                            backgroundColor: (ctx) => ctx.dataIndex === branchIndex ? '#c0392b' : '#fce7f3',
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                            weight: 1
+                        },
+                        {
+                            label: '天干 (10)',
+                            data: stemsData,
+                            backgroundColor: (ctx) => ctx.dataIndex === stemIndex ? '#d4ac0d' : '#fef9c3',
+                            borderColor: '#fff',
+                            borderWidth: 2,
+                            weight: 0.7 // Smaller inner ring
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 500 },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { enabled: false } // Disable tooltip for cleaner gear look
+                    },
+                    rotation: 0 // We will not rotate chart, we rotate colors
+                }
+            });
+        }
+
+        // --- LOGIC: Gear Rotation ---
+        function updateGears() {
+            // Update Colors in Chart to simulate rotation/selection
+            gearsChart.data.datasets[0].backgroundColor = gearsChart.data.datasets[0].data.map((_, i) => 
+                i === branchIndex ? '#c0392b' : '#e5e7eb'
+            );
+            gearsChart.data.datasets[1].backgroundColor = gearsChart.data.datasets[1].data.map((_, i) => 
+                i === stemIndex ? '#d4ac0d' : '#f3f4f6'
+            );
+            gearsChart.update();
+            updateYearDisplay();
+        }
+
+        function updateYearDisplay() {
+            const yearName = stems[stemIndex] + branches[branchIndex];
+            document.getElementById('currentYearDisplay').innerText = yearName;
+        }
+
+        document.getElementById('nextYearBtn').addEventListener('click', () => {
+            stemIndex = (stemIndex + 1) % 10;
+            branchIndex = (branchIndex + 1) % 12;
+            updateGears();
+        });
+
+        document.getElementById('prevYearBtn').addEventListener('click', () => {
+            stemIndex = (stemIndex - 1 + 10) % 10;
+            branchIndex = (branchIndex - 1 + 12) % 12;
+            updateGears();
+        });
+
+    </script>
+</body>
+</html>
