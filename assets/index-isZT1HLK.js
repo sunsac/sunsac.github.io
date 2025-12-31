@@ -416,7 +416,7 @@ console.log('Hello from code block');
 
                 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 class="text-3xl md:text-4xl font-serif-header font-bold mb-6 text-amber-500">Part IV: The Missing 10 Days</h2>
+                        <h2 class="text-3xl md:text-4xl font-serif-header font-bold mb-6 text-amber-500">The Missing 10 Days</h2>
                         <p class="text-stone-300 text-lg mb-6 leading-relaxed">
                             To reset the calendar and wipe out the accumulated error, Pope Gregory XIII took drastic action. He decreed that <strong>Thursday, October 4, 1582</strong> would be followed immediately by <strong>Friday, October 15, 1582</strong>.
                         </p>
