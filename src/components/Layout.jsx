@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { getPost } from '../utils/posts';
+
+import easyImage from '../assets/easy.png';
+import hardImage from '../assets/hard.png';
 
 export default function Layout() {
     const location = useLocation();
     const year = new Date().getFullYear();
+    const [isMoving, setIsMoving] = useState(false);
+
+    useEffect(() => {
+        let timeoutId;
+
+        const handleMouseMove = () => {
+            setIsMoving(true);
+
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setIsMoving(false);
+            }, 200); // Revert to easy.png after 200ms of no movement
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            clearTimeout(timeoutId);
+        };
+    }, []);
 
     const navStyle = {
         display: 'flex',
@@ -44,18 +68,21 @@ export default function Layout() {
     return (
         <>
             <aside>
-                <div style={{ marginBottom: '1rem' }}>
-                    {/* Placeholder for avatar if user wants one later */}
-                    <div style={{
-                        width: '120px',
-                        height: '120px',
-                        backgroundColor: '#e5e7eb',
-                        borderRadius: '50%',
-                        margin: '0 auto 1rem',
-                        backgroundImage: 'url(https://via.placeholder.com/150)',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
-                    }} />
+                <div style={{ marginBottom: '1rem', textAlign: 'center' }}>
+                    <img
+                        src={isMoving ? hardImage : easyImage}
+                        alt="Sunsac"
+                        style={{
+                            width: '120px',
+                            height: '120px',
+                            borderRadius: '50%',
+                            margin: '0 auto 1rem',
+                            objectFit: 'cover',
+                            transition: 'transform 0.2s ease',
+                            transform: isMoving ? 'scale(1.1)' : 'scale(1)',
+                            border: '2px solid var(--border-color, #e5e7eb)'
+                        }}
+                    />
                     <h2 style={{ margin: '0 0 0.5rem', fontSize: '1.5rem', fontWeight: '700' }}>Sunsac</h2>
                     <div style={{ color: 'var(--primary)', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Researcher & Developer</div>
                 </div>
