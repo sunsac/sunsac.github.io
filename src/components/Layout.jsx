@@ -11,6 +11,10 @@ export default function Layout() {
     const [isMoving, setIsMoving] = useState(false);
 
     useEffect(() => {
+        // Preload hard.png to ensure instant switching
+        const img = new Image();
+        img.src = hardImage;
+
         let timeoutId;
 
         const handleMouseMove = () => {
