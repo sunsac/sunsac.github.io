@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="date" content="2026-01-01">
+    <meta name="category" content="Fun">
+    <title>The Hebrew Calendar: God's Algorithm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@400;700&display=swap');
+
+        :root {
+            --israel-blue: #0038b8;
+            --parchment: #fdfbf7;
+            --text-color: #1f2937;
+            --gold: #d4af37;
+        }
+
+        body {
+            background-color: var(--parchment);
+            color: var(--text-color);
+            font-family: 'Lato', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Mandatory Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Interactive Card Effects */
+        .interactive-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--israel-blue);
+        }
+
+        /* Sunset Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: var(--gold);
+            cursor: pointer;
+            margin-top: -10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #cbd5e1;
+            border-radius: 2px;
+        }
+        
+        .sky-gradient-day {
+            background: linear-gradient(to bottom, #60a5fa, #bfdbfe);
+        }
+        .sky-gradient-sunset {
+            background: linear-gradient(to bottom, #1e3a8a, #f59e0b, #ef4444);
+        }
+        .sky-gradient-night {
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+        }
+
+        /* Math Section Styles */
+        .day-box {
+            transition: all 0.3s ease;
+        }
+        .day-box.active {
+            background-color: var(--israel-blue);
+            color: white;
+            border-color: var(--israel-blue);
+            transform: scale(1.05);
+        }
+        .arrow-path {
+            stroke-dasharray: 10;
+            animation: dash 2s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -20;
+            }
+        }
+    </style>
+    <!-- Chosen Palette: Israel Blue (#0038b8), Parchment White (#fdfbf7), Holy Gold (#d4af37). 
+         This palette evokes the feeling of ancient scripture and the flag of Israel. -->
+
+    <!-- Application Structure Plan:
+         1. Hero: Introduces "God's Algorithm" and the Anno Mundi concept.
+         2. Architecture (Lunisolar): Explains the Moon/Sun duality.
+         3. The Wheel of Time (Months): Interactive Doughnut chart showing the 12/13 months. CLICKING a segment updates the side panel with Festival details.
+         4. The Pregnant Year (Leap Cycle): A visual grid of the 19-year Metonic cycle showing fixed leap years.
+         5. Sunset Logic: Interactive slider comparing Gregorian midnight start vs. Hebrew sunset start.
+         6. The Math Patch (Dehioth): Interactive Simulator showing why adjustments happen + Bar chart.
+    -->
+
+    <!-- Visualization & Content Choices:
+         1. Months Doughnut Chart: Visualizes the cycle of the year. Interaction: CLICK to see details.
+         2. Leap Cycle Grid: A 19-cell grid using HTML/CSS. Interaction: Highlights on hover.
+         3. Dehioth Simulator (JS): User picks a start day, system checks Yom Kippur conflict.
+         4. Year Length Bar Chart: Compares the 6 types of years.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl text-[#0038b8]"><i class="fas fa-star-of-david"></i></span>
+                    <span class="brand-font font-bold text-xl text-gray-800">Hebrew<span class="text-[#0038b8]">Cal</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-600">
+                    <button onclick="scrollToSection('architecture')" class="hover:text-[#0038b8] transition">Lunisolar</button>
+                    <button onclick="scrollToSection('months')" class="hover:text-[#0038b8] transition">Months</button>
+                    <button onclick="scrollToSection('leap')" class="hover:text-[#0038b8] transition">Leap Cycle</button>
+                    <button onclick="scrollToSection('sunset')" class="hover:text-[#0038b8] transition">Sunset Rule</button>
+                    <button onclick="scrollToSection('math')" class="hover:text-[#0038b8] transition">The Math</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-[#fdfbf7] border-b border-gray-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
+            <div class="inline-block p-2 px-4 rounded-full bg-blue-50 text-[#0038b8] text-sm font-bold tracking-widest mb-6 border border-blue-100 shadow-sm" title="Latin for 'Year of the World'">
+                ANNO MUNDI 5786
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+                God's <span class="text-[#0038b8]">Algorithm</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed font-light">
+                When Math Meets Theology. Explore the precision algorithms designed for a holy life, where time is measured not just by the sun, but by faith.
+            </p>
+            <div class="mt-10">
+                <button onclick="scrollToSection('architecture')" class="px-8 py-3 bg-[#0038b8] text-white font-bold rounded-lg shadow-lg hover:bg-blue-800 transition transform hover:-translate-y-1">
+                    Decode the Calendar
+                </button>
+            </div>
+        </div>
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png');"></div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+        <!-- Section 1: Core Architecture -->
+        <section id="architecture">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 brand-font">1. Core Architecture: Lunisolar</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    The Hebrew calendar is a hybrid system. It balances the lunar cycle (for months) with the solar cycle (for years) to ensure holidays like Passover always fall in the spring.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Moon Card -->
+                <div class="interactive-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-3xl text-gray-600 mb-4">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">The Moon Defines the Month</h3>
+                    <p class="text-gray-600 text-sm mb-2">
+                        Each month begins strictly with the <strong>New Moon (Molad)</strong>. A month is either 29 or 30 days long, aligning perfectly with the lunar phases.
+                    </p>
+                    <div class="text-xs bg-gray-100 text-gray-500 px-2 py-1 rounded">
+                        <strong>Molad:</strong> The calculated moment of the new moon.
+                    </div>
+                </div>
+
+                <!-- Sun Card -->
+                <div class="interactive-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-yellow-50 rounded-full flex items-center justify-center text-3xl text-yellow-500 mb-4">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">The Sun Defines the Year</h3>
+                    <p class="text-gray-600 text-sm">
+                        To align with the agricultural seasons (specifically the barley harvest for Passover), the calendar must sync with the <strong>Solar Tropical Year</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Months & Festivals (Combined) -->
+        <section id="months" class="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 h-auto lg:h-[600px]">
+                
+                <!-- Left: Chart Area -->
+                <div class="lg:col-span-7 p-8 flex flex-col items-center justify-center relative bg-gray-50">
+                    <h2 class="text-2xl font-bold mb-2 brand-font text-gray-800 text-center">2. The Cycle of Months</h2>
+                    <p class="text-xs text-gray-500 mb-6 text-center">Click on a month slice to reveal its holy days.</p>
+                    <div class="chart-container" style="height: 400px; width: 100%;">
+                        <canvas id="monthsChart"></canvas>
+                    </div>
+                    <!-- Central Text Overlay -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none text-center pt-8">
+                        <div class="text-sm text-gray-400 font-bold uppercase tracking-widest">Select</div>
+                        <div class="text-xs text-gray-300">Month</div>
+                    </div>
+                </div>
+
+                <!-- Right: Details Panel -->
+                <div class="lg:col-span-5 bg-[#0038b8] text-white p-8 flex flex-col relative overflow-hidden">
+                    <!-- Background Icon -->
+                    <div class="absolute -bottom-10 -right-10 text-9xl text-white opacity-5 pointer-events-none">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+
+                    <!-- Default State / Dynamic Content Container -->
+                    <div id="monthDetailContent" class="relative z-10 h-full flex flex-col">
+                        <div class="flex items-center gap-3 mb-6 border-b border-blue-400/30 pb-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-2xl">
+                                <span id="detailIcon">📅</span>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold brand-font" id="detailName">Select a Month</h3>
+                                <p class="text-blue-200 text-sm" id="detailSeason">Explore the sacred cycle</p>
+                            </div>
+                        </div>
+
+                        <!-- Content Area -->
+                        <div class="flex-grow overflow-y-auto pr-2 custom-scroll space-y-4" id="detailBody">
+                            <p class="text-blue-100 italic">Click on the wheel to learn about the origins, meanings, and rituals of each month's festivals.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Leap Cycle -->
+        <section id="leap">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 brand-font">3. The "Pregnant Year"</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    Unlike the Islamic calendar which drifts, or the Gregorian which adds a day, the Hebrew calendar adds an entire month. In a fixed 19-year cycle (Metonic cycle), 7 years are "Pregnant" (Leap Years).
+                </p>
+            </div>
+
+            <!-- Visualization of 19 Year Cycle -->
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                <div class="grid grid-cols-4 md:grid-cols-5 gap-4" id="leapGrid">
+                    <!-- Javascript will populate this -->
+                </div>
+                <div class="mt-8 flex justify-center gap-6 text-sm">
+                    <div class="flex items-center"><span class="w-3 h-3 bg-gray-200 rounded-full mr-2"></span> Common Year</div>
+                    <div class="flex items-center"><span class="w-3 h-3 bg-[#0038b8] rounded-full mr-2"></span> Pregnant Year (+Adar I)</div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <span class="inline-block bg-blue-50 text-[#0038b8] text-xs px-2 py-1 rounded border border-blue-100 font-bold">
+                        Shanah Me'uberet: "Pregnant Year" (Hebrew)
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Sunset Logic -->
+        <section id="sunset" class="scroll-mt-24">
+            <div class="bg-gray-900 text-white rounded-3xl p-8 md:p-16 relative overflow-hidden transition-colors duration-1000" id="skyBox">
+                
+                <div class="relative z-10 max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-6 brand-font text-white">4. When Does the Day Start?</h2>
+                    <p class="text-gray-300 mb-8 text-lg">
+                        "And there was evening and there was morning, the first day." <br>
+                        <span class="text-sm opacity-70">- Genesis</span>
+                    </p>
+
+                    <!-- Interactive Slider -->
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20">
+                        <div class="flex justify-between text-xs font-bold uppercase tracking-widest mb-4">
+                            <span>Morning</span>
+                            <span>Noon</span>
+                            <span>Sunset (Start of Day)</span>
+                            <span>Midnight</span>
+                        </div>
+                        
+                        <input type="range" min="6" max="24" value="12" step="0.1" id="timeSlider" class="mb-8">
+                        
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="text-center p-4 rounded bg-white/5">
+                                <div class="text-xs text-gray-400 uppercase mb-1">Gregorian Date</div>
+                                <div class="text-2xl font-bold" id="gregDate">October 7</div>
+                                <div class="text-xs text-gray-500 mt-1">Changes at 00:00</div>
+                            </div>
+                            <div class="text-center p-4 rounded bg-[#d4af37]/20 border border-[#d4af37]">
+                                <div class="text-xs text-[#d4af37] uppercase mb-1">Hebrew Date</div>
+                                <div class="text-2xl font-bold text-[#d4af37]" id="hebrewDate">Tishrei 10</div>
+                                <div class="text-xs text-[#d4af37]/70 mt-1">Changes at Sunset (~18:00)</div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-sm font-bold" id="timeDisplay">12:00 PM - Day Time</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: The Math (Dehioth) -->
+        <section id="math" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 brand-font">5. Crazy Math: Avoiding Bad Timing</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto mb-8">
+                    The calendar acts like a <strong>precision gearbox</strong>. It artificially adds or subtracts a day from specific months to prevent specific holidays from falling on forbidden days. This is called <strong class="text-[#0038b8]">Dehioth</strong> (Postponement).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <!-- Dehioth Interactive Simulator -->
+                <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 rounded-full bg-[#0038b8] text-white flex items-center justify-center text-xl mr-3">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Conflict Simulator</h3>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 mb-4">
+                        <strong>Rule:</strong> <span class="text-blue-700 font-bold">Yom Kippur</span> (Day 10) cannot be Friday or Sunday to avoid clashing with Sabbath (Saturday).
+                    </p>
+
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">If Rosh Hashanah (New Year) falls on:</label>
+                        <div class="flex gap-2 justify-between" id="dayButtons">
+                            <!-- Buttons populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Simulator Visualization -->
+                    <div class="bg-gray-50 rounded-xl p-6 relative border border-gray-200">
+                        <!-- Flow Diagram -->
+                        <div class="grid grid-cols-3 gap-2 mb-8 relative z-10 text-center">
+                            
+                            <!-- RH -->
+                            <div class="bg-white p-2 rounded border border-gray-200 shadow-sm relative z-20">
+                                <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">New Year</div>
+                                <div class="font-bold text-[#0038b8] text-sm" id="simRH">Wednesday</div>
+                                <div class="text-[9px] text-gray-500">Tishrei 1</div>
+                            </div>
+                            
+                            <!-- YK -->
+                            <div class="bg-white p-2 rounded border border-gray-200 shadow-sm relative z-20">
+                                <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Atonement</div>
+                                <div class="font-bold text-gray-800 text-sm" id="simYK">Friday</div>
+                                <div class="text-[9px] text-gray-500">Tishrei 10</div>
+                                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[8px] bg-gray-100 px-1 rounded text-gray-400 whitespace-nowrap">+10 Days</div>
+                            </div>
+
+                            <!-- HR -->
+                            <div class="bg-white p-2 rounded border border-gray-200 shadow-sm relative z-20">
+                                <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-1">Willow Ritual</div>
+                                <div class="font-bold text-gray-800 text-sm" id="simHR">Tuesday</div>
+                                <div class="text-[9px] text-gray-500">Tishrei 21</div>
+                                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 text-[8px] bg-gray-100 px-1 rounded text-gray-400 whitespace-nowrap">+21 Days</div>
+                            </div>
+
+                            <!-- Connecting Line -->
+                            <div class="absolute top-1/2 left-0 w-full h-px border-t border-dashed border-gray-300 z-10 -mt-2"></div>
+                        </div>
+
+                        <!-- Result Box -->
+                        <div id="simResult" class="p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3 transition-all duration-300">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-4 border-t border-gray-100">
+                        <div class="flex items-start text-xs text-gray-500">
+                            <i class="fas fa-info-circle mr-2 mt-0.5 text-[#0038b8]"></i>
+                            <div>
+                                <strong>Summary:</strong> Because of these two holidays, Rosh Hashanah can <u>never</u> fall on Sunday, Wednesday, or Friday.
+                            </div>
+                        </div>
+                        <!-- NEW: Explanation about other fasts -->
+                        <div class="flex items-start text-xs text-gray-500 mt-3 bg-blue-50 p-2 rounded">
+                            <i class="fas fa-question-circle mr-2 mt-0.5 text-blue-600"></i>
+                            <div>
+                                <strong>What about other fasts?</strong> (e.g., Tisha B'Av)<br>
+                                They do <u>not</u> change the calendar. If a minor fast falls on Shabbat, the date stays, but the <em>observance</em> is simply moved to Sunday. Yom Kippur is unique because it cannot be moved, so the calendar itself must change.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year Length Chart -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 h-full flex flex-col">
+                    <h3 class="font-bold text-gray-800 mb-2">The Result: 6 Different Year Lengths</h3>
+                    <p class="text-xs text-gray-500 mb-6">To accommodate these shifts, the year expands and contracts.</p>
+                    <div class="chart-container flex-grow">
+                        <canvas id="yearLengthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Glossary Section -->
+        <section id="glossary" class="bg-[#1f2937] py-12 border-t border-gray-800">
+            <div class="max-w-7xl mx-auto px-4">
+                <h3 class="text-2xl text-[#d4af37] mb-6 brand-font text-center">Vocabulary of Time</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
+                    <div class="bg-gray-800 p-4 rounded border border-gray-700">
+                        <span class="text-white font-bold block mb-1">Anno Mundi (AM)</span>
+                        <span class="text-gray-400">Latin for "Year of the World". Counts years from the biblical creation date (3761 BCE).</span>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded border border-gray-700">
+                        <span class="text-white font-bold block mb-1">Molad</span>
+                        <span class="text-gray-400">The calculated moment of the New Moon. The basis for the start of every Hebrew month.</span>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded border border-gray-700">
+                        <span class="text-white font-bold block mb-1">Shanah Me'uberet</span>
+                        <span class="text-gray-400">"Pregnant Year". A leap year with 13 months (adding Adar I) to keep Passover in Spring.</span>
+                    </div>
+                    <div class="bg-gray-800 p-4 rounded border border-gray-700">
+                        <span class="text-white font-bold block mb-1">Dehioth</span>
+                        <span class="text-gray-400">Rules of Postponement. Mathematical adjustments to year length to prevent bad holiday timing.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#111827] text-gray-500 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">Based on the analysis of the Hebrew Calendar Structure.</p>
+            <p class="text-xs mt-2 opacity-50">&copy; 2026 Hebrew Calendar Experience</p>
+        </div>
+    </footer>
+
+    <!-- Logic -->
+    <script>
+        // --- 1. Months Wheel Logic with Expanded Data ---
+        const monthsCtx = document.getElementById('monthsChart').getContext('2d');
+        
+        // Expanded Data Structure
+        const monthData = [
+            {
+                name: 'Nisan', 
+                days: 30, 
+                season: 'Spring',
+                icon: '🍷',
+                holidays: [
+                    { name: 'Passover (Pesach)', origin: 'Exodus (c. 1300 BCE)', meaning: 'Freedom from slavery; Birth of nation', ritual: 'Seder meal, Matzah, 4 cups of wine' }
+                ]
+            },
+            {
+                name: 'Iyar', 
+                days: 29, 
+                season: 'Spring',
+                icon: '🇮🇱',
+                holidays: [
+                    { name: 'Yom HaAtzmaut', origin: '1948 Declaration', meaning: 'Israel Independence Day', ritual: 'BBQs, Blue & White flags, Prayer' },
+                    { name: 'Lag BaOmer', origin: '2nd Century CE', meaning: 'End of plague; Mysticism', ritual: 'Bonfires, Weddings' }
+                ]
+            },
+            {
+                name: 'Sivan', 
+                days: 30, 
+                season: 'Late Spring',
+                icon: '🌾',
+                holidays: [
+                    { name: 'Shavuot', origin: 'Mt. Sinai Revelation', meaning: 'Giving of Torah; Harvest', ritual: 'All-night study, Dairy foods' }
+                ]
+            },
+            {
+                name: 'Tammuz', 
+                days: 29, 
+                season: 'Summer',
+                icon: '☀️',
+                holidays: [
+                    { name: '17th of Tammuz', origin: 'Roman Siege', meaning: 'Fast day; Walls breached', ritual: 'Fasting' }
+                ]
+            },
+            {
+                name: 'Av', 
+                days: 30, 
+                season: 'Summer',
+                icon: '🔥',
+                holidays: [
+                    { name: 'Tisha B\'Av', origin: 'Destruction of Temples', meaning: 'National Mourning', ritual: 'Fasting, Sitting on floor, Lamentations' }
+                ]
+            },
+            {
+                name: 'Elul', 
+                days: 29, 
+                season: 'Late Summer',
+                icon: '📯',
+                holidays: [
+                    { name: 'Month of Mercy', origin: 'Pre-High Holidays', meaning: 'Introspection & Repentance', ritual: 'Daily Shofar blowing, Slichot prayers' }
+                ]
+            },
+            {
+                name: 'Tishrei', 
+                days: 30, 
+                season: 'Autumn',
+                icon: '🍏',
+                holidays: [
+                    { name: 'Rosh Hashanah', origin: 'Leviticus 23', meaning: 'New Year; Judgment', ritual: 'Shofar, Apples & Honey' },
+                    { name: 'Yom Kippur', origin: 'Leviticus 16', meaning: 'Atonement', ritual: '25hr Fasting, White clothes' },
+                    { name: 'Sukkot', origin: 'Desert Wandering', meaning: 'Trust in God; Joy', ritual: 'Sukkah, Lulav & Etrog' },
+                    { name: 'Hoshanah Rabbah', origin: 'Ancient Prophets', meaning: 'Final Seal of Judgment', ritual: 'Beating willows' }
+                ]
+            },
+            {
+                name: 'Cheshvan', 
+                days: '29/30', 
+                season: 'Autumn',
+                icon: '🌧️',
+                holidays: [] // "Mar" Cheshvan (Bitter) has no holidays
+            },
+            {
+                name: 'Kislev', 
+                days: '29/30', 
+                season: 'Winter',
+                icon: '🕯️',
+                holidays: [
+                    { name: 'Hanukkah', origin: 'Maccabean Revolt (165 BCE)', meaning: 'Light over Darkness', ritual: 'Menorah lighting, Fried foods (Latkes)' }
+                ]
+            },
+            {
+                name: 'Tevet', 
+                days: 29, 
+                season: 'Winter',
+                icon: '🧱',
+                holidays: [
+                    { name: '10th of Tevet', origin: 'Siege of Jerusalem', meaning: 'Fast day', ritual: 'Fasting' }
+                ]
+            },
+            {
+                name: 'Shevat', 
+                days: 30, 
+                season: 'Late Winter',
+                icon: '🌳',
+                holidays: [
+                    { name: 'Tu BiShvat', origin: 'Mishnah', meaning: 'New Year for Trees', ritual: 'Planting trees, Eating fruits of Israel' }
+                ]
+            },
+            {
+                name: 'Adar', 
+                days: 29, 
+                season: 'Late Winter',
+                icon: '🎭',
+                holidays: [
+                    { name: 'Purim', origin: 'Book of Esther', meaning: 'Survival from Genocide', ritual: 'Megillah reading, Costumes, Gifts' }
+                ]
+            }
+        ];
+
+        // Render Chart
+        new Chart(monthsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: monthData.map(m => m.name),
+                datasets: [{
+                    data: Array(12).fill(1),
+                    backgroundColor: [
+                        '#0038b8', '#1e4bd1', '#3b60e9', '#5675ff', 
+                        '#e0e7ff', '#c7d2fe', '#a5b4fc', '#818cf8', 
+                        '#6366f1', '#4f46e5', '#4338ca', '#3730a3'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                onClick: (event, elements) => {
+                    if (elements.length > 0) {
+                        const index = elements[0].index;
+                        updateSidePanel(index);
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => `Click to see details for ${monthData[ctx.dataIndex].name}`
+                        }
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        // Side Panel Update Logic
+        const detailIcon = document.getElementById('detailIcon');
+        const detailName = document.getElementById('detailName');
+        const detailSeason = document.getElementById('detailSeason');
+        const detailBody = document.getElementById('detailBody');
+
+        function updateSidePanel(index) {
+            const m = monthData[index];
+            
+            // Fade effect
+            const container = document.getElementById('monthDetailContent');
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                detailIcon.innerText = m.icon;
+                detailName.innerText = m.name;
+                detailSeason.innerText = `${m.season} • ${m.days} Days`;
+                
+                // Build Festival HTML
+                if (m.holidays.length > 0) {
+                    let html = '';
+                    m.holidays.forEach(h => {
+                        html += `
+                            <div class="bg-blue-800/40 p-4 rounded-lg border border-blue-400/20">
+                                <h4 class="font-bold text-[#d4af37] text-sm mb-2 uppercase tracking-wide">${h.name}</h4>
+                                <div class="space-y-2 text-xs">
+                                    <p><span class="text-blue-200">Origin:</span> ${h.origin}</p>
+                                    <p><span class="text-blue-200">Meaning:</span> ${h.meaning}</p>
+                                    <p class="mt-2 pt-2 border-t border-blue-400/20 italic text-blue-100">"${h.ritual}"</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    detailBody.innerHTML = html;
+                } else {
+                    detailBody.innerHTML = `
+                        <div class="h-full flex flex-col items-center justify-center text-center opacity-60">
+                            <div class="text-4xl mb-4">🌙</div>
+                            <p>No major festivals in this month.</p>
+                            <p class="text-xs mt-2">A time for routine and reflection.</p>
+                        </div>
+                    `;
+                }
+                
+                container.style.opacity = '1';
+                container.style.transition = 'opacity 0.3s ease';
+            }, 300);
+        }
+
+        // Initialize with Nisan (Index 0)
+        updateSidePanel(0);
+
+
+        // --- 2. Leap Cycle Grid Logic ---
+        const leapGrid = document.getElementById('leapGrid');
+        const leapYears = [3, 6, 8, 11, 14, 17, 19];
+        
+        for (let i = 1; i <= 19; i++) {
+            const isLeap = leapYears.includes(i);
+            const div = document.createElement('div');
+            div.className = `h-12 rounded-lg flex items-center justify-center font-bold text-sm transition-all cursor-default ${isLeap ? 'bg-[#0038b8] text-white shadow-md transform scale-105' : 'bg-gray-100 text-gray-400'}`;
+            div.innerText = i;
+            div.title = isLeap ? "Pregnant Year: Adds Adar I (30 days)" : "Common Year";
+            leapGrid.appendChild(div);
+        }
+
+        // --- 3. Sunset Simulator Logic ---
+        const slider = document.getElementById('timeSlider');
+        const timeDisplay = document.getElementById('timeDisplay');
+        const skyBox = document.getElementById('skyBox');
+        const hebDate = document.getElementById('hebrewDate');
+        
+        slider.addEventListener('input', (e) => {
+            const val = parseFloat(e.target.value);
+            const hour = Math.floor(val);
+            const minute = Math.floor((val - hour) * 60);
+            const timeStr = `${hour}:${minute < 10 ? '0' + minute : minute}`;
+            
+            // Visual Updates
+            if (val < 17) {
+                // Day
+                skyBox.className = "rounded-3xl p-8 md:p-16 relative overflow-hidden transition-colors duration-500 sky-gradient-day text-gray-800";
+                timeDisplay.innerText = `${timeStr} - Day Time`;
+                hebDate.innerText = "Tishrei 10";
+                hebDate.classList.remove('animate-pulse');
+            } else if (val >= 17 && val < 19) {
+                // Sunset
+                skyBox.className = "rounded-3xl p-8 md:p-16 relative overflow-hidden transition-colors duration-500 sky-gradient-sunset text-white";
+                timeDisplay.innerText = `${timeStr} - Sunset (Transition)`;
+                hebDate.innerText = "Transitioning...";
+            } else {
+                // Night (Next Day)
+                skyBox.className = "rounded-3xl p-8 md:p-16 relative overflow-hidden transition-colors duration-500 sky-gradient-night text-white";
+                timeDisplay.innerText = `${timeStr} - Night (New Day!)`;
+                hebDate.innerText = "Tishrei 11";
+                hebDate.classList.add('animate-pulse');
+            }
+        });
+
+        // --- 4. NEW: Dehioth Simulator Logic ---
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        
+        const dayButtonsContainer = document.getElementById('dayButtons');
+        const simRH = document.getElementById('simRH');
+        const simYK = document.getElementById('simYK');
+        const simHR = document.getElementById('simHR');
+        const simResult = document.getElementById('simResult');
+
+        function renderDayButtons() {
+            days.forEach((day, index) => {
+                const btn = document.createElement('button');
+                btn.className = `flex-1 py-2 text-xs rounded border border-gray-200 hover:bg-blue-50 transition ${index === 3 ? 'bg-[#0038b8] text-white' : 'bg-white text-gray-600'}`;
+                btn.innerText = day.substring(0, 3);
+                btn.onclick = () => runSimulation(index, btn);
+                dayButtonsContainer.appendChild(btn);
+            });
+            // Initial run with Wednesday (Index 3)
+            runSimulation(3, dayButtonsContainer.children[3]); 
+        }
+
+        function runSimulation(rhIndex, btnElement) {
+            // Update buttons visual
+            Array.from(dayButtonsContainer.children).forEach(b => b.className = 'flex-1 py-2 text-xs rounded border border-gray-200 hover:bg-blue-50 bg-white text-gray-600 transition');
+            btnElement.className = 'flex-1 py-2 text-xs rounded border-none bg-[#0038b8] text-white shadow-md transform scale-105';
+
+            const ykIndex = (rhIndex + 2) % 7; // +9 days
+            const hrIndex = (rhIndex + 6) % 7; // +20 days (20 % 7 = 6)
+            
+            simRH.innerText = days[rhIndex];
+            simYK.innerText = days[ykIndex];
+            simHR.innerText = days[hrIndex];
+
+            // LOGIC:
+            // 1. Yom Kippur (ykIndex) cannot be Friday (5) or Sunday (0).
+            // 2. Hoshanah Rabbah (hrIndex) cannot be Saturday (6).
+            
+            let conflictMsg = "";
+            let isConflict = false;
+
+            if (ykIndex === 5) { // RH Wednesday
+                isConflict = true;
+                conflictMsg = `<strong>Yom Kippur is Friday.</strong> Conflict with Sabbath (Saturday). Cannot cook for 2 days.`;
+            } else if (ykIndex === 0) { // RH Friday
+                isConflict = true;
+                conflictMsg = `<strong>Yom Kippur is Sunday.</strong> Conflict with Sabbath (Saturday). Cannot cook for 2 days.`;
+            } else if (hrIndex === 6) { // RH Sunday
+                isConflict = true;
+                conflictMsg = `<strong>Hoshanah Rabbah is Saturday.</strong> The willow beating ritual is forbidden on Sabbath.`;
+            }
+
+            if (isConflict) {
+                // BAD
+                simResult.className = "p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3 animate-pulse";
+                simResult.innerHTML = `
+                    <div class="text-2xl text-red-500"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div>
+                        <h4 class="font-bold text-red-800 text-sm">Forbidden Schedule!</h4>
+                        <p class="text-xs text-red-600 mt-1 leading-relaxed">${conflictMsg}</p>
+                        <div class="mt-3 text-xs bg-white/50 p-2 rounded text-red-800 font-mono border border-red-100">
+                            <i class="fas fa-wrench mr-1"></i> <strong>Fix:</strong> Adjust previous year length to shift Rosh Hashanah.
+                        </div>
+                    </div>
+                `;
+                
+                // Highlight logic removed per user request
+                
+            } else {
+                // GOOD
+                simResult.className = "p-4 rounded-lg bg-green-50 border border-green-200 flex items-start gap-3";
+                simResult.innerHTML = `
+                    <div class="text-2xl text-green-500"><i class="fas fa-check-circle"></i></div>
+                    <div>
+                        <h4 class="font-bold text-green-800 text-sm">Valid Schedule</h4>
+                        <p class="text-xs text-green-600 mt-1">All holy days fall on permitted days of the week.</p>
+                    </div>
+                `;
+                // Highlight cleanup logic removed per user request
+            }
+        }
+
+        // --- 5. Year Length Chart ---
+        const yearCtx = document.getElementById('yearLengthChart').getContext('2d');
+        new Chart(yearCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Common (353)', 'Common (354)', 'Common (355)', 'Leap (383)', 'Leap (384)', 'Leap (385)'],
+                datasets: [{
+                    label: 'Days in Year',
+                    data: [353, 354, 355, 383, 384, 385],
+                    backgroundColor: [
+                        '#93c5fd', '#60a5fa', '#3b82f6', // Blues for Common
+                        '#fde047', '#facc15', '#eab308'  // Golds for Leap
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: false, min: 340 }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Navigation
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Init
+        window.addEventListener('DOMContentLoaded', () => {
+            renderDayButtons();
+        });
+    </script>
+</body>
+</html>
