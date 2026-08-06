@@ -30,6 +30,22 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Cancel stale Pages deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          status=$(curl --silent --output /tmp/pages-cancel-response \
+            --write-out "%{http_code}" \
+            --request POST \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "Accept: application/vnd.github+json" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/deployments/5fadcc12102e97450a729f458174bb18dd77e407/cancel")
+          if [[ "${status}" != "204" && "${status}" != "404" && "${status}" != "409" ]]; then
+            cat /tmp/pages-cancel-response
+            exit 1
+          fi
+
       - name: Install and Build
         run: |
           npm ci
