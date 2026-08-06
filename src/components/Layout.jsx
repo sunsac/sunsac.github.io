@@ -53,6 +53,7 @@ export default function Layout() {
     });
 
     const isHome = location.pathname === '/';
+    const travelHref = `${import.meta.env.BASE_URL}travel/index.html`;
 
     // Check if we are viewing an HTML post
     const isHtmlPost = React.useMemo(() => {
@@ -94,6 +95,7 @@ export default function Layout() {
                 <nav style={navStyle}>
                     <Link to="/" style={linkStyle('/')}>Home</Link>
                     <Link to="/blog" style={linkStyle('/blog')}>Blog</Link>
+                    <a href={travelHref} style={linkStyle('/travel')}>Travel</a>
                 </nav>
 
                 <footer style={{ marginTop: 'auto', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
