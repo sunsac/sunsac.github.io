@@ -190,6 +190,104 @@ const cityWalkOptionalStops = {
   ]
 };
 
+const attractionImageQueries = {
+  "Zurich HB": "Zürich Hauptbahnhof",
+  Bahnhofstrasse: "Bahnhofstrasse",
+  Lindenhof: "Lindenhof Zürich",
+  Grossmünster: "Grossmünster",
+  Fraumünster: "Fraumünster",
+  Bürkliplatz: "Bürkliplatz",
+  Bellevue: "Bellevueplatz Zürich",
+  "Bern Bahnhof": "Bern railway station",
+  Bundeshaus: "Federal Palace of Switzerland",
+  Zytglogge: "Zytglogge",
+  "Bern Minster": "Bern Minster",
+  Münsterplattform: "Münsterplattform Bern",
+  Nydeggbrücke: "Nydeggbrücke",
+  BearPark: "Bärengraben",
+  Rosengarten: "Rosengarten Bern",
+  "Freiburg (Breisgau) Hbf": "Freiburg Hauptbahnhof",
+  Martinstor: "Martinstor",
+  Münsterplatz: "Münsterplatz Freiburg",
+  "Freiburg Minster": "Freiburg Minster",
+  Konviktstraße: "Konviktstraße Freiburg",
+  Schwabentor: "Schwabentor",
+  Schlossberg: "Schlossberg Freiburg",
+  Bismarckplatz: "Bismarckplatz Heidelberg",
+  Hauptstraße: "Hauptstraße Heidelberg",
+  Universitätsplatz: "Universitätsplatz Heidelberg",
+  "Heidelberg Old Town": "Old Town Heidelberg",
+  "Heidelberg Castle": "Heidelberg Castle",
+  "Philosophenweg": "Philosophenweg Heidelberg",
+  "Alte Brücke": "Old Bridge Heidelberg",
+  Heiliggeistkirche: "Church of the Holy Spirit Heidelberg",
+  Marktplatz: "Marktplatz Heidelberg",
+  "Old Bridge": "Old Bridge Heidelberg",
+  Römerberg: "Römerberg",
+  "Frankfurt (Main) Hbf": "Frankfurt Central Station",
+  "Frankfurt Cathedral": "Frankfurt Cathedral",
+  Hauptwache: "Hauptwache",
+  "New Old Town": "New Frankfurt Old Town",
+  Römer: "Römer Frankfurt",
+  "Eiserner Steg": "Eiserner Steg",
+  "Museum Embankment": "Museumsufer",
+  "Kleinmarkthalle": "Kleinmarkthalle",
+  "Main Tower": "Main Tower",
+  "Alte Oper": "Alte Oper",
+  "Palmengarten": "Palmengarten Frankfurt",
+  "Titisee Black Forest": "Lake Titisee",
+  "Triberg Waterfalls Schwarzwaldbahn": "Triberg Waterfalls",
+  "Todtnau Black Forest": "Todtnau",
+  "Schiltach Black Forest": "Schiltach",
+  "Baden Baden Germany": "Baden-Baden",
+  "Bad Wildbad Black Forest": "Bad Wildbad",
+  "Europa Park Rust": "Europa-Park",
+  "Basel Switzerland": "Basel",
+  "Strasbourg France": "Strasbourg",
+  "Colmar France": "Colmar",
+  "Wengen Lauterbrunnen": "Wengen",
+  "Mürren Gimmelwald": "Mürren",
+  "Grindelwald Switzerland": "Grindelwald",
+  "Iseltwald Lake Brienz": "Iseltwald",
+  "ETH Zurich / Polyterrasse": "ETH Zurich",
+  Uetliberg: "Uetliberg",
+  "Kunsthaus Zürich": "Kunsthaus Zürich",
+  "Swiss National Museum": "Swiss National Museum",
+  "Lindt Home of Chocolate": "Lindt Home of Chocolate",
+  "Limmat River Cruise": "Limmat Zürich",
+  Schanzengraben: "Schanzengraben Zürich",
+  "Old Botanical Garden": "Old Botanical Garden Zürich",
+  Zürichhorn: "Zürichhorn",
+  "Zurich Opera House": "Zürich Opera House",
+  "Zürich West / Im Viadukt": "Im Viadukt Zürich",
+  Stadtkäserei: "Stadtkäserei Zürich",
+  "Swiss Chuchi": "Swiss Chuchi Zürich",
+  "Le Dézaley": "Le Dézaley Zürich",
+  Zeughauskeller: "Zeughauskeller Zürich",
+  "Sternen Grill": "Sternen Grill Zürich",
+  "St. Peter's Church": "St. Peter church Zürich",
+  Predigerkirche: "Predigerkirche Zürich",
+  "Bern Historical Museum": "Bern Historical Museum",
+  "Einstein House": "Einstein House Bern",
+  "Altes Tramdepot": "Altes Tramdepot Bern",
+  Marzili: "Marzili Bern",
+  Gurtenbahn: "Gurtenbahn",
+  "French Church": "French Church Bern",
+  Schlossbergbahn: "Schlossbergbahn Freiburg",
+  "Dreisam river": "Dreisam",
+  Seepark: "Seepark Freiburg",
+  "St. Martin Church": "St. Martin Church Freiburg",
+  "Kurpfälzisches Museum": "Kurpfälzisches Museum Heidelberg",
+  "Student Prison": "Studentenkarzer Heidelberg",
+  Königstuhl: "Königstuhl Heidelberg",
+  "Jesuit Church": "Jesuit Church Heidelberg",
+  "Städel Museum": "Städel Museum",
+  "Historical Museum": "Historical Museum Frankfurt",
+  "Schirn Kunsthalle": "Schirn Kunsthalle Frankfurt",
+  Zeil: "Zeil Frankfurt",
+  "St. Paul's Church": "St. Paul's Church Frankfurt",
+};
+
 const cityWalkPresets = {
   zurich: [
     [
@@ -429,6 +527,12 @@ function makeOptionalIcon(number, selected, category) {
   });
 }
 
+function getStopLetter(routeName, type, index) {
+  const optionalOffset = cityWalkRoutes[routeName].length;
+  const letterIndex = (type === "optional" ? optionalOffset : 0) + index;
+  return String.fromCharCode(65 + letterIndex);
+}
+
 function distanceBetweenPoints(map, points) {
   return points.slice(1).reduce((total, point, index) => {
     return total + map.distance(points[index], point);
@@ -446,14 +550,27 @@ function getStopCategory(routeName, stop) {
   return (attractionCategories[routeName] || {})[stop[0]] || "其他景點";
 }
 
+function normalizeImageQuery(value) {
+  return value
+    .toLocaleLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
 async function loadAttractionImage(card) {
   const name = card.dataset.attractionName;
   if (!name || card.querySelector(".attraction-image")) return;
+  const query = attractionImageQueries[name] || name;
 
   const image = document.createElement("img");
   image.className = "attraction-image";
   image.alt = name + " 景點圖片";
   image.loading = "lazy";
+  image.addEventListener("error", () => {
+    image.remove();
+    attractionImageCache[name] = null;
+  }, { once: true });
 
   if (attractionImageCache[name] === null) return;
   if (attractionImageCache[name]) {
@@ -465,12 +582,20 @@ async function loadAttractionImage(card) {
   try {
     const response = await fetch(
       "https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=" +
-      encodeURIComponent(name) +
-      "&gsrnamespace=0&gsrlimit=1&prop=pageimages&piprop=thumbnail&pithumbsize=640&format=json&origin=*"
+      encodeURIComponent(query) +
+      "&gsrnamespace=0&gsrlimit=8&prop=pageimages&piprop=thumbnail&pithumbsize=640&format=json&origin=*"
     );
     const data = await response.json();
     const pages = data.query && data.query.pages ? Object.values(data.query.pages) : [];
-    const source = pages[0] && pages[0].thumbnail && pages[0].thumbnail.source;
+    const normalizedQuery = normalizeImageQuery(query);
+    const rankedPages = pages
+      .filter((page) => page.thumbnail)
+      .sort((left, right) => (left.index || Number.MAX_SAFE_INTEGER) - (right.index || Number.MAX_SAFE_INTEGER));
+    const matchingPage = rankedPages.find((page) =>
+      page.thumbnail &&
+      normalizeImageQuery(page.title).includes(normalizedQuery)
+    );
+    const source = (matchingPage || rankedPages[0])?.thumbnail?.source;
     if (!source) {
       attractionImageCache[name] = null;
       return;
@@ -510,7 +635,7 @@ function renderRouteBuilder(state) {
 
   builder.innerHTML = `
     <h3>自訂行程路線</h3>
-    <p class="small">預設景點一開始已加入路線。取消勾選後會自動移到下方 Optional 區域；重新勾選即可加回路線。目前路線卡片可以拖動排序。</p>
+    <p class="small">卡片前方的數字是目前路線順序；字母是景點固定識別，與地圖標記一致。預設景點一開始已加入路線，取消勾選後會自動移到下方 Optional 區域；目前路線卡片可以拖動排序。</p>
     <div class="route-builder-section-title">目前路線（拖動卡片排序）</div>
     <div class="route-builder-list">
       ${state.routeItems.map((item, position) => {
@@ -519,15 +644,14 @@ function renderRouteBuilder(state) {
           ? guide.stops[item.index][1]
           : stop[3];
         const category = getStopCategory(state.routeName, stop);
+        const letter = getStopLetter(state.routeName, item.type, item.index);
         return `
           <article class="route-stop-card selected" data-attraction-name="${stop[0]}"
             draggable="true" data-route-position="${position}" data-city="${state.routeName}">
             <span class="drag-handle" aria-hidden="true">☷</span>
             <div>
               <span class="stop-category">${category}</span>
-              <h4>${item.type === "main"
-            ? (item.index + 1) + ". "
-            : (cityWalkRoutes[state.routeName].length + item.index + 1) + ". "}${stop[0]}</h4>
+              <h4><span class="route-order">${position + 1}</span><span class="stop-name"><span class="stop-letter">${letter}.</span> ${stop[0]}</span></h4>
               <p>${description}</p>
             </div>
             <input class="route-toggle" type="checkbox"
@@ -551,7 +675,7 @@ function renderRouteBuilder(state) {
         ${removedMainStops.map(({ index, stop }) => `
           <article class="stop-card" data-attraction-name="${stop[0]}">
             <span class="stop-category">${getStopCategory(state.routeName, stop)}</span>
-            <h3>${index + 1}. ${stop[0]}</h3>
+            <h3><span class="stop-letter">${getStopLetter(state.routeName, "main", index)}.</span> <span class="stop-name">${stop[0]}</span></h3>
             <p>${guide.stops[index][1]}</p>
             <label class="small">
               <input class="route-toggle" type="checkbox"
@@ -570,7 +694,7 @@ function renderRouteBuilder(state) {
           return `
             <article class="stop-card ${selected ? "selected" : ""}" data-attraction-name="${stop[0]}">
               <span class="stop-category">${getStopCategory(state.routeName, stop)}</span>
-              <h3>${cityWalkRoutes[state.routeName].length + index + 1}. ${stop[0]}</h3>
+              <h3><span class="stop-letter">${getStopLetter(state.routeName, "optional", index)}.</span> <span class="stop-name">${stop[0]}</span></h3>
               <p>${stop[3]}</p>
               <label class="small">
                 <input class="route-toggle" type="checkbox"
@@ -612,7 +736,7 @@ function updateRouteMap(state) {
     );
     marker.setIcon(makeRouteIcon(
       active,
-      index + 1,
+      getStopLetter(state.routeName, "main", index),
       getStopCategory(state.routeName, cityWalkRoutes[state.routeName][index])
     ));
   });
@@ -621,7 +745,7 @@ function updateRouteMap(state) {
       item.type === "optional" && item.index === index && item.active
     );
     marker.setIcon(makeOptionalIcon(
-      cityWalkRoutes[state.routeName].length + index + 1,
+      getStopLetter(state.routeName, "optional", index),
       selected,
       getStopCategory(state.routeName, cityWalkOptionalStops[state.routeName][index])
     ));
@@ -662,10 +786,10 @@ function createCityWalkMap(routeName, mapElement) {
 
   const routePoints = stops.map((stop, index) => {
     const marker = L.marker([stop[1], stop[2]], {
-      icon: makeRouteIcon(true, index + 1, getStopCategory(routeName, stop))
+      icon: makeRouteIcon(true, getStopLetter(routeName, "main", index), getStopCategory(routeName, stop))
     }).addTo(map);
     marker.bindPopup(
-      "<strong>" + (index + 1) + ". " + stop[0] + "</strong><br>" +
+      "<strong>" + getStopLetter(routeName, "main", index) + "｜" + stop[0] + "</strong><br>" +
       guide.stops[index][1] + "<br><small>" +
       getStopCategory(routeName, stop) + "｜看點：" +
       guide.stops[index][2] + "</small>"
@@ -678,13 +802,13 @@ function createCityWalkMap(routeName, mapElement) {
   const optionalPoints = (cityWalkOptionalStops[routeName] || []).map((stop, index) => {
     const marker = L.marker([stop[1], stop[2]], {
       icon: makeOptionalIcon(
-        stops.length + index + 1,
+        getStopLetter(routeName, "optional", index),
         false,
         getStopCategory(routeName, stop)
       )
     }).addTo(map);
     marker.bindPopup(
-      "<strong>" + (stops.length + index + 1) + ". Optional｜" + stop[0] + "</strong><br>" + stop[3] +
+      "<strong>" + getStopLetter(routeName, "optional", index) + "｜Optional｜" + stop[0] + "</strong><br>" + stop[3] +
       "<br><small>" + getStopCategory(routeName, stop) + "</small>" +
       '<br><button class="add-route-button" type="button" data-route-action="toggle-optional" data-city="' +
       routeName + '" data-kind="optional" data-index="' + index + '">加入／移除路線</button>'

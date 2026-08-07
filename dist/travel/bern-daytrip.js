@@ -752,24 +752,69 @@ function renderList(items) {
   return items.map((item) => `<li>${item}</li>`).join("");
 }
 
+const highlightImageQueries = {
+  "Interlaken promenade": "Interlaken",
+  "Japanese Garden": "Japanese Garden Interlaken",
+  "Wengen village": "Wengen",
+  "Wengen–Lauterbrunnen contrast": "Wengen",
+  "Mürren village": "Mürren",
+  "Schilthorn / Piz Gloria": "Schilthorn",
+  "Flower Trail": "Allmendhubel Mürren",
+  "First View": "Grindelwald First",
+  "Schreckfeld + Bort": "Grindelwald First",
+  "Grindelwald village": "Grindelwald",
+  "Grindelwald valley panorama": "Grindelwald",
+  "Sphinx Observatory": "Sphinx Observatory Jungfraujoch",
+  "Jungfrau Plateau": "Jungfraujoch",
+  "360° Cinema + Lindt Swiss Chocolate Heaven": "Jungfraujoch",
+  "Lucerne Old Town": "Lucerne",
+  "Escaliers du Marché + Old Town": "Lausanne Old Town",
+  "Thun Old Town": "Thun",
+  "Iseltwald village": "Iseltwald",
+  "Iseltwald jetty": "Iseltwald",
+  "Lake Brienz lakeside": "Lake Brienz",
+  "Interlaken Ost return stop": "Interlaken Ost",
+  "Fribourg Old Town": "Fribourg",
+  "Pont de Bern": "Pont de Berne Fribourg",
+  "Gurten Kulm": "Gurten",
+};
+
 async function loadHighlightImage(card) {
-  const query = card.dataset.imageQuery;
+  const name = card.dataset.imageQuery;
+  const query = highlightImageQueries[name] || name;
   if (!query || card.querySelector(".attraction-detail-image")) return;
   try {
     const response = await fetch(
       "https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=" +
       encodeURIComponent(query) +
-      "&gsrnamespace=0&gsrlimit=1&prop=pageimages&piprop=thumbnail&pithumbsize=640&format=json&origin=*"
+      "&gsrnamespace=0&gsrlimit=8&prop=pageimages&piprop=thumbnail&pithumbsize=640&format=json&origin=*"
     );
     const data = await response.json();
     const pages = data.query && data.query.pages ? Object.values(data.query.pages) : [];
-    const source = pages[0] && pages[0].thumbnail && pages[0].thumbnail.source;
+    const normalizedQuery = query
+      .toLocaleLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]/g, "");
+    const rankedPages = pages
+      .filter((page) => page.thumbnail)
+      .sort((left, right) => (left.index || Number.MAX_SAFE_INTEGER) - (right.index || Number.MAX_SAFE_INTEGER));
+    const matchingPage = rankedPages.find((page) =>
+      page.title
+        .toLocaleLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]/g, "")
+        .includes(normalizedQuery)
+    );
+    const source = (matchingPage || rankedPages[0])?.thumbnail?.source;
     if (!source) return;
     const image = document.createElement("img");
     image.className = "attraction-detail-image";
     image.src = source;
     image.alt = query + " 景點圖片";
     image.loading = "lazy";
+    image.addEventListener("error", () => image.remove(), { once: true });
     card.prepend(image);
   } catch (error) {
     // 圖片載入失敗時保留文字內容。

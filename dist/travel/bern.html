@@ -29,7 +29,7 @@
       <div class="route-map" data-city-map="bern" aria-label="Bern City Walk 地圖"></div>
       <p class="map-note">城市重點：聯邦城市、UNESCO Old City、砂岩拱廊、Aare 河與城市地形。</p>
       <p class="route-distance small"></p>
-      <div class="map-legend"><span><i class="legend-route">1</i>主路線編號</span><span><i class="legend-optional">9</i>Optional 景點編號</span></div>
+      <div class="map-legend"><span><i class="legend-route">A</i>景點固定字母</span><span><i class="legend-optional">B</i>Optional 固定字母</span></div>
       <div data-city-guide="bern"></div>
     </section>
     <section>
@@ -141,6 +141,19 @@
       </ul>
     </section>
     <section>
+      <h2>Bern 周邊位置總覽</h2>
+      <p>以下地圖以 Bern 為中心，展示各個 Alpine、童話村落、湖區和城市文化選項的大致位置關係。連線只表示地理方向，不代表實際鐵路路線。</p>
+      <div id="bern-overview-map" class="route-map" aria-label="Bern 周邊景點位置總覽地圖"></div>
+      <div class="map-legend">
+        <span><i class="legend-route">B</i>Bern 基地</span>
+        <span><i class="legend-optional">1</i>Alpine／村落</span>
+        <span><i class="legend-optional overview-lake">2</i>湖區</span>
+        <span><i class="legend-optional overview-city">3</i>城市文化</span>
+        <span><i class="legend-optional overview-local">4</i>Bern 周邊慢遊</span>
+      </div>
+      <p class="map-note">位置編號與下方 Day Trip 卡片對應；點擊標記可查看目的地主題，詳細交通請進入各自的 Full-day 頁面。</p>
+    </section>
+    <section>
       <h2>8 月 18–19 日｜Full-day Optional 一日遊</h2>
       <p>這兩天每天只安排一個獨立主題，不與 Bern City Walk 混在一起。每張卡已把適合該目的地的活動整合進去；建議兩天選不同類別，例如一天選 Alpine／山區，另一天選 Lake／湖區或 City／文化。</p>
       <div class="activity-group">
@@ -180,45 +193,10 @@
         </div>
       </div>
     </section>
-    <section>
-      <h2>已整合活動的詳細參考</h2>
-      <p>上方每個目的地卡已列出最適合搭配的活動；這裡保留活動的預約、安全及天氣細節，方便點擊查看。不建議同一天疊加多項高強度活動。</p>
-      <div class="grid">
-        <a class="card day-trip-card" href="bern-daytrips.html#paragliding">
-          <h3>Interlaken tandem paragliding</h3>
-          <p>由山坡滑翔至 Interlaken，從空中看 Lake Thun、Lake Brienz 及 Alps。</p>
-          <p class="small">強度：低至中等｜預約：必須｜天氣依賴：非常高</p>
-        </a>
-        <a class="card day-trip-card" href="bern-daytrips.html#lake-thun-cruise">
-          <h3>Lake Thun boat cruise</h3>
-          <p>把 Thun、Spiez、Interlaken 或湖畔城堡串起來；適合慢節奏湖區日。</p>
-          <p class="small">強度：低｜預約：通常不必｜天氣依賴：中</p>
-        </a>
-        <a class="card day-trip-card" href="bern-daytrips.html#lake-brienz-cruise">
-          <h3>Lake Brienz boat cruise</h3>
-          <p>搭配 Iseltwald 或 Interlaken，欣賞 turquoise 湖水及山谷村落。</p>
-          <p class="small">強度：低｜預約：查船班｜天氣依賴：中至高</p>
-        </a>
-        <a class="card day-trip-card" href="bern-daytrips.html#lake-lucerne-cruise">
-          <h3>Lake Lucerne boat cruise</h3>
-          <p>與 Lucerne Old Town 結合的湖上活動；也可只安排短程來回船程。</p>
-          <p class="small">強度：低｜預約：查船班｜天氣依賴：中</p>
-        </a>
-        <a class="card day-trip-card" href="bern-daytrips.html#aare-raft">
-          <h3>Aare guided raft</h3>
-          <p>由專業團隊帶領，在 Bern 城市景觀與河流之間進行活動。</p>
-          <p class="small">強度：中等｜預約：必須｜安全依賴：非常高</p>
-        </a>
-        <a class="card day-trip-card" href="bern-daytrips.html#canyoning">
-          <h3>Canyoning / outdoor adventure</h3>
-          <p>Interlaken 周邊的高強度戶外活動，適合把整天留給一項體驗。</p>
-          <p class="small">強度：高｜預約：必須｜天氣依賴：非常高</p>
-        </a>
-      </div>
-    </section>
   </main>
   <footer><p>前一站：<a href="zurich.html">Zurich</a>｜路線：Bern → Freiburg｜下一站：<a href="freiburg.html">Freiburg</a></p></footer>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="travel-maps.js"></script>
+  <script src="bern-overview-map.js"></script>
 </body>
 </html>

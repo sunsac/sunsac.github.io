@@ -35,6 +35,35 @@ header .wrap, main, footer {
 
 header p { max-width: 780px; margin: 8px 0; opacity: .92; }
 
+.eyebrow {
+  margin: 0 0 10px;
+  color: #d4ebef;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.hero-subtitle {
+  margin: 0 0 14px;
+  font-size: 1.15rem;
+  letter-spacing: .04em;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hero-tags span {
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 999px;
+  color: #eef8f8;
+  font-size: .82rem;
+}
+
 h1, h2, h3 { line-height: 1.3; }
 h1 { margin: 0 0 10px; font-size: clamp(2rem, 5vw, 3.4rem); }
 h2 { margin-top: 0; color: var(--blue); }
@@ -108,7 +137,7 @@ section, .card, .day {
 
 .daytrip-timeline {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .daytrip-map {
@@ -441,14 +470,333 @@ section, .card, .day {
   color: var(--blue);
 }
 
-.route span {
-  padding: 5px 12px;
+.route a {
+  display: flex;
+  min-width: 132px;
+  flex: 1 1 132px;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
   border: 1px solid #bcd3df;
-  border-radius: 999px;
+  border-radius: 10px;
   background: var(--soft-blue);
+  text-align: center;
+  text-decoration: none;
+}
+
+.route a:hover {
+  border-color: var(--blue);
+  background: #e5f2f8;
+}
+
+.route a strong { font-size: 1.05rem; }
+
+.route a small {
+  color: var(--muted);
+  line-height: 1.4;
 }
 
 .route b { color: var(--muted); }
+
+.section-intro {
+  margin: -8px 0 18px;
+  color: var(--muted);
+}
+
+.route-diagram {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  margin: 24px 0;
+  overflow: visible;
+  padding: 8px 2px 14px;
+}
+
+.route-stop {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  padding: 16px 14px;
+  border: 1px solid #c8dce5;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #f7fbfc, #eaf4f7);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 0 5px 14px rgba(32, 48, 64, .06);
+  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+.route-stop:hover {
+  border-color: var(--blue);
+  box-shadow: 0 10px 22px rgba(32, 48, 64, .14);
+  transform: translateY(-3px);
+}
+
+.route-stop strong {
+  margin: 4px 0;
+  color: var(--blue);
+  font-size: 1.18rem;
+}
+
+.route-stop small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.route-index {
+  color: #7897a5;
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.route-stop .route-action {
+  margin-top: auto;
+  padding-top: 13px;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  border: 0;
+  color: var(--blue);
+  background: transparent;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.route-leg {
+  display: flex;
+  min-width: 28px;
+  flex: 0 1 28px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: .62rem;
+  letter-spacing: .08em;
+}
+
+.route-leg-line {
+  display: block;
+  width: 100%;
+  border-top: 2px solid #b7cbd4;
+}
+
+.trip-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+.trip-stats strong {
+  margin-right: 5px;
+  color: var(--blue);
+  font-size: 1.25rem;
+}
+
+.route-map-illustration {
+  position: relative;
+  min-height: 500px;
+  margin: 20px 0;
+  overflow: hidden;
+  border: 1px solid #d5e2e5;
+  border-radius: 18px;
+  background-color: #f7fbfa;
+  background-image: radial-gradient(#c9d9d6 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.route-map-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.map-river {
+  fill: none;
+  stroke: #a9d6dc;
+  stroke-width: 12;
+  opacity: .8;
+}
+
+.map-mountain {
+  fill: none;
+  stroke: #c0d5bb;
+  stroke-width: 18;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: .72;
+}
+
+.map-mountain.soft {
+  stroke: #d2e0c8;
+  stroke-width: 25;
+  opacity: .65;
+}
+
+.map-border {
+  fill: none;
+  stroke: #b88f75;
+  stroke-width: 3;
+  stroke-dasharray: 10 9;
+  opacity: .75;
+}
+
+.route-map-path {
+  fill: none;
+  stroke: #39749a;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 1 18;
+  filter: drop-shadow(0 2px 1px rgba(32, 48, 64, .14));
+}
+
+.route-map-stop {
+  fill: #96c45d;
+  stroke: white;
+  stroke-width: 5;
+  filter: drop-shadow(0 2px 2px rgba(32, 48, 64, .16));
+}
+
+.map-label {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  width: 220px;
+  min-height: 78px;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid #d5e3e5;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .93);
+  box-shadow: 0 5px 13px rgba(32, 48, 64, .1);
+  color: #83a49c;
+  font-size: .72rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.map-signature-image {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  height: 58px;
+  margin: 0;
+  border: 3px solid white;
+  border-radius: 8px;
+  background: #dcebea;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(32, 48, 64, .16);
+}
+
+.map-signature-image:not(.is-loaded) { visibility: hidden; }
+.map-signature-image.image-fallback { display: none; }
+
+.map-label-text {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.map-label-index {
+  display: block;
+  color: #83a49c;
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.map-label strong {
+  display: block;
+  color: var(--blue);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.map-label small {
+  display: block;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 400;
+}
+
+.map-label-date {
+  white-space: nowrap;
+}
+
+.map-label-focus {
+  white-space: normal;
+}
+
+.map-label-zurich { left: 68%; top: 70%; }
+.map-label-bern { left: 4%; top: 76%; }
+.map-label-freiburg { left: 34%; top: 44%; }
+.map-label-heidelberg { left: 70%; top: 17%; }
+.map-label-frankfurt { left: 70%; top: 1%; }
+
+.map-city-link {
+  position: absolute;
+  z-index: 3;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #286785;
+  background: #eaf5f6;
+  font-size: .7rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.map-city-link:hover {
+  color: white;
+  background: var(--blue);
+}
+
+.map-city-zurich { left: 78%; top: 86%; }
+.map-city-bern { left: 22%; top: 90%; }
+.map-city-freiburg { left: 43%; top: 61%; }
+.map-city-heidelberg { left: 84%; top: 30%; }
+.map-city-frankfurt { left: 87%; top: 10%; }
+
+.map-country-label {
+  position: absolute;
+  z-index: 1;
+  color: #a98876;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  opacity: .78;
+}
+
+.map-country-switzerland {
+  left: 22%;
+  top: 69%;
+  transform: rotate(-3deg);
+}
+
+.map-country-germany {
+  left: 46%;
+  top: 22%;
+  transform: rotate(-3deg);
+}
+
+.map-compass {
+  position: absolute;
+  right: 4%;
+  top: 5%;
+  color: #7c9c91;
+  font-size: .72rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+.map-compass b { font-size: 1.2rem; }
 
 .note {
   padding: 12px 16px;
@@ -495,6 +843,31 @@ code {
   border-radius: 12px;
   background: #e8f0f2;
 }
+
+.overview-map-marker {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 3px solid white;
+  border-radius: 50%;
+  color: white;
+  background: var(--blue);
+  box-shadow: 0 2px 7px rgba(32, 48, 64, .35);
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.overview-map-marker.base { background: #2e6f95; }
+.overview-map-marker.forest { background: #477b68; }
+.overview-map-marker.wellness { background: #a76b35; }
+.overview-map-marker.cross-border { background: #8b5aa8; }
+.overview-map-marker.alpine { background: #477b68; }
+.overview-map-marker.village { background: #6e8c4b; }
+.overview-map-marker.lake { background: #378c9e; }
+.overview-map-marker.city { background: #8b5aa8; }
+.overview-map-marker.local { background: #a76b35; }
+.overview-map-marker.long-distance { background: #9b4d62; }
 
 .map-note, .small {
   color: var(--muted);
@@ -607,7 +980,9 @@ code {
 
 .route-builder-list {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 10px;
+  align-items: start;
 }
 
 .route-stop-card {
@@ -627,8 +1002,32 @@ code {
 .route-stop-card.selected { border-color: #6e9db5; }
 
 .route-stop-card h4 {
+  display: block;
   margin: 0;
   color: var(--blue);
+  text-align: left;
+}
+
+.route-order {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--ink);
+  text-align: center;
+}
+
+.stop-letter {
+  display: inline;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.stop-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.stop-card h3 {
+  display: block;
 }
 
 .stop-category {
@@ -797,6 +1196,11 @@ code {
 
 .legend-route { background: var(--blue); }
 .legend-optional { background: var(--green); }
+.legend-optional.overview-wellness { background: #a76b35; }
+.legend-optional.overview-cross-border { background: #8b5aa8; }
+.legend-optional.overview-lake { background: #378c9e; }
+.legend-optional.overview-city { background: #8b5aa8; }
+.legend-optional.overview-local { background: #a76b35; }
 
 .back {
   display: inline-block;
@@ -814,4 +1218,19 @@ footer {
   main { padding: 18px 12px 48px; }
   section, .card, .day { padding: 19px; border-radius: 12px; }
   .route-map { height: 360px; }
+  .route-diagram { align-items: stretch; margin-right: -4px; overflow-x: auto; }
+  .route-stop { min-width: 138px; flex-basis: 138px; padding: 14px 12px; }
+  .route-leg { min-width: 34px; flex-basis: 34px; font-size: .55rem; }
+  .trip-stats { gap: 12px; }
+  .map-label { width: 180px; }
+  .map-label-zurich { left: 46%; }
+  .map-label-bern { left: 2%; }
+  .map-label-freiburg { left: 18%; }
+  .map-label-heidelberg,
+  .map-label-frankfurt { left: 42%; }
+  .map-city-zurich { left: 70%; }
+  .map-city-bern { left: 20%; }
+  .map-city-freiburg { left: 38%; }
+  .map-city-heidelberg,
+  .map-city-frankfurt { left: 72%; }
 }
