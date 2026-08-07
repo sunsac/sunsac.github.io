@@ -598,6 +598,55 @@ section, .card, .day {
   font-size: 1.25rem;
 }
 
+.travel-vocabulary {
+  background: #f9fcfb;
+}
+
+.section-eyebrow {
+  color: var(--green);
+}
+
+.vocabulary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+
+.vocabulary-grid article {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+}
+
+.vocabulary-grid h3 {
+  margin: 0 0 10px;
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.vocabulary-grid dl {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.vocabulary-grid dl div {
+  display: grid;
+  gap: 1px;
+}
+
+.vocabulary-grid dt {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.vocabulary-grid dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: .86rem;
+}
+
 .route-map-illustration {
   position: relative;
   min-height: 500px;
@@ -743,7 +792,9 @@ section, .card, .day {
 .map-city-link {
   position: absolute;
   z-index: 3;
-  padding: 3px 7px;
+  right: 12px;
+  bottom: -22px;
+  padding: 4px 10px;
   border-radius: 999px;
   color: #286785;
   background: #eaf5f6;
@@ -756,12 +807,6 @@ section, .card, .day {
   color: white;
   background: var(--blue);
 }
-
-.map-city-zurich { left: 78%; top: 86%; }
-.map-city-bern { left: 22%; top: 90%; }
-.map-city-freiburg { left: 43%; top: 61%; }
-.map-city-heidelberg { left: 84%; top: 30%; }
-.map-city-frankfurt { left: 87%; top: 10%; }
 
 .map-country-label {
   position: absolute;
@@ -818,6 +863,120 @@ section, .card, .day {
 }
 
 .day h3 { margin-top: 0; color: var(--blue); }
+
+.transport-subheading {
+  margin: 24px 0 8px;
+  color: var(--blue);
+  font-size: 1.1rem;
+}
+
+.transfer-steps,
+.ticket-decision,
+.city-transport-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.transfer-steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.transfer-steps article,
+.ticket-decision article {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fbfdfd;
+}
+
+.transfer-steps span {
+  display: inline-grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--blue);
+  font-size: .82rem;
+  font-weight: 700;
+}
+
+.transfer-steps h3,
+.ticket-decision h3 {
+  margin: 8px 0 6px;
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.transfer-steps p,
+.ticket-decision p {
+  margin: 0;
+  font-size: .9rem;
+}
+
+.ticket-decision {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ticket-decision article:last-child {
+  border-color: #b8d5c5;
+  background: var(--soft-green);
+}
+
+.ticket-decision strong {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink);
+}
+
+.ticket-kicker {
+  color: var(--muted);
+  font-size: .78rem !important;
+  font-weight: 700;
+}
+
+.city-transport-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.city-transport-grid .card {
+  padding: 16px;
+}
+
+.city-transport-grid h3 {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+.transport-timing {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-left: 4px solid var(--green);
+  background: var(--soft-green);
+  font-size: .92rem;
+}
+
+.emergency-heading {
+  margin: 26px 0 12px;
+  color: #a05a38;
+}
+
+.emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.emergency-grid .card {
+  padding: 16px;
+}
+
+.emergency-grid h3 {
+  margin-top: 0;
+  color: #a05a38;
+  font-size: 1rem;
+}
 
 .meta {
   margin: -4px 0 12px;
@@ -1151,6 +1310,20 @@ code {
   background: #d9782f;
 }
 
+.accommodation-number {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 2px solid white;
+  border-radius: 7px;
+  color: white;
+  background: #7a5aa6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
 .optional-number {
   display: grid;
   width: 28px;
@@ -1201,6 +1374,7 @@ code {
 .legend-optional.overview-lake { background: #378c9e; }
 .legend-optional.overview-city { background: #8b5aa8; }
 .legend-optional.overview-local { background: #a76b35; }
+.legend-accommodation { background: #7a5aa6; }
 
 .back {
   display: inline-block;
@@ -1222,15 +1396,15 @@ footer {
   .route-stop { min-width: 138px; flex-basis: 138px; padding: 14px 12px; }
   .route-leg { min-width: 34px; flex-basis: 34px; font-size: .55rem; }
   .trip-stats { gap: 12px; }
+  .vocabulary-grid { grid-template-columns: 1fr; }
+  .transfer-steps,
+  .ticket-decision,
+  .city-transport-grid,
+  .emergency-grid { grid-template-columns: 1fr; }
   .map-label { width: 180px; }
   .map-label-zurich { left: 46%; }
   .map-label-bern { left: 2%; }
   .map-label-freiburg { left: 18%; }
   .map-label-heidelberg,
   .map-label-frankfurt { left: 42%; }
-  .map-city-zurich { left: 70%; }
-  .map-city-bern { left: 20%; }
-  .map-city-freiburg { left: 38%; }
-  .map-city-heidelberg,
-  .map-city-frankfurt { left: 72%; }
 }

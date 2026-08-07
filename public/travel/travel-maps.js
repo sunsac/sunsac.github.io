@@ -190,6 +190,12 @@ const cityWalkOptionalStops = {
   ]
 };
 
+const cityAccommodationStops = {
+  zurich: [
+    ["Ruby Mimi Hotel Zürich", 47.37624, 8.54116, "暫定住宿｜Beatenplatz 4；距 Zürich HB 約 2 分鐘步行，可先寄放行李再開始 City Walk。"]
+  ]
+};
+
 const attractionImageQueries = {
   "Zurich HB": "Zürich Hauptbahnhof",
   Bahnhofstrasse: "Bahnhofstrasse",
@@ -527,6 +533,15 @@ function makeOptionalIcon(number, selected, category) {
   });
 }
 
+function makeAccommodationIcon() {
+  return L.divIcon({
+    className: "",
+    html: '<span class="accommodation-number">H</span>',
+    iconSize: [30, 30],
+    iconAnchor: [15, 15]
+  });
+}
+
 function getStopLetter(routeName, type, index) {
   const optionalOffset = cityWalkRoutes[routeName].length;
   const letterIndex = (type === "optional" ? optionalOffset : 0) + index;
@@ -817,7 +832,19 @@ function createCityWalkMap(routeName, mapElement) {
     return [stop[1], stop[2]];
   });
 
-  map.fitBounds(routePoints.concat(optionalPoints), { padding: [24, 24] });
+  const accommodationPoints = (cityAccommodationStops[routeName] || []).map((stop) => {
+    L.marker([stop[1], stop[2]], { icon: makeAccommodationIcon() })
+      .addTo(map)
+      .bindPopup(
+        "<strong>H｜" + stop[0] + "</strong><br>" + stop[3] +
+        '<br><a href="https://www.google.com/maps/search/?api=1&query=' +
+        encodeURIComponent(stop[0] + ", Beatenplatz 4, Zürich") +
+        '" target="_blank" rel="noreferrer">Google Maps →</a>'
+      );
+    return [stop[1], stop[2]];
+  });
+
+  map.fitBounds(routePoints.concat(optionalPoints, accommodationPoints), { padding: [24, 24] });
   updateRouteMap(state);
 }
 
