@@ -748,6 +748,135 @@ const bernDaytrips = {
   }
 };
 
+const tripTransportPlans = {
+  "interlaken-lauterbrunnen": {
+    sbbSearch: "Bern → Lauterbrunnen",
+    segments: [
+      "在 SBB Mobile 搜尋 <code>Bern</code> → <code>Lauterbrunnen</code>；通常於 <code>Interlaken Ost</code> 轉乘。",
+      "回程直接搜尋 <code>Lauterbrunnen</code> → <code>Bern</code>；不用把 Interlaken 另開成一張票。"
+    ],
+    fare: "成人 2nd class、No discount、單人往返約 <strong>CHF 85–95</strong>。",
+    extra: "若加 Lake Thun／Lake Brienz boat、Harder Kulm 或 paragliding，分別另購；不要假設包含在火車票內。",
+    tip: "普通火車不需訂位。若想在 Interlaken 停留，可先確認該票的有效路線與 stopover 規則；不確定時分開買 Bern → Lauterbrunnen 及 Lauterbrunnen → Bern。"
+  },
+  "wengen-lauterbrunnen": {
+    sbbSearch: "Bern → Wengen",
+    segments: [
+      "在 SBB Mobile 搜尋 <code>Bern</code> → <code>Wengen</code>；通常經 <code>Interlaken Ost</code>、<code>Lauterbrunnen</code>，最後乘 Wengernalp Railway 上山。",
+      "若先逛 Lauterbrunnen，再乘 <code>Lauterbrunnen</code> → <code>Wengen</code>；回程則搜尋 <code>Wengen</code> → <code>Bern</code>。"
+    ],
+    fare: "成人 2nd class、No discount、單人往返約 <strong>CHF 100–110</strong>，已把上 Wengen 的山地鐵路列入基本交通預算。",
+    extra: "Männlichen cable car、其他山上纜車及餐飲另計。",
+    tip: "購票目的地必須選 <code>Wengen</code>，不要只買到 Lauterbrunnen；回程要留意 Wengen 的末班山地鐵路。"
+  },
+  "muerren-gimmelwald": {
+    sbbSearch: "Bern → Mürren",
+    segments: [
+      "在 SBB Mobile 搜尋 <code>Bern</code> → <code>Mürren</code>；常見路線為 Bern → Interlaken Ost → Lauterbrunnen → Grütschalp → Mürren。",
+      "到 Gimmelwald 時，按即時班次由 Mürren 接 Schilthornbahn／cable car；回程從 <code>Gimmelwald</code> 或 <code>Mürren</code> 搜尋回 <code>Bern</code>。"
+    ],
+    fare: "成人 2nd class、No discount、單人往返約 <strong>CHF 110–130</strong>，實際取決於採用 Grütschalp 或 Stechelberg 路線。",
+    extra: "Schilthorn／Piz Gloria、Allmendhubel 與額外山上纜車不包含在基本交通預算。",
+    tip: "這條線末段依賴 cable car；出發當日用 SBB 的即時 journey planner 確認轉乘與末班車，不要只按地圖估算。"
+  },
+  "grindelwald-first": {
+    sbbSearch: "Bern → Grindelwald",
+    segments: [
+      "先在 SBB Mobile 買 <code>Bern</code> → <code>Grindelwald</code> 往返，通常經 <code>Interlaken Ost</code> 轉乘。",
+      "抵達 Grindelwald 後步行至 Firstbahn valley station；First cable car 與 adventure activities 由 Jungfrau 官方售票頁或現場另購。"
+    ],
+    fare: "Bern ↔ Grindelwald 成人 2nd class、No discount、單人往返約 <strong>CHF 85–95</strong>；First cable car 往返 <strong>CHF 60 起</strong>，基本交通合計約 <strong>CHF 145 起</strong>。",
+    extra: "First Adventure Package、Flyer／Glider、Mountain Cart、Trottibike 依組合另購。",
+    tip: "SBB 票只買至 <code>Grindelwald</code>；不要把 Firstbahn 誤當一般 SBB 火車票。晴天旺季可先買 Firstbahn 或 package，以免現場排隊。"
+  },
+  "grindelwald-village": {
+    sbbSearch: "Bern → Grindelwald",
+    segments: [
+      "在 SBB Mobile 搜尋 <code>Bern</code> → <code>Grindelwald</code>，通常經 <code>Interlaken Ost</code> 轉乘。",
+      "回程直接搜尋 <code>Grindelwald</code> → <code>Bern</code>；村內 City Walk 不需要額外交通。"
+    ],
+    fare: "成人 2nd class、No discount、單人往返約 <strong>CHF 85–95</strong>。",
+    extra: "Firstbahn、Pfingstegg、Gletscherschlucht 與其他活動另計。",
+    tip: "此方案只買到 Grindelwald 即可；如臨時加 First，另於 Firstbahn station 買纜車／活動票，不需要重買 SBB 主線票。"
+  },
+  jungfraujoch: {
+    sbbSearch: "Bern → Grindelwald Terminal",
+    segments: [
+      "在 SBB Mobile 買 <code>Bern</code> → <code>Grindelwald Terminal</code>，通常經 <code>Interlaken Ost</code>；這是進入 Eiger Express 的最順路起點。",
+      "另到 Jungfrau 官方售票頁購買 <code>Grindelwald Terminal → Jungfraujoch – Top of Europe</code> 往返票，通常包含 Eiger Express 與 Jungfrau Railway 的對應山岳段。",
+      "回程按票券指定或可用路線下山，再由 Grindelwald Terminal 乘 SBB 回 <code>Bern</code>。"
+    ],
+    fare: "全程成人、無折扣的規劃預算約 <strong>CHF 250–300／人往返</strong>；其中 SBB 主線與 Jungfrau 山岳票是兩個購買步驟。",
+    extra: "2026 年夏季 Jungfrau Railway 需另確認強制付費 seat reservation；餐飲與山頂消費不包括。",
+    tip: "不要只在 SBB 買到 Grindelwald Terminal 就上山；先確認 Jungfrau 官方票的日期、路線與 reservation，並預留至少 15–20 分鐘轉乘 Eiger Express。"
+  },
+  lucerne: {
+    sbbSearch: "Bern → Luzern",
+    segments: [
+      "在 SBB Mobile 搜尋 <code>Bern</code> → <code>Luzern</code>，選最快的 IC／IR 班次；一般只需一次轉乘或可直達。",
+      "Lucerne City Walk 從 <code>Luzern</code> station 出發；回程買／使用 <code>Luzern</code> → <code>Bern</code>。"
+    ],
+    fare: "成人 2nd class、No discount、單人往返約 <strong>CHF 76</strong>。",
+    extra: "Lake Lucerne boat、Pilatus／Rigi 山岳票、Swiss Museum of Transport 與市內短程交通另計。",
+    tip: "若只選 Option A City Walk，無需預先買船或山岳票；Option B 要先按當日船班與 Pilatus／Rigi 的營運時間倒推回程火車。"
+  },
+  lausanne: {
+    sbbSearch: "Bern → Lausanne",
+    segments: [
+      "在 SBB Mobile 搜尋 <code>Bern</code> → <code>Lausanne</code>，通常可乘 IC 直達。",
+      "抵達 <code>Lausanne</code> station 後，City Walk 可步行；如需下到 Ouchy，另以 Lausanne métro 單程／短期票處理。"
+    ],
+    fare: "成人 2nd class、No discount、單人往返約 <strong>CHF 74</strong>。",
+    extra: "Lausanne métro、Lake Geneva boat、Olympic Museum 與 Lavaux 延伸交通另計。",
+    tip: "若同日要從 Old Town 下至 Ouchy，可用 metro 下坡、再沿湖步行；不用為市內短段額外買長距離 City-Ticket。"
+  },
+  thun: {
+    sbbSearch: "Bern → Thun",
+    segments: [
+      "在 SBB Mobile 搜尋 <code>Bern</code> → <code>Thun</code>；直達班次頻密，約 20 分鐘。",
+      "Thun station 到 Old Town、Castle 及湖畔主要靠步行；回程使用 <code>Thun</code> → <code>Bern</code>。"
+    ],
+    fare: "成人 2nd class、No discount、單人往返約 <strong>CHF 26</strong>。",
+    extra: "Lake Thun boat、Thun Castle／Panorama 門票另計。",
+    tip: "最適合臨時按天氣決定。先買普通來回火車票；確認下午船班後才另買短程船票，不需追求完整環湖。"
+  },
+  iseltwald: {
+    sbbSearch: "Bern → Iseltwald Dorf",
+    segments: [
+      "在 SBB Mobile 搜尋 <code>Bern</code> → <code>Iseltwald Dorf</code>，常見路線為火車至 <code>Interlaken Ost</code>，再轉 PostBus 103。",
+      "如果改以 Lake Brienz boat 抵達，先買 Bern → Interlaken Ost 火車票；船票按 BLS Lake Cruise 另購，回程可由 Iseltwald Dorf 乘 bus 回 Interlaken Ost。"
+    ],
+    fare: "火車＋PostBus 成人 2nd class、No discount、單人往返約 <strong>CHF 75–90</strong>。",
+    extra: "Lake Brienz boat、Giessbach Falls 船／funicular 另計。",
+    tip: "不要在 SBB 只搜尋 <code>Iseltwald</code>；選 <code>Iseltwald Dorf</code> 才會把村中心巴士站納入行程。船班較少，先以回程 bus 作保底。"
+  },
+  "fribourg-gruyeres": {
+    sbbSearch: "Bern → Fribourg/Freiburg；Fribourg/Freiburg → Gruyères",
+    segments: [
+      "早上先在 SBB Mobile 買 <code>Bern</code> → <code>Fribourg/Freiburg</code>；抵達後步行進 Old Town。",
+      "下午再買 <code>Fribourg/Freiburg</code> → <code>Gruyères</code>，通常需經 <code>Bulle</code> 轉乘；最後搜尋 <code>Gruyères</code> → <code>Bern</code> 回程。",
+      "Gruyères station 至 village／Castle 有上坡步行；如不想走，按即時班次找 local bus。"
+    ],
+    fare: "三段合計成人 2nd class、No discount、單人約 <strong>CHF 55–65</strong>。",
+    extra: "Gruyères Castle、La Maison du Gruyère、cheese tasting 與村內 local bus 另計。",
+    tip: "因中途在 Fribourg 停留，最清楚的做法是分三段買票；不要假設 Bern → Gruyères 一張票一定適合長時間 stopover。"
+  },
+  "gurten-aare": {
+    sbbSearch: "Bern → Wabern bei Bern",
+    segments: [
+      "由 Bern 市區以 Libero tram／S-Bahn 前往 <code>Wabern bei Bern</code> 或 <code>Wabern, Gurtenbahn</code>；可在 SBB Mobile 輸入該站查最順班次。",
+      "在 Gurtenbahn valley station 另購 <code>Gurtenbahn</code> 往返票；下山後再乘市內 tram／bus 回 Bern Old City 或住宿。"
+    ],
+    fare: "沒有長途火車；Gurtenbahn 往返加 Bern 市內 Libero 交通，單人約 <strong>CHF 15–20</strong>。",
+    extra: "Aare guided raft、博物館及餐飲另計。",
+    tip: "若朋友家位於 Libero 適用範圍，可先確認是否已有住宿提供的 Bern Ticket；沒有的話再依當日行程買市內單程或 day ticket。"
+  }
+};
+
+Object.entries(bernDaytrips).forEach(([id, trip]) => {
+  trip.transport = tripTransportPlans[id];
+});
+
 function renderList(items) {
   return items.map((item) => `<li>${item}</li>`).join("");
 }
@@ -1085,6 +1214,25 @@ function renderDaytrip(trip) {
     <section>
       <h2>Full-day 交通與時間軸${trip.chooseTwo ? "（按三選二調整）" : ""}</h2>
       <p><code>${trip.route}</code></p>
+      ${trip.transport ? `
+        <div class="grid">
+          <article class="card">
+            <h3>SBB 購票設定</h3>
+            <p><strong>搜尋：</strong><code>${trip.transport.sbbSearch}</code></p>
+            <p class="small">SBB Mobile：選 <strong>Adult</strong>、<strong>2nd class</strong>、<strong>No discount / Full fare</strong>。以下金額均為單人規劃預算。</p>
+          </article>
+          <article class="card">
+            <h3>交通預算</h3>
+            <p>${trip.transport.fare}</p>
+            <p class="small"><strong>另計：</strong>${trip.transport.extra}</p>
+          </article>
+        </div>
+        <article class="card">
+          <h3>建議購買與轉乘次序</h3>
+          <ol>${trip.transport.segments.map((segment) => `<li>${segment}</li>`).join("")}</ol>
+          <p class="small"><strong>購票提醒：</strong>${trip.transport.tip}</p>
+        </article>
+      ` : ""}
       ${trip.map ? `
         <div class="daytrip-map" id="daytrip-map" aria-label="${trip.title} 活動地圖"></div>
         <p class="map-note">橙色虛線為 ${trip.map.transitLabel} 的公共交通轉移；藍色實線為 ${trip.map.localLabel} 的山上路線。地圖用於理解相對位置，實際班次、步道、纜車及活動入口以官方公告為準。</p>

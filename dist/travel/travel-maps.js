@@ -1,12 +1,18 @@
 const cityWalkRoutes = {
   zurich: [
     ["Zurich HB", 47.378177, 8.540192],
-    ["Bahnhofstrasse", 47.374000, 8.539000],
+    ["Bahnhofstrasse", 47.369700, 8.539600],
+    ["Augustinergasse", 47.370300, 8.540000],
     ["Lindenhof", 47.370700, 8.541600],
+    ["Fraumünster", 47.369720, 8.541110],
+    ["Münsterbrücke", 47.369900, 8.542600],
     ["Grossmünster", 47.370020, 8.544070],
-    ["Fraumünster", 47.369000, 8.545600],
-    ["Bürkliplatz", 47.366930, 8.544210],
-    ["Bellevue", 47.366780, 8.545720]
+    ["Lake Zurich promenade", 47.365300, 8.544000],
+    ["Kunsthaus Zürich", 47.370500, 8.548000],
+    ["University of Zurich", 47.374700, 8.548300],
+    ["ETH Zurich / Polyterrasse", 47.376300, 8.548300],
+    ["Predigerkirche", 47.376300, 8.543900],
+    ["Zurich HB (return)", 47.378177, 8.540192]
   ],
   bern: [
     ["Bern Bahnhof", 46.948040, 7.439650],
@@ -51,19 +57,25 @@ const cityWalkRoutes = {
 const cityWalkGuides = {
   zurich: {
     options: [
-      ["完整路線", "約 2.5–3 公里，主走 Old Town 及湖邊，不把較遠的景點硬接在主線。"],
-      ["短版路線", "Zurich HB → Bahnhofstrasse → Lindenhof → Grossmünster → Fraumünster，約 1.5–2 小時。"],
-      ["湖景加強版", "由 Bellevue 沿 Utoquai 前往 Zürichhorn；單程約 3 公里，回程建議乘 tram 或 boat。"],
+      ["Full City Walk（推薦）", "約 5–6 公里、4–5 小時；由 Old Town 西側、Münsterbrücke、湖邊、Kunsthaus、University of Zurich、ETH / Polyterrasse 及 Predigerkirche 組成完整閉環，回到 Zürich HB。"],
+      ["短版 Old Town loop", "Zurich HB → Bahnhofstrasse → Augustinergasse → Lindenhof → St. Peter's → Fraumünster → Münsterbrücke → Grossmünster → Predigerkirche → Zurich HB，約 2–2.5 小時。"],
+      ["湖景加強版", "完整 Full City Walk 後，由湖邊沿 Utoquai 前往 Zürichhorn；回程改乘 tram 或 boat，不再硬接回 HB。"],
       ["雨天備案", "Old Town、Fraumünster、Swiss National Museum；Polyterrasse 視天氣決定。"]
     ],
     stops: [
-      ["Zurich HB", "大型交通樞紐及城市入口；先處理行李，再開始平緩的 Old Town 路線。", "可選 Swiss National Museum，了解 Switzerland 歷史。"],
-      ["Bahnhofstrasse", "由車站通往湖邊的主軸，將金融、購物及城市歷史串在一起。", "只走一小段即可，不建議整條街來回。"],
-      ["Lindenhof", "羅馬時期高地，能俯瞰 Limmat 河、Old Town 及 Grossmünster。", "有上坡；體力不足可改為 Limmat 河岸平路。"],
-      ["Grossmünster", "Zurich 最具辨識度的地標之一，與 Zwingli 及 Reformation 歷史相關。", "體力許可可登塔。"],
-      ["Fraumünster", "以 Chagall 彩窗聞名的教堂，和 Grossmünster 隔 Limmat 河相望。", "可順走 Münsterbrücke，不需額外交通。"],
-      ["Bürkliplatz", "Lake Zurich 的城市門戶，可看到湖面、船隻及遠方山景。", "天氣良好可加 Lake Zurich 船程。"],
-      ["Bellevue", "Lake Zurich、Limmat 河與文化場館交會的位置，適合決定繼續湖邊或返回 Old Town。", "可加 Sechseläutenplatz 或 Zurich Opera House 外觀。"]
+      ["Zurich HB", "大型交通樞紐及 City Walk 起點；先寄放行李，再由 Bahnhofstrasse 進入 Old Town 西側。", "公共交通／戶外：無入場票；可選 Swiss National Museum。"],
+      ["Bahnhofstrasse", "城市金融與購物主軸；在此只走 Old Town 段，不必整條街來回。", "戶外街道：全天開放、無門票；接 Fraumünster 前可短停 Paradeplatz 一帶。"],
+      ["Augustinergasse", "色彩鮮明的窄巷及傳統行會建築，連接 Lindenhof、Bahnhofstrasse 與老城西側。", "戶外街道：全天開放、無門票。"],
+      ["Lindenhof", "羅馬時期高地，能俯瞰 Limmat River、Old Town 及 Grossmünster。", "戶外觀景：全天開放、無門票；由 Augustinergasse 上坡，再向 Fraumünster 下坡。"],
+      ["Fraumünster", "以 Chagall 彩窗聞名的教堂，位於 Limmat River 西岸。", "8/15（六）10:00–18:00；8/16（日）13:00–18:00。旅客參觀 CHF 5，只限現場購票（卡／現金／TWINT），可與 Grossmünster tower 買 CHF 8 combo ticket。"],
+      ["Münsterbrücke", "連接 Fraumünster 與 Grossmünster 的步行橋，提供最經典的雙教堂河景。", "戶外橋樑：無門票、可通行；在橋上回望 Lindenhof 及沿河屋頂。"],
+      ["Grossmünster", "Zurich 最具辨識度的地標之一，與 Zwingli 及 Reformation 歷史相關；現正進行長期修復，外觀可能有鷹架。", "8/15（六）教堂 10:00–18:00、11:30–13:15 暫停遊客；8/16（日）教堂遊客 12:00–18:00、Karlsturm 12:30–17:30。nave / crypt 免費；tower CHF 5、只限現場購票。"],
+      ["Lake Zurich promenade", "由 Grossmünster 南行到湖邊，欣賞船隻、遠山及湖岸生活。", "戶外湖畔：全天開放、無門票；這是轉往 Kunsthaus 山坡前的開闊段落。"],
+      ["Kunsthaus Zürich", "Zurich 的主要藝術館，位於山坡東側；即使不入館也可作為上坡與街區轉換的地標。", "8/15（六）及 8/16（日）均 10:00–18:00；入館需買票，collection / small exhibitions CHF 24 起、major exhibition CHF 31 起；可網上或現場購票。"],
+      ["University of Zurich", "University of Zurich 的主校園位於山坡上，是由文化區走向學術區的過渡段。", "校園戶外免票；2026 外部工程可能有噪音或短繞路，不預設進圖書館。"],
+      ["ETH Zurich / Polyterrasse", "大學山坡的觀景台，能俯瞰 Old Town、Limmat River 與 Lake Zurich。", "8/15（六）及 8/16（日）ETH main building 08:00–17:00、免票；Polyterrasse 戶外全日可進。由 University of Zurich 步行至 ETH。"],
+      ["Predigerkirche", "Old Town 北段的重要歷史教堂，位於 ETH 下坡回市中心的自然收尾位置。", "8/15（六）及 8/16（日）10:00–17:00、參觀免費；週日 11:00 有 service，想安靜參觀宜避開該時段。"],
+      ["Zurich HB (return)", "回到 Zürich HB，完成不重複折返的完整 City Walk 閉環。", "公共交通／戶外：無入場票；可步行回 25hours Hotel Zürich Langstrasse 休息，或在 HB / Old Town 附近用餐。"]
     ]
   },
   bern: {
@@ -140,24 +152,31 @@ const cityWalkGuides = {
 
 const cityWalkOptionalStops = {
   zurich: [
-    ["ETH Zurich / Polyterrasse", 47.376300, 8.548300, "ETH Zurich 旁的城市觀景台"],
-    ["Uetliberg", 47.349900, 8.491100, "Zurich 的 local mountain 及全景觀景點"],
-    ["Kunsthaus Zürich", 47.370500, 8.548000, "Swiss art and culture museum"],
-    ["Swiss National Museum", 47.379650, 8.540300, "了解 Switzerland 歷史的博物館"],
-    ["Lindt Home of Chocolate", 47.320600, 8.536700, "Kilchberg 的巧克力博物館及體驗"],
-    ["Limmat River Cruise", 47.379500, 8.540500, "由 National Museum 出發的城市河上觀光"],
-    ["Schanzengraben", 47.373080, 8.533980, "由防禦壕溝轉成的安靜水道"],
-    ["Old Botanical Garden", 47.374550, 8.528840, "城市中心的綠洲及 University Quarter"],
-    ["Zürichhorn", 47.354700, 8.557600, "Lake Zurich 湖畔公園及 China Garden"],
-    ["Zurich Opera House", 47.364500, 8.546700, "Lake Zurich 旁的文化地標"],
-    ["Zürich West / Im Viadukt", 47.388200, 8.521800, "創意街區、鐵路拱廊及 Markthalle"],
-    ["Stadtkäserei", 47.382500, 8.535000, "Cheese Workshop 及城市起司工坊"],
-    ["Swiss Chuchi", 47.371700, 8.544000, "Old Town fondue restaurant"],
-    ["Le Dézaley", 47.371600, 8.544500, "Grossmünster 附近的 Swiss cuisine restaurant"],
-    ["Zeughauskeller", 47.369500, 8.539900, "傳統 Swiss dishes 及 guild hall 餐廳"],
-    ["Sternen Grill", 47.366900, 8.545900, "Bellevue 附近的 bratwurst 快餐"],
-    ["St. Peter's Church", 47.369300, 8.541000, "Zurich 最古老教堂之一，擁有醒目的大型鐘面"],
-    ["Predigerkirche", 47.376300, 8.543900, "Old Town 內歷史悠久的教堂，適合與 Niederdorf 一起參觀"]
+    ["St. Peter's Church", 47.369300, 8.541000, "Zurich 最古老教堂之一，擁有醒目的大型鐘面。週六 09:00–15:00、週日 09:00–16:00，教堂參觀免費；8/16 的 St. Peter 會眾參加 Grossmünster 10:00 聯合禮拜。"],
+    ["Bürkliplatz", 47.366900, 8.540800, "Lake Zurich 碼頭、船班與湖畔景觀的入口。戶外公共廣場、全天免費；湖船依 ZSG 當日 timetable，天氣及活動可能影響班次。"],
+    ["Niederdorf", 47.373400, 8.544100, "Old Town 東側的步行街區，餐廳及小店密集。戶外街區、全天免費；週日個別零售店可能休息，餐廳各自營業。"],
+    ["Central", 47.376950, 8.544280, "Limmat River、Polybahn 與 tram 的轉乘點，可步行回 Zürich HB。戶外公共交通節點、全天可通行；Polybahn / tram 依 ZVV timetable。"],
+    ["Uetliberg", 47.349900, 8.491100, "Zurich 的 local mountain 及全景觀景點。山頂與步道免費、全天開放；但 2026/4/29–10/18 S10 在 Zürich HB–Selnau 段停駛，需由 HB 步行至 Selnau 或 tram 3 / 14 至 Stauffacher 後步行轉乘，預留額外時間。"],
+    ["Swiss National Museum", 47.379650, 8.540300, "了解 Switzerland 歷史的博物館。週五至日 10:00–17:00，入館需買票；2026/8/1–24 只有 library 因盤點關閉，museum、boutique 和 bistro 正常。"],
+    ["Lindt Home of Chocolate", 47.320600, 8.536700, "Kilchberg 的巧克力博物館及體驗。每日 10:00–19:00；museum 必須預約 timed ticket（熱門日不接受臨時到訪），但 fountain、shop 與 café 無票可進。"],
+    ["Limmat River Cruise", 47.379500, 8.540500, "由 National Museum 出發的城市河上觀光。2026/4/6–10/19 季節營運、round trip 約 1 小時；可用 ZVV zone 110 single ticket（成人 CHF 4.70）或 Zürich Card，出發時間與水位／城市活動須當日確認。"],
+    ["Schanzengraben", 47.373080, 8.533980, "由防禦壕溝轉成的安靜水道。戶外步道、免費且通常全天可走；雨後地面可能濕滑，沒有固定場館開放時間。"],
+    ["Old Botanical Garden", 47.374550, 8.528840, "城市中心的綠洲及 University Quarter。戶外公園、免費；以現場出入口與園內公告為準，不作需要預約的主活動。"],
+    ["Zürichhorn", 47.354700, 8.557600, "Lake Zurich 湖畔公園及 China Garden。湖畔公園免費、全天開放；China Garden 屬獨立收費景點，需另查當日開放。"],
+    ["Zurich Opera House", 47.364500, 8.546700, "Lake Zurich 旁的文化地標。8 月為 summer break，外觀與廣場可看，但不安排 opera 或 public guided tour；導覽預計 9/13 起恢復並需預先購票。"],
+    ["Zürich West / Im Viadukt", 47.388200, 8.521800, "創意街區、鐵路拱廊及 Markthalle。戶外街區免費；店舖、market hall 與餐廳各自營業，週日多數零售店可能不開。"],
+    ["Stadtkäserei", 47.382500, 8.535000, "Cheese Workshop 及城市起司工坊。2.5 小時、CHF 145／人、6–12 人團體，通常週三至五、週六可申請，至少 2 週前預約；週日不適合臨時加入。"],
+    ["Swiss Chuchi", 47.371700, 8.544000, "Old Town fondue restaurant。週一至五 11:30–23:15、週六至日 12:00–23:15；建議晚餐先訂位。"],
+    ["Le Dézaley", 47.371600, 8.544500, "Grossmünster 附近的 Swiss cuisine restaurant。週一至六 11:30–14:00、18:00–24:00；週日休息，晚餐建議訂位。"],
+    ["Zeughauskeller", 47.369500, 8.539900, "傳統 Swiss dishes 及 guild hall 餐廳。每日約 11:30–23:00，熱門時段建議預約或預留排隊。"],
+    ["Sternen Grill", 47.366900, 8.545900, "Bellevue 附近的 bratwurst 快餐。通常適合不訂位的快速用餐；實際週日營業與最後點餐時間以店方當日公告為準。"],
+    ["Schokolade & Espresso Bar", 47.371397, 8.543873, "Münstergasse 19｜Schwarzenbach 的 espresso、hot chocolate 及 350+ 手工巧克力；週六 09:00–17:00，週日休息。適合 Grossmünster / Niederdorf 間 15–30 分鐘短停，不適合作正餐。"],
+    ["St Andrew's Anglican Church", 47.368696, 8.549423, "Promenadengasse 9｜English-language Anglican / Protestant worship。週日 09:00 Said Eucharist（約 45 分鐘、安靜 spoken service）或 10:30 Sung Eucharist（約 1 小時、hymns，之後 coffee）。無票／通常無需預約；位於 Kunsthaus 附近，適合週日上午加入。"],
+    ["Hillsong Zürich", 47.389667, 8.492258, "Campus für Christus｜Hohlstrasse 535, 8048 Zürich。週日 10:30 German / English contemporary evangelical service，含 modern worship 與 Hillsong Kids；無票／通常無需預約。由 Zürich HB 乘 train 到 Zürich Altstetten 後步行約 5 分鐘；較適合想參與現代敬拜，而非 Old Town 教堂體驗的人。"],
+    ["Babu's Bakery & Coffeehouse", 47.373173, 8.534405, "Löwenstrasse 1｜早餐、brunch、bagel、pancake、eggs、Rösti、Birchermüesli、cake 與 coffee。週六 08:00–18:00｜週日 09:00–17:00；一般可 walk-in，brunch platter 才建議預訂。"],
+    ["Confiserie Sprüngli at Zürich HB", 47.379000, 8.539800, "Zürich HB，ShopVille / Halle Landesmuseum（-2，近 41/42 號月台扶梯）｜Bircher muesli、sandwich、salad、coffee 與 Luxemburgerli。週六 06:30–20:00｜週日 08:00–20:00；無需訂位，適合轉車前補給。"],
+    ["Haus Hiltl", 47.373304, 8.536750, "Sihlstrasse 28｜歷史悠久的 vegetarian buffet、à la carte、coffee 與 pastry。週六 08:00–23:00｜週日 10:00–22:00；適合蔬食／vegan 或口味不同的同行者，繁忙時可訂位。"],
+    ["Conditorei Schober", 47.370865, 8.541847, "Wühre 15｜Limmat 河邊的 hot chocolate、praline、cake 與 pastry。週二至五 10:00–18:30｜週六 10:00–17:30｜週日、週一休息；適合 8/15 下午茶，不適合週日。"]
   ],
   bern: [
     ["Bern Historical Museum", 46.945300, 7.445300, "了解 Bern 及 Switzerland 歷史文化"],
@@ -192,7 +211,7 @@ const cityWalkOptionalStops = {
 
 const cityAccommodationStops = {
   zurich: [
-    ["Ruby Mimi Hotel Zürich", 47.37624, 8.54116, "暫定住宿｜Beatenplatz 4；距 Zürich HB 約 2 分鐘步行，可先寄放行李再開始 City Walk。"]
+    ["25hours Hotel Zürich Langstrasse", 47.38030, 8.52850, "H1｜已訂住宿｜Langstrasse 150；位於 Europaallee / Langstrasse 一側，距 Zürich HB 約 9–12 分鐘步行。抵達後可先寄放行李，再步行回 HB 開始 City Walk。"]
   ]
 };
 
@@ -271,6 +290,18 @@ const attractionImageQueries = {
   "Le Dézaley": "Le Dézaley Zürich",
   Zeughauskeller: "Zeughauskeller Zürich",
   "Sternen Grill": "Sternen Grill Zürich",
+  "Zürcher Geschnetzeltes + Rösti": "Zürcher Geschnetzeltes",
+  "Cheese fondue": "Cheese fondue",
+  Raclette: "Raclette",
+  Älplermagronen: "Älplermagronen",
+  Capuns: "Capuns",
+  Birchermüesli: "Bircher muesli",
+  "St. Galler bratwurst": "St. Galler Bratwurst",
+  Luxemburgerli: "Luxemburgerli",
+  "Teuscher Champagne Truffle": "Champagne truffle",
+  "Sprüngli chocolate & pralines": "Confiserie Sprüngli",
+  "laflor bean-to-bar chocolate": "laflor chocolate Zurich",
+  "Taucherli drinking chocolate": "Taucherli",
   "St. Peter's Church": "St. Peter church Zürich",
   Predigerkirche: "Predigerkirche Zürich",
   "Bern Historical Museum": "Bern Historical Museum",
@@ -300,23 +331,34 @@ const cityWalkPresets = {
       { type: "main", index: 0 }, { type: "main", index: 1 },
       { type: "main", index: 2 }, { type: "main", index: 3 },
       { type: "main", index: 4 }, { type: "main", index: 5 },
-      { type: "main", index: 6 }
+      { type: "main", index: 6 }, { type: "main", index: 7 },
+      { type: "main", index: 8 }, { type: "main", index: 9 },
+      { type: "main", index: 10 }, { type: "main", index: 11 },
+      { type: "main", index: 12 }
     ],
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
       { type: "main", index: 2 }, { type: "main", index: 3 },
-      { type: "main", index: 4 }
+      { type: "optional", index: 0 }, { type: "main", index: 4 },
+      { type: "main", index: 5 }, { type: "main", index: 6 },
+      { type: "main", index: 11 }, { type: "main", index: 12 }
     ],
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
       { type: "main", index: 2 }, { type: "main", index: 3 },
       { type: "main", index: 4 }, { type: "main", index: 5 },
-      { type: "main", index: 6 }, { type: "optional", index: 8 }
+      { type: "main", index: 6 }, { type: "main", index: 7 },
+      { type: "main", index: 8 }, { type: "main", index: 9 },
+      { type: "main", index: 10 },
+      { type: "optional", index: 10 }
     ],
     [
-      { type: "main", index: 0 }, { type: "main", index: 2 },
-      { type: "main", index: 3 }, { type: "main", index: 4 },
-      { type: "optional", index: 0 }, { type: "optional", index: 3 }
+      { type: "main", index: 0 }, { type: "main", index: 1 },
+      { type: "main", index: 2 }, { type: "main", index: 3 },
+      { type: "optional", index: 0 }, { type: "main", index: 4 },
+      { type: "main", index: 5 }, { type: "main", index: 6 },
+      { type: "main", index: 11 }, { type: "main", index: 12 },
+      { type: "optional", index: 5 }
     ]
   ],
   bern: [
@@ -422,10 +464,17 @@ const attractionCategories = {
     "Zurich HB": "交通／城市入口",
     Bahnhofstrasse: "購物／城市散步",
     Lindenhof: "歷史／觀景",
+    Augustinergasse: "老街／城市散步",
     Grossmünster: "教堂／宗教歷史",
     Fraumünster: "教堂／藝術",
+    Münsterbrücke: "橋樑／河景",
     Bürkliplatz: "湖畔／觀景",
     Bellevue: "湖畔／城市散步",
+    Niederdorf: "老城／城市散步",
+    Central: "交通／河岸景觀",
+    "Lake Zurich promenade": "湖畔／散步",
+    "Zurich HB (return)": "交通／路線終點",
+    "University of Zurich": "大學／城市文化",
     "ETH Zurich / Polyterrasse": "校園／觀景",
     Uetliberg: "自然／觀景",
     "Kunsthaus Zürich": "博物館／藝術",
@@ -442,6 +491,13 @@ const attractionCategories = {
     "Le Dézaley": "餐廳／Swiss cuisine",
     Zeughauskeller: "餐廳／傳統美食",
     "Sternen Grill": "小吃／快餐",
+    "Schokolade & Espresso Bar": "咖啡／巧克力",
+    "St Andrew's Anglican Church": "教堂／英文禮拜",
+    "Hillsong Zürich": "教堂／英德雙語現代敬拜",
+    "Babu's Bakery & Coffeehouse": "早餐／咖啡",
+    "Confiserie Sprüngli at Zürich HB": "早餐／甜點",
+    "Haus Hiltl": "餐廳／蔬食",
+    "Conditorei Schober": "咖啡／甜點",
     "St. Peter's Church": "教堂／宗教歷史",
     Predigerkirche: "教堂／宗教歷史"
   },
@@ -506,11 +562,51 @@ const attractionCategories = {
   }
 };
 
+const bilingualStopNames = {
+  zurich: {
+    "Zurich HB": "Zürich HB (Zurich Main Station)",
+    Bahnhofstrasse: "Bahnhofstrasse (Station Street)",
+    Lindenhof: "Lindenhof (Lindenhof Hill)",
+    Augustinergasse: "Augustinergasse (Old Town Lane)",
+    Grossmünster: "Grossmünster (Gross Minster)",
+    Fraumünster: "Fraumünster (Fraumünster Church)",
+    Münsterbrücke: "Münsterbrücke (Minster Bridge)",
+    Bürkliplatz: "Bürkliplatz (Bürkliplatz Square)",
+    Bellevue: "Bellevue (Bellevue Square)",
+    Niederdorf: "Niederdorf (Old Town Quarter)",
+    Central: "Central (Limmat River Transit Hub)",
+    "Lake Zurich promenade": "Lake Zurich promenade (Lakeside Walk)",
+    "Zurich HB (return)": "Zürich HB (Return to Zurich Main Station)",
+    "University of Zurich": "University of Zurich (Main Campus)",
+    "ETH Zurich / Polyterrasse": "ETH Zurich / Polyterrasse (ETH Terrace)",
+    Uetliberg: "Uetliberg (Zurich's Local Mountain)",
+    "Kunsthaus Zürich": "Kunsthaus Zürich (Zurich Art Museum)",
+    Schanzengraben: "Schanzengraben (Schanzengraben Canal)",
+    Zürichhorn: "Zürichhorn (Zürichhorn Park)",
+    "Zürich West / Im Viadukt": "Zürich West / Im Viadukt (Creative District / Railway Viaduct)",
+    Stadtkäserei: "Stadtkäserei (City Dairy)",
+    Zeughauskeller: "Zeughauskeller (Armory Cellar)",
+    "Schokolade & Espresso Bar": "Schokolade & Espresso Bar (Chocolate & Espresso)",
+    "St Andrew's Anglican Church": "St Andrew's Anglican Church (English Protestant Worship)",
+    "Hillsong Zürich": "Hillsong Zürich (German / English Contemporary Worship)",
+    "Babu's Bakery & Coffeehouse": "Babu's Bakery & Coffeehouse (Breakfast / Brunch)",
+    "Confiserie Sprüngli at Zürich HB": "Confiserie Sprüngli at Zürich HB (Breakfast / Sweets)",
+    "Haus Hiltl": "Haus Hiltl (Vegetarian Restaurant)",
+    "Conditorei Schober": "Conditorei Schober (Coffee / Chocolate)",
+    "St. Peter's Church": "St. Peter's Church (St Peter Church)",
+    Predigerkirche: "Predigerkirche (Preachers' Church)"
+  }
+};
+
 const routeStates = {};
 const attractionImageCache = {};
 
 function isFoodCategory(category) {
-  return /餐廳|小吃|美食/.test(category);
+  return /餐廳|小吃|美食|咖啡|巧克力|早餐|甜點|飲食/.test(category);
+}
+
+function isWorshipCategory(category) {
+  return /禮拜|敬拜/.test(category);
 }
 
 function makeRouteIcon(active, number, category) {
@@ -525,18 +621,19 @@ function makeRouteIcon(active, number, category) {
 
 function makeOptionalIcon(number, selected, category) {
   const foodClass = isFoodCategory(category) ? " food-stop" : "";
+  const worshipClass = isWorshipCategory(category) ? " worship-stop" : "";
   return L.divIcon({
     className: "",
-    html: '<span class="optional-number' + (selected ? " selected" : "") + foodClass + '">' + number + "</span>",
+    html: '<span class="optional-number' + (selected ? " selected" : "") + foodClass + worshipClass + '">' + number + "</span>",
     iconSize: [28, 28],
     iconAnchor: [14, 14]
   });
 }
 
-function makeAccommodationIcon() {
+function makeAccommodationIcon(label) {
   return L.divIcon({
     className: "",
-    html: '<span class="accommodation-number">H</span>',
+    html: '<span class="accommodation-number">' + label + "</span>",
     iconSize: [30, 30],
     iconAnchor: [15, 15]
   });
@@ -545,13 +642,41 @@ function makeAccommodationIcon() {
 function getStopLetter(routeName, type, index) {
   const optionalOffset = cityWalkRoutes[routeName].length;
   const letterIndex = (type === "optional" ? optionalOffset : 0) + index;
-  return String.fromCharCode(65 + letterIndex);
+  let value = letterIndex + 1;
+  let label = "";
+  while (value > 0) {
+    const remainder = (value - 1) % 26;
+    label = String.fromCharCode(65 + remainder) + label;
+    value = Math.floor((value - 1) / 26);
+  }
+  return label;
 }
 
 function distanceBetweenPoints(map, points) {
   return points.slice(1).reduce((total, point, index) => {
     return total + map.distance(points[index], point);
   }, 0);
+}
+
+async function fetchWalkingRoute(points, signal) {
+  const coordinates = points
+    .map(([lat, lng]) => `${lng},${lat}`)
+    .join(";");
+  const response = await fetch(
+    "https://routing.openstreetmap.de/routed-foot/route/v1/driving/" +
+      coordinates + "?overview=full&geometries=geojson&steps=false",
+    { signal }
+  );
+  if (!response.ok) throw new Error("Walking route unavailable");
+  const data = await response.json();
+  const route = data.routes?.[0];
+  if (!route?.geometry?.coordinates?.length) {
+    throw new Error("Walking route unavailable");
+  }
+  return {
+    points: route.geometry.coordinates.map(([lng, lat]) => [lat, lng]),
+    distanceMeters: route.distance
+  };
 }
 
 function getStateStop(state, item) {
@@ -563,6 +688,10 @@ function getStateStop(state, item) {
 
 function getStopCategory(routeName, stop) {
   return (attractionCategories[routeName] || {})[stop[0]] || "其他景點";
+}
+
+function getDisplayStopName(routeName, stopName) {
+  return bilingualStopNames[routeName]?.[stopName] || stopName;
 }
 
 function normalizeImageQuery(value) {
@@ -639,9 +768,12 @@ function renderRouteBuilder(state) {
     const stop = getStateStop(state, item);
     return [stop[1], stop[2]];
   });
-  const currentDistance = activePoints.length > 1
+  const currentDistance = state.routeDistanceMeters ?? (activePoints.length > 1
     ? distanceBetweenPoints(state.map, activePoints)
-    : 0;
+    : 0);
+  const distanceLabel = state.routeDistanceSource === "walking"
+    ? "：步行約 "
+    : "：直線估算約 ";
   const removedMainStops = cityWalkRoutes[state.routeName]
     .map((stop, index) => ({ type: "main", index, stop }))
     .filter(({ index }) => !state.routeItems.some((item) =>
@@ -666,7 +798,7 @@ function renderRouteBuilder(state) {
             <span class="drag-handle" aria-hidden="true">☷</span>
             <div>
               <span class="stop-category">${category}</span>
-              <h4><span class="route-order">${position + 1}</span><span class="stop-name"><span class="stop-letter">${letter}.</span> ${stop[0]}</span></h4>
+              <h4><span class="route-order">${position + 1}</span><span class="stop-name"><span class="stop-letter">${letter}.</span> ${getDisplayStopName(state.routeName, stop[0])}</span></h4>
               <p>${description}</p>
             </div>
             <input class="route-toggle" type="checkbox"
@@ -679,7 +811,7 @@ function renderRouteBuilder(state) {
         `;
       }).join("")}
     </div>
-    <p class="route-distance-editor small">目前已選路線：約 ${(currentDistance / 1000).toFixed(1)} 公里</p>
+    <p class="route-distance-editor small">目前已選路線${distanceLabel}${(currentDistance / 1000).toFixed(1)} 公里${state.routeDistanceSource === "walking" ? "" : "（步行路線載入中／暫不可用）"}</p>
     <div class="route-actions">
       <button class="route-action" type="button" data-route-action="reset" data-city="${state.routeName}">恢復預設主路線</button>
       <button class="route-action" type="button" data-route-action="fit" data-city="${state.routeName}">重新查看全部標記</button>
@@ -690,7 +822,7 @@ function renderRouteBuilder(state) {
         ${removedMainStops.map(({ index, stop }) => `
           <article class="stop-card" data-attraction-name="${stop[0]}">
             <span class="stop-category">${getStopCategory(state.routeName, stop)}</span>
-            <h3><span class="stop-letter">${getStopLetter(state.routeName, "main", index)}.</span> <span class="stop-name">${stop[0]}</span></h3>
+            <h3><span class="stop-letter">${getStopLetter(state.routeName, "main", index)}.</span> <span class="stop-name">${getDisplayStopName(state.routeName, stop[0])}</span></h3>
             <p>${guide.stops[index][1]}</p>
             <label class="small">
               <input class="route-toggle" type="checkbox"
@@ -709,7 +841,7 @@ function renderRouteBuilder(state) {
           return `
             <article class="stop-card ${selected ? "selected" : ""}" data-attraction-name="${stop[0]}">
               <span class="stop-category">${getStopCategory(state.routeName, stop)}</span>
-              <h3><span class="stop-letter">${getStopLetter(state.routeName, "optional", index)}.</span> <span class="stop-name">${stop[0]}</span></h3>
+              <h3><span class="stop-letter">${getStopLetter(state.routeName, "optional", index)}.</span> <span class="stop-name">${getDisplayStopName(state.routeName, stop[0])}</span></h3>
               <p>${stop[3]}</p>
               <label class="small">
                 <input class="route-toggle" type="checkbox"
@@ -729,19 +861,36 @@ function renderRouteBuilder(state) {
   loadAttractionImages(builder);
 }
 
+function updateDistanceNote(state) {
+  const distanceNote = state.mapElement.parentElement.querySelector(".route-distance");
+  if (!distanceNote) return;
+  const distance = (state.routeDistanceMeters / 1000).toFixed(1);
+  distanceNote.textContent = state.routeDistanceSource === "walking"
+    ? "目前已選步行路線：約 " + distance + " 公里"
+    : "步行路線載入中；直線估算：約 " + distance + " 公里";
+}
+
 function updateRouteMap(state) {
   if (state.routeLine) state.map.removeLayer(state.routeLine);
+  if (state.routeAbortController) state.routeAbortController.abort();
   const activeItems = state.routeItems.filter((item) => item.active);
   const activePoints = activeItems.map((item) => {
     const stop = getStateStop(state, item);
     return [stop[1], stop[2]];
   });
+  const requestId = (state.routeRequestId || 0) + 1;
+  state.routeRequestId = requestId;
+  state.routeDistanceMeters = activePoints.length > 1
+    ? distanceBetweenPoints(state.map, activePoints)
+    : 0;
+  state.routeDistanceSource = "estimated";
 
   if (activePoints.length > 1) {
     state.routeLine = L.polyline(activePoints, {
       color: "#2e6f95",
-      weight: 5,
-      opacity: 0.9
+      weight: 4,
+      opacity: 0.55,
+      dashArray: "8 8"
     }).addTo(state.map);
   }
 
@@ -766,13 +915,31 @@ function updateRouteMap(state) {
     ));
   });
 
-  const distanceNote = state.mapElement.parentElement.querySelector(".route-distance");
-  if (distanceNote) {
-    distanceNote.textContent = "目前已選路線：約 " +
-      (activePoints.length > 1 ? distanceBetweenPoints(state.map, activePoints) / 1000 : 0).toFixed(1) +
-      " 公里";
-  }
+  updateDistanceNote(state);
   renderRouteBuilder(state);
+
+  if (activePoints.length < 2) return;
+  const controller = new AbortController();
+  state.routeAbortController = controller;
+  fetchWalkingRoute(activePoints, controller.signal)
+    .then(({ points, distanceMeters }) => {
+      if (state.routeRequestId !== requestId) return;
+      if (state.routeLine) state.map.removeLayer(state.routeLine);
+      state.routeLine = L.polyline(points, {
+        color: "#2e6f95",
+        weight: 5,
+        opacity: 0.9
+      }).addTo(state.map);
+      state.routeDistanceMeters = distanceMeters;
+      state.routeDistanceSource = "walking";
+      updateDistanceNote(state);
+      renderRouteBuilder(state);
+    })
+    .catch((error) => {
+      if (error.name !== "AbortError") {
+        console.warn("Walking route unavailable; using straight-line estimate.", error);
+      }
+    });
 }
 
 function createCityWalkMap(routeName, mapElement) {
@@ -795,7 +962,11 @@ function createCityWalkMap(routeName, mapElement) {
     mainMarkers: [],
     optionalMarkers: [],
     routeLine: null,
-    dragPosition: null
+    dragPosition: null,
+    routeAbortController: null,
+    routeRequestId: 0,
+    routeDistanceMeters: 0,
+    routeDistanceSource: "estimated"
   };
   routeStates[routeName] = state;
 
@@ -804,7 +975,7 @@ function createCityWalkMap(routeName, mapElement) {
       icon: makeRouteIcon(true, getStopLetter(routeName, "main", index), getStopCategory(routeName, stop))
     }).addTo(map);
     marker.bindPopup(
-      "<strong>" + getStopLetter(routeName, "main", index) + "｜" + stop[0] + "</strong><br>" +
+      "<strong>" + getStopLetter(routeName, "main", index) + "｜" + getDisplayStopName(routeName, stop[0]) + "</strong><br>" +
       guide.stops[index][1] + "<br><small>" +
       getStopCategory(routeName, stop) + "｜看點：" +
       guide.stops[index][2] + "</small>"
@@ -823,7 +994,7 @@ function createCityWalkMap(routeName, mapElement) {
       )
     }).addTo(map);
     marker.bindPopup(
-      "<strong>" + getStopLetter(routeName, "optional", index) + "｜Optional｜" + stop[0] + "</strong><br>" + stop[3] +
+      "<strong>" + getStopLetter(routeName, "optional", index) + "｜Optional｜" + getDisplayStopName(routeName, stop[0]) + "</strong><br>" + stop[3] +
       "<br><small>" + getStopCategory(routeName, stop) + "</small>" +
       '<br><button class="add-route-button" type="button" data-route-action="toggle-optional" data-city="' +
       routeName + '" data-kind="optional" data-index="' + index + '">加入／移除路線</button>'
@@ -832,11 +1003,12 @@ function createCityWalkMap(routeName, mapElement) {
     return [stop[1], stop[2]];
   });
 
-  const accommodationPoints = (cityAccommodationStops[routeName] || []).map((stop) => {
-    L.marker([stop[1], stop[2]], { icon: makeAccommodationIcon() })
+  const accommodationPoints = (cityAccommodationStops[routeName] || []).map((stop, index) => {
+    const label = "H" + (index + 1);
+    L.marker([stop[1], stop[2]], { icon: makeAccommodationIcon(label) })
       .addTo(map)
       .bindPopup(
-        "<strong>H｜" + stop[0] + "</strong><br>" + stop[3] +
+        "<strong>" + label + "｜" + stop[0] + "</strong><br>" + stop[3] +
         '<br><a href="https://www.google.com/maps/search/?api=1&query=' +
         encodeURIComponent(stop[0] + ", Beatenplatz 4, Zürich") +
         '" target="_blank" rel="noreferrer">Google Maps →</a>'
