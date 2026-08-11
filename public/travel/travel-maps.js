@@ -18,11 +18,12 @@ const cityWalkRoutes = {
     ["Bern Bahnhof", 46.948040, 7.439650],
     ["Bundeshaus", 46.946600, 7.444000],
     ["Zytglogge", 46.948010, 7.451330],
+    ["Kramgasse", 46.948700, 7.454500],
     ["Bern Minster", 46.947000, 7.451240],
     ["Münsterplattform", 46.945900, 7.452220],
     ["Nydeggbrücke", 46.948820, 7.459000],
     ["BearPark", 46.948700, 7.459800],
-    ["Rosengarten", 46.950500, 7.466000]
+    ["Rosengarten", 46.951500, 7.459900]
   ],
   freiburg: [
     ["Freiburg (Breisgau) Hbf", 47.997800, 7.842900],
@@ -80,20 +81,21 @@ const cityWalkGuides = {
   },
   bern: {
     options: [
-      ["完整路線", "約半天，從聯邦政治中心走到 Aare 河、BearPark 及 Rosengarten。"],
-      ["短版路線", "Bern Bahnhof → Bundeshaus → Zytglogge → Bern Minster → Münsterplattform。"],
-      ["河岸加強版", "由 BearPark 延伸至 Aare 河畔，再視體力前往 Rosengarten。"],
-      ["雨天備案", "Bern Historical Museum、Einstein House 及 Old City 拱廊。"]
+      ["Full City Walk（推薦）", "約 4–5 公里、4.5–5.5 小時；由 Bern Bahnhof 經聯邦政治區、UNESCO Old City、Einstein House、Minster、Aare 河谷、BearPark 到 Rosengarten，最後乘 bus 10 返回市中心。"],
+      ["精简版", "Bern Bahnhof → Bundeshaus → Zytglogge → Kramgasse → Bern Minster，约 2–2.5 小时；适合只有半天或天气窗口较短时。"],
+      ["自然景觀版", "完整 Old City 主線（含 Einstein House）後前往 BearPark、Aare 河畔及 Rosengarten；Münsterplattform 視體力與天氣選加，上坡段可改乘 bus 10。"],
+      ["雨天文化版", "Bern Bahnhof → Bundeshaus 外觀 → Old City 拱廊 → Zytglogge → Einstein House → Bern Minster；以有遮蔽路段和室內景點為主。"]
     ],
     stops: [
-      ["Bern Bahnhof", "從交通樞紐進入 Bern，城市街道很快轉入具有連續拱廊的 Old City。", "可先在車站 Tourist Information 取得城市資料。"],
-      ["Bundeshaus", "聯邦議會所在地，理解 Bern 作為 Switzerland 政治中心的角色。", "議會開放時可查詢官方導覽場次。"],
-      ["Zytglogge", "中世紀鐘樓及 Bern 的城市象徵，適合觀察鐘樓與街道軸線。", "可預約鐘樓導覽，否則在外部欣賞即可。"],
-      ["Bern Minster", "哥德式教堂及 Old City 天際線核心，外立面細節值得慢看。", "可登塔看 Bern 屋頂與 Aare 河。"],
-      ["Münsterplattform", "靠近教堂的高地平台，能看見 Aare 河谷及 Gurten 方向。", "適合買簡單午餐或作短暫休息。"],
-      ["Nydeggbrücke", "連接 Old City 與河東側的橋，能看見 Bern 建在高地上的城市結構。", "可在橋上拍攝 Old City 全景。"],
-      ["BearPark", "Bern 的城市象徵與 Aare 河畔公共空間，適合了解城市與自然的關係。", "可加 Altes Tramdepot 啤酒廠餐廳。"],
-      ["Rosengarten", "由高處觀看 Bern Old City 最好的位置之一，適合在 City Walk 收尾。", "可只乘巴士前往，作為低體力版本終點。"]
+      ["Bern Bahnhof", "大型交通樞紐與 City Walk 起點；出站後先經 Bahnhofplatz 進入 Spitalgasse / Marktgasse 的拱廊軸線。", "公共交通／戶外：無入場票。住朋友家通常沒有 Bern-Ticket；先按朋友地址另買 Libero 市內票並放下大行李。"],
+      ["Bundeshaus", "Swiss Federal Palace 與 Bundesplatz 代表 Bern 作為 Switzerland federal city 的政治角色；廣場上的 26 道噴泉象徵各州。", "外观与 Bundesplatz 可自由参观；议会内部导览受会期、星期与安检安排影响，必须通过官方日历预约并携带证件。"],
+      ["Zytglogge", "曾是城市西側城門，後來成為鐘樓；整點前約 5 分鐘可看 1530 年代 astronomical clock 的機械人偶。", "外觀全天免費。塔內只可參加約 1 小時 guided tour；現行 public tour 成人 CHF 25、6–16 歲 CHF 12，private tour CHF 300。場次和語言須按 booking calendar 確認，約 130 級樓梯且不適合行動不便者。"],
+      ["Kramgasse", "UNESCO Old City 的主要歷史街道；連續 Lauben 拱廊、16 世紀噴泉、地窖商店與砂岩立面共同呈現 Bern 的步行尺度。", "戶外街道全天免費；週日多數零售店休息，但拱廊、噴泉和建築仍可看。Einstein House 位於 Kramgasse 49，已列入完整版預設，預留 30–45 分鐘；時間緊時可跳過。"],
+      ["Bern Minster", "Switzerland 最高教堂尖塔及 Bern Old City 天際線核心；西門 Last Judgement 雕刻、nave 與 tower 是重點。", "夏季一般週一至六 church 10:00–17:00、週日 11:30–17:00；tower 最後登塔 16:30。成人登塔 CHF 6、344 級樓梯、無 lift；禮拜及特別活動可臨時限制參觀。"],
+      ["Münsterplattform", "Minster 後方高地平台，能俯瞰 Aare 河谷、Matte district 與 Gurten；適合作為觀景與補水的可選延伸。", "戶外平台免費且修復期間仍維持開放；retaining wall 工程持續至 2026 Q4，預期有 scaffolding 及小型圍封。雨後靠崖邊路面可能濕滑。"],
+      ["Nydeggbrücke", "跨越 Aare 河谷、連接 Old City 與 BearPark 的橋，最能看清 Bern 半島、高低城與河流地形。", "戶外橋樑免費；從 Old City 前往 BearPark 為下坡，反向返回較費力。"],
+      ["BearPark", "Bern 熊徽章與城市身份的現代展示區，沿 Aare 河坡地延伸；觀景平台能回望 Old City。", "戶外觀景區免費、通常全天可看；熊可能因天氣或休息不在視線內。不要把看到熊當作保證。旁邊可在 Altes Tramdepot 休息。"],
+      ["Rosengarten", "由東側高地俯瞰整個 Aare 半島、Minster 與 Old City，是最適合收尾的城市全景。", "公園免費、通常全天開放；BearPark 步行上坡約 10–15 分鐘。2026 spring 的 demonstration vineyard 工程可能令 restaurant 旁步道改道，8 月是否完全復原須臨行確認。體力不足時乘 bus 10 往返。"]
     ]
   },
   freiburg: {
@@ -115,18 +117,18 @@ const cityWalkGuides = {
   },
   heidelberg: {
     options: [
-      ["完整路線", "先由 Heidelberg Hbf 乘約 10 分鐘 tram / bus 到 Bismarckplatz，再步行約 2–3 公里到 Old Bridge。"],
-      ["短版路線", "Bismarckplatz → Hauptstraße → Universitätsplatz → Marktplatz → Old Bridge。"],
-      ["景觀加強版", "City Walk 後加入 Heidelberg Castle 或 Philosopher’s Walk，但建議另安排完整半天。"],
-      ["雨天備案", "Heidelberg University、Kurpfälzisches Museum、Castle 室內部分及咖啡店。"]
+      ["Full City Walk（推薦）", "約 2–3 公里、2–3 小時；由 Bismarckplatz 走進 University / Old Town，最後在 Old Bridge 看 Castle、Neckar 與 Philosophenweg。"],
+      ["抵達日短版", "Bismarckplatz → Hauptstraße → Universitätsplatz → Heiliggeistkirche → Marktplatz → Old Bridge；8/23 不加 Castle 山坡。"],
+      ["Castle / 山景延伸", "Castle 或 Philosophenweg 選一個獨立半日；不將兩側山坡、Heiligenberg 和 Königstuhl 疊加。"],
+      ["雨天文化版", "University Museum（週二至日）→ Student Prison → Kurpfälzisches Museum → Old Town café；週一移除 University Museum。"]
     ],
     stops: [
-      ["Bismarckplatz", "Heidelberg 公共交通及城市生活的重要節點，適合作為 City Walk 的真正起點。", "從 Heidelberg Hbf 乘 tram / bus 約 10 分鐘，避免拉長步行。"],
-      ["Hauptstraße", "Old Town 的主要步行街，商店、餐廳、大學生活及歷史建築集中。", "可按興趣繞入小巷，避免只走主街。"],
-      ["Universitätsplatz", "大學城文化的代表空間，能感受 Heidelberg 的學生及學術氣質。", "可尋找 Student Prison 及大學歷史相關景點。"],
-      ["Heiliggeistkirche", "Old Town 的核心教堂，位於 Schloss、Old Bridge 與 Marktplatz 之間。", "可搭配 Marktplatz 及周邊餐廳。"],
-      ["Marktplatz", "城市歷史及日常生活交會的廣場，也是觀看 Heidelberg Castle 的重要位置。", "傍晚回訪可觀察白天與夜間不同氛圍。"],
-      ["Old Bridge", "Neckar 河上的經典視角，能同時看到 Old Town、Castle 及 Philosopher’s Walk 山坡。", "可沿河邊或前往 Philosopher’s Walk 延伸。"]
+      ["Bismarckplatz", "Heidelberg 公共交通及城市生活的重要節點，是 City Walk 的真正起點。", "由 Heidelberg Hbf tram / bus 約 10 分鐘；先放行李，避免拉長步行。"],
+      ["Hauptstraße", "Old Town 主步行街，商店、餐廳、大學生活及歷史建築集中。", "戶外免費；週日零售較少，8/23 以街景和建築為主。"],
+      ["Universitätsplatz", "大學城文化的代表空間，能感受 Heidelberg 學術傳統。", "University Museum 夏季週二至日 10:00–18:00、週一閉館；Student Prison 夏季每日 10:00–18:00。"],
+      ["Heiliggeistkirche", "Old Town 核心教堂，位於 Castle、Old Bridge 與 Marktplatz 之間。", "週一至六 11:00–17:00；週日 12:00–17:00，11:00 service 時不可作 sightseeing。"],
+      ["Marktplatz", "城市歷史及日常生活交會的廣場，也是觀看 Heidelberg Castle 的重要位置。", "戶外免費；抵達日晚間在此看 Castle 山坡即可，不安排上山。"],
+      ["Old Bridge", "Neckar 河上的經典視角，同時看到 Old Town、Castle 及 Philosophenweg 山坡。", "戶外免費；作主線終點，之後沿河返回或搭公共交通。"]
     ]
   },
   frankfurt: {
@@ -179,12 +181,17 @@ const cityWalkOptionalStops = {
     ["Conditorei Schober", 47.370865, 8.541847, "Wühre 15｜Limmat 河邊的 hot chocolate、praline、cake 與 pastry。週二至五 10:00–18:30｜週六 10:00–17:30｜週日、週一休息；適合 8/15 下午茶，不適合週日。"]
   ],
   bern: [
-    ["Bern Historical Museum", 46.945300, 7.445300, "了解 Bern 及 Switzerland 歷史文化"],
-    ["Einstein House", 46.948900, 7.451400, "Einstein 曾居住的歷史房屋"],
-    ["Altes Tramdepot", 46.948600, 7.460700, "BearPark 旁的啤酒廠餐廳"],
-    ["Marzili", 46.938200, 7.444600, "Aare 河及 Marzili funicular 的入口"],
-    ["Gurtenbahn", 46.929200, 7.465000, "前往 Gurten local mountain 的纜車站"],
-    ["French Church", 46.948000, 7.447000, "Bern Old City 內歷史悠久的教堂，保留中世紀建築特色"]
+    ["Bern Historical Museum", 46.945300, 7.445300, "Bern 与 Switzerland 历史、Einstein Museum 及文化展览。通常有固定休馆规律，作为雨天选项前须查看官方日历；开放时可安排约 1.5–2 小时。"],
+    ["Einstein House", 46.948900, 7.451400, "Kramgasse 49｜Einstein 1903–1905 年居所。2026/2/4–12/18 每日 10:00–17:00、最後入場 16:45；成人 CHF 8，Swiss Travel Pass 成人 CHF 6。空間小，預留 30–45 分鐘。"],
+    ["Altes Tramdepot", 46.948600, 7.460700, "BearPark 旁的 brewery restaurant，可看 Old City 與 Aare 河。適合 BearPark 後午餐、啤酒或休息；週末／晚餐時段建議訂位，飲酒後不要安排 Aare 水上活動。"],
+    ["Marzili", 46.938200, 7.444600, "Aare 河與 Marzili outdoor pool 一帶的 Bern 夏季生活區。河水流速快，不把自行下河游泳列為觀光活動；只散步或在正式泳池活動較穩妥。"],
+    ["Gurtenbahn", 46.929200, 7.465000, "前往 Gurten local mountain 的 funicular lower station。適合獨立半日，不接在 Full City Walk 後；住朋友家通常沒有 Bern-Ticket，需另查 Libero ticket。"],
+    ["French Church", 46.948000, 7.447000, "Bern Old City 內的 former Dominican church，反映 Bern 中世紀宗教與 Reformation 歷史。開放受 worship、concert 與活動影響，只有路過且大門開放時才入內。"],
+    ["Kornhauskeller", 46.949100, 7.447600, "Kornhausplatz 18｜宏偉拱頂地窖餐廳；現行菜單有 CHF 39 Berner Platte、Kornhaus Rösti 與 Bärner Geschnetzeltes。週一至六 11:30–14:30、17:30–23:30；週日 12:00–15:00、17:30–22:00。建議訂位。"],
+    ["Restaurant Harmonie", 46.947900, 7.450200, "Hotelgasse 3｜传统 Bern restaurant，主打 fondue、Chäshörnli 和 Swiss home-style dishes。营业日与最后点餐时间请临行查看餐厅官网。"],
+    ["Restaurant Rosengarten", 46.951400, 7.459900, "Rosengarten 旁的景觀餐廳，每日 09:00–23:30；適合 City Walk 終點 coffee、午餐或 sunset dinner。景觀座位受天氣影響，熱門時段建議訂位。"],
+    ["Lötschberg", 46.947300, 7.441700, "Zeughausgasse 16｜每日 11:00–23:00、hot food 11:45–21:30；可吃 rösti、fondue、raclette 與 Swiss wine。比景觀餐廳更靠近 Bern Bahnhof，週日抵達晚餐亦可。"],
+    ["Confiserie Tschirren", 46.948200, 7.447800, "Kramgasse 一带的 Bern chocolate / confectionery stop，适合 pralines、truffles 或小份甜点。零售营业受星期与假日影响，以店方当日资料为准。"]
   ],
   freiburg: [
     ["Schlossbergbahn", 47.992800, 7.858500, "較省力登上 Schlossberg 的纜車"],
@@ -193,12 +200,15 @@ const cityWalkOptionalStops = {
     ["St. Martin Church", 47.995000, 7.851800, "Münsterplatz 附近的歷史教堂，適合順路參觀"]
   ],
   heidelberg: [
-    ["Heidelberg Castle", 49.410600, 8.715700, "Heidelberg 的核心歷史景點及城市全景"],
+    ["Heidelberg Castle", 49.410600, 8.715700, "Castle 每日 09:00–18:00、最後入場 17:30；adult €11 含 lower funicular return、courtyard、Great Barrel 與 Pharmacy Museum。8/24 獨立安排，勿放進 8/23 抵達日。"],
     ["Philosopher's Walk", 49.414500, 8.717500, "眺望 Old Town、Neckar 河及 Castle 的步道"],
     ["Kurpfälzisches Museum", 49.412000, 8.707900, "藝術、考古及 Heidelberg 地區歷史"],
-    ["Student Prison", 49.410200, 8.706200, "大學城獨有的學生歷史空間"],
+    ["Student Prison", 49.410200, 8.706200, "大學城獨有的學生歷史空間；夏季每日 10:00–18:00、13:45–14:15 暫停，需 locker 和 €1 coin，樓梯限制多，建議預約。"],
     ["Königstuhl", 49.381300, 8.716700, "更高角度俯瞰 Heidelberg 及 Rhine plain"],
-    ["Jesuit Church", 49.410900, 8.706800, "Heidelberg Old Town 內宏偉的巴洛克教堂"]
+    ["Jesuit Church", 49.410900, 8.706800, "Heidelberg Old Town 內宏偉的巴洛克教堂"],
+    ["Hackteufel", 49.414000, 8.709500, "Old Bridge 附近傳統餐廳；Maultaschen、Saumagen、Spätzle。週一至三、週五至日 11:30–22:00，週四休息。"],
+    ["Schnitzelbank Heidelberg", 49.410300, 8.707000, "Old Town 晚餐：Saumagen、Leberknödel、Schnitzel、Käsespätzle。週一至五 17:00–22:00、週六日 12:00–22:00。"],
+    ["Café Knösel", 49.410100, 8.706400, "Student Kiss chocolate 的原創甜點店，適合 University / Hauptstraße 之間短停。"]
   ],
   frankfurt: [
     ["Städel Museum", 50.103800, 8.675800, "Museum Embankment 的主要藝術博物館"],
@@ -226,6 +236,7 @@ const attractionImageQueries = {
   "Bern Bahnhof": "Bern railway station",
   Bundeshaus: "Federal Palace of Switzerland",
   Zytglogge: "Zytglogge",
+  Kramgasse: "Kramgasse Bern",
   "Bern Minster": "Bern Minster",
   Münsterplattform: "Münsterplattform Bern",
   Nydeggbrücke: "Nydeggbrücke",
@@ -307,6 +318,16 @@ const attractionImageQueries = {
   "Bern Historical Museum": "Bern Historical Museum",
   "Einstein House": "Einstein House Bern",
   "Altes Tramdepot": "Altes Tramdepot Bern",
+  Kornhauskeller: "Kornhaus Bern",
+  "Restaurant Harmonie": "Restaurant Harmonie Bern",
+  "Restaurant Rosengarten": "Rosengarten Bern",
+  Lötschberg: "Lötschberg restaurant Bern",
+  "Confiserie Tschirren": "Swiss chocolate pralines",
+  "Berner Platte": "Berner Platte",
+  "Bern Rösti": "Rösti",
+  Chäshörnli: "Swiss macaroni cheese",
+  Zibelechueche: "Swiss onion tart",
+  "Bernese chocolate": "Swiss chocolate pralines",
   Marzili: "Marzili Bern",
   Gurtenbahn: "Gurtenbahn",
   "French Church": "French Church Bern",
@@ -365,8 +386,9 @@ const cityWalkPresets = {
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
       { type: "main", index: 2 }, { type: "main", index: 3 },
-      { type: "main", index: 4 }, { type: "main", index: 5 },
-      { type: "main", index: 6 }, { type: "main", index: 7 }
+      { type: "optional", index: 1 }, { type: "main", index: 4 },
+      { type: "main", index: 6 }, { type: "main", index: 7 },
+      { type: "main", index: 8 }
     ],
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
@@ -376,14 +398,16 @@ const cityWalkPresets = {
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
       { type: "main", index: 2 }, { type: "main", index: 3 },
-      { type: "main", index: 4 }, { type: "main", index: 5 },
+      { type: "optional", index: 1 }, { type: "main", index: 4 },
       { type: "main", index: 6 }, { type: "main", index: 7 },
+      { type: "main", index: 8 },
       { type: "optional", index: 3 }
     ],
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
       { type: "main", index: 2 }, { type: "main", index: 3 },
-      { type: "optional", index: 0 }, { type: "optional", index: 1 }
+      { type: "optional", index: 1 }, { type: "main", index: 4 },
+      { type: "optional", index: 0 }
     ]
   ],
   freiburg: [
@@ -459,6 +483,18 @@ const cityWalkPresets = {
   ]
 };
 
+const cityWalkDefaultRoutes = {
+  bern: cityWalkPresets.bern[0]
+};
+
+function getDefaultRouteItems(routeName) {
+  const configuredRoute = cityWalkDefaultRoutes[routeName];
+  const routeItems = configuredRoute || cityWalkRoutes[routeName].map((stop, index) => ({
+    type: "main", index
+  }));
+  return routeItems.map((item) => ({ ...item, active: true }));
+}
+
 const attractionCategories = {
   zurich: {
     "Zurich HB": "交通／城市入口",
@@ -505,6 +541,7 @@ const attractionCategories = {
     "Bern Bahnhof": "交通／城市入口",
     Bundeshaus: "政治／歷史",
     Zytglogge: "歷史／城市地標",
+    Kramgasse: "老城／拱廊與噴泉",
     "Bern Minster": "教堂／宗教歷史",
     Münsterplattform: "觀景／散步",
     Nydeggbrücke: "橋樑／觀景",
@@ -515,7 +552,12 @@ const attractionCategories = {
     "Altes Tramdepot": "餐廳／啤酒",
     Marzili: "河岸／休閒",
     Gurtenbahn: "交通／自然觀景",
-    "French Church": "教堂／宗教歷史"
+    "French Church": "教堂／宗教歷史",
+    Kornhauskeller: "餐廳／Bernese cuisine",
+    "Restaurant Harmonie": "餐廳／傳統美食",
+    "Restaurant Rosengarten": "餐廳／景觀",
+    Lötschberg: "餐廳／Swiss cuisine",
+    "Confiserie Tschirren": "巧克力／甜點"
   },
   freiburg: {
     "Freiburg (Breisgau) Hbf": "交通／城市入口",
@@ -542,7 +584,10 @@ const attractionCategories = {
     "Kurpfälzisches Museum": "博物館／藝術歷史",
     "Student Prison": "歷史／大學文化",
     Königstuhl: "自然／觀景",
-    "Jesuit Church": "教堂／宗教歷史"
+    "Jesuit Church": "教堂／宗教歷史",
+    Hackteufel: "餐廳／Palatinate cuisine",
+    "Schnitzelbank Heidelberg": "餐廳／傳統美食",
+    "Café Knösel": "咖啡／巧克力"
   },
   frankfurt: {
     "Frankfurt (Main) Hbf": "交通／城市入口",
@@ -595,6 +640,26 @@ const bilingualStopNames = {
     "Conditorei Schober": "Conditorei Schober (Coffee / Chocolate)",
     "St. Peter's Church": "St. Peter's Church (St Peter Church)",
     Predigerkirche: "Predigerkirche (Preachers' Church)"
+  },
+  bern: {
+    "Bern Bahnhof": "Bern Bahnhof (Bern Main Station)",
+    Bundeshaus: "Bundeshaus (Federal Palace)",
+    Zytglogge: "Zytglogge (Clock Tower)",
+    Kramgasse: "Kramgasse (Old Town Main Street)",
+    "Bern Minster": "Berner Münster (Bern Minster)",
+    Münsterplattform: "Münsterplattform (Minster Terrace)",
+    Nydeggbrücke: "Nydeggbrücke (Nydegg Bridge)",
+    BearPark: "BärenPark (BearPark)",
+    Rosengarten: "Rosengarten (Rose Garden)",
+    "Bern Historical Museum": "Bernisches Historisches Museum (Bern Historical Museum)",
+    "Einstein House": "Einsteinhaus (Einstein House)",
+    Marzili: "Marzili (Aare Riverside District)",
+    "French Church": "Französische Kirche (French Church)",
+    Kornhauskeller: "Kornhauskeller (Granary Cellar)",
+    "Restaurant Harmonie": "Restaurant Harmonie (Traditional Bern Restaurant)",
+    "Restaurant Rosengarten": "Restaurant Rosengarten (Rose Garden Restaurant)",
+    Lötschberg: "Lötschberg (Swiss Restaurant)",
+    "Confiserie Tschirren": "Confiserie Tschirren (Bern Chocolate)"
   }
 };
 
@@ -958,7 +1023,7 @@ function createCityWalkMap(routeName, mapElement) {
     routeName,
     map,
     mapElement,
-    routeItems: stops.map((stop, index) => ({ type: "main", index, active: true })),
+    routeItems: getDefaultRouteItems(routeName),
     mainMarkers: [],
     optionalMarkers: [],
     routeLine: null,
@@ -1079,9 +1144,7 @@ function handleRouteAction(action, routeName, element) {
       state.routeItems.splice(existing, 1);
     }
   } else if (action === "reset") {
-    state.routeItems = cityWalkRoutes[routeName].map((stop, index) => ({
-      type: "main", index, active: true
-    }));
+    state.routeItems = getDefaultRouteItems(routeName);
   } else if (action === "fit") {
     const stops = cityWalkOptionalStops[routeName] || [];
     state.map.fitBounds(
