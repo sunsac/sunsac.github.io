@@ -14,7 +14,10 @@
   </div></header>
   <main>
     <a class="back" href="overview.html">← 返回 Overview</a>
-    <section>
+    <nav class="contents-nav" aria-label="Freiburg guide contents">
+      <strong>本頁目錄</strong><a href="#city-walk">City Walk</a><a href="#food">美食</a><a href="#transport">交通</a><a href="#daytrips">一日遊</a>
+    </nav>
+    <section id="arrival">
       <h2>8 月 20 日（四）｜Bern → Freiburg</h2>
       <p class="meta">住宿：Freiburg｜跨境轉移預留約 2.5–3.5 小時</p>
       <div class="grid">
@@ -40,7 +43,7 @@
         </article>
       </div>
     </section>
-    <section>
+    <section id="city-walk">
       <h2>Freiburg City Walk</h2>
       <p><code>Freiburg (Breisgau) Hbf → Martinstor → Münsterplatz → Freiburg Minster → Konviktstraße → Schwabentor → Schlossberg</code></p>
       <div class="route-map" data-city-map="freiburg" aria-label="Freiburg City Walk 地圖"></div>
@@ -49,7 +52,8 @@
       <div class="map-legend"><span><i class="legend-route">A</i>景點固定字母</span><span><i class="legend-optional">B</i>Optional 固定字母</span></div>
       <div data-city-guide="freiburg"></div>
     </section>
-    <section>
+    <section id="food" data-city-food-guide="freiburg"></section>
+    <section id="transport">
       <h2>交通安排</h2>
       <ul>
         <li>Freiburg (Breisgau) Hbf → Martinstor 約 10–15 分鐘步行，適合作為抵達後的短轉移段。</li>
@@ -58,7 +62,7 @@
         <li>完整 Schlossberg Panorama / Fortress route 不放在 8 月 20 日搬行李日；建議放到有完整半天的日子。</li>
       </ul>
     </section>
-    <section>
+    <section id="area-overview">
       <h2>Freiburg 周邊位置總覽</h2>
       <p>以下地圖以 Freiburg 為中心，展示各個周邊選項的大致方向和距離關係。地圖上的連線只代表位置關係，不代表實際鐵路路線。</p>
       <div id="freiburg-overview-map" class="route-map" aria-label="Freiburg 周邊景點位置總覽地圖"></div>
@@ -70,7 +74,7 @@
       </div>
       <p class="map-note">位置編號與下方卡片對應；點擊標記可查看該選項的主題。詳細交通請進入各自的 Full-day 頁面。</p>
     </section>
-    <section>
+    <section id="daytrips">
       <h2>8 月 21–22 日｜Freiburg 周邊 Full-day Optional</h2>
       <p>Freiburg City Walk 已安排在抵達日；以下選項可按天氣、興趣和體力挑選。每張卡片都是獨立 Full-day 行程，點擊後查看詳細時間軸、地圖、景點、餐廳和備案。</p>
       <div class="activity-group">
@@ -102,6 +106,7 @@
   </main>
   <footer><p>前一站：<a href="bern.html">Bern</a>｜路線：Freiburg → Heidelberg｜下一站：<a href="heidelberg.html">Heidelberg</a></p></footer>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="city-food-guides.js?v=20260811-1"></script>
   <script src="travel-maps.js"></script>
   <script src="freiburg-overview-map.js"></script>
 </body>

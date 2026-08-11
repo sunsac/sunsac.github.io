@@ -57,7 +57,7 @@ function renderZurichCityPlanningMap() {
   const element = document.querySelector("#zurich-city-planning-map");
   if (!element || !window.L) return;
 
-  const map = L.map(element, { scrollWheelZoom: false });
+  const map = L.map(element);
   L.control.scale({ imperial: false, metric: true, maxWidth: 120 }).addTo(map);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 18,
