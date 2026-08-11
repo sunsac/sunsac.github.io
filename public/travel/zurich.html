@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zurich｜Switzerland–Germany 旅程</title>
-  <link rel="stylesheet" href="travel.css">
+  <link rel="stylesheet" href="travel.css?v=20260811-10">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
@@ -16,54 +16,73 @@
     <a class="back" href="overview.html">← 返回 Overview</a>
     <nav class="contents-nav" aria-label="Zurich guide contents">
       <strong>本頁目錄</strong>
+      <a href="#trip-dashboard">行程總覽</a>
       <a href="#arrival">抵達日</a>
       <a href="#sunday-morning">週日上午</a>
       <a href="#transport">機場與交通</a>
       <a href="#city-walk">City Walk</a>
-      <a href="#attractions">景點</a>
       <a href="#food">美食</a>
       <a href="#backup">備案</a>
       <a href="#city-structure">背景補充</a>
     </nav>
+    <section id="trip-dashboard" class="zurich-trip-dashboard">
+      <div class="trip-dashboard-heading">
+        <div><p class="eyebrow section-eyebrow">ZÜRICH AT A GLANCE</p><h2>兩天行程執行總覽</h2></div>
+        <p>先看今天要做甚麼；交通、景點與餐飲細節再到下方展開。</p>
+      </div>
+      <div class="trip-dashboard-grid">
+        <article><span>8/15 · 抵達日</span><strong>入住後完成 City Walk</strong><p>09:45 抵達機場 → 25hours Langstrasse → 14:00 左右開始步行 → Old Town 晚餐。</p><a href="#arrival">查看當日日程 →</a></article>
+        <article class="is-primary"><span>8/16 · 推薦方案</span><strong>Hillsong Zürich 10:30</strong><p>酒店附近早餐 → 完整參加現代敬拜 → 取行李 → 約 13:00–13:30 前往 Bern。</p><a href="#sunday-morning">查看主方案與替代方案 →</a></article>
+        <article><span>預設 City Walk</span><strong>約 5–6 公里 · 4–5 小時</strong><p>Old Town、湖岸、Kunsthaus、University Hill 與 ETH / Polyterrasse 完整閉環。</p><a href="#city-walk">打開互動路線 →</a></article>
+        <article><span>交通與住宿</span><strong>3-zone 單程票＋25hours</strong><p>機場直達 Zürich HB；酒店位於 HB 西側，寄放行李後再開始步行。</p><a href="#transport">查看交通判斷 →</a></article>
+      </div>
+    </section>
     <section id="arrival">
       <h2>8 月 15 日（六）｜Zurich 全日行程 Overview</h2>
       <p class="meta">09:45 抵達 Zurich Airport｜已訂住宿：25hours Hotel Zürich Langstrasse（Langstrasse 150，Zürich HB 西側）</p>
-      <div class="daytrip-timeline">
-        <article class="daytrip-time"><strong>09:45–11:15</strong><p>抵達、入境及取大型行李。先開通網絡、確認 SBB Mobile / ZVV app 與住宿寄放行李安排。</p></article>
-        <article class="daytrip-time"><strong>11:15–12:15</strong><p>Zurich Airport → Zürich HB：購買 3-zone ticket，乘直達 train 到市中心，從 Sihlquai / Europaallee 一側出站後步行至 25hours Hotel Zürich Langstrasse。</p></article>
-        <article class="daytrip-time"><strong>12:15–14:00</strong><p>寄放行李、午餐及稍作休息；此段保留彈性，避免將航班延誤壓縮到 City Walk。</p></article>
-        <article class="daytrip-time"><strong>14:00–18:30</strong><p>套用地圖的 Zurich Full City Walk：Old Town → Münsterbrücke → Lake Zurich → Kunsthaus → University of Zurich → ETH / Polyterrasse → Predigerkirche → Zürich HB。</p></article>
-        <article class="daytrip-time"><strong>18:30–20:30</strong><p>在 Niederdorf / Old Town 晚餐，再步行或搭 tram 回 25hours Hotel Zürich Langstrasse 休息；不安排預約型夜間活動。</p></article>
+      <div class="day-agenda-weather-grid">
+        <div class="day-agenda-column">
+          <div class="daytrip-timeline">
+            <article class="daytrip-time"><strong>09:45–11:15</strong><p>抵達、入境及取大型行李。先開通網絡、確認 SBB Mobile / ZVV app 與住宿寄放行李安排。</p></article>
+            <article class="daytrip-time"><strong>11:15–12:15</strong><p>Zurich Airport → Zürich HB：購買 3-zone ticket，乘直達 train 到市中心，從 Sihlquai / Europaallee 一側出站後步行至 25hours Hotel Zürich Langstrasse。</p></article>
+            <article class="daytrip-time"><strong>12:15–14:00</strong><p>寄放行李、午餐及稍作休息；此段保留彈性，避免將航班延誤壓縮到 City Walk。</p></article>
+            <article class="daytrip-time"><strong>14:00–18:30</strong><p>套用地圖的 Zurich Full City Walk：Old Town → Münsterbrücke → Lake Zurich → Kunsthaus → University of Zurich → ETH / Polyterrasse → Predigerkirche → Zürich HB。</p></article>
+            <article class="daytrip-time"><strong>18:30–20:30</strong><p>在 Niederdorf / Old Town 晚餐，再步行或搭 tram 回 25hours Hotel Zürich Langstrasse 休息；不安排預約型夜間活動。</p></article>
+          </div>
+          <p class="small"><strong>延誤／疲累備案：</strong>若 14:00 後才離開住宿或天氣不佳，直接使用地圖的「短版 Old Town loop」，保留 Lindenhof、Fraumünster、Grossmünster、Niederdorf 與晚餐。</p>
+        </div>
+        <aside class="daily-weather-panel" data-day-weather-date="2026-08-15" data-day-weather-locations="zurich" data-day-weather-labels="全天" data-day-weather-title="8/15 · Zurich" aria-live="polite">
+          <p class="daily-weather-loading">正在取得 Zürich 當日天氣…</p>
+        </aside>
       </div>
-      <p class="small"><strong>延誤／疲累備案：</strong>若 14:00 後才離開住宿或天氣不佳，直接使用地圖的「短版 Old Town loop」，保留 Lindenhof、Fraumünster、Grossmünster、Niederdorf 與晚餐。</p>
     </section>
     <section id="sunday-morning">
       <h2>8 月 16 日（日）｜早餐、英文禮拜與前往 Bern</h2>
-      <p class="meta">目標：於 <strong>12:00 左右</strong>從 Zürich HB 出發前往 Bern。酒店退房後先把兩件大行李帶回房間或寄放至禮拜結束；勿把前往 Bern 的行李帶進 Old Town。</p>
-      <div class="daytrip-timeline">
-        <article class="daytrip-time"><strong>07:45–08:20</strong><p>在 25hours Hotel Zürich Langstrasse 整理、退房並寄放行李；帶上小背包、雨具與護照／車票即可。前一晚先在 SBB Mobile 確認 Zürich HB → Bern 的直達班次。</p></article>
-        <article class="daytrip-time"><strong>08:20–08:50</strong><p>早餐：若選 St Andrew’s，優先在 Zürich HB 的 Sprüngli 買 Bircher muesli、sandwich 或 coffee 後步行／搭 tram 往 Promenadengasse；若選 Hillsong，因 10:30 才開始，可在酒店附近慢早餐後再出發。</p></article>
-        <article class="daytrip-time"><strong>09:00–09:45</strong><p><strong>Option A｜St Andrew’s Anglican Church：</strong>Said Eucharist。英文、較安靜、傳統 Anglican 形式，結束後有時間回酒店取行李並舒適地搭 12:00 左右的火車。</p></article>
-        <article class="daytrip-time"><strong>10:30 起</strong><p><strong>Option B｜Hillsong Zürich：</strong>German + English contemporary worship。官方服務由 10:30 開始，地點在 Hohlstrasse 535，距酒店與 Zürich HB 都較遠；完整參加後通常不適合堅持 12:00 左右出發，應改乘約 12:45–13:15 後的 Bern train。</p></article>
-        <article class="daytrip-time"><strong>11:30–12:15</strong><p><strong>選 St Andrew’s 時：</strong>回 25hours 取行李 → 步行 9–12 分鐘到 Zürich HB → 搭下一班直達 Bern。目標選 12:00–12:30 的班次；普通火車通常不需訂位，但出發前以 SBB Mobile 的當日月台和班次為準。</p></article>
+      <p class="meta">推薦安排以 <strong>Hillsong Zürich 10:30</strong> 為主，完整參加後約 13:00–13:30 前往 Bern。若希望中午前後離開 Zürich，則改用下方的 St Andrew’s 替代方案。</p>
+      <div class="day-agenda-weather-grid">
+        <div class="day-agenda-column">
+          <div class="agenda-plan-label"><span>推薦方案</span><strong>Hillsong Zürich＋較晚前往 Bern</strong></div>
+          <div class="daytrip-timeline">
+            <article class="daytrip-time"><strong>07:45–08:20</strong><p>在 25hours Hotel Zürich Langstrasse 整理、退房並寄放行李；帶上小背包、雨具與護照／車票即可。前一晚先在 SBB Mobile 確認 Zürich HB → Bern 的直達班次。</p></article>
+            <article class="daytrip-time"><strong>08:20–09:30</strong><p>在酒店附近或 Langstrasse 安排慢早餐；優先 Birchermüesli、麵包與咖啡。保留充足時間，不必先繞去 Old Town。</p></article>
+            <article class="daytrip-time"><strong>09:30–10:15</strong><p>從 Langstrasse／Zürich HB 一帶前往 <strong>Hillsong Zürich</strong>（Hohlstrasse 535）。以 SBB Mobile 查詢當日連接，預留找入口與入場緩衝。</p></article>
+            <article class="daytrip-time"><strong>10:30–約 12:00</strong><p><strong>Hillsong Zürich：</strong>German + English contemporary worship，包含現代音樂與較社交的聚會氛圍。不要為趕火車只參加前半段；臨行再確認當週服務及實際結束時間。</p></article>
+            <article class="daytrip-time"><strong>12:00–13:30</strong><p>返回 25hours 取行李 → 步行至 Zürich HB → 搭下一班直達 Bern。實際班次與月台以 SBB Mobile 為準，普通火車通常不需訂位。</p></article>
+          </div>
+        </div>
+        <aside class="daily-weather-panel" data-day-weather-date="2026-08-16" data-day-weather-locations="zurich,bern" data-day-weather-labels="上午出發,下午抵達" data-day-weather-title="8/16 · 換城日" aria-live="polite">
+          <p class="daily-weather-loading">正在比較 Zürich 與 Bern 天氣…</p>
+        </aside>
       </div>
-      <div class="grid">
-        <article class="card">
-          <h3>最配合行程：St Andrew’s 09:00</h3>
-          <p>Promenadengasse 9，英語 Anglican / Episcopal 服務；從 25hours 出發約 20–25 分鐘（步行加 tram 或直接步行）。禮拜結束後仍可預留取行李和車站緩衝，最符合「早餐＋禮拜＋中午到 Bern」的節奏。</p>
-          <p class="small"><strong>建議：</strong>8:20 在 HB 快速早餐，09:00 禮拜；禮拜後如有 coffee fellowship，只短暫停留，10:10–10:20 離開即可。</p>
-        </article>
-        <article class="card">
-          <h3>如偏好現代敬拜：Hillsong 10:30</h3>
-          <p>Hohlstrasse 535，German + English、現代音樂及較社交的聚會風格。它是可行的 Sunday worship option，但與「12:00 左右前往 Bern」存在時間衝突；不建議為趕火車只參加前半段。</p>
-          <p class="small"><strong>建議：</strong>選 Hillsong 就把 Bern departure 放寬至 13:00 左右，並先確認酒店可否延後取行李；否則選 St Andrew’s 較順。</p>
-        </article>
-        <article class="card">
-          <h3>未決定時的簡單規則</h3>
-          <p><strong>要準時到 Bern：</strong>選 St Andrew’s 09:00。<strong>想體驗 worship music：</strong>選 Hillsong，接受較晚到 Bern。兩間都應在出發前一週再查看官方 calendar，確認 8 月 16 日是否有節期、特別服務或場地改動。</p>
-          <p class="small">不論選哪間，Zürich HB → Bern 的直達車程約 56–58 分鐘；到 Bern 後再步行或搭 tram 去朋友家。</p>
-        </article>
-      </div>
+      <details class="sunday-alternative">
+        <summary><span>替代方案</span><strong>St Andrew’s 09:00＋約 12:00 前往 Bern</strong><small>希望提早離開 Zürich 時使用</small></summary>
+        <div class="alternative-schedule">
+          <article><strong>08:20–08:50</strong><p>在 Zürich HB 的 Sprüngli 買 Birchermüesli、三明治或咖啡，再步行／搭 tram 前往 Promenadengasse 9。</p></article>
+          <article><strong>09:00–09:45</strong><p>St Andrew’s Anglican Church Said Eucharist：英語、安靜且較傳統的 Anglican 形式。</p></article>
+          <article><strong>09:45–12:15</strong><p>禮拜後返回酒店取行李，再到 Zürich HB 搭直達 Bern 的列車；若有 coffee fellowship，只短暫停留。</p></article>
+        </div>
+        <p class="small">兩個方案出發前一週都要再次查看官方 calendar，確認節期、特別服務或場地改動。</p>
+      </details>
     </section>
     <section id="transport">
       <h2>Zurich Airport → 市區／住宿與市內交通</h2>
@@ -91,236 +110,8 @@
       <div class="map-legend"><span><i class="legend-route">A</i>景點固定字母</span><span><i class="legend-optional">B</i>Optional 固定字母</span><span><i class="legend-worship">✦</i>英文禮拜 Optional</span><span><i class="legend-accommodation">H1</i>25hours Langstrasse（已訂）</span></div>
       <div data-city-guide="zurich"></div>
     </section>
-    <section id="attractions">
-      <h2>Zurich 經典景點與活動</h2>
-      <p class="small">建議只從以下 Optional 選 1–2 個，不要在抵達日全部安排。</p>
-      <div class="grid">
-        <article class="card">
-          <h3>Polyterrasse + ETH Zurich</h3>
-          <p>由 Central 乘 Polybahn 約 3 分鐘到 Polyterrasse，俯瞰 Old Town、Lake Zurich 及城市屋頂。</p>
-          <p class="small">通常不需要預約；適合抵達日的低體力觀景活動。</p>
-        </article>
-        <article class="card">
-          <h3>Uetliberg</h3>
-          <p>Zurich 的 local mountain，有 360 度城市、湖泊及 Alps 景觀；可只看山頂，也可走 Planet Trail。</p>
-          <p class="small">由 Zurich HB 乘 S10 約 20 分鐘；航班延誤時不建議預約固定活動。</p>
-        </article>
-        <article class="card">
-          <h3>Kunsthaus Zürich</h3>
-          <p>適合想了解 Switzerland 藝術及現代文化的一站，雨天尤其值得。</p>
-          <p class="small">可提前網上購票；週一閉館，出發前確認開放時間。</p>
-        </article>
-        <article class="card">
-          <h3>Swiss National Museum</h3>
-          <p>就在 Zurich HB 旁，適合補充 Switzerland 歷史、設計及文化背景。</p>
-          <p class="small">通常可現場購票；非常適合抵達後不想走太遠的情況。</p>
-        </article>
-        <article class="card">
-          <h3>Lindt Home of Chocolate</h3>
-          <p>巧克力歷史、互動展覽、試吃及大型商店；喜歡巧克力可專程安排。</p>
-          <p class="small">建議提前預約指定時段；前往 Kilchberg，需另查 zone 150 交通票。</p>
-        </article>
-        <article class="card">
-          <h3>Lake Zurich / Limmat River Cruise</h3>
-          <p>以較少步行從湖面理解 Zurich；Lake Zurich 有 mini、short、long cruise，Limmat River Cruise 約 50 分鐘 round trip。</p>
-          <p class="small">一般班次通常不需預約；fondue、BBQ、brunch 等 culinary cruise 建議提前訂位。</p>
-        </article>
-        <article class="card">
-          <h3>Zürich West + Im Viadukt</h3>
-          <p>體驗 Zurich 的現代、設計及創意一面；鐵路拱廊下有小店、餐飲及 Markthalle。</p>
-          <p class="small">通常不需要預約；建議獨立安排半日，不要接在完整 Old Town 主線後。</p>
-        </article>
-        <article class="card">
-          <h3>Stadtkäserei Cheese Workshop</h3>
-          <p>親手製作約 500g Mutschli cheese，包含 cheese platter 及 apéro，比單純吃 fondue 更有參與感。</p>
-          <p class="small">需要提前預約；官方資料顯示約 2 小時、6–12 人。</p>
-        </article>
-      </div>
-    </section>
     <section id="food">
       <div data-city-food-guide="zurich"></div>
-      <div class="activity-group"><h3>餐厅与实际营业安排</h3><p class="small">下面保留已按行程整理的餐厅、星期日适用性和快速补给选择；上方图文卡负责解释哪些味道真正属于 Zürich。</p></div>
-      <div class="activity-group">
-        <h3>早餐／Brunch</h3>
-        <div class="grid">
-          <article class="card">
-            <h3>Babu’s Bakery &amp; Coffeehouse</h3>
-            <p><strong>最適合慢早餐：</strong>bagel、pancake、eggs、Rösti、Birchermüesli、brunch platter 及自家 cake。Löwenstrasse 1，距 Zürich HB 不遠。</p>
-            <p class="small"><strong>時間：</strong>週六 08:00–18:00｜週日 09:00–17:00。普通早餐可直接入座；想吃完整 platter 才建議預訂。</p>
-          </article>
-          <article class="card">
-            <h3>Confiserie Sprüngli at Zürich HB</h3>
-            <p><strong>最適合趕火車或早出發：</strong>Bircher muesli、sandwich、salad、coffee 及 Luxemburgerli；比 Paradeplatz 本店更適合星期日與行李日。</p>
-            <p class="small"><strong>時間：</strong>HB Landesmuseum Hall 週六 06:30–20:00｜週日 08:00–20:00。無需訂位，take-away 最方便。</p>
-          </article>
-          <article class="card">
-            <h3>Haus Hiltl</h3>
-            <p><strong>Vegetarian / vegan 友善：</strong>歷史悠久的 vegetarian buffet、à la carte、coffee 及 pastry，適合同行者口味不同或想吃較輕的一餐。</p>
-            <p class="small"><strong>時間：</strong>週六 08:00–23:00｜週日 10:00–22:00。Sihlstrasse 28；午晚餐繁忙時可訂位。</p>
-          </article>
-        </div>
-      </div>
-      <div class="activity-group">
-        <h3>午餐</h3>
-        <div class="grid">
-          <article class="card">
-            <h3>Zeughauskeller</h3>
-            <p><strong>傳統 Swiss lunch：</strong>Bratwurst、Schweinshaxe、Wienerschnitzel、Zürcher Geschnetzeltes；大型 guild hall 氣氛最有 Zurich 老城感。</p>
-            <p class="small"><strong>時間：</strong>每日 11:30–23:00，hot food 至 22:00。Bahnhofstrasse 28a；午餐可以 walk-in，晚餐建議訂位或早到。</p>
-          </article>
-          <article class="card">
-            <h3>Swiss Chuchi – Hotel Adler</h3>
-            <p><strong>首次 fondue 的穩妥選擇：</strong>cheese fondue、raclette、Älplermagronen、Capuns、Zürcher Geschnetzeltes；在 Niederdorf，接 City Walk 很順。</p>
-            <p class="small"><strong>時間：</strong>週六、週日 12:00–23:15（kitchen 至 22:00）。熱門時段建議訂位。</p>
-          </article>
-          <article class="card">
-            <h3>午餐取捨</h3>
-            <p><strong>想吃 Swiss meat：</strong>Zeughauskeller。<strong>想吃 fondue：</strong>Swiss Chuchi。<strong>想要蔬食／彈性：</strong>Hiltl。抵達日不建議在午餐安排正式 fondue，留給晚餐較舒服。</p>
-          </article>
-        </div>
-      </div>
-      <div class="activity-group">
-        <h3>下午茶／Coffee &amp; Chocolate</h3>
-        <div class="grid">
-          <article class="card">
-            <h3>Schokolade &amp; Espresso Bar</h3>
-            <p><strong>City Walk 內最佳 chocolate stop：</strong>在 Münstergasse 19、Grossmünster / Niederdorf 間；espresso、hot chocolate 與 350+ bean-to-bar chocolate，停 15–30 分鐘即可。</p>
-            <p class="small"><strong>時間：</strong>週六 09:00–17:00｜<strong>週日休息</strong>。空間小，不適合當正餐或久坐。</p>
-          </article>
-          <article class="card">
-            <h3>Conditorei Schober</h3>
-            <p><strong>最有 Old Town 氣氛：</strong>Wühre 15，Limmat 河邊；推薦 Schober hot chocolate、praline、cake 與 pastry。</p>
-            <p class="small"><strong>時間：</strong>週二至五 10:00–18:30｜週六 10:00–17:30｜<strong>週日、週一休息</strong>。適合 8/15，不適合 8/16。</p>
-          </article>
-          <article class="card">
-            <h3>Sprüngli：Paradeplatz 或 HB</h3>
-            <p><strong>最方便的甜點備案：</strong>Luxemburgerli、praline、truffle 與咖啡。Paradeplatz / Bahnhofstrasse 店週日多不營業，星期日請直接選 Zürich HB branch。</p>
-            <p class="small"><strong>星期日備案：</strong>HB branch 至 20:00；可作前往 Bern 前的甜點或手信補給。</p>
-          </article>
-        </div>
-      </div>
-      <div class="activity-group">
-        <h3>晚餐</h3>
-        <div class="grid">
-          <article class="card">
-            <h3>Swiss Chuchi</h3>
-            <p><strong>週六、週日都可：</strong>若想把 fondue 當作第一晚的主餐，這是最順路且最穩定的選擇；搭配白酒或 non-alcoholic drink 即可，不必吃得太趕。</p>
-            <p class="small">週末 12:00–23:15；建議預訂 18:30–19:30。</p>
-          </article>
-          <article class="card">
-            <h3>Le Dézaley</h3>
-            <p><strong>更傳統、偏 French-Swiss：</strong>在 Grossmünster 腳下，選 fondue、Vaud wine 或 Zürcher Geschnetzeltes。適合 8/15 City Walk 後晚餐。</p>
-            <p class="small"><strong>時間：</strong>週一至六 11:30–14:00、18:00–24:00；<strong>週日休息</strong>。建議訂位。</p>
-          </article>
-          <article class="card">
-            <h3>Hiltl / Zeughauskeller</h3>
-            <p><strong>不想吃 fondue 的兩個方向：</strong>Hiltl 是蔬食 buffet／à la carte，星期日也開；Zeughauskeller 是傳統肉食與香腸，晚餐更熱鬧。</p>
-            <p class="small">兩者週日皆可；Hiltl 較輕鬆，Zeughauskeller 較有「到 Zurich 吃一餐」的儀式感。</p>
-          </article>
-        </div>
-      </div>
-      <div class="activity-group">
-        <h3>Snacks／快速補給</h3>
-        <div class="grid">
-          <article class="card">
-            <h3>Sternen Grill at Bellevue</h3>
-            <p><strong>最實用的 quick meal：</strong>St. Galler bratwurst、potato salad、Sternen mustard；適合湖邊、Opera House 外觀或趕 tram 前快速吃。</p>
-            <p class="small"><strong>時間：</strong>週日 10:30–23:00（last sausage 22:45）｜週二至六至 24:00。無需訂位，但熱門時間要排隊。</p>
-          </article>
-          <article class="card">
-            <h3>HB 內補給</h3>
-            <p><strong>最適合轉車前：</strong>Sprüngli sandwich / muesli / sweet，或在 station food outlets 選簡單熱食。比特地繞回 Old Town 更有效率。</p>
-            <p class="small">星期日仍有相對多 HB 店舖營業；出發前把 water、fruit、snacks 一次買好。</p>
-          </article>
-          <article class="card">
-            <h3>預約型飲食體驗</h3>
-            <p>可考慮 Zurich Food Tour、fondue tram、Lake culinary cruise；這些是獨立活動，不要硬塞入 Full City Walk 同一天。</p>
-            <p class="small">Stadtkäserei cheese workshop 是 6–12 人、至少兩週前預約的團體活動，不適合兩人臨時安排。</p>
-          </article>
-        </div>
-      </div>
-      <div class="activity-group">
-        <h3>Zurich Chocolate Picks｜特別巧克力</h3>
-        <p class="small">不要只把 Zurich chocolate 理解成超市板裝巧克力：這裡既有歷史悠久的 praline / truffle，也有較現代的 bean-to-bar。cream-filled chocolate 和 Luxemburgerli 都怕熱，買後不要長時間放在行李箱。</p>
-        <div class="grid">
-          <article class="card food-detail-card" data-attraction-name="Teuscher Champagne Truffle">
-            <h3>Teuscher Champagne Truffle</h3>
-            <p><strong>最有 Zurich 辨識度的成人向巧克力。</strong>Dom Pérignon champagne butter cream、dark chocolate filling、milk chocolate shell，外層灑糖粉或 cocoa；香氣明顯、很濃郁，一人先試 1–2 粒即可。</p>
-            <p class="small"><strong>買法：</strong>Teuscher 是 Zurich 老牌 chocolatier，適合 8/15（六）City Walk 時順路買。含酒精，且店舖一般週日休息；不宜留到 8/16 才找。</p>
-          </article>
-          <article class="card food-detail-card" data-attraction-name="Sprüngli chocolate & pralines">
-            <h3>Sprüngli Chocolate &amp; Pralines</h3>
-            <p><strong>最方便的 classic Swiss gift。</strong>除了 Luxemburgerli，Sprüngli 的 pralines、truffles、Grand Cru chocolate 和可自選的 hand-broken chocolate 都適合少量試吃或帶走。味道通常比大型超市品牌更細緻、包裝也更適合作手信。</p>
-            <p class="small"><strong>買法：</strong>Zürich HB branch 在週日仍是最穩妥選項；8/16 去 Bern 前可買小盒 Luxemburgerli 加幾粒 praline，不必特地繞去 Paradeplatz。</p>
-          </article>
-          <article class="card food-detail-card" data-attraction-name="laflor bean-to-bar chocolate">
-            <h3>laflor Bean-to-Bar Chocolate</h3>
-            <p><strong>想認真吃 cacao flavour 時選它。</strong>Zurich-made single-origin chocolate，以 cacao beans 和 organic regional sugar 為主、沒有添加物；酸香、果味、烘焙感會比 milk chocolate 更清楚，不一定「甜」，但很有產地個性。</p>
-            <p class="small"><strong>買法：</strong>可在其 Hohlstrasse manufactory 或部分 Zurich specialty stores 找到。較適合喜歡 dark chocolate 的人，不是最便利的 City Walk 購買項目。</p>
-          </article>
-          <article class="card food-detail-card" data-attraction-name="Taucherli drinking chocolate">
-            <h3>Taucherli Drinking Chocolate</h3>
-            <p><strong>最有趣的 Zurich-made 小體驗。</strong>把 ganache praline on a stick 放進熱 milk 攪拌，就變成濃厚的 hot chocolate；同品牌也有 chocolate bars 和 fondue，適合想買不那麼傳統的甜點手信。</p>
-            <p class="small"><strong>買法：</strong>不是 Old Town 必經店，較適合在 café / specialty shop 碰到時買。若帶走，選未沖泡的產品會比已製成飲料容易保存。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-    <section id="swiss-foods">
-      <h2>Swiss Foods to Try｜餐牌上的瑞士食物小百科</h2>
-      <p class="small">以下是上方餐廳常見、值得認識的瑞士食物。大部分份量偏大、cheese 和奶油比例高；兩人第一次可先合吃一份 fondue 或 raclette，再配 salad／soup，會比各自點一份更舒服。</p>
-      <div class="grid">
-        <article class="card food-detail-card" data-attraction-name="Zürcher Geschnetzeltes + Rösti">
-          <h3>Zürcher Geschnetzeltes + Rösti</h3>
-          <p><strong>Zurich 代表菜。</strong>薄切 veal 配白酒、cream 和 mushroom sauce；Rösti 則是外脆內軟的 grated potato cake。口感濃郁但不辣，是第一次在 Zurich 吃傳統主菜的安全選擇。</p>
-          <p class="small"><strong>在哪吃：</strong>Zeughauskeller、Swiss Chuchi、Le Dézaley。若午餐已吃這道，晚餐可改 fondue，避免兩餐都太濃。</p>
-        </article>
-        <article class="card food-detail-card" data-attraction-name="Cheese fondue">
-          <h3>Cheese Fondue</h3>
-          <p><strong>共食型 cheese pot。</strong>以 melted cheese、white wine 和少量 kirsch 為基底，用長叉蘸 bread。重點是慢慢吃、趁熱吃；通常有 non-alcoholic 版本，但要點餐時先確認。</p>
-          <p class="small"><strong>在哪吃：</strong>Swiss Chuchi、Le Dézaley。最適合晚餐，建議兩人共享一鍋並加 salad；乳糖不耐或不愛濃 cheese 可跳過。</p>
-        </article>
-        <article class="card food-detail-card" data-attraction-name="Raclette">
-          <h3>Raclette</h3>
-          <p><strong>熱 cheese 刮到配料上。</strong>把半輪 cheese 加熱後刮在 boiled potato、pickled onion、gherkin 和蔬菜上。比 fondue 更能自己控制每一口的 cheese 份量，鹹香、帶發酵乳香。</p>
-          <p class="small"><strong>在哪吃：</strong>Swiss Chuchi。第一次可與 fondue 二選一；若想拍照、慢慢聊天，raclette 的節奏更輕鬆。</p>
-        </article>
-        <article class="card food-detail-card" data-attraction-name="Älplermagronen">
-          <h3>Älplermagronen</h3>
-          <p><strong>Alpine comfort food。</strong>macaroni、potato、cream、cheese 和 fried onion 組成，常配 apple sauce。味道像更厚實的 cheese pasta；甜的 apple sauce 是用來平衡鹹香，不是甜點。</p>
-          <p class="small"><strong>在哪吃：</strong>Swiss Chuchi。適合不想吃 fondue、但仍想試 mountain-style Swiss food 的一餐；份量通常很飽。</p>
-        </article>
-        <article class="card food-detail-card" data-attraction-name="Capuns">
-          <h3>Capuns</h3>
-          <p><strong>Graubünden 山區特色。</strong>將 flour dough、herbs 和肉類或蔬菜包進 Swiss chard 葉，再以 milk／cream 湯汁烹煮。味道溫和、草本感較明顯，是餐牌上相對少見但很有地域感的一道。</p>
-          <p class="small"><strong>在哪吃：</strong>Swiss Chuchi。若看到不同版本，可先問是否含 pork、meat 或 dairy，方便按飲食習慣選擇。</p>
-        </article>
-        <article class="card food-detail-card" data-attraction-name="Birchermüesli">
-          <h3>Birchermüesli</h3>
-          <p><strong>比一般 cereal 更像 fresh breakfast bowl。</strong>oats、grated apple、yogurt／milk、nuts 和 fruit 混合，清爽、不太甜；很適合落地後、轉車前或想平衡前一晚 cheese meal 的早餐。</p>
-          <p class="small"><strong>在哪吃：</strong>Babu’s、Sprüngli at Zürich HB。注意部分版本含 dairy 和 nuts；HB branch 最適合 8/16 出發 Bern 前。</p>
-        </article>
-        <article class="card food-detail-card" data-attraction-name="St. Galler bratwurst">
-          <h3>St. Galler Bratwurst</h3>
-          <p><strong>Swiss sausage 的代表。</strong>以 veal 為主、質地細緻、香料溫和，常配 crispy bread roll 或 potato salad。St. Gallen 本地傳統主張不加 mustard；在 Zurich 可按自己口味配 Sternen mustard。</p>
-          <p class="small"><strong>在哪吃：</strong>Sternen Grill at Bellevue。適合 City Walk 中快速補給，不用預約；避開非正餐時間前的隊伍高峰。</p>
-        </article>
-        <article class="card food-detail-card" data-attraction-name="Luxemburgerli">
-          <h3>Luxemburgerli</h3>
-          <p><strong>Sprüngli 招牌 mini macaron。</strong>比一般 macaron 輕、外殼薄而脆，內餡柔軟；適合買幾粒試不同味道，也適合當體積小、較不怕壓壞的手信。</p>
-          <p class="small"><strong>在哪買：</strong>Sprüngli at Zürich HB 或 Paradeplatz。8/16 選 HB branch 較穩；若帶去 Bern，請避免長時間放在炎熱行李箱。</p>
-        </article>
-      </div>
-    </section>
-    <section id="resources">
-      <h2>官方資料與預約入口</h2>
-      <ul>
-        <li><a href="https://www.flughafen-zuerich.ch/en/passengers/practical/parking-and-transport/train-tram-and-bus">Zurich Airport train, tram &amp; bus</a>｜<a href="https://www.sbb.ch/en">SBB timetable &amp; tickets</a>｜<a href="https://www.zvv.ch/en/timetable-and-information/zone-map.html">ZVV zone map</a></li>
-        <li><a href="https://www.zuerich.com/en/visit/nature/uetliberg-zurichs-very-own-mountain">Uetliberg</a>、<a href="https://www.zuerich.com/en/visit/attractions/polyterrasse-federal-institute-of-technology-and-zurich-university">Polyterrasse</a>、<a href="https://www.zuerich.com/en/visit/nature/round-trips-on-the-lake-lake-zurich-navigation-company">Lake Zurich cruises</a></li>
-        <li><a href="https://kunsthaus.ch/en/besuch-planen/">Kunsthaus Zürich tickets and opening hours</a>｜<a href="https://www.lindt-home-of-chocolate.com/en/">Lindt Home of Chocolate</a></li>
-        <li><a href="https://tickets.lindt-home-of-chocolate.com/selection/timeslotpass?lang=en&productId=101502126146">Lindt timed tickets</a>｜<a href="https://www.zuerich.com/en/tours-excursions/cheese-workshop">Cheese Workshop</a></li>
-        <li><a href="https://www.zuerich.com/en/eat-drink/typical-and-traditional/raclette-and-fondue">Zurich fondue restaurant list</a>｜<a href="https://www.zuerich.com/en/offers/zurich-transport-network">ZVV transport information</a></li>
-      </ul>
     </section>
     <section id="backup">
       <h2>行程備案</h2>
@@ -329,8 +120,9 @@
         <li>下雨：縮短河岸路線，改為 Old Town、咖啡店或博物館。</li>
         <li>抵達延誤：取消完整 City Walk，保留 Grossmünster 周邊及晚餐。</li>
       </ul>
-      <h3 class="emergency-heading">緊急預案（全程適用）</h3>
-      <div class="emergency-grid">
+      <details class="reference-details emergency-details">
+        <summary><span>需要時再展開</span><strong>緊急預案（全程適用）</strong></summary>
+        <div class="emergency-grid">
         <article class="card">
           <h3>先保安全：打電話求救</h3>
           <p><strong>112</strong>：European emergency number，在 Switzerland、Germany 與 France 可求助；說明所在城市／車站／景點、發生甚麼事、傷者人數與回電號碼。</p>
@@ -351,22 +143,17 @@
           <p>先向 Police 取得報案證明，再聯絡 China Embassy / Consulate 的領事協助渠道，以及航空公司與旅遊保險。不要只憑護照照片前往機場辦理國際航班。</p>
           <p class="small">出發前將護照、機票、保險與緊急聯絡資料離線保存於兩人的手機，並各自保留一份雲端副本。</p>
         </article>
-      </div>
-    </section>
-    <section id="accommodation" class="accommodation-remarks">
-      <h2>住宿小提醒</h2>
-      <div class="grid">
-        <article class="card"><h3>已訂住宿與位置</h3><p><strong>已訂：25hours Hotel Zürich Langstrasse</strong>（Langstrasse 150），距 Zürich HB 約 9–12 分鐘步行，有 air conditioning、lift 與行李寄存，設計感與設施較豐富。它靠近 Europaallee / Langstrasse 的餐飲與夜生活，但相對不在 Old Town 核心。</p><p class="small"><strong>動線取捨：</strong>抵達及前往 Bern 時多走約 10 分鐘；換來較完整的酒店設施與 Zürich West / Langstrasse 周邊氣氛。</p></article>
-        <article class="card"><h3>確認空調與入住方式</h3><p>Zurich 中檔酒店未必有冷氣，8 月訂房時確認 air conditioning / fan；不少小型酒店採有限前台或 self check-in，晚到前先取得門禁與取匙指示。</p></article>
-        <article class="card"><h3>行李、房間與附加費</h3><p>兩件大行李優先選 lift、可提早寄放行李與 HB 10 分鐘內。城市稅常按人、按晚另計；不要假定房內有牙具、拖鞋、kettle、冰箱或免費瓶裝水。</p></article>
-        <article class="card"><h3>床品、早餐與插頭</h3><p>雙人房常見兩張單人被；酒店早餐常較貴，未包含時可在 HB、Coop 或 Migros 解決。Switzerland 使用 Type J 插座，港式三腳插頭需轉換頭。</p></article>
-      </div>
+        </div>
+      </details>
     </section>
     <section id="city-structure" class="city-planning-section">
       <p class="eyebrow section-eyebrow">BACKGROUND REFERENCE</p>
       <h2>Zurich 城市歷史、文化與空間理解</h2>
       <p>把 Zurich 看成一座由水路、宗教改革、商業與知識機構共同塑造的城市：Roman settlement <strong>Turicum</strong> 在 Limmat River 河畔發展；中世紀的 river crossing 與 churches 奠定 Old Town；其後的 finance、railway 和 universities 將城市擴展到湖邊、山坡與西側舊工業區。這也是 City Walk 從河畔教堂走到 ETH / Polyterrasse 時，風景與城市氣質逐漸轉換的原因。</p>
-      <div class="city-planning-grid">
+      <details class="reference-details">
+        <summary><span>背景資料</span><strong>展開城市分區、歷史重點與空間地圖</strong></summary>
+        <div class="reference-details-body">
+        <div class="city-planning-grid">
         <article class="card"><h3>河岸與 Old Town：最早的城市骨架</h3><p>Lindenhof（Lindenhof Hill）曾是 Roman era 的防禦高地；Limmat River 的渡口與橋樑讓兩岸聚集市場、行會與住宅。今天的狹窄石板街、Münsterbrücke（Minster Bridge）和 Niederdorf（Old Town Quarter），仍保留這種「河流是主街」的閱讀方式。</p></article>
         <article class="card"><h3>Grossmünster 與改革傳統</h3><p>16 世紀，Huldrych Zwingli 在 Grossmünster 推動 Zurich Reformation；Fraumünster 則以其修道院起源和 Chagall stained-glass windows 呈現另一層宗教與藝術記憶。兩座教堂隔河相望，是理解 Zurich 歷史最直觀的一組地標。</p></article>
         <article class="card"><h3>Bahnhofstrasse：商業與金融的轉向</h3><p>現今的 Bahnhofstrasse（Station Street）由 Zürich HB 連到 Lake Zurich，連接 historic centre、Paradeplatz 和湖畔。這條筆直、平坦的軸線體現 19 世紀 railway、banking 和高端零售帶來的現代城市形象，和 Old Town 的曲折街巷形成對比。</p></article>
@@ -382,12 +169,15 @@
         <span><i class="legend-accommodation">H1</i>25hours Langstrasse（已訂）</span>
       </div>
       <p class="map-note">色塊用於理解旅遊區域與相對位置，不是行政邊界；點擊色塊或標記可查看各區特色。Uetliberg 位於市中心西南方，作為獨立 Optional，不納入此核心地圖範圍。</p>
+        </div>
+      </details>
     </section>
   </main>
   <footer><p>路線：Zurich → Bern｜下一站：<a href="bern.html">Bern</a></p></footer>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="city-food-guides.js?v=20260811-1"></script>
-  <script src="travel-maps.js"></script>
-  <script src="zurich-city-planning-map.js"></script>
+  <script src="city-food-guides.js?v=20260811-8"></script>
+  <script src="city-day-weather.js?v=20260811-2"></script>
+  <script src="travel-maps.js?v=20260811-8"></script>
+  <script src="zurich-city-planning-map.js?v=20260811-2"></script>
 </body>
 </html>

@@ -43,6 +43,8 @@ const zurichPlanningPlaces = [
   ["Im Viadukt", 47.38580, 8.52380, "Zürich West｜铁路拱廊、设计店与餐饮", "west"]
 ];
 
+let zurichPlanningMap;
+
 function makePlanningIcon(type, markerLabel) {
   const label = type === "lodging" ? markerLabel : "●";
   return L.divIcon({
@@ -58,6 +60,7 @@ function renderZurichCityPlanningMap() {
   if (!element || !window.L) return;
 
   const map = L.map(element);
+  zurichPlanningMap = map;
   L.control.scale({ imperial: false, metric: true, maxWidth: 120 }).addTo(map);
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 18,
@@ -83,3 +86,10 @@ function renderZurichCityPlanningMap() {
 }
 
 document.addEventListener("DOMContentLoaded", renderZurichCityPlanningMap);
+document.addEventListener("toggle", (event) => {
+  if (!event.target.matches(".reference-details") || !event.target.open || !zurichPlanningMap) return;
+  window.setTimeout(() => {
+    zurichPlanningMap.invalidateSize();
+    zurichPlanningMap.fitBounds([[47.3575, 8.5155], [47.3895, 8.5595]], { padding: [18, 18] });
+  }, 50);
+}, true);

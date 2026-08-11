@@ -90,9 +90,11 @@
       ],
     },
     zurich: {
+      traditional: true,
+      compactLibrary: true,
       eyebrow: "TASTE ZÜRICH",
-      title: "Zürich 当地味道：从早餐经典到城市香肠",
-      intro: "原页面的餐厅选择已经很完整，但“Swiss food”与“Zürich food”混在一起。这里补一层真正与城市有关的识别：Züri Gschnätzlets、Birchermüesli、Luxemburgerli，以及 Tirggel、Wiedikerli 等更细的本地产品。",
+      title: "Zürich 美食指南：當地味道、巧克力與城市餐桌",
+      intro: "先看這次兩天行程實際怎麼吃，再按興趣展開完整食物資料庫。類別標籤會區分 Zürich 味道、瑞士經典與城市巧克力，不把所有 Swiss food 都說成 Zürich 特產。",
       specialties: [
         food("Züri Gschnätzlets + Rösti", "城市主菜", "Zuercher Geschnetzeltes Roesti", "veal cream sauce rosti", "薄切小牛肉以白酒、cream 和 mushroom sauce 烹调，配酥脆 Rösti，是最明确的 Zürich 主菜。", "酱汁和 Rösti 一起吃；若不吃 veal，不必用普通奶油鸡肉版本冒充体验。", "Old Town 午餐／City Walk 后晚餐", "一份偏饱；同餐不再点 fondue。", "含小牛肉、奶与可能含酒、麸质。", "https://www.zuerich.com/en/zurcher-geschnetzeltes"),
         food("Birchermüesli", "早餐", "Bircher muesli", "Swiss muesli apple oats", "由 Zürich 医生 Maximilian Bircher-Benner 推广的燕麦、水果与坚果组合；比酒店冷切更适合转移日早餐。", "选苹果味明显、不过度加糖的版本，配咖啡即可。", "酒店／Zürich HB，前往 Bern 前", "一碗是一顿轻早餐。", "含燕麦、坚果和通常含奶；可问 vegan 版本。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional"),
@@ -101,16 +103,25 @@
         food("Wiedikerli", "城市香肠", "Wiedikerli Zurich sausage", "Swiss grilled bratwurst", "源自 Wiedikon 的 cult bratwurst，以猪肉、炒洋葱、蒜与 parsley 调味，也有 fennel 和 chili 版本。", "先试 original；与 Sternen Grill 的 St. Galler bratwurst 是不同城市脉络。", "Zürich West／Wiedikon 延伸", "一根可作 quick meal。", "猪肉；配方与面包过敏原另问。", "https://www.zuerich.com/en/wiedikerli"),
         food("Straumann Hüppen", "威化甜点", "Swiss Hueppen wafer rolls", "chocolate wafer rolls", "细长脆威化卷包裹巧克力奶油，是比 praline 更轻、更方便携带的 Zürich 周边传统甜点。", "配咖啡吃，一次一根；开封后注意防潮。", "department store／food shop 伴手礼", "适合小量分享。", "含奶、麸质，可能含坚果。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional"),
         food("Stadtjäger", "咸味手信", "Stadtjaeger Zurich sausage", "Swiss dried sausage", "完全在 Zürich 市内制作与风干的生香肠，是不想只买甜食时的城市型伴手礼。", "切薄片配面包或 picnic；跨境与入境携带肉制品前检查规定。", "Urban food store／野餐补给", "一条适合多人分食。", "肉制品、高盐；携带与保存遵从包装。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional"),
-        food("Zürich chocolate / pralines", "巧克力文化", "Zurich pralines chocolate", "Swiss pralines", "从 Sprüngli 的 pralines 与 Luxemburgerli，到 Zürich-made bean-to-bar，城市的巧克力体验比单一品牌更丰富。", "一次买几颗 praline 或一小片 single-origin 比买大盒更适合 City Walk。", "Old Town coffee stop／HB 手信", "少量试味即可。", "留意坚果、奶、大豆与酒心。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional"),
+        food("Cheese Fondue", "瑞士经典", "Cheese fondue Switzerland", "Swiss cheese fondue bread", "融化 cheese、white wine 与少量 kirsch 组成共食锅，用长叉蘸 bread；在 Zürich 很常见，但不是本城独有。", "慢慢吃并保持锅底温热；可先问是否提供 non-alcoholic 版本。", "Swiss Chuchi／Le Dézaley 晚餐", "两人共享一锅并加 salad 较舒服。", "含奶、酒精和麸质；不爱浓 cheese 可跳过。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional/raclette-and-fondue"),
+        food("Raclette", "瑞士经典", "Raclette cheese potatoes", "Swiss raclette meal", "把加热的 cheese 刮到 boiled potato、pickled onion、gherkin 与蔬菜上；比 fondue 更容易控制每一口的 cheese 份量。", "趁热吃，一次先取少量；与 fondue 二选一即可。", "Swiss Chuchi／传统 Swiss restaurant", "两人可共享，避免同时再点重奶油主菜。", "含奶；配菜与腌菜过敏原另问。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional/raclette-and-fondue"),
+        food("Älplermagronen", "瑞士经典", "Aelplermagronen Swiss", "Swiss alpine macaroni", "macaroni、potato、cream、cheese 与 fried onion 组成的 Alpine comfort food，常搭配 apple sauce 平衡咸香。", "apple sauce 与面一起交替吃；不要把它当甜点。", "Swiss Chuchi／雨天热食", "一份通常很饱，两人试味可共享。", "含蛋、奶和麸质；通常可做无肉版本。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional"),
+        food("Capuns", "区域经典", "Capuns Switzerland", "Swiss chard rolls capuns", "Graubünden 山区菜：将 flour dough、herbs 与肉类或蔬菜包入 Swiss chard，再以 milk／cream 汤汁烹煮。", "先确认内馅版本；草本味温和，适合想避开炸物时尝试。", "Swiss Chuchi／区域菜餐厅", "一份可作主菜；与同行者交换品尝更合适。", "可能含猪肉、奶、蛋与麸质。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional"),
+        food("St. Galler Bratwurst", "区域经典", "St Galler bratwurst", "Swiss veal sausage", "以 veal 为主、质地细致、香料温和的 St. Gallen 香肠；在 Zürich 容易吃到，但来源属于 St. Gallen。", "可配 bread roll 或 potato salad；mustard 按个人口味。", "Sternen Grill／Bellevue 快速补给", "一根就是一顿轻食，不必订位。", "含肉；面包、mustard 与配方过敏原另问。", "https://www.zuerich.com/en/eat-drink/typical-and-traditional"),
+        food("Teuscher Champagne Truffle", "酒心巧克力", "Teuscher Champagne Truffle", "champagne chocolate truffles", "Teuscher 的招牌 champagne truffle 以 champagne butter cream、dark filling 与 chocolate shell 组成，是 Zürich 老牌 chocolatier 最有辨识度的成人向选择。", "酒香和甜度都明显，先买 1–2 粒试味，不必直接买大盒。", "8/15 Old Town／Bahnhofstrasse 一带", "一人 1–2 粒即可。", "含酒精、奶，可能含坚果与大豆。", "https://www.teuscher.com/"),
+        food("Sprüngli Pralines & Truffles", "经典巧克力", "Spruengli pralines truffles", "Swiss chocolate pralines", "除 Luxemburgerli 外，Sprüngli 的 pralines、truffles 与 Grand Cru chocolate 也是最容易在市中心购买的 Zürich 经典手信。", "现场自选几粒不同内馅，比预包装大盒更适合第一次比较。", "Paradeplatz；星期日改 Zürich HB", "每人 2–3 粒，或买一小盒分享。", "留意奶、坚果、大豆与酒心口味。", "https://www.spruengli.ch/en/"),
+        food("laflor Bean-to-Bar", "新派巧克力", "dark chocolate bar", "chocolate bar cocoa", "Zürich 制作的 bean-to-bar chocolate，强调 cacao 产地与小批次制作；酸香、果味和烘焙感会比一般 milk chocolate 更清楚。", "喜欢 dark chocolate 可从 single-origin 小片开始，不要只按 cacao 百分比判断。", "Hohlstrasse manufactory／specialty store", "买一片多人比较即可。", "配方依口味而异；留意奶、坚果与大豆。", "https://laflor.ch/en/"),
+        food("Taucherli Drinking Chocolate", "饮用巧克力", "Taucherli drinking chocolate", "hot chocolate on a stick", "把 ganache praline on a stick 放进热 milk 搅拌，就会成为浓厚 hot chocolate；品牌也制作 chocolate bars 与 fondue。", "想现场喝就选一杯；想作手信则买未冲泡的产品，更容易保存。", "specialty shop／非必经补给", "一杯或一支就是一次体验。", "通常含奶；不同 chocolate 另看坚果与大豆标示。", "https://taucherli.com/"),
       ],
       routePlan: [
-        { checkpoint: "25hours／Zürich HB", suggestion: "转移日上午用 Birchermüesli 作轻早餐；HB 同时是星期日最可靠的 Luxemburgerli 补给点。" },
-        { checkpoint: "Bahnhofstrasse → Old Town", suggestion: "想吃主菜，选 Züri Gschnätzlets + Rösti；已经点它就不要同餐再加 fondue。" },
-        { checkpoint: "Münsterbrücke → Niederdorf", suggestion: "安排少量 pralines、Luxemburgerli 或 Tirggel；需要坐下才选 café，避免每站都停。" },
-        { checkpoint: "Zürich West／返程", suggestion: "Wiedikerli 和 Stadtjäger 属于进阶城市味道；只有路线经过相应区域时再吃，不从 Old Town 专程折返。" },
+        { checkpoint: "8/15 午餐｜Old Town", suggestion: "優先 Züri Gschnätzlets + Rösti；若航班延誤，就改用不需訂位的快速簡餐。" },
+        { checkpoint: "City Walk 小食", suggestion: "在 Bahnhofstrasse／Old Town 選 Luxemburgerli、少量 pralines 或 Tirggel，三者不必全部買。" },
+        { checkpoint: "8/15 晚餐｜Niederdorf", suggestion: "主餐與 fondue／raclette 二選一；同餐不要再疊加重奶油主菜。" },
+        { checkpoint: "8/16 早餐｜Langstrasse", suggestion: "Hillsong 主方案有時間慢慢吃 Birchermüesli、麵包與咖啡；不必先繞去 Old Town。" },
+        { checkpoint: "手信｜Zürich HB", suggestion: "離開前選 Sprüngli 小盒或一片 laflor 多人比較，避免在夏日背包放太久。" },
       ],
-      marketLabel: "Zürich 与全瑞士要分开看",
-      marketNote: "Fondue、raclette 与 St. Galler bratwurst 在 Zürich 很容易吃到，但不是 Zürich 独有。若时间有限，优先 Züri Gschnätzlets、Birchermüesli、Luxemburgerli；Tirggel 与 Wiedikerli 则适合已经吃过瑞士经典的人。",
+      marketLabel: "Zürich 與全瑞士要分開看",
+      marketNote: "Fondue、raclette 與 St. Galler bratwurst 在 Zürich 很容易吃到，但不是 Zürich 獨有。若時間有限，優先 Züri Gschnätzlets、Birchermüesli、Luxemburgerli；Tirggel 與 Wiedikerli 則適合已經吃過瑞士經典的人。",
       sources: [
         source("Typical & traditional Zürich", "https://www.zuerich.com/en/eat-drink/typical-and-traditional"),
         source("Zürcher Geschnetzeltes", "https://www.zuerich.com/en/zurcher-geschnetzeltes"),
@@ -125,20 +136,49 @@
     .replaceAll('"', "&quot;").replaceAll("'", "&#039;");
   const externalLink = (url, label) => `<a href="${safe(url)}" target="_blank" rel="noopener noreferrer">${safe(label)} <span aria-hidden="true">↗</span></a>`;
 
+  function traditionalize(value) {
+    const replacements = [
+      ["当地", "當地"], ["从", "從"], ["与", "與"], ["图片", "圖片"], ["暂", "暫"],
+      ["怎么", "怎麼"], ["路线", "路線"], ["哪里", "哪裡"], ["选择", "選擇"], ["资料", "資料"],
+      ["核对", "核對"], ["传统", "傳統"], ["经典", "經典"], ["区域", "區域"], ["饮", "飲"],
+      ["时", "時"], ["为", "為"], ["会", "會"], ["买", "買"], ["还", "還"], ["发", "發"],
+      ["个", "個"], ["轻", "輕"], ["过", "過"], ["这", "這"], ["种", "種"], ["线", "線"],
+      ["现", "現"], ["见", "見"], ["应", "應"], ["内", "內"], ["较", "較"], ["东", "東"],
+      ["将", "將"], ["夹", "夾"], ["体", "體"], ["别", "別"], ["说", "說"], ["识", "識"],
+      ["软", "軟"], ["开", "開"], ["进", "進"], ["场", "場"], ["风", "風"], ["补", "補"],
+      ["对", "對"], ["点", "點"], ["学", "學"], ["类", "類"], ["剂", "劑"], ["后", "後"],
+      ["顾", "顧"], ["达", "達"], ["冲", "沖"], ["浓", "濃"], ["块", "塊"], ["储", "儲"],
+      ["盐", "鹽"], ["净", "淨"], ["树", "樹"], ["显", "顯"], ["写", "寫"], ["属", "屬"],
+      ["艺", "藝"], ["馆", "館"], ["区", "區"], ["压", "壓"], ["标", "標"], ["层", "層"],
+      ["选", "選"], ["厅", "廳"], ["赶", "趕"], ["稳", "穩"], ["优", "優"], ["换", "換"],
+      ["饼干", "餅乾"], ["历史", "歷史"], ["记录", "記錄"], ["世纪", "世紀"], ["细", "細"],
+      ["携带", "攜帶"], ["周边", "周邊"], ["肉制品", "肉製品"], ["规定", "規定"], ["检查", "檢查"],
+      ["包装", "包裝"], ["趁热", "趁熱"], ["面包", "麵包"], ["面一起", "麵一起"], ["当", "當"],
+      ["几", "幾"], ["馅", "餡"], ["预", "預"], ["适", "適"], ["强", "強"], ["调", "調"],
+      ["则", "則"], ["产", "產"], ["制作", "製作"], ["产品", "產品"], ["给", "給"],
+      ["图", "圖"], ["并", "並"], ["锅", "鍋"], ["温", "溫"], ["问", "問"], ["热", "熱"],
+      ["带", "帶"], ["搅", "攪"]
+    ];
+    return replacements.reduce((text, [from, to]) => text.replaceAll(from, to), String(value ?? ""));
+  }
+
   function renderGuide(root, guide) {
+    const local = (value) => safe(guide.traditional ? traditionalize(value) : value);
+    const specialtyCards = `<div class="food-specialty-grid">${guide.specialties.map((item) => `<article class="food-specialty-card">
+        <div class="food-photo" data-image-query="${safe(item.imageQuery)}" data-image-fallback="${safe(item.imageFallback)}"><span>${local(item.category)}</span><em>${guide.traditional ? "圖片暫不可用" : "图片暂不可用"}</em></div>
+        <div class="food-specialty-body"><span class="food-category">${local(item.category)}</span><h3>${local(item.name)}</h3><p class="food-summary">${local(item.summary)}</p>
+          <dl><div><dt>${guide.traditional ? "怎麼吃" : "怎么吃"}</dt><dd>${local(item.taste)}</dd></div><div><dt>${guide.traditional ? "放在路線哪裡" : "放在路线哪里"}</dt><dd>${local(item.timing)}</dd></div>
+            <div><dt>${guide.traditional ? "份量判斷" : "份量判断"}</dt><dd>${local(item.portion)}</dd></div><div><dt>${guide.traditional ? "飲食注意" : "饮食注意"}</dt><dd>${local(item.diet)}</dd></div></dl>
+          ${externalLink(item.officialUrl, guide.traditional ? "了解這種當地味道" : "了解这种当地味道")}</div></article>`).join("")}</div>`;
+    const routePlan = `<div class="food-route-plan"><div class="food-route-heading"><p class="eyebrow">EAT ALONG THE WALK</p><h3>${guide.traditional ? "這次行程怎麼吃" : "沿 City Walk 怎么安排"}</h3><p>${guide.traditional ? "先照時間段選擇；兩種小食加一頓主餐已經足夠。" : "不用一次吃齐；选择两种小食加一顿主餐即可。"}</p></div>
+        <ol>${guide.routePlan.map((item) => `<li><strong>${local(item.checkpoint)}</strong><span>${local(item.suggestion)}</span></li>`).join("")}</ol></div>`;
     root.classList.add("local-food-guide");
-    root.innerHTML = `<p class="eyebrow section-eyebrow">${safe(guide.eyebrow)}</p>
-      <h2>${safe(guide.title)}</h2><p class="section-intro">${safe(guide.intro)}</p>
-      <div class="food-specialty-grid">${guide.specialties.map((item) => `<article class="food-specialty-card">
-        <div class="food-photo" data-image-query="${safe(item.imageQuery)}" data-image-fallback="${safe(item.imageFallback)}"><span>${safe(item.category)}</span><em>图片暂不可用</em></div>
-        <div class="food-specialty-body"><span class="food-category">${safe(item.category)}</span><h3>${safe(item.name)}</h3><p class="food-summary">${safe(item.summary)}</p>
-          <dl><div><dt>怎么吃</dt><dd>${safe(item.taste)}</dd></div><div><dt>放在路线哪里</dt><dd>${safe(item.timing)}</dd></div>
-            <div><dt>份量判断</dt><dd>${safe(item.portion)}</dd></div><div><dt>饮食注意</dt><dd>${safe(item.diet)}</dd></div></dl>
-          ${externalLink(item.officialUrl, "了解这种当地味道")}</div></article>`).join("")}</div>
-      <div class="food-route-plan"><div class="food-route-heading"><p class="eyebrow">EAT ALONG THE WALK</p><h3>沿 City Walk 怎么安排</h3><p>不用一次吃齐；选择两种小食加一顿主餐即可。</p></div>
-        <ol>${guide.routePlan.map((item) => `<li><strong>${safe(item.checkpoint)}</strong><span>${safe(item.suggestion)}</span></li>`).join("")}</ol></div>
-      <aside class="market-note"><strong>${safe(guide.marketLabel)}</strong><p>${safe(guide.marketNote)}</p></aside>
-      <div class="food-guide-sources"><strong>官方美食资料｜核对 ${VERIFIED_ON}</strong>${guide.sources.map((item) => externalLink(item.url, item.label)).join("")}</div>`;
+    root.innerHTML = `<p class="eyebrow section-eyebrow">${local(guide.eyebrow)}</p>
+      <h2>${local(guide.title)}</h2><p class="section-intro">${local(guide.intro)}</p>
+      ${guide.compactLibrary ? routePlan : specialtyCards}
+      ${guide.compactLibrary ? `<details class="food-library"><summary><span><small>FOOD REFERENCE</small><strong>完整當地食物資料庫</strong></span><em>${guide.specialties.length} 種食物</em></summary><div class="food-library-body">${specialtyCards}</div></details>` : routePlan}
+      <aside class="market-note"><strong>${local(guide.marketLabel)}</strong><p>${local(guide.marketNote)}</p></aside>
+      <div class="food-guide-sources"><strong>${guide.traditional ? "官方美食資料｜核對" : "官方美食资料｜核对"} ${VERIFIED_ON}</strong>${guide.sources.map((item) => externalLink(item.url, item.label)).join("")}</div>`;
   }
 
   async function wikipediaImage(query, size = 760) {
