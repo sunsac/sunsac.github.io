@@ -171,7 +171,7 @@ const cityWalkOptionalStops = {
     ["Swiss Chuchi", 47.371700, 8.544000, "Old Town fondue restaurant。週一至五 11:30–23:15、週六至日 12:00–23:15；建議晚餐先訂位。"],
     ["Le Dézaley", 47.371600, 8.544500, "Grossmünster 附近的 Swiss cuisine restaurant。週一至六 11:30–14:00、18:00–24:00；週日休息，晚餐建議訂位。"],
     ["Zeughauskeller", 47.369500, 8.539900, "傳統 Swiss dishes 及 guild hall 餐廳。每日約 11:30–23:00，熱門時段建議預約或預留排隊。"],
-    ["Sternen Grill", 47.366900, 8.545900, "Bellevue 附近的 bratwurst 快餐。通常適合不訂位的快速用餐；實際週日營業與最後點餐時間以店方當日公告為準。"],
+    ["Sternen Grill", 47.366900, 8.545900, "Bellevue 附近的 bratwurst 快餐，适合湖边、Opera House 外观或赶 tram 前快速吃。周日 10:30–23:00（last sausage 22:45），周二至六营业至 24:00；无需订位，热门时段可能排队。"],
     ["Schokolade & Espresso Bar", 47.371397, 8.543873, "Münstergasse 19｜Schwarzenbach 的 espresso、hot chocolate 及 350+ 手工巧克力；週六 09:00–17:00，週日休息。適合 Grossmünster / Niederdorf 間 15–30 分鐘短停，不適合作正餐。"],
     ["St Andrew's Anglican Church", 47.368696, 8.549423, "Promenadengasse 9｜English-language Anglican / Protestant worship。週日 09:00 Said Eucharist（約 45 分鐘、安靜 spoken service）或 10:30 Sung Eucharist（約 1 小時、hymns，之後 coffee）。無票／通常無需預約；位於 Kunsthaus 附近，適合週日上午加入。"],
     ["Hillsong Zürich", 47.389667, 8.492258, "Campus für Christus｜Hohlstrasse 535, 8048 Zürich。週日 10:30 German / English contemporary evangelical service，含 modern worship 與 Hillsong Kids；無票／通常無需預約。由 Zürich HB 乘 train 到 Zürich Altstetten 後步行約 5 分鐘；較適合想參與現代敬拜，而非 Old Town 教堂體驗的人。"],
@@ -483,6 +483,50 @@ const cityWalkPresets = {
   ]
 };
 
+const cityWalkPresetShortcuts = {
+  zurich: [
+    { label: "完整 City Walk", meta: "推薦 · 4–5 小時" },
+    { label: "Old Town 短版", meta: "延誤／省體力 · 2–2.5 小時" },
+    { label: "湖景加強版", meta: "湖岸延伸 · tram 回程" },
+    { label: "雨天文化版", meta: "室內優先 · 彈性路線" }
+  ]
+};
+
+const cityDiningSchedules = {
+  zurich: [
+    {
+      id: "breakfast",
+      label: "早餐／Brunch",
+      note: "慢早餐选 Babu’s；赶火车选 Zürich HB Sprüngli；蔬食或同行口味不同时选 Hiltl。",
+      optionalIndexes: [21, 22, 23]
+    },
+    {
+      id: "lunch",
+      label: "午餐",
+      note: "传统肉食选 Zeughauskeller，fondue／raclette 选 Swiss Chuchi，清爽蔬食选 Hiltl。",
+      optionalIndexes: [16, 14, 23]
+    },
+    {
+      id: "coffee",
+      label: "下午茶／Coffee & Chocolate",
+      note: "8/15 City Walk 可选 Schwarzenbach 或 Schober；8/16 星期日以 Zürich HB Sprüngli 最稳妥。",
+      optionalIndexes: [18, 24, 22]
+    },
+    {
+      id: "dinner",
+      label: "晚餐",
+      note: "fondue 选 Swiss Chuchi 或 Le Dézaley；不想吃 cheese 可选 Hiltl 或 Zeughauskeller。",
+      optionalIndexes: [14, 15, 23, 16]
+    },
+    {
+      id: "snacks",
+      label: "Snacks／快速补给",
+      note: "湖边快速吃选 Sternen Grill；换城与行李日优先 Zürich HB Sprüngli。",
+      optionalIndexes: [17, 22]
+    }
+  ]
+};
+
 const cityWalkDefaultRoutes = {
   bern: cityWalkPresets.bern[0]
 };
@@ -759,6 +803,24 @@ function getDisplayStopName(routeName, stopName) {
   return bilingualStopNames[routeName]?.[stopName] || stopName;
 }
 
+function localizeRouteText(routeName, value) {
+  if (routeName !== "zurich") return String(value ?? "");
+  const replacements = [
+    ["当地", "當地"], ["传统", "傳統"], ["适合", "適合"], ["星期日", "週日"], ["周日", "週日"], ["营业", "營業"],
+    ["无需", "無需"], ["热门", "熱門"], ["时段", "時段"], ["餐厅", "餐廳"], ["餐饮", "餐飲"],
+    ["选择", "選擇"], ["地图", "地圖"], ["路线", "路線"], ["当前", "目前"], ["从", "從"],
+    ["与", "與"], ["时", "時"], ["个", "個"], ["这", "這"], ["会", "會"], ["为", "為"],
+    ["发", "發"], ["后", "後"], ["内", "內"], ["线", "線"], ["现", "現"], ["较", "較"],
+    ["点", "點"], ["开", "開"], ["关", "關"], ["门", "門"], ["车", "車"], ["边", "邊"],
+    ["区", "區"], ["场", "場"], ["队", "隊"], ["间", "間"], ["带", "帶"], ["览", "覽"],
+    ["图", "圖"], ["体", "體"], ["压", "壓"], ["计", "計"], ["别", "別"], ["说", "說"],
+    ["还", "還"], ["买", "買"], ["来", "來"], ["种", "種"], ["达", "達"], ["应", "應"],
+    ["选", "選"], ["赶", "趕"], ["稳", "穩"], ["优", "優"], ["给", "給"], ["换", "換"],
+    ["厅", "廳"], ["规", "規"], ["录", "錄"], ["历", "歷"], ["纪", "紀"], ["细", "細"]
+  ];
+  return replacements.reduce((text, [from, to]) => text.replaceAll(from, to), String(value ?? ""));
+}
+
 function normalizeImageQuery(value) {
   return value
     .toLocaleLowerCase()
@@ -819,6 +881,7 @@ async function loadAttractionImage(card) {
 
 function loadAttractionImages(container) {
   container.querySelectorAll("[data-attraction-name]").forEach((card) => {
+    if (card.classList.contains("route-stop-card")) return;
     loadAttractionImage(card);
   });
 }
@@ -844,11 +907,91 @@ function renderRouteBuilder(state) {
     .filter(({ index }) => !state.routeItems.some((item) =>
       item.type === "main" && item.index === index
     ));
+  const presetShortcuts = cityWalkPresetShortcuts[state.routeName] || [];
+  const activePresetIndex = (cityWalkPresets[state.routeName] || []).findIndex((preset) =>
+    preset.length === state.routeItems.length && preset.every((item, index) =>
+      item.type === state.routeItems[index]?.type && item.index === state.routeItems[index]?.index
+    )
+  );
+  const optionalStopEntries = optionalStops.map((stop, index) => ({ stop, index }));
+  const diningCategoryPrefixes = ["餐廳／", "小吃／", "咖啡／", "早餐／", "巧克力／"];
+  const isDiningStop = (stop) => diningCategoryPrefixes.some((prefix) =>
+    getStopCategory(state.routeName, stop).startsWith(prefix)
+  );
+  const attractionOptionalStops = optionalStopEntries.filter(({ stop }) => !isDiningStop(stop));
+  const diningOptionalStops = optionalStopEntries.filter(({ stop }) => isDiningStop(stop));
+  const renderOptionalStop = ({ stop, index }) => {
+    const selected = state.routeItems.some((item) =>
+      item.type === "optional" && item.index === index
+    );
+    return `
+      <article class="stop-card ${selected ? "selected" : ""}" data-attraction-name="${stop[0]}">
+        <span class="stop-category">${getStopCategory(state.routeName, stop)}</span>
+        <h3><span class="stop-letter">${getStopLetter(state.routeName, "optional", index)}.</span> <span class="stop-name">${getDisplayStopName(state.routeName, stop[0])}</span></h3>
+        <p>${stop[3]}</p>
+        <label class="small">
+          <input class="route-toggle" type="checkbox"
+            data-route-action="add-route"
+            data-city="${state.routeName}"
+            data-kind="optional"
+            data-index="${index}"
+            ${selected ? "checked" : ""}>
+          ${selected ? "已加入路線" : "加入我的路線"}
+        </label>
+      </article>
+    `;
+  };
+  const diningSchedule = cityDiningSchedules[state.routeName] || [];
+  const diningEntryByIndex = new Map(diningOptionalStops.map((entry) => [entry.index, entry]));
+  const renderDiningOptions = () => {
+    if (!diningSchedule.length) {
+      return `<div class="stop-guide">${diningOptionalStops.map(renderOptionalStop).join("")}</div>`;
+    }
+    return `<div class="dining-time-groups">
+      ${diningSchedule.map((timeGroup) => {
+        const entries = timeGroup.optionalIndexes
+          .map((index) => diningEntryByIndex.get(index))
+          .filter(Boolean);
+        if (!entries.length) return "";
+        return `<section class="dining-time-group" aria-labelledby="${state.routeName}-dining-${timeGroup.id}">
+          <div class="dining-time-heading">
+            <h4 id="${state.routeName}-dining-${timeGroup.id}">${timeGroup.label}</h4>
+            <span>${entries.length} 個選擇</span>
+          </div>
+          <p>${timeGroup.note}</p>
+          <div class="stop-guide">${entries.map(renderOptionalStop).join("")}</div>
+        </section>`;
+      }).join("")}
+    </div>`;
+  };
 
-  builder.innerHTML = `
+  builder.innerHTML = localizeRouteText(state.routeName, `
     <h3>自訂行程路線</h3>
-    <p class="small">卡片前方的數字是目前路線順序；字母是景點固定識別，與地圖標記一致。預設景點一開始已加入路線，取消勾選後會自動移到下方 Optional 區域；目前路線卡片可以拖動排序。</p>
-    <div class="route-builder-section-title">目前路線（拖動卡片排序）</div>
+    ${presetShortcuts.length ? `
+      <div class="route-preset-shortcuts" aria-label="Zurich 路線快捷組合">
+        <div class="route-preset-heading">
+          <strong>快捷組合</strong>
+          <small>一鍵替換目前路線，之後仍可增減景點或拖動排序。</small>
+        </div>
+        <div class="route-preset-buttons">
+          ${presetShortcuts.map((shortcut, index) => {
+            const option = cityWalkGuides[state.routeName].options[index];
+            const isActive = index === activePresetIndex;
+            return `
+              <button class="route-preset-button ${isActive ? "is-active" : ""}" type="button"
+                data-route-action="preset" data-city="${state.routeName}"
+                data-preset-index="${index}" aria-pressed="${isActive}"
+                title="${option?.[1] || shortcut.meta}">
+                <span>${shortcut.label}</span>
+                <small>${shortcut.meta}</small>
+              </button>
+            `;
+          }).join("")}
+        </div>
+      </div>
+    ` : ""}
+    <p class="small">數字是目前路線順序，字母是與地圖一致的景點識別。桌面可拖動卡片；手機或鍵盤可用上下移動按鈕調整順序。</p>
+    <div class="route-builder-section-title">目前路線 <span>${state.routeItems.length} 個 checkpoint</span></div>
     <div class="route-builder-list">
       ${state.routeItems.map((item, position) => {
         const stop = getStateStop(state, item);
@@ -866,12 +1009,11 @@ function renderRouteBuilder(state) {
               <h4><span class="route-order">${position + 1}</span><span class="stop-name"><span class="stop-letter">${letter}.</span> ${getDisplayStopName(state.routeName, stop[0])}</span></h4>
               <p>${description}</p>
             </div>
-            <input class="route-toggle" type="checkbox"
-              aria-label="從路線移除 ${stop[0]}"
-              data-route-action="remove-route"
-              data-city="${state.routeName}"
-              data-position="${position}"
-              checked>
+            <div class="route-stop-controls" aria-label="調整 ${stop[0]} 的路線位置">
+              <button type="button" data-route-action="move-up" data-city="${state.routeName}" data-position="${position}" aria-label="上移 ${stop[0]}" ${position === 0 ? "disabled" : ""}>↑</button>
+              <button type="button" data-route-action="move-down" data-city="${state.routeName}" data-position="${position}" aria-label="下移 ${stop[0]}" ${position === state.routeItems.length - 1 ? "disabled" : ""}>↓</button>
+              <button class="route-remove-button" type="button" data-route-action="remove-route" data-city="${state.routeName}" data-position="${position}" aria-label="從路線移除 ${stop[0]}">×</button>
+            </div>
           </article>
         `;
       }).join("")}
@@ -879,11 +1021,21 @@ function renderRouteBuilder(state) {
     <p class="route-distance-editor small">目前已選路線${distanceLabel}${(currentDistance / 1000).toFixed(1)} 公里${state.routeDistanceSource === "walking" ? "" : "（步行路線載入中／暫不可用）"}</p>
     <div class="route-actions">
       <button class="route-action" type="button" data-route-action="reset" data-city="${state.routeName}">恢復預設主路線</button>
-      <button class="route-action" type="button" data-route-action="fit" data-city="${state.routeName}">重新查看全部標記</button>
+      <button class="route-action" type="button" data-route-action="fit-route" data-city="${state.routeName}">聚焦目前路線</button>
+      <button class="route-action" type="button" data-route-action="fit" data-city="${state.routeName}">查看全部標記</button>
     </div>
-    <div class="route-options">
-      <h3>Optional 景點與活動（勾選加入／取消移除）</h3>
-      <div class="stop-guide">
+    <div class="route-options route-option-groups">
+      <details class="route-option-group" aria-labelledby="${state.routeName}-optional-attractions">
+        <summary class="route-option-group-heading">
+          <div>
+            <p class="route-option-kicker">SIGHTS &amp; ACTIVITIES</p>
+            <h3 id="${state.routeName}-optional-attractions">Optional 景點與活動</h3>
+          </div>
+          <span>${removedMainStops.length + attractionOptionalStops.length} 個選項</span>
+        </summary>
+        <div class="route-option-group-body">
+        <p class="small">勾選加入路線；從目前主線移除的 checkpoint 也會回到這裡。</p>
+        <div class="stop-guide">
         ${removedMainStops.map(({ index, stop }) => `
           <article class="stop-card" data-attraction-name="${stop[0]}">
             <span class="stop-category">${getStopCategory(state.routeName, stop)}</span>
@@ -899,30 +1051,27 @@ function renderRouteBuilder(state) {
             </label>
           </article>
         `).join("")}
-        ${optionalStops.map((stop, index) => {
-          const selected = state.routeItems.some((item) =>
-            item.type === "optional" && item.index === index
-          );
-          return `
-            <article class="stop-card ${selected ? "selected" : ""}" data-attraction-name="${stop[0]}">
-              <span class="stop-category">${getStopCategory(state.routeName, stop)}</span>
-              <h3><span class="stop-letter">${getStopLetter(state.routeName, "optional", index)}.</span> <span class="stop-name">${getDisplayStopName(state.routeName, stop[0])}</span></h3>
-              <p>${stop[3]}</p>
-              <label class="small">
-                <input class="route-toggle" type="checkbox"
-                  data-route-action="add-route"
-                  data-city="${state.routeName}"
-                  data-kind="optional"
-                  data-index="${index}"
-                  ${selected ? "checked" : ""}>
-                ${selected ? "已加入路線" : "加入我的路線"}
-              </label>
-            </article>
-          `;
-        }).join("")}
-      </div>
+          ${attractionOptionalStops.map(renderOptionalStop).join("")}
+        </div>
+        </div>
+      </details>
+      ${diningOptionalStops.length ? `
+        <details class="route-option-group route-option-group-dining" aria-labelledby="${state.routeName}-optional-dining">
+          <summary class="route-option-group-heading">
+            <div>
+              <p class="route-option-kicker">FOOD &amp; BREAKS</p>
+              <h3 id="${state.routeName}-optional-dining">Optional 美食／餐飲</h3>
+            </div>
+            <span>${diningOptionalStops.length} 個選項</span>
+          </summary>
+          <div class="route-option-group-body">
+          <p class="small">按用餐時段直接把餐廳加入地圖路線；同一家店可出現在多個時段，但只會加入目前路線一次。</p>
+          ${renderDiningOptions()}
+          </div>
+        </details>
+      ` : ""}
     </div>
-  `;
+  `);
   loadAttractionImages(builder);
 }
 
@@ -933,6 +1082,16 @@ function updateDistanceNote(state) {
   distanceNote.textContent = state.routeDistanceSource === "walking"
     ? "目前已選步行路線：約 " + distance + " 公里"
     : "步行路線載入中；直線估算：約 " + distance + " 公里";
+}
+
+function fitCurrentRoute(state) {
+  const points = state.routeItems
+    .filter((item) => item.active)
+    .map((item) => {
+      const stop = getStateStop(state, item);
+      return [stop[1], stop[2]];
+    });
+  if (points.length) state.map.fitBounds(points, { padding: [34, 34], maxZoom: 16 });
 }
 
 function updateRouteMap(state) {
@@ -1039,12 +1198,12 @@ function createCityWalkMap(routeName, mapElement) {
     const marker = L.marker([stop[1], stop[2]], {
       icon: makeRouteIcon(true, getStopLetter(routeName, "main", index), getStopCategory(routeName, stop))
     }).addTo(map);
-    marker.bindPopup(
+    marker.bindPopup(localizeRouteText(routeName,
       "<strong>" + getStopLetter(routeName, "main", index) + "｜" + getDisplayStopName(routeName, stop[0]) + "</strong><br>" +
       guide.stops[index][1] + "<br><small>" +
       getStopCategory(routeName, stop) + "｜看點：" +
       guide.stops[index][2] + "</small>"
-    );
+    ));
     state.mainMarkers.push(marker);
     return [stop[1], stop[2]];
   });
@@ -1058,12 +1217,12 @@ function createCityWalkMap(routeName, mapElement) {
         getStopCategory(routeName, stop)
       )
     }).addTo(map);
-    marker.bindPopup(
+    marker.bindPopup(localizeRouteText(routeName,
       "<strong>" + getStopLetter(routeName, "optional", index) + "｜Optional｜" + getDisplayStopName(routeName, stop[0]) + "</strong><br>" + stop[3] +
       "<br><small>" + getStopCategory(routeName, stop) + "</small>" +
       '<br><button class="add-route-button" type="button" data-route-action="toggle-optional" data-city="' +
       routeName + '" data-kind="optional" data-index="' + index + '">加入／移除路線</button>'
-    );
+    ));
     state.optionalMarkers.push(marker);
     return [stop[1], stop[2]];
   });
@@ -1072,24 +1231,25 @@ function createCityWalkMap(routeName, mapElement) {
     const label = "H" + (index + 1);
     L.marker([stop[1], stop[2]], { icon: makeAccommodationIcon(label) })
       .addTo(map)
-      .bindPopup(
+      .bindPopup(localizeRouteText(routeName,
         "<strong>" + label + "｜" + stop[0] + "</strong><br>" + stop[3] +
         '<br><a href="https://www.google.com/maps/search/?api=1&query=' +
         encodeURIComponent(stop[0] + ", Beatenplatz 4, Zürich") +
         '" target="_blank" rel="noreferrer">Google Maps →</a>'
-      );
+      ));
     return [stop[1], stop[2]];
   });
 
-  map.fitBounds(routePoints.concat(optionalPoints, accommodationPoints), { padding: [24, 24] });
+  fitCurrentRoute(state);
   updateRouteMap(state);
 }
 
 function renderCityWalkGuide(routeName, guideElement) {
   if (!cityWalkGuides[routeName] || !guideElement) return;
+  const usesCompactPresets = Boolean(cityWalkPresetShortcuts[routeName]);
   guideElement.innerHTML = `
     <div class="route-builder" data-route-builder="${routeName}"></div>
-    <div class="route-options">
+    ${usesCompactPresets ? "" : `<div class="route-options">
       <h3>路線 Optional 方案</h3>
       ${cityWalkGuides[routeName].options.map((option, index) => `
         <article class="route-option">
@@ -1102,7 +1262,7 @@ function renderCityWalkGuide(routeName, guideElement) {
           </button>
         </article>
       `).join("")}
-    </div>
+    </div>`}
   `;
 }
 
@@ -1122,6 +1282,13 @@ function handleRouteAction(action, routeName, element) {
   } else if (action === "remove-route") {
     const position = Number(element.dataset.position);
     if (state.routeItems[position]) state.routeItems.splice(position, 1);
+  } else if (action === "move-up" || action === "move-down") {
+    const position = Number(element.dataset.position);
+    const targetPosition = action === "move-up" ? position - 1 : position + 1;
+    if (state.routeItems[position] && state.routeItems[targetPosition]) {
+      const [moved] = state.routeItems.splice(position, 1);
+      state.routeItems.splice(targetPosition, 0, moved);
+    }
   } else if (action === "add-route") {
     const kind = element.dataset.kind;
     const index = Number(element.dataset.index);
@@ -1145,6 +1312,9 @@ function handleRouteAction(action, routeName, element) {
     }
   } else if (action === "reset") {
     state.routeItems = getDefaultRouteItems(routeName);
+  } else if (action === "fit-route") {
+    fitCurrentRoute(state);
+    return;
   } else if (action === "fit") {
     const stops = cityWalkOptionalStops[routeName] || [];
     state.map.fitBounds(
