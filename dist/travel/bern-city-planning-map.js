@@ -2,19 +2,19 @@ const bernPlanningZones = [
   {
     name: "Station / New City",
     color: "#36769b",
-    description: "Bern Bahnhof 是跨城铁路、tram、bus 与补给中心；由这里向东进入 Old City。",
+    description: "Bern Bahnhof 是跨城鐵路、tram、bus 與補給中心；由這裡向東進入 Old City。",
     bounds: [[46.9464, 7.4348], [46.9464, 7.4427], [46.9510, 7.4427], [46.9510, 7.4348]]
   },
   {
     name: "Federal Quarter",
     color: "#7a5aa6",
-    description: "Bundeshaus、Bundesplatz 与周边行政建筑代表 Bern 作为 Switzerland federal city 的政治角色。",
+    description: "Bundeshaus、Bundesplatz 與周邊行政建築代表 Bern 作為 Switzerland federal city 的政治角色。",
     bounds: [[46.9438, 7.4405], [46.9438, 7.4483], [46.9480, 7.4483], [46.9480, 7.4405]]
   },
   {
     name: "UNESCO Old City",
     color: "#c7864b",
-    description: "Zytglogge、Marktgasse、Kramgasse、Bern Minster 与连续 Lauben 拱廊构成中世紀城市核心。",
+    description: "Zytglogge、Marktgasse、Kramgasse、Bern Minster 與連續 Lauben 拱廊構成中世紀城市核心。",
     bounds: [[46.9450, 7.4470], [46.9450, 7.4588], [46.9506, 7.4588], [46.9506, 7.4470]]
   },
   {

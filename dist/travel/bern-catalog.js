@@ -1,5 +1,5 @@
 function renderBernModuleCard(module) {
-  const typeLabel = module.type === "activity" ? "专项活动" : "地点模块";
+  const typeLabel = module.type === "activity" ? "專項活動" : "地點模塊";
   return `
     <article class="module-card ${module.type === "activity" ? "is-activity" : "is-destination"}">
       <div class="module-card-topline">
@@ -10,11 +10,11 @@ function renderBernModuleCard(module) {
       <p>${module.summary}</p>
       <dl class="module-metrics">
         <div><dt>交通</dt><dd>${module.travelTime}</dd></div>
-        <div><dt>预算</dt><dd>${module.estimatedCost}</dd></div>
-        <div><dt>强度</dt><dd>${module.intensity}</dd></div>
-        <div><dt>天气</dt><dd>${module.weatherDependency}</dd></div>
+        <div><dt>預算</dt><dd>${module.estimatedCost}</dd></div>
+        <div><dt>強度</dt><dd>${module.intensity}</dd></div>
+        <div><dt>天氣</dt><dd>${module.weatherDependency}</dd></div>
       </dl>
-      <a class="module-link" href="bern-daytrip.html?trip=${encodeURIComponent(module.id)}">查看完整模块 <span aria-hidden="true">→</span></a>
+      <a class="module-link" href="bern-daytrip.html?trip=${encodeURIComponent(module.id)}">查看完整模塊 <span aria-hidden="true">→</span></a>
     </article>
   `;
 }
@@ -45,9 +45,9 @@ function renderBernCatalog() {
   const stats = document.querySelector("#bern-module-stats");
   if (stats) {
     stats.innerHTML = `
-      <span><strong>${window.bernModules.length}</strong>独立模块</span>
-      <span><strong>${destinationCount}</strong>地点选择</span>
-      <span><strong>${activityCount}</strong>专项活动</span>
+      <span><strong>${window.bernModules.length}</strong>獨立模塊</span>
+      <span><strong>${destinationCount}</strong>地點選擇</span>
+      <span><strong>${activityCount}</strong>專項活動</span>
     `;
   }
 }

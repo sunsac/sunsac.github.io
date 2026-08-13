@@ -489,6 +489,12 @@ const cityWalkPresetShortcuts = {
     { label: "Old Town 短版", meta: "延誤／省體力 · 2–2.5 小時" },
     { label: "湖景加強版", meta: "湖岸延伸 · tram 回程" },
     { label: "雨天文化版", meta: "室內優先 · 彈性路線" }
+  ],
+  bern: [
+    { label: "完整 City Walk", meta: "推薦 · 4.5–5.5 小時" },
+    { label: "Old City 精簡版", meta: "半天／晚出發 · 2–2.5 小時" },
+    { label: "河谷景觀版", meta: "Aare＋Rosengarten · 體力充足" },
+    { label: "雨天文化版", meta: "拱廊＋室內 · 少走陡坡" }
   ]
 };
 
@@ -523,6 +529,32 @@ const cityDiningSchedules = {
       label: "Snacks／快速补给",
       note: "湖边快速吃选 Sternen Grill；换城与行李日优先 Zürich HB Sprüngli。",
       optionalIndexes: [17, 22]
+    }
+  ],
+  bern: [
+    {
+      id: "lunch",
+      label: "午餐",
+      note: "Old City 內選 Kornhauskeller／Harmonie；想把主餐留到路線末段，可選 Lötschberg。",
+      optionalIndexes: [6, 7, 9]
+    },
+    {
+      id: "coffee",
+      label: "咖啡／甜點／巧克力",
+      note: "Kramgasse 一帶用 Confiserie Tschirren 作短停；買少量 praline 或甜點即可繼續步行。",
+      optionalIndexes: [10]
+    },
+    {
+      id: "view-break",
+      label: "BearPark／Rosengarten 休息",
+      note: "Altes Tramdepot 在河谷段，Restaurant Rosengarten 在全景終點；兩者通常二選一，不必重複安排。",
+      optionalIndexes: [2, 8]
+    },
+    {
+      id: "dinner",
+      label: "晚餐",
+      note: "傳統 Bern 菜優先 Kornhauskeller 或 Harmonie；景觀收尾選 Rosengarten；靠近車站選 Lötschberg。",
+      optionalIndexes: [6, 7, 8, 9]
     }
   ]
 };
@@ -804,7 +836,6 @@ function getDisplayStopName(routeName, stopName) {
 }
 
 function localizeRouteText(routeName, value) {
-  if (routeName !== "zurich") return String(value ?? "");
   const replacements = [
     ["当地", "當地"], ["传统", "傳統"], ["适合", "適合"], ["星期日", "週日"], ["周日", "週日"], ["营业", "營業"],
     ["无需", "無需"], ["热门", "熱門"], ["时段", "時段"], ["餐厅", "餐廳"], ["餐饮", "餐飲"],
@@ -816,9 +847,17 @@ function localizeRouteText(routeName, value) {
     ["图", "圖"], ["体", "體"], ["压", "壓"], ["计", "計"], ["别", "別"], ["说", "說"],
     ["还", "還"], ["买", "買"], ["来", "來"], ["种", "種"], ["达", "達"], ["应", "應"],
     ["选", "選"], ["赶", "趕"], ["稳", "穩"], ["优", "優"], ["给", "給"], ["换", "換"],
-    ["厅", "廳"], ["规", "規"], ["录", "錄"], ["历", "歷"], ["纪", "紀"], ["细", "細"]
+    ["厅", "廳"], ["规", "規"], ["录", "錄"], ["历", "歷"], ["纪", "紀"], ["细", "細"],
+    ["订", "訂"], ["组", "組"], ["键", "鍵"], ["减", "減"], ["动", "動"], ["数", "數"],
+    ["顺", "順"], ["识", "識"], ["机", "機"], ["标", "標"], ["击", "擊"], ["预", "預"],
+    ["复", "復"], ["载", "載"], ["暂", "暫"], ["项", "項"], ["饮", "飲"], ["据", "據"],
+    ["过", "過"], ["调", "調"], ["该", "該"], ["显", "顯"], ["认", "認"]
   ];
-  return replacements.reduce((text, [from, to]) => text.replaceAll(from, to), String(value ?? ""));
+  const text = String(value ?? "");
+  if (routeName === "zurich" || routeName === "bern") {
+    return replacements.reduce((result, [from, to]) => result.replaceAll(from, to), text);
+  }
+  return text;
 }
 
 function normalizeImageQuery(value) {
@@ -968,7 +1007,7 @@ function renderRouteBuilder(state) {
   builder.innerHTML = localizeRouteText(state.routeName, `
     <h3>自訂行程路線</h3>
     ${presetShortcuts.length ? `
-      <div class="route-preset-shortcuts" aria-label="Zurich 路線快捷組合">
+      <div class="route-preset-shortcuts" aria-label="${state.routeName === "zurich" ? "Zurich 路線快捷組合" : "Bern 路线快捷组合"}">
         <div class="route-preset-heading">
           <strong>快捷組合</strong>
           <small>一鍵替換目前路線，之後仍可增減景點或拖動排序。</small>
@@ -1079,9 +1118,9 @@ function updateDistanceNote(state) {
   const distanceNote = state.mapElement.parentElement.querySelector(".route-distance");
   if (!distanceNote) return;
   const distance = (state.routeDistanceMeters / 1000).toFixed(1);
-  distanceNote.textContent = state.routeDistanceSource === "walking"
+  distanceNote.textContent = localizeRouteText(state.routeName, state.routeDistanceSource === "walking"
     ? "目前已選步行路線：約 " + distance + " 公里"
-    : "步行路線載入中；直線估算：約 " + distance + " 公里";
+    : "步行路線載入中；直線估算：約 " + distance + " 公里");
 }
 
 function fitCurrentRoute(state) {

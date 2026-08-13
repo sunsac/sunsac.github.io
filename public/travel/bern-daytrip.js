@@ -20,18 +20,18 @@
 
   function detailMap(module) {
     if (module.interactiveCityWalk) {
-      return `<div class="route-map" data-city-map="bern" aria-label="Bern City Walk 互动地图"></div>
-        <p class="map-note">触控板、滚轮和双指均可缩放。路线编辑器保留在下方；景点与餐饮信息同时列在本页卡片中。</p>
+      return `<div class="route-map" data-city-map="bern" aria-label="Bern City Walk 互動地圖"></div>
+        <p class="map-note">觸控板、滾輪和雙指均可縮放。默認完整版包含 Einstein House，Münsterplattform 留作 Optional；可用下方快捷組合一鍵換線，再繼續增減景點、餐飲或調整順序。</p>
         <p class="route-distance small"></p><div data-city-guide="bern"></div>`;
     }
-    return `<div class="daytrip-map module-detail-map" id="module-detail-map" aria-label="${safe(module.title)} 互动地图"></div>
-      ${module.cityWalk ? '<p class="walking-route-status" id="walking-route-status" role="status">正在载入沿街步行路线…</p>' : ""}
-      <p class="map-note">${module.cityWalk ? "蓝色为沿道路／步道生成的主线，紫色虚线为 Optional 绕行；" : "橙色为 Bern 基地，蓝色为景点；"}绿色为餐饮，灰色为交通节点。触控板、滚轮及触摸手势均可缩放；路线服务或地图离线时，checkpoint 与文字步骤仍完整可用，不会改画成直线。</p>`;
+    return `<div class="daytrip-map module-detail-map" id="module-detail-map" aria-label="${safe(module.title)} 互動地圖"></div>
+      ${module.cityWalk ? '<p class="walking-route-status" id="walking-route-status" role="status">正在載入沿街步行路線…</p>' : ""}
+      <p class="map-note">${module.cityWalk ? "藍色為沿道路／步道生成的主線，紫色虛線為 Optional 繞行；" : "橙色為 Bern 基地，藍色為景點；"}綠色為餐飲，灰色為交通節點。觸控板、滾輪及觸摸手勢均可縮放；路線服務或地圖離線時，checkpoint 與文字步驟仍完整可用，不會改畫成直線。</p>`;
   }
 
   function renderVariants(variants) {
     return `<div class="module-variant-grid">${variants.map((item, index) => `<article class="module-variant${index === 1 ? " recommended" : ""}">
-      <div class="module-variant-label">${index === 1 ? "推荐" : "路线"}</div><h3>${safe(item.name)}</h3>
+      <div class="module-variant-label">${index === 1 ? "推薦" : "路線"}</div><h3>${safe(item.name)}</h3>
       <p class="module-variant-duration">${safe(item.duration)}</p><p>${safe(item.when)}</p><code>${safe(item.route)}</code>
     </article>`).join("")}</div>`;
   }
@@ -41,16 +41,16 @@
     const walk = module.cityWalk;
     return `<section id="module-city-walk" class="detailed-city-walk"><p class="eyebrow section-eyebrow">CITY WALK CHECKPOINTS</p>
       <h2>${safe(walk.title)}</h2><p class="section-intro">${safe(walk.summary)}</p>
-      <dl class="city-walk-stats"><div><dt>起点</dt><dd>${safe(walk.start)}</dd></div><div><dt>终点</dt><dd>${safe(walk.finish)}</dd></div>
-        <div><dt>路线距离</dt><dd>${safe(walk.estimatedDistance)}</dd></div><div><dt>执行时间</dt><dd>${safe(walk.walkingTime)}</dd></div></dl>
-      <div class="city-walk-shortcut"><strong>时间不足时</strong><span>${safe(walk.shortCut)}</span></div>
-      <div class="checkpoint-route" aria-label="${safe(module.title)} City Walk checkpoint 顺序">${walk.checkpoints.map((item, index) => `<article class="checkpoint-route-stop${item.optional ? " optional" : ""}">
+      <dl class="city-walk-stats"><div><dt>起點</dt><dd>${safe(walk.start)}</dd></div><div><dt>終點</dt><dd>${safe(walk.finish)}</dd></div>
+        <div><dt>路線距離</dt><dd>${safe(walk.estimatedDistance)}</dd></div><div><dt>執行時間</dt><dd>${safe(walk.walkingTime)}</dd></div></dl>
+      <div class="city-walk-shortcut"><strong>時間不足時</strong><span>${safe(walk.shortCut)}</span></div>
+      <div class="checkpoint-route" aria-label="${safe(module.title)} City Walk checkpoint 順序">${walk.checkpoints.map((item, index) => `<article class="checkpoint-route-stop${item.optional ? " optional" : ""}">
         <span class="checkpoint-number">${index + 1}</span><div><p>${item.optional ? "OPTIONAL" : `CHECKPOINT ${index + 1}`}</p><h3>${safe(item.name)}</h3>
         <small>${safe(item.walkFromPrevious)}｜停留 ${safe(item.stay)}</small></div></article>`).join("")}</div>
       <div class="checkpoint-detail-grid">${walk.checkpoints.map((item, index) => `<article class="checkpoint-detail-card${item.optional ? " optional" : ""}">
-        <div class="checkpoint-card-heading"><span>${index + 1}</span><div><p>${item.optional ? "可跳过" : "主线"}</p><h3>${safe(item.name)}</h3></div></div>
-        <p>${safe(item.value)}</p><dl><div><dt>上一站过来</dt><dd>${safe(item.walkFromPrevious)}</dd></div><div><dt>建议停留</dt><dd>${safe(item.stay)}</dd></div></dl>
-        <p class="practical-note"><strong>现场判断：</strong>${safe(item.practical)}</p></article>`).join("")}</div>
+        <div class="checkpoint-card-heading"><span>${index + 1}</span><div><p>${item.optional ? "可跳過" : "主線"}</p><h3>${safe(item.name)}</h3></div></div>
+        <p>${safe(item.value)}</p><dl><div><dt>上一站過來</dt><dd>${safe(item.walkFromPrevious)}</dd></div><div><dt>建議停留</dt><dd>${safe(item.stay)}</dd></div></dl>
+        <p class="practical-note"><strong>現場判斷：</strong>${safe(item.practical)}</p></article>`).join("")}</div>
     </section>`;
   }
 
@@ -58,60 +58,60 @@
     if (!module.foodGuide) return "";
     const guide = module.foodGuide;
     return `<section id="module-food-guide" class="local-food-guide"><p class="eyebrow section-eyebrow">TASTE BERN</p>
-      <h2>Bern 当地美食，不只是一张餐厅清单</h2><p class="section-intro">${safe(guide.intro)}</p>
+      <h2>Bern 當地美食，不只是一張餐廳清單</h2><p class="section-intro">${safe(guide.intro)}</p>
       <div class="food-specialty-grid">${guide.specialties.map((item) => `<article class="food-specialty-card">
-        <div class="food-photo" data-image-query="${safe(item.imageQuery)}" data-image-fallback="${safe(item.imageFallback)}"><span>${safe(item.category)}</span><em>图片暂不可用</em></div>
+        <div class="food-photo" data-image-query="${safe(item.imageQuery)}" data-image-fallback="${safe(item.imageFallback)}"><span>${safe(item.category)}</span><em>圖片暫不可用</em></div>
         <div class="food-specialty-body"><span class="food-category">${safe(item.category)}</span><h3>${safe(item.name)}</h3><p class="food-summary">${safe(item.summary)}</p>
-          <dl><div><dt>怎么吃</dt><dd>${safe(item.taste)}</dd></div><div><dt>放在路线哪里</dt><dd>${safe(item.timing)}</dd></div>
-            <div><dt>份量判断</dt><dd>${safe(item.portion)}</dd></div><div><dt>饮食注意</dt><dd>${safe(item.diet)}</dd></div></dl>
-          ${ext(item.officialUrl, "了解这种 Bern 味道", "official-link")}</div></article>`).join("")}</div>
-      <div class="food-route-plan"><div class="food-route-heading"><p class="eyebrow">EAT ALONG THE WALK</p><h3>沿 City Walk 怎么安排</h3><p>不用一次吃齐；按照路线选择两个小食加一顿正餐即可。</p></div>
+          <dl><div><dt>怎麼吃</dt><dd>${safe(item.taste)}</dd></div><div><dt>放在路線哪裡</dt><dd>${safe(item.timing)}</dd></div>
+            <div><dt>份量判斷</dt><dd>${safe(item.portion)}</dd></div><div><dt>飲食注意</dt><dd>${safe(item.diet)}</dd></div></dl>
+          ${ext(item.officialUrl, "瞭解這種 Bern 味道", "official-link")}</div></article>`).join("")}</div>
+      <div class="food-route-plan"><div class="food-route-heading"><p class="eyebrow">EAT ALONG THE WALK</p><h3>沿 City Walk 怎麼安排</h3><p>不用一次吃齊；按照路線選擇兩個小食加一頓正餐即可。</p></div>
         <ol>${guide.routePlan.map((item) => `<li><strong>${safe(item.checkpoint)}</strong><span>${safe(item.suggestion)}</span></li>`).join("")}</ol></div>
-      <aside class="market-note"><strong>遇到 Märit（市集）时</strong><p>${safe(guide.marketNote)}</p></aside>
-      <div class="food-guide-sources"><strong>官方美食资料</strong>${guide.sources.map((item) => ext(item.url, item.label)).join("")}</div>
+      <aside class="market-note"><strong>遇到 Märit（市集）時</strong><p>${safe(guide.marketNote)}</p></aside>
+      <div class="food-guide-sources"><strong>官方美食資料</strong>${guide.sources.map((item) => ext(item.url, item.label)).join("")}</div>
     </section>`;
   }
 
   function renderAttractions(attractions) {
     return `<div class="attraction-detail-grid">${attractions.map((item, index) => `<article class="attraction-detail-card">
-      <div class="attraction-photo" data-image-query="${safe(item.imageQuery || item.name)}"><span>${index + 1}</span><em>图片载入失败时不影响资料</em></div>
+      <div class="attraction-photo" data-image-query="${safe(item.imageQuery || item.name)}"><span>${index + 1}</span><em>圖片載入失敗時不影響資料</em></div>
       <div class="attraction-detail-body"><p class="eyebrow">CORE STOP ${index + 1}</p><h3>${safe(item.name)}</h3>
         <p class="attraction-value">${safe(item.description)}</p>
-        <dl class="fact-list"><div><dt>建议停留</dt><dd>${safe(item.stay)}</dd></div><div><dt>开放</dt><dd>${safe(item.hours)}</dd></div>
-          <div><dt>费用</dt><dd>${safe(item.price)}</dd></div><div><dt>预约</dt><dd>${safe(item.booking)}</dd></div></dl>
-        <p class="practical-note"><strong>现场注意：</strong>${safe(item.practical)}</p>${ext(item.officialUrl, "官方入口", "official-link")}
+        <dl class="fact-list"><div><dt>建議停留</dt><dd>${safe(item.stay)}</dd></div><div><dt>開放</dt><dd>${safe(item.hours)}</dd></div>
+          <div><dt>費用</dt><dd>${safe(item.price)}</dd></div><div><dt>預約</dt><dd>${safe(item.booking)}</dd></div></dl>
+        <p class="practical-note"><strong>現場注意：</strong>${safe(item.practical)}</p>${ext(item.officialUrl, "官方入口", "official-link")}
       </div></article>`).join("")}</div>`;
   }
 
   function renderDining(items) {
     return `<div class="dining-detail-grid">${items.map((item) => `<article class="dining-detail-card"><span class="dining-role">${safe(item.role)}</span>
-      <h3>${safe(item.name)}</h3><p><strong>行程位置：</strong>${safe(item.routePosition)}</p><p><strong>适合点：</strong>${safe(item.specialties)}</p>
-      <p><strong>价位：</strong>${safe(item.price)}</p><p><strong>营业注意：</strong>${safe(item.hours)}</p><p><strong>订位：</strong>${safe(item.reservation)}</p>
-      ${ext(item.officialUrl, "餐厅官方／官方资料", "official-link")}</article>`).join("")}</div>`;
+      <h3>${safe(item.name)}</h3><p><strong>行程位置：</strong>${safe(item.routePosition)}</p><p><strong>適合點：</strong>${safe(item.specialties)}</p>
+      <p><strong>價位：</strong>${safe(item.price)}</p><p><strong>營業注意：</strong>${safe(item.hours)}</p><p><strong>訂位：</strong>${safe(item.reservation)}</p>
+      ${ext(item.officialUrl, "餐廳官方／官方資料", "official-link")}</article>`).join("")}</div>`;
   }
 
   function renderBackground(module) {
-    const labels = ["地点骨架", "历史与文化", "空间关系", "现场观察"];
+    const labels = ["地點骨架", "歷史與文化", "空間關係", "現場觀察"];
     return `<div class="background-rich">
-      <div class="background-grid">${module.background.map((item, index) => `<article class="background-note"><span>${safe(labels[index] || `理解线索 ${index + 1}`)}</span><p>${safe(item)}</p></article>`).join("")}</div>
-      <article class="route-reading"><div><p class="eyebrow">READ THE ROUTE</p><h3>把背景放回行走顺序</h3><code>${safe(module.route)}</code></div>
-        <div><strong>沿途重点观察</strong><ul>${module.attractions.slice(0, 4).map((item) => `<li><a href="#module-highlights">${safe(item.name)}</a><span>${safe(item.description)}</span></li>`).join("")}</ul></div></article>
+      <div class="background-grid">${module.background.map((item, index) => `<article class="background-note"><span>${safe(labels[index] || `理解線索 ${index + 1}`)}</span><p>${safe(item)}</p></article>`).join("")}</div>
+      <article class="route-reading"><div><p class="eyebrow">READ THE ROUTE</p><h3>把背景放回行走順序</h3><code>${safe(module.route)}</code></div>
+        <div><strong>沿途重點觀察</strong><ul>${module.attractions.slice(0, 4).map((item) => `<li><a href="#module-highlights">${safe(item.name)}</a><span>${safe(item.description)}</span></li>`).join("")}</ul></div></article>
     </div>`;
   }
 
   function renderOperators(operators) {
     if (!operators?.length) return "";
-    return `<section id="module-operators"><p class="eyebrow section-eyebrow">VERIFIED OPERATORS</p><h2>两个实际营运选择</h2>
+    return `<section id="module-operators"><p class="eyebrow section-eyebrow">VERIFIED OPERATORS</p><h2>兩個實際營運選擇</h2>
       <div class="operator-grid">${operators.map((item) => `<article class="operator-card"><h3>${safe(item.name)}</h3>
-        <dl class="fact-list"><div><dt>价格范围</dt><dd>${safe(item.price)}</dd></div><div><dt>集合点</dt><dd>${safe(item.meeting)}</dd></div>
-          <div><dt>活动时长</dt><dd>${safe(item.duration)}</dd></div><div><dt>资格限制</dt><dd>${safe(item.eligibility)}</dd></div>
-          <div><dt>取消政策</dt><dd>${safe(item.cancellation)}</dd></div></dl>${ext(item.bookingUrl, "查看与预约", "module-link")}</article>`).join("")}</div>
-      <p class="small">比较资料核对于 ${safe(moduleData.verifiedOn)}；最终价格、名额、资格与取消处理以营运方预订页及书面确认优先。</p></section>`;
+        <dl class="fact-list"><div><dt>價格範圍</dt><dd>${safe(item.price)}</dd></div><div><dt>集合點</dt><dd>${safe(item.meeting)}</dd></div>
+          <div><dt>活動時長</dt><dd>${safe(item.duration)}</dd></div><div><dt>資格限制</dt><dd>${safe(item.eligibility)}</dd></div>
+          <div><dt>取消政策</dt><dd>${safe(item.cancellation)}</dd></div></dl>${ext(item.bookingUrl, "查看與預約", "module-link")}</article>`).join("")}</div>
+      <p class="small">比較資料核對於 ${safe(moduleData.verifiedOn)}；最終價格、名額、資格與取消處理以營運方預訂頁及書面確認優先。</p></section>`;
   }
 
   function renderDetail(module) {
-    const typeLabel = module.type === "activity" ? "专项活动" : "地点模块";
-    document.title = `${module.title}｜Bern 行程模块`;
+    const typeLabel = module.type === "activity" ? "專項活動" : "地點模塊";
+    document.title = `${module.title}｜Bern 行程模塊`;
     document.querySelector("#daytrip-title").textContent = module.title;
     document.querySelector("#daytrip-subtitle").textContent = `Bern Plug & Play｜${typeLabel}｜${module.duration}`;
 
@@ -120,65 +120,65 @@
         <div class="module-detail-copy"><div class="module-card-topline"><span class="module-type">${typeLabel}</span><span class="module-duration">${safe(module.duration)}</span></div>
           <p class="eyebrow section-eyebrow">${safe(module.category.replaceAll("-", " ").toUpperCase())}</p><h2>${safe(module.title)}</h2>
           <p class="module-detail-summary">${safe(module.summary)}</p>
-          <dl class="module-metrics module-detail-metrics"><div><dt>所需时间</dt><dd>${safe(module.duration)}</dd></div><div><dt>Bern 往返</dt><dd>${safe(module.travelTime)}</dd></div>
-            <div><dt>预算估算</dt><dd>${safe(module.estimatedCost)}</dd></div><div><dt>体力强度</dt><dd>${safe(module.intensity)}</dd></div><div><dt>天气依赖</dt><dd>${safe(module.weatherDependency)}</dd></div></dl>
-        </div><div class="module-hero-visual" data-image-query="${safe(module.imageQuery || module.title)}"><span>${safe(module.title)}</span><em>外部图片不可用时保留完整内容</em></div>
+          <dl class="module-metrics module-detail-metrics"><div><dt>所需時間</dt><dd>${safe(module.duration)}</dd></div><div><dt>Bern 往返</dt><dd>${safe(module.travelTime)}</dd></div>
+            <div><dt>預算估算</dt><dd>${safe(module.estimatedCost)}</dd></div><div><dt>體力強度</dt><dd>${safe(module.intensity)}</dd></div><div><dt>天氣依賴</dt><dd>${safe(module.weatherDependency)}</dd></div></dl>
+        </div><div class="module-hero-visual" data-image-query="${safe(module.imageQuery || module.title)}"><span>${safe(module.title)}</span><em>外部圖片不可用時保留完整內容</em></div>
       </article>
 
-      <section class="module-decision-grid" aria-label="选择判断"><article class="decision-card choose"><p class="eyebrow">WHY THIS</p><h2>为什么选</h2><p>${safe(module.whyChoose)}</p></article>
-        <article class="decision-card skip"><p class="eyebrow">WHEN TO SKIP</p><h2>什么情况不要选</h2><p>${safe(module.skipWhen)}</p></article></section>
+      <section class="module-decision-grid" aria-label="選擇判斷"><article class="decision-card choose"><p class="eyebrow">WHY THIS</p><h2>為什麼選</h2><p>${safe(module.whyChoose)}</p></article>
+        <article class="decision-card skip"><p class="eyebrow">WHEN TO SKIP</p><h2>什麼情況不要選</h2><p>${safe(module.skipWhen)}</p></article></section>
 
-      <nav class="module-detail-nav" aria-label="模块详情目录"><a href="#module-variants">版本</a><a href="#module-plan">时间轴</a>${module.cityWalk ? '<a href="#module-city-walk">City Walk</a>' : ""}<a href="#module-map">地图</a>${module.foodGuide ? '<a href="#module-food-guide">当地美食</a>' : ""}
-        <a href="#module-highlights">景点</a><a href="#module-transport">交通</a><a href="#module-conditions">天气／装备</a><a href="#module-combine">组合</a></nav>
+      <nav class="module-detail-nav" aria-label="模塊詳情目錄"><a href="#module-variants">版本</a><a href="#module-plan">時間軸</a>${module.cityWalk ? '<a href="#module-city-walk">City Walk</a>' : ""}<a href="#module-map">地圖</a>${module.foodGuide ? '<a href="#module-food-guide">當地美食</a>' : ""}
+        <a href="#module-highlights">景點</a><a href="#module-transport">交通</a><a href="#module-conditions">天氣／裝備</a><a href="#module-combine">組合</a></nav>
 
-      <section id="module-variants"><p class="eyebrow section-eyebrow">CHOOSE A VERSION</p><h2>推荐版本与路线选择</h2>${renderVariants(module.variants)}</section>
-      <section id="module-plan"><p class="eyebrow section-eyebrow">READY-TO-USE PLAN</p><h2>具体时间轴</h2>
+      <section id="module-variants"><p class="eyebrow section-eyebrow">CHOOSE A VERSION</p><h2>推薦版本與路線選擇</h2>${renderVariants(module.variants)}</section>
+      <section id="module-plan"><p class="eyebrow section-eyebrow">READY-TO-USE PLAN</p><h2>具體時間軸</h2>
         <div class="daytrip-timeline">${module.schedule.map((item) => `<article class="daytrip-time"><strong>${safe(item.time)}</strong><div><h3>${safe(item.title)}</h3><p>${safe(item.detail)}</p></div></article>`).join("")}</div></section>
 
       ${renderDetailedCityWalk(module)}
 
-      <section id="module-map"><p class="eyebrow section-eyebrow">ORIENTATION</p><h2>${module.cityWalk ? `${safe(module.cityWalk.title)}路线图` : "互动地图与现场顺序"}</h2>${detailMap(module)}</section>
-      ${module.interactiveCityWalk ? `<section class="city-planning-section"><p class="eyebrow section-eyebrow">CITY STRUCTURE</p><h2>Bern 的空间关系</h2>
-        <p>由 Federal Quarter 进入 Old City，再下降到 Aare 河谷，最后由 Rosengarten 回望半岛；高低变化是 City Walk 的叙事骨架。</p>
-        <div id="bern-city-planning-map" class="city-planning-map" aria-label="Bern 城市空间地图"></div></section>` : ""}
+      <section id="module-map"><p class="eyebrow section-eyebrow">ORIENTATION</p><h2>${module.cityWalk ? `${safe(module.cityWalk.title)}路線圖` : "互動地圖與現場順序"}</h2>${detailMap(module)}</section>
+      ${module.interactiveCityWalk ? `<section class="city-planning-section"><p class="eyebrow section-eyebrow">CITY STRUCTURE</p><h2>Bern 的空間關係</h2>
+        <p>由 Federal Quarter 進入 Old City，再下降到 Aare 河谷，最後由 Rosengarten 回望半島；高低變化是 City Walk 的敘事骨架。</p>
+        <div id="bern-city-planning-map" class="city-planning-map" aria-label="Bern 城市空間地圖"></div></section>` : ""}
 
       ${renderFoodGuide(module)}
 
-      <section id="module-highlights"><p class="eyebrow section-eyebrow">WHAT TO SEE</p><h2>核心景点</h2>
-        <p class="section-intro">每张卡按“价值 → 停留 → 开放／费用 → 预约／限制”排列；临行仍以官方入口为准。</p>${renderAttractions(module.attractions)}</section>
+      <section id="module-highlights"><p class="eyebrow section-eyebrow">WHAT TO SEE</p><h2>核心景點</h2>
+        <p class="section-intro">每張卡按“價值 → 停留 → 開放／費用 → 預約／限制”排列；臨行仍以官方入口為準。</p>${renderAttractions(module.attractions)}</section>
 
       ${renderOperators(module.operators)}
 
-      <section id="module-transport"><p class="eyebrow section-eyebrow">FROM BERN</p><h2>交通与票券</h2><div class="transport-detail-grid">
+      <section id="module-transport"><p class="eyebrow section-eyebrow">FROM BERN</p><h2>交通與票券</h2><div class="transport-detail-grid">
         <article class="card"><h3>逐段交通</h3><p><strong>SBB 搜索：</strong><code>${safe(module.transport.search)}</code></p><ol class="transport-segments">${module.transport.segments.map((item) => `<li><strong>${safe(item.label)}</strong><span>${safe(item.detail)}</span></li>`).join("")}</ol><p>${safe(module.transport.bookingSearch)}</p></article>
-        <article class="card"><h3>票种与最后一程</h3><p><strong>规划费用：</strong>${safe(module.transport.plannedCost)}</p><p>${safe(module.transport.ticketChoice)}</p><p class="practical-note"><strong>最后一程：</strong>${safe(module.transport.lastMile)}</p></article>
+        <article class="card"><h3>票種與最後一程</h3><p><strong>規劃費用：</strong>${safe(module.transport.plannedCost)}</p><p>${safe(module.transport.ticketChoice)}</p><p class="practical-note"><strong>最後一程：</strong>${safe(module.transport.lastMile)}</p></article>
       </div></section>
 
-      <section id="module-conditions"><p class="eyebrow section-eyebrow">CONDITIONS</p><h2>天气、装备与备案</h2><div class="condition-detail-grid">
-        <article class="card"><h3>天气判断</h3><p>${safe(module.conditions.weather)}</p><p><strong>取消标准：</strong>${safe(module.conditions.cancel)}</p></article>
-        <article class="card"><h3>衣着与携带</h3><p>${safe(module.conditions.clothing)}</p><p>${safe(module.conditions.packing)}</p></article>
-        <article class="card"><h3>体力与无障碍</h3><p>${safe(module.conditions.fitness)}</p><p>${safe(module.conditions.accessibility)}</p></article>
+      <section id="module-conditions"><p class="eyebrow section-eyebrow">CONDITIONS</p><h2>天氣、裝備與備案</h2><div class="condition-detail-grid">
+        <article class="card"><h3>天氣判斷</h3><p>${safe(module.conditions.weather)}</p><p><strong>取消標準：</strong>${safe(module.conditions.cancel)}</p></article>
+        <article class="card"><h3>衣著與攜帶</h3><p>${safe(module.conditions.clothing)}</p><p>${safe(module.conditions.packing)}</p></article>
+        <article class="card"><h3>體力與無障礙</h3><p>${safe(module.conditions.fitness)}</p><p>${safe(module.conditions.accessibility)}</p></article>
         <article class="card"><h3>替代方案</h3><p>${safe(module.conditions.backup)}</p></article></div></section>
 
-      <section id="module-combine" class="module-combination-section"><p class="eyebrow section-eyebrow">PLUG & PLAY</p><h2>可组合与冲突模块</h2>
-        <div class="module-detail-columns"><article class="card compatible"><h3>适合搭配</h3>${relatedLinks(module.combineWith, "这个模块本身已经足够完整，不需要再添加其他模块。")}</article>
-          <article class="card incompatible"><h3>不建议同日</h3>${relatedLinks(module.avoidWith, "没有特别冲突；仍需按当天时间和体力判断。")}</article></div>
-        <p class="small">这里只显示组合边界，不会自动排程、记录或保存选择。</p></section>
+      <section id="module-combine" class="module-combination-section"><p class="eyebrow section-eyebrow">PLUG & PLAY</p><h2>可組合與衝突模塊</h2>
+        <div class="module-detail-columns"><article class="card compatible"><h3>適合搭配</h3>${relatedLinks(module.combineWith, "這個模塊本身已經足夠完整，不需要再添加其他模塊。")}</article>
+          <article class="card incompatible"><h3>不建議同日</h3>${relatedLinks(module.avoidWith, "沒有特別衝突；仍需按當天時間和體力判斷。")}</article></div>
+        <p class="small">這裡只顯示組合邊界，不會自動排程、記錄或保存選擇。</p></section>
 
-      <section class="module-collapsible-info"><details><summary>餐厅完整资料 <span>${module.dining.length} 个选择</span></summary>${renderDining(module.dining)}</details>
-        <details><summary>历史、文化与空间背景 <span>${module.background.length} 个理解层次</span></summary>${renderBackground(module)}</details>
-        <details><summary>官方资料与核对日期 <span>${safe(module.verifiedOn)}</span></summary><ul class="resource-list">${module.resources.map((item) => `<li><span>${safe(item.kind)}</span>${ext(item.url, item.label)}</li>`).join("")}</ul>
-          <p class="verification-note">资料核对日期：${safe(module.verifiedOn)}。价格、时刻、开放、天气与营运会变化，请在出发前通过以上官方入口再次确认。</p></details></section>`;
+      <section class="module-collapsible-info"><details><summary>餐廳完整資料 <span>${module.dining.length} 個選擇</span></summary>${renderDining(module.dining)}</details>
+        <details><summary>歷史、文化與空間背景 <span>${module.background.length} 個理解層次</span></summary>${renderBackground(module)}</details>
+        <details><summary>官方資料與核對日期 <span>${safe(module.verifiedOn)}</span></summary><ul class="resource-list">${module.resources.map((item) => `<li><span>${safe(item.kind)}</span>${ext(item.url, item.label)}</li>`).join("")}</ul>
+          <p class="verification-note">資料核對日期：${safe(module.verifiedOn)}。價格、時刻、開放、天氣與營運會變化，請在出發前通過以上官方入口再次確認。</p></details></section>`;
   }
 
   function renderMissing(tripKey, missingDetails = false) {
-    document.title = "模块不存在｜Bern 行程模块";
-    document.querySelector("#daytrip-title").textContent = missingDetails ? "模块资料暂不可用" : "找不到这个模块";
+    document.title = "模塊不存在｜Bern 行程模塊";
+    document.querySelector("#daytrip-title").textContent = missingDetails ? "模塊資料暫不可用" : "找不到這個模塊";
     document.querySelector("#daytrip-subtitle").textContent = "Bern Plug & Play";
     document.querySelector("#daytrip-page").innerHTML = `<section class="module-not-found"><p class="eyebrow section-eyebrow">${missingDetails ? "DETAIL DATA UNAVAILABLE" : "MODULE NOT FOUND"}</p>
-      <h2>${missingDetails ? "目录中有这个模块，但详细资料未能载入" : "这个链接没有对应的行程模块"}</h2>
-      <p>${missingDetails ? "请返回目录选择其他模块，或稍后重新载入本页。" : tripKey ? `查询值为 <code>${safe(tripKey)}</code>，可能是旧链接或拼写错误。` : "网址中缺少 trip 参数。"}</p>
-      <a class="module-link" href="bern.html">返回 Bern 模块库 →</a></section>`;
+      <h2>${missingDetails ? "目錄中有這個模塊，但詳細資料未能載入" : "這個鏈接沒有對應的行程模塊"}</h2>
+      <p>${missingDetails ? "請返回目錄選擇其他模塊，或稍後重新載入本頁。" : tripKey ? `查詢值為 <code>${safe(tripKey)}</code>，可能是舊鏈接或拼寫錯誤。` : "網址中缺少 trip 參數。"}</p>
+      <a class="module-link" href="bern.html">返回 Bern 模塊庫 →</a></section>`;
   }
 
   function markerIcon(label, type) {
@@ -226,13 +226,13 @@
       const walkingMinutes = Math.round(mainRoute.duration / 60);
       if (status) {
         status.classList.add("route-ready");
-        status.textContent = `沿街主线已载入｜约 ${distanceKm} km｜纯步行约 ${walkingMinutes} 分钟${optionalDetours.length ? `｜另有 ${optionalDetours.length} 条 Optional 绕行` : ""}`;
+        status.textContent = `沿街主線已載入｜約 ${distanceKm} km｜純步行約 ${walkingMinutes} 分鐘${optionalDetours.length ? `｜另有 ${optionalDetours.length} 條 Optional 繞行` : ""}`;
       }
     } catch {
       mapElement.classList.add("walking-route-unavailable");
       if (status) {
         status.classList.add("route-unavailable");
-        status.textContent = "沿街路线暂时无法载入；地图只显示 checkpoint，不以直线代替。请依下方逐站步行说明或现场地图导航。";
+        status.textContent = "沿街路線暫時無法載入；地圖只顯示 checkpoint，不以直線代替。請依下方逐站步行說明或現場地圖導航。";
       }
     } finally {
       window.clearTimeout(timeout);
@@ -245,7 +245,7 @@
     if (!element) return;
     if (!window.L) {
       element.classList.add("map-unavailable");
-      element.textContent = "互动地图暂时无法载入；景点、交通和时间轴仍可正常使用。";
+      element.textContent = "互動地圖暫時無法載入；景點、交通和時間軸仍可正常使用。";
       return;
     }
     const map = L.map(element, { scrollWheelZoom: true, touchZoom: true });
@@ -254,13 +254,13 @@
     tile.addTo(map).on("tileerror", () => element.classList.add("tiles-unavailable"));
     const bounds = module.cityWalk ? [] : [[BERN_BASE[1], BERN_BASE[2]]];
     if (!module.cityWalk) {
-      L.marker(bounds[0], { icon: markerIcon("B", "base") }).addTo(map).bindPopup("<strong>Bern</strong><br>住宿基地与公共交通起点");
+      L.marker(bounds[0], { icon: markerIcon("B", "base") }).addTo(map).bindPopup("<strong>Bern</strong><br>住宿基地與公共交通起點");
     }
     const routeItems = module.cityWalk?.checkpoints || module.attractions;
     routeItems.forEach((item, index) => {
       const [lat, lng] = item.coordinates; bounds.push([lat, lng]);
       const label = module.cityWalk ? `C${index + 1}` : String(index + 1);
-      const movement = module.cityWalk ? `${item.walkFromPrevious}｜停留 ${item.stay}` : `建议停留 ${item.stay}`;
+      const movement = module.cityWalk ? `${item.walkFromPrevious}｜停留 ${item.stay}` : `建議停留 ${item.stay}`;
       L.marker([lat, lng], { icon: markerIcon(label, item.optional ? "optional-checkpoint" : "destination") }).addTo(map).bindPopup(`<strong>${safe(item.name)}</strong><br>${safe(movement)}<br>${safe(item.practical)}`);
     });
     module.dining.forEach((item) => {
@@ -311,7 +311,7 @@
           }
         }
         if (!source) throw new Error("no image");
-        const image = new Image(); image.loading = target.classList.contains("food-photo") ? "eager" : "lazy"; image.decoding = "async"; image.alt = index ? `${module.title}｜${target.dataset.imageQuery}` : `${module.title} 景点图片`;
+        const image = new Image(); image.loading = target.classList.contains("food-photo") ? "eager" : "lazy"; image.decoding = "async"; image.alt = index ? `${module.title}｜${target.dataset.imageQuery}` : `${module.title} 景點圖片`;
         const imageTimeout = window.setTimeout(() => { image.remove(); target.classList.add("image-unavailable"); }, 4500);
         image.addEventListener("load", () => { window.clearTimeout(imageTimeout); target.classList.add("has-image"); }, { once: true });
         image.addEventListener("error", () => { window.clearTimeout(imageTimeout); image.remove(); target.classList.add("image-unavailable"); }, { once: true });
