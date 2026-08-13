@@ -47,10 +47,12 @@
       <div class="checkpoint-route" aria-label="${safe(module.title)} City Walk checkpoint 順序">${walk.checkpoints.map((item, index) => `<article class="checkpoint-route-stop${item.optional ? " optional" : ""}">
         <span class="checkpoint-number">${index + 1}</span><div><p>${item.optional ? "OPTIONAL" : `CHECKPOINT ${index + 1}`}</p><h3>${safe(item.name)}</h3>
         <small>${safe(item.walkFromPrevious)}｜停留 ${safe(item.stay)}</small></div></article>`).join("")}</div>
-      <div class="checkpoint-detail-grid">${walk.checkpoints.map((item, index) => `<article class="checkpoint-detail-card${item.optional ? " optional" : ""}">
-        <div class="checkpoint-card-heading"><span>${index + 1}</span><div><p>${item.optional ? "可跳過" : "主線"}</p><h3>${safe(item.name)}</h3></div></div>
-        <p>${safe(item.value)}</p><dl><div><dt>上一站過來</dt><dd>${safe(item.walkFromPrevious)}</dd></div><div><dt>建議停留</dt><dd>${safe(item.stay)}</dd></div></dl>
-        <p class="practical-note"><strong>現場判斷：</strong>${safe(item.practical)}</p></article>`).join("")}</div>
+      <details class="city-walk-detail-disclosure"><summary><span><small>CHECKPOINT NOTES</small><strong>逐站完整說明與現場判斷</strong></span><em>${walk.checkpoints.length} 個 checkpoint</em></summary>
+        <div class="checkpoint-detail-grid">${walk.checkpoints.map((item, index) => `<article class="checkpoint-detail-card${item.optional ? " optional" : ""}">
+          <div class="checkpoint-card-heading"><span>${index + 1}</span><div><p>${item.optional ? "可跳過" : "主線"}</p><h3>${safe(item.name)}</h3></div></div>
+          <p>${safe(item.value)}</p><dl><div><dt>上一站過來</dt><dd>${safe(item.walkFromPrevious)}</dd></div><div><dt>建議停留</dt><dd>${safe(item.stay)}</dd></div></dl>
+          <p class="practical-note"><strong>現場判斷：</strong>${safe(item.practical)}</p></article>`).join("")}</div>
+      </details>
     </section>`;
   }
 
@@ -59,16 +61,18 @@
     const guide = module.foodGuide;
     return `<section id="module-food-guide" class="local-food-guide"><p class="eyebrow section-eyebrow">TASTE BERN</p>
       <h2>Bern 當地美食，不只是一張餐廳清單</h2><p class="section-intro">${safe(guide.intro)}</p>
-      <div class="food-specialty-grid">${guide.specialties.map((item) => `<article class="food-specialty-card">
-        <div class="food-photo" data-image-query="${safe(item.imageQuery)}" data-image-fallback="${safe(item.imageFallback)}"><span>${safe(item.category)}</span><em>圖片暫不可用</em></div>
-        <div class="food-specialty-body"><span class="food-category">${safe(item.category)}</span><h3>${safe(item.name)}</h3><p class="food-summary">${safe(item.summary)}</p>
-          <dl><div><dt>怎麼吃</dt><dd>${safe(item.taste)}</dd></div><div><dt>放在路線哪裡</dt><dd>${safe(item.timing)}</dd></div>
-            <div><dt>份量判斷</dt><dd>${safe(item.portion)}</dd></div><div><dt>飲食注意</dt><dd>${safe(item.diet)}</dd></div></dl>
-          ${ext(item.officialUrl, "瞭解這種 Bern 味道", "official-link")}</div></article>`).join("")}</div>
       <div class="food-route-plan"><div class="food-route-heading"><p class="eyebrow">EAT ALONG THE WALK</p><h3>沿 City Walk 怎麼安排</h3><p>不用一次吃齊；按照路線選擇兩個小食加一頓正餐即可。</p></div>
         <ol>${guide.routePlan.map((item) => `<li><strong>${safe(item.checkpoint)}</strong><span>${safe(item.suggestion)}</span></li>`).join("")}</ol></div>
       <aside class="market-note"><strong>遇到 Märit（市集）時</strong><p>${safe(guide.marketNote)}</p></aside>
-      <div class="food-guide-sources"><strong>官方美食資料</strong>${guide.sources.map((item) => ext(item.url, item.label)).join("")}</div>
+      <details class="food-library"><summary><span><small>FOOD REFERENCE</small><strong>Bern 完整當地食物資料庫</strong></span><em>${guide.specialties.length} 種食物</em></summary>
+        <div class="food-library-body"><div class="food-specialty-grid">${guide.specialties.map((item) => `<article class="food-specialty-card">
+          <div class="food-photo" data-image-query="${safe(item.imageQuery)}" data-image-fallback="${safe(item.imageFallback)}"><span>${safe(item.category)}</span><em>圖片暫不可用</em></div>
+          <div class="food-specialty-body"><span class="food-category">${safe(item.category)}</span><h3>${safe(item.name)}</h3><p class="food-summary">${safe(item.summary)}</p>
+            <dl><div><dt>怎麼吃</dt><dd>${safe(item.taste)}</dd></div><div><dt>放在路線哪裡</dt><dd>${safe(item.timing)}</dd></div>
+              <div><dt>份量判斷</dt><dd>${safe(item.portion)}</dd></div><div><dt>飲食注意</dt><dd>${safe(item.diet)}</dd></div></dl>
+            ${ext(item.officialUrl, "瞭解這種 Bern 味道", "official-link")}</div></article>`).join("")}</div>
+          <div class="food-guide-sources"><strong>官方美食資料</strong>${guide.sources.map((item) => ext(item.url, item.label)).join("")}</div></div>
+      </details>
     </section>`;
   }
 
@@ -81,6 +85,14 @@
           <div><dt>費用</dt><dd>${safe(item.price)}</dd></div><div><dt>預約</dt><dd>${safe(item.booking)}</dd></div></dl>
         <p class="practical-note"><strong>現場注意：</strong>${safe(item.practical)}</p>${ext(item.officialUrl, "官方入口", "official-link")}
       </div></article>`).join("")}</div>`;
+  }
+
+  function renderHighlightsSection(module) {
+    const content = `<p class="section-intro">每張卡按「價值 → 停留 → 開放／費用 → 預約／限制」排列；臨行仍以官方入口為準。</p>${renderAttractions(module.attractions)}`;
+    if (!module.interactiveCityWalk) {
+      return `<section id="module-highlights"><p class="eyebrow section-eyebrow">WHAT TO SEE</p><h2>核心景點</h2>${content}</section>`;
+    }
+    return `<section class="module-collapsible-info module-secondary-info"><details id="module-highlights"><summary>核心景點完整資料 <span>${module.attractions.length} 個景點 · 開放／費用／預約</span></summary><div class="module-detail-disclosure-body">${content}</div></details></section>`;
   }
 
   function renderDining(items) {
@@ -144,8 +156,7 @@
 
       ${renderFoodGuide(module)}
 
-      <section id="module-highlights"><p class="eyebrow section-eyebrow">WHAT TO SEE</p><h2>核心景點</h2>
-        <p class="section-intro">每張卡按“價值 → 停留 → 開放／費用 → 預約／限制”排列；臨行仍以官方入口為準。</p>${renderAttractions(module.attractions)}</section>
+      ${renderHighlightsSection(module)}
 
       ${renderOperators(module.operators)}
 
@@ -294,8 +305,9 @@
   }
 
   async function loadImages(module) {
-    const targets = [...document.querySelectorAll("[data-image-query]")];
-    await Promise.allSettled(targets.map(async (target, index) => {
+    const hydrateTarget = async (target, index) => {
+      if (target.dataset.imageHydrated === "true") return;
+      target.dataset.imageHydrated = "true";
       try {
         let source;
         try {
@@ -317,7 +329,16 @@
         image.addEventListener("error", () => { window.clearTimeout(imageTimeout); image.remove(); target.classList.add("image-unavailable"); }, { once: true });
         image.src = source; target.prepend(image);
       } catch { target.classList.add("image-unavailable"); }
-    }));
+    };
+    const targets = [...document.querySelectorAll("[data-image-query]")];
+    const visibleTargets = targets.filter((target) => !target.closest("details:not([open])"));
+    await Promise.allSettled(visibleTargets.map(hydrateTarget));
+    document.querySelectorAll("details").forEach((detailsElement) => {
+      detailsElement.addEventListener("toggle", () => {
+        if (!detailsElement.open) return;
+        [...detailsElement.querySelectorAll("[data-image-query]")].forEach(hydrateTarget);
+      });
+    });
   }
 
   const tripKey = new URLSearchParams(window.location.search).get("trip");

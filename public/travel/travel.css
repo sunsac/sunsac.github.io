@@ -877,6 +877,57 @@ main > section { scroll-margin-top: 86px; }
   font-size: .86rem;
 }
 
+.overview-quick-access {
+  display: grid;
+  gap: 16px;
+  border-color: #bcd5dc;
+  background: linear-gradient(145deg, #ffffff, #f2f8f8);
+}
+
+.overview-next-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+  gap: 22px;
+  align-items: end;
+}
+
+.overview-next-step h2,
+.overview-next-step p { margin-bottom: 0; }
+.overview-next-step > p { color: var(--muted); }
+
+.overview-city-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.overview-city-shortcuts a {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+  padding: 12px 13px;
+  border: 1px solid #d4e1e5;
+  border-radius: 11px;
+  color: var(--ink);
+  background: rgba(255,255,255,.9);
+  text-decoration: none;
+}
+
+.overview-city-shortcuts a:hover,
+.overview-city-shortcuts a:focus-visible {
+  border-color: #6d9eb3;
+  background: #eef7fb;
+}
+
+.overview-city-shortcuts a:focus-visible {
+  outline: 3px solid rgba(46, 111, 149, .24);
+  outline-offset: 2px;
+}
+
+.overview-city-shortcuts span { color: var(--green); font-size: .68rem; font-weight: 900; }
+.overview-city-shortcuts strong { color: var(--blue); font-size: .98rem; }
+.overview-city-shortcuts small { overflow-wrap: anywhere; color: var(--muted); font-size: .68rem; line-height: 1.35; }
+
 .route-map-illustration {
   position: relative;
   min-height: 500px;
@@ -1803,6 +1854,23 @@ code {
   margin-top: 12px;
 }
 
+.route-map-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0 14px;
+  padding: 11px;
+  border: 1px solid #d7e3e8;
+  border-radius: 11px;
+  background: linear-gradient(120deg, #f5fafb, #f3f8f6);
+}
+
+.route-map-actions .route-action {
+  width: 100%;
+  min-height: 44px;
+  font-weight: 800;
+}
+
 .route-action, .add-route-button {
   padding: 7px 12px;
   border: 1px solid #d7a66f;
@@ -1814,6 +1882,13 @@ code {
 }
 
 .route-action:hover, .add-route-button:hover { background: #fff0dc; }
+.route-marker-toggle.is-active {
+  border-color: #4f8298;
+  color: white;
+  background: var(--blue);
+}
+.route-action:focus-visible,
+.add-route-button:focus-visible { outline: 3px solid rgba(46, 111, 149, .24); outline-offset: 2px; }
 
 .add-route-button {
   border-color: #8fb9a7;
@@ -1952,6 +2027,9 @@ footer {
   .map-label-freiburg { left: 18%; }
   .map-label-heidelberg,
   .map-label-frankfurt { left: 42%; }
+  .overview-next-step { grid-template-columns: 1fr; gap: 8px; }
+  .overview-city-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .overview-city-shortcuts a:last-child { grid-column: 1 / -1; }
 }
 
 /* Bern plug-and-play module library */
@@ -2295,6 +2373,9 @@ footer {
 .module-collapsible-info summary:focus-visible { outline: 3px solid #e0a258; outline-offset: -3px; }
 .module-collapsible-info summary span { color: var(--muted); font-size: .78rem; font-weight: 700; text-align: right; }
 .module-collapsible-info details[open] summary { border-bottom: 1px solid var(--line); }
+.module-secondary-info { padding: 14px; }
+.module-detail-disclosure-body { padding: 18px; }
+.module-detail-disclosure-body > .section-intro { margin-top: 0; }
 .dining-detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 18px; }
 .dining-detail-card { min-width: 0; padding: 17px; border: 1px solid var(--line); border-radius: 11px; background: #fbfdfd; }
 .dining-detail-card h3 { margin: 9px 0; }
@@ -2349,7 +2430,7 @@ footer {
 .module-map-marker.restaurant { background: #3d7c55; }
 .module-map-marker.transit { background: #6c7880; }
 .module-map-marker.optional-checkpoint { background: #79599b; }
-.tiles-unavailable::after { position: absolute; z-index: 500; right: 12px; bottom: 12px; max-width: 260px; padding: 8px 10px; border-radius: 8px; content: "地图图块暂不可用；标记与文字资料仍保留"; color: #344; background: rgba(255,255,255,.92); font-size: .75rem; }
+.tiles-unavailable::after { position: absolute; z-index: 500; right: 12px; bottom: 12px; max-width: 260px; padding: 8px 10px; border-radius: 8px; content: "地圖圖塊暫不可用；標記與文字資料仍保留"; color: #344; background: rgba(255,255,255,.92); font-size: .75rem; }
 .walking-route-status {
   margin: 10px 0 0;
   padding: 10px 12px;
@@ -2424,6 +2505,34 @@ footer {
 .checkpoint-detail-card dl div { min-width: 0; padding: 8px 9px; border-radius: 8px; background: #f3f7f8; }
 .checkpoint-detail-card dt { color: var(--muted); font-size: .68rem; font-weight: 800; }
 .checkpoint-detail-card dd { margin: 2px 0 0; overflow-wrap: anywhere; font-size: .82rem; font-weight: 700; }
+
+.city-walk-detail-disclosure {
+  margin-top: 16px;
+  overflow: hidden;
+  border: 1px solid #cfdae0;
+  border-radius: 12px;
+  background: #f8fbfc;
+}
+
+.city-walk-detail-disclosure > summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 15px 17px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.city-walk-detail-disclosure > summary::-webkit-details-marker { display: none; }
+.city-walk-detail-disclosure > summary span { display: grid; gap: 2px; }
+.city-walk-detail-disclosure > summary small { color: var(--green); font-size: .62rem; font-weight: 900; letter-spacing: .12em; }
+.city-walk-detail-disclosure > summary strong { color: var(--blue); }
+.city-walk-detail-disclosure > summary em { color: var(--muted); font-size: .74rem; font-style: normal; font-weight: 800; }
+.city-walk-detail-disclosure > summary::after { color: var(--blue); content: "＋"; font-size: 1.1rem; font-weight: 900; }
+.city-walk-detail-disclosure[open] > summary::after { content: "−"; }
+.city-walk-detail-disclosure[open] > summary { border-bottom: 1px solid #cfdae0; background: white; }
+.city-walk-detail-disclosure .checkpoint-detail-grid { padding: 16px; }
 
 .local-food-guide { scroll-margin-top: 86px; }
 .food-library { margin-top: 18px; overflow: hidden; border: 1px solid #decdb8; border-radius: 14px; background: #fffaf3; }
@@ -2693,6 +2802,9 @@ footer {
   .city-walk-shortcut { grid-template-columns: 1fr; gap: 4px; }
   .checkpoint-route-stop { min-width: 170px; flex-basis: 170px; }
   .checkpoint-detail-card { padding: 15px; }
+  .city-walk-detail-disclosure > summary { align-items: flex-start; padding: 14px; }
+  .city-walk-detail-disclosure > summary em { display: none; }
+  .city-walk-detail-disclosure .checkpoint-detail-grid { padding: 10px; }
   .food-photo { min-height: 190px; }
   .food-specialty-body { padding: 16px; }
   .food-specialty-card dl,
@@ -2700,6 +2812,8 @@ footer {
   .food-summary { min-height: auto; }
   .food-route-plan { padding: 17px; }
   .module-collapsible-info summary { padding: 14px; }
+  .module-secondary-info { padding: 10px; }
+  .module-detail-disclosure-body { padding: 10px; }
   .weather-section-heading { display: block; }
   .weather-refresh { margin-top: 14px; }
   .weather-day-row {
@@ -2735,6 +2849,8 @@ footer {
   .route-stop-controls { grid-template-columns: repeat(3, 26px); }
   .route-stop-controls button { width: 26px; height: 26px; }
   .route-actions { display: grid; grid-template-columns: 1fr; }
+  .route-map-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .route-map-actions .route-marker-toggle { grid-column: 1 / -1; }
   .food-library > summary { padding: 14px; }
   .food-library-body { padding: 0 10px 10px; }
 }

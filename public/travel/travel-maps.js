@@ -82,13 +82,13 @@ const cityWalkGuides = {
   bern: {
     options: [
       ["Full City Walk（推薦）", "約 4–5 公里、4.5–5.5 小時；由 Bern Bahnhof 經聯邦政治區、UNESCO Old City、Einstein House、Minster、Aare 河谷、BearPark 到 Rosengarten，最後乘 bus 10 返回市中心。"],
-      ["精简版", "Bern Bahnhof → Bundeshaus → Zytglogge → Kramgasse → Bern Minster，约 2–2.5 小时；适合只有半天或天气窗口较短时。"],
+      ["精簡版", "Bern Bahnhof → Bundeshaus → Zytglogge → Kramgasse → Bern Minster，約 2–2.5 小時；適合只有半天或天氣窗口較短時。"],
       ["自然景觀版", "完整 Old City 主線（含 Einstein House）後前往 BearPark、Aare 河畔及 Rosengarten；Münsterplattform 視體力與天氣選加，上坡段可改乘 bus 10。"],
       ["雨天文化版", "Bern Bahnhof → Bundeshaus 外觀 → Old City 拱廊 → Zytglogge → Einstein House → Bern Minster；以有遮蔽路段和室內景點為主。"]
     ],
     stops: [
       ["Bern Bahnhof", "大型交通樞紐與 City Walk 起點；出站後先經 Bahnhofplatz 進入 Spitalgasse / Marktgasse 的拱廊軸線。", "公共交通／戶外：無入場票。住朋友家通常沒有 Bern-Ticket；先按朋友地址另買 Libero 市內票並放下大行李。"],
-      ["Bundeshaus", "Swiss Federal Palace 與 Bundesplatz 代表 Bern 作為 Switzerland federal city 的政治角色；廣場上的 26 道噴泉象徵各州。", "外观与 Bundesplatz 可自由参观；议会内部导览受会期、星期与安检安排影响，必须通过官方日历预约并携带证件。"],
+      ["Bundeshaus", "Swiss Federal Palace 與 Bundesplatz 代表 Bern 作為 Switzerland federal city 的政治角色；廣場上的 26 道噴泉象徵各州。", "外觀與 Bundesplatz 可自由參觀；議會內部導覽受會期、星期與安檢安排影響，必須通過官方日曆預約並攜帶證件。"],
       ["Zytglogge", "曾是城市西側城門，後來成為鐘樓；整點前約 5 分鐘可看 1530 年代 astronomical clock 的機械人偶。", "外觀全天免費。塔內只可參加約 1 小時 guided tour；現行 public tour 成人 CHF 25、6–16 歲 CHF 12，private tour CHF 300。場次和語言須按 booking calendar 確認，約 130 級樓梯且不適合行動不便者。"],
       ["Kramgasse", "UNESCO Old City 的主要歷史街道；連續 Lauben 拱廊、16 世紀噴泉、地窖商店與砂岩立面共同呈現 Bern 的步行尺度。", "戶外街道全天免費；週日多數零售店休息，但拱廊、噴泉和建築仍可看。Einstein House 位於 Kramgasse 49，已列入完整版預設，預留 30–45 分鐘；時間緊時可跳過。"],
       ["Bern Minster", "Switzerland 最高教堂尖塔及 Bern Old City 天際線核心；西門 Last Judgement 雕刻、nave 與 tower 是重點。", "夏季一般週一至六 church 10:00–17:00、週日 11:30–17:00；tower 最後登塔 16:30。成人登塔 CHF 6、344 級樓梯、無 lift；禮拜及特別活動可臨時限制參觀。"],
@@ -159,7 +159,7 @@ const cityWalkOptionalStops = {
     ["Niederdorf", 47.373400, 8.544100, "Old Town 東側的步行街區，餐廳及小店密集。戶外街區、全天免費；週日個別零售店可能休息，餐廳各自營業。"],
     ["Central", 47.376950, 8.544280, "Limmat River、Polybahn 與 tram 的轉乘點，可步行回 Zürich HB。戶外公共交通節點、全天可通行；Polybahn / tram 依 ZVV timetable。"],
     ["Uetliberg", 47.349900, 8.491100, "Zurich 的 local mountain 及全景觀景點。山頂與步道免費、全天開放；但 2026/4/29–10/18 S10 在 Zürich HB–Selnau 段停駛，需由 HB 步行至 Selnau 或 tram 3 / 14 至 Stauffacher 後步行轉乘，預留額外時間。"],
-    ["Swiss National Museum", 47.379650, 8.540300, "了解 Switzerland 歷史的博物館。週五至日 10:00–17:00，入館需買票；2026/8/1–24 只有 library 因盤點關閉，museum、boutique 和 bistro 正常。"],
+    ["Swiss National Museum", 47.379650, 8.540300, "瞭解 Switzerland 歷史的博物館。週五至日 10:00–17:00，入館需買票；2026/8/1–24 只有 library 因盤點關閉，museum、boutique 和 bistro 正常。"],
     ["Lindt Home of Chocolate", 47.320600, 8.536700, "Kilchberg 的巧克力博物館及體驗。每日 10:00–19:00；museum 必須預約 timed ticket（熱門日不接受臨時到訪），但 fountain、shop 與 café 無票可進。"],
     ["Limmat River Cruise", 47.379500, 8.540500, "由 National Museum 出發的城市河上觀光。2026/4/6–10/19 季節營運、round trip 約 1 小時；可用 ZVV zone 110 single ticket（成人 CHF 4.70）或 Zürich Card，出發時間與水位／城市活動須當日確認。"],
     ["Schanzengraben", 47.373080, 8.533980, "由防禦壕溝轉成的安靜水道。戶外步道、免費且通常全天可走；雨後地面可能濕滑，沒有固定場館開放時間。"],
@@ -171,7 +171,7 @@ const cityWalkOptionalStops = {
     ["Swiss Chuchi", 47.371700, 8.544000, "Old Town fondue restaurant。週一至五 11:30–23:15、週六至日 12:00–23:15；建議晚餐先訂位。"],
     ["Le Dézaley", 47.371600, 8.544500, "Grossmünster 附近的 Swiss cuisine restaurant。週一至六 11:30–14:00、18:00–24:00；週日休息，晚餐建議訂位。"],
     ["Zeughauskeller", 47.369500, 8.539900, "傳統 Swiss dishes 及 guild hall 餐廳。每日約 11:30–23:00，熱門時段建議預約或預留排隊。"],
-    ["Sternen Grill", 47.366900, 8.545900, "Bellevue 附近的 bratwurst 快餐，适合湖边、Opera House 外观或赶 tram 前快速吃。周日 10:30–23:00（last sausage 22:45），周二至六营业至 24:00；无需订位，热门时段可能排队。"],
+    ["Sternen Grill", 47.366900, 8.545900, "Bellevue 附近的 bratwurst 快餐，適合湖邊、Opera House 外觀或趕 tram 前快速吃。周日 10:30–23:00（last sausage 22:45），週二至六營業至 24:00；無需訂位，熱門時段可能排隊。"],
     ["Schokolade & Espresso Bar", 47.371397, 8.543873, "Münstergasse 19｜Schwarzenbach 的 espresso、hot chocolate 及 350+ 手工巧克力；週六 09:00–17:00，週日休息。適合 Grossmünster / Niederdorf 間 15–30 分鐘短停，不適合作正餐。"],
     ["St Andrew's Anglican Church", 47.368696, 8.549423, "Promenadengasse 9｜English-language Anglican / Protestant worship。週日 09:00 Said Eucharist（約 45 分鐘、安靜 spoken service）或 10:30 Sung Eucharist（約 1 小時、hymns，之後 coffee）。無票／通常無需預約；位於 Kunsthaus 附近，適合週日上午加入。"],
     ["Hillsong Zürich", 47.389667, 8.492258, "Campus für Christus｜Hohlstrasse 535, 8048 Zürich。週日 10:30 German / English contemporary evangelical service，含 modern worship 與 Hillsong Kids；無票／通常無需預約。由 Zürich HB 乘 train 到 Zürich Altstetten 後步行約 5 分鐘；較適合想參與現代敬拜，而非 Old Town 教堂體驗的人。"],
@@ -181,17 +181,17 @@ const cityWalkOptionalStops = {
     ["Conditorei Schober", 47.370865, 8.541847, "Wühre 15｜Limmat 河邊的 hot chocolate、praline、cake 與 pastry。週二至五 10:00–18:30｜週六 10:00–17:30｜週日、週一休息；適合 8/15 下午茶，不適合週日。"]
   ],
   bern: [
-    ["Bern Historical Museum", 46.945300, 7.445300, "Bern 与 Switzerland 历史、Einstein Museum 及文化展览。通常有固定休馆规律，作为雨天选项前须查看官方日历；开放时可安排约 1.5–2 小时。"],
+    ["Bern Historical Museum", 46.945300, 7.445300, "Bern 與 Switzerland 歷史、Einstein Museum 及文化展覽。通常有固定休館規律，作為雨天選項前須查看官方日曆；開放時可安排約 1.5–2 小時。"],
     ["Einstein House", 46.948900, 7.451400, "Kramgasse 49｜Einstein 1903–1905 年居所。2026/2/4–12/18 每日 10:00–17:00、最後入場 16:45；成人 CHF 8，Swiss Travel Pass 成人 CHF 6。空間小，預留 30–45 分鐘。"],
     ["Altes Tramdepot", 46.948600, 7.460700, "BearPark 旁的 brewery restaurant，可看 Old City 與 Aare 河。適合 BearPark 後午餐、啤酒或休息；週末／晚餐時段建議訂位，飲酒後不要安排 Aare 水上活動。"],
     ["Marzili", 46.938200, 7.444600, "Aare 河與 Marzili outdoor pool 一帶的 Bern 夏季生活區。河水流速快，不把自行下河游泳列為觀光活動；只散步或在正式泳池活動較穩妥。"],
     ["Gurtenbahn", 46.929200, 7.465000, "前往 Gurten local mountain 的 funicular lower station。適合獨立半日，不接在 Full City Walk 後；住朋友家通常沒有 Bern-Ticket，需另查 Libero ticket。"],
     ["French Church", 46.948000, 7.447000, "Bern Old City 內的 former Dominican church，反映 Bern 中世紀宗教與 Reformation 歷史。開放受 worship、concert 與活動影響，只有路過且大門開放時才入內。"],
     ["Kornhauskeller", 46.949100, 7.447600, "Kornhausplatz 18｜宏偉拱頂地窖餐廳；現行菜單有 CHF 39 Berner Platte、Kornhaus Rösti 與 Bärner Geschnetzeltes。週一至六 11:30–14:30、17:30–23:30；週日 12:00–15:00、17:30–22:00。建議訂位。"],
-    ["Restaurant Harmonie", 46.947900, 7.450200, "Hotelgasse 3｜传统 Bern restaurant，主打 fondue、Chäshörnli 和 Swiss home-style dishes。营业日与最后点餐时间请临行查看餐厅官网。"],
+    ["Restaurant Harmonie", 46.947900, 7.450200, "Hotelgasse 3｜傳統 Bern restaurant，主打 fondue、Chäshörnli 和 Swiss home-style dishes。營業日與最後點餐時間請臨行查看餐廳官網。"],
     ["Restaurant Rosengarten", 46.951400, 7.459900, "Rosengarten 旁的景觀餐廳，每日 09:00–23:30；適合 City Walk 終點 coffee、午餐或 sunset dinner。景觀座位受天氣影響，熱門時段建議訂位。"],
     ["Lötschberg", 46.947300, 7.441700, "Zeughausgasse 16｜每日 11:00–23:00、hot food 11:45–21:30；可吃 rösti、fondue、raclette 與 Swiss wine。比景觀餐廳更靠近 Bern Bahnhof，週日抵達晚餐亦可。"],
-    ["Confiserie Tschirren", 46.948200, 7.447800, "Kramgasse 一带的 Bern chocolate / confectionery stop，适合 pralines、truffles 或小份甜点。零售营业受星期与假日影响，以店方当日资料为准。"]
+    ["Confiserie Tschirren", 46.948200, 7.447800, "Kramgasse 一帶的 Bern chocolate / confectionery stop，適合 pralines、truffles 或小份甜點。零售營業受星期與假日影響，以店方當日資料為準。"]
   ],
   freiburg: [
     ["Schlossbergbahn", 47.992800, 7.858500, "較省力登上 Schlossberg 的纜車"],
@@ -495,6 +495,24 @@ const cityWalkPresetShortcuts = {
     { label: "Old City 精簡版", meta: "半天／晚出發 · 2–2.5 小時" },
     { label: "河谷景觀版", meta: "Aare＋Rosengarten · 體力充足" },
     { label: "雨天文化版", meta: "拱廊＋室內 · 少走陡坡" }
+  ],
+  freiburg: [
+    { label: "完整 City Walk", meta: "推薦 · 約半天" },
+    { label: "Old Town 短版", meta: "省體力 · 不上 Schlossberg" },
+    { label: "自然加強版", meta: "Schlossberg＋河岸延伸" },
+    { label: "雨天文化版", meta: "Minster＋室內 · 彈性路線" }
+  ],
+  heidelberg: [
+    { label: "完整 City Walk", meta: "推薦 · 2–3 小時" },
+    { label: "抵達日短版", meta: "Old Town 主線 · 不上山" },
+    { label: "Castle 山景版", meta: "城堡＋河岸 · 體力充足" },
+    { label: "雨天文化版", meta: "大學＋博物館 · 室內優先" }
+  ],
+  frankfurt: [
+    { label: "完整 City Walk", meta: "推薦 · 4–6 小時" },
+    { label: "Old Town 短版", meta: "Römer＋河岸 · 2–3 小時" },
+    { label: "博物館加強版", meta: "Museumsufer · 選一間館" },
+    { label: "航班日前短版", meta: "輕量收尾 · 提早取行李" }
   ]
 };
 
@@ -503,31 +521,31 @@ const cityDiningSchedules = {
     {
       id: "breakfast",
       label: "早餐／Brunch",
-      note: "慢早餐选 Babu’s；赶火车选 Zürich HB Sprüngli；蔬食或同行口味不同时选 Hiltl。",
+      note: "慢早餐選 Babu’s；趕火車選 Zürich HB Sprüngli；蔬食或同行口味不同時選 Hiltl。",
       optionalIndexes: [21, 22, 23]
     },
     {
       id: "lunch",
       label: "午餐",
-      note: "传统肉食选 Zeughauskeller，fondue／raclette 选 Swiss Chuchi，清爽蔬食选 Hiltl。",
+      note: "傳統肉食選 Zeughauskeller，fondue／raclette 選 Swiss Chuchi，清爽蔬食選 Hiltl。",
       optionalIndexes: [16, 14, 23]
     },
     {
       id: "coffee",
       label: "下午茶／Coffee & Chocolate",
-      note: "8/15 City Walk 可选 Schwarzenbach 或 Schober；8/16 星期日以 Zürich HB Sprüngli 最稳妥。",
+      note: "8/15 City Walk 可選 Schwarzenbach 或 Schober；8/16 星期日以 Zürich HB Sprüngli 最穩妥。",
       optionalIndexes: [18, 24, 22]
     },
     {
       id: "dinner",
       label: "晚餐",
-      note: "fondue 选 Swiss Chuchi 或 Le Dézaley；不想吃 cheese 可选 Hiltl 或 Zeughauskeller。",
+      note: "fondue 選 Swiss Chuchi 或 Le Dézaley；不想吃 cheese 可選 Hiltl 或 Zeughauskeller。",
       optionalIndexes: [14, 15, 23, 16]
     },
     {
       id: "snacks",
-      label: "Snacks／快速补给",
-      note: "湖边快速吃选 Sternen Grill；换城与行李日优先 Zürich HB Sprüngli。",
+      label: "Snacks／快速補給",
+      note: "湖邊快速吃選 Sternen Grill；換城與行李日優先 Zürich HB Sprüngli。",
       optionalIndexes: [17, 22]
     }
   ],
@@ -837,21 +855,21 @@ function getDisplayStopName(routeName, stopName) {
 
 function localizeRouteText(routeName, value) {
   const replacements = [
-    ["当地", "當地"], ["传统", "傳統"], ["适合", "適合"], ["星期日", "週日"], ["周日", "週日"], ["营业", "營業"],
-    ["无需", "無需"], ["热门", "熱門"], ["时段", "時段"], ["餐厅", "餐廳"], ["餐饮", "餐飲"],
-    ["选择", "選擇"], ["地图", "地圖"], ["路线", "路線"], ["当前", "目前"], ["从", "從"],
-    ["与", "與"], ["时", "時"], ["个", "個"], ["这", "這"], ["会", "會"], ["为", "為"],
-    ["发", "發"], ["后", "後"], ["内", "內"], ["线", "線"], ["现", "現"], ["较", "較"],
-    ["点", "點"], ["开", "開"], ["关", "關"], ["门", "門"], ["车", "車"], ["边", "邊"],
-    ["区", "區"], ["场", "場"], ["队", "隊"], ["间", "間"], ["带", "帶"], ["览", "覽"],
-    ["图", "圖"], ["体", "體"], ["压", "壓"], ["计", "計"], ["别", "別"], ["说", "說"],
-    ["还", "還"], ["买", "買"], ["来", "來"], ["种", "種"], ["达", "達"], ["应", "應"],
-    ["选", "選"], ["赶", "趕"], ["稳", "穩"], ["优", "優"], ["给", "給"], ["换", "換"],
-    ["厅", "廳"], ["规", "規"], ["录", "錄"], ["历", "歷"], ["纪", "紀"], ["细", "細"],
-    ["订", "訂"], ["组", "組"], ["键", "鍵"], ["减", "減"], ["动", "動"], ["数", "數"],
-    ["顺", "順"], ["识", "識"], ["机", "機"], ["标", "標"], ["击", "擊"], ["预", "預"],
-    ["复", "復"], ["载", "載"], ["暂", "暫"], ["项", "項"], ["饮", "飲"], ["据", "據"],
-    ["过", "過"], ["调", "調"], ["该", "該"], ["显", "顯"], ["认", "認"]
+    ["當地", "當地"], ["傳統", "傳統"], ["適合", "適合"], ["星期日", "週日"], ["周日", "週日"], ["營業", "營業"],
+    ["無需", "無需"], ["熱門", "熱門"], ["時段", "時段"], ["餐廳", "餐廳"], ["餐飲", "餐飲"],
+    ["選擇", "選擇"], ["地圖", "地圖"], ["路線", "路線"], ["當前", "目前"], ["從", "從"],
+    ["與", "與"], ["時", "時"], ["個", "個"], ["這", "這"], ["會", "會"], ["為", "為"],
+    ["發", "發"], ["後", "後"], ["內", "內"], ["線", "線"], ["現", "現"], ["較", "較"],
+    ["點", "點"], ["開", "開"], ["關", "關"], ["門", "門"], ["車", "車"], ["邊", "邊"],
+    ["區", "區"], ["場", "場"], ["隊", "隊"], ["間", "間"], ["帶", "帶"], ["覽", "覽"],
+    ["圖", "圖"], ["體", "體"], ["壓", "壓"], ["計", "計"], ["別", "別"], ["說", "說"],
+    ["還", "還"], ["買", "買"], ["來", "來"], ["種", "種"], ["達", "達"], ["應", "應"],
+    ["選", "選"], ["趕", "趕"], ["穩", "穩"], ["優", "優"], ["給", "給"], ["換", "換"],
+    ["廳", "廳"], ["規", "規"], ["錄", "錄"], ["歷", "歷"], ["紀", "紀"], ["細", "細"],
+    ["訂", "訂"], ["組", "組"], ["鍵", "鍵"], ["減", "減"], ["動", "動"], ["數", "數"],
+    ["順", "順"], ["識", "識"], ["機", "機"], ["標", "標"], ["擊", "擊"], ["預", "預"],
+    ["復", "復"], ["載", "載"], ["暫", "暫"], ["項", "項"], ["飲", "飲"], ["據", "據"],
+    ["過", "過"], ["調", "調"], ["該", "該"], ["顯", "顯"], ["認", "認"]
   ];
   const text = String(value ?? "");
   if (routeName === "zurich" || routeName === "bern") {
@@ -925,9 +943,28 @@ function loadAttractionImages(container) {
   });
 }
 
+function renderMapActions(state) {
+  let actions = state.mapElement.parentElement.querySelector(
+    `[data-route-map-actions="${state.routeName}"]`
+  );
+  if (!actions) {
+    actions = document.createElement("div");
+    actions.className = "route-actions route-map-actions";
+    actions.dataset.routeMapActions = state.routeName;
+    actions.setAttribute("aria-label", `${state.routeName} 地圖操作`);
+    state.mapElement.insertAdjacentElement("afterend", actions);
+  }
+  actions.innerHTML = `
+    <button class="route-action" type="button" data-route-action="reset" data-city="${state.routeName}">恢復預設主路線</button>
+    <button class="route-action" type="button" data-route-action="fit-route" data-city="${state.routeName}">聚焦目前路線</button>
+    <button class="route-action route-marker-toggle${state.showAllMarkers ? " is-active" : ""}" type="button" data-route-action="toggle-markers" data-city="${state.routeName}" aria-pressed="${state.showAllMarkers}">${state.showAllMarkers ? "只看目前路線" : "顯示全部標記"}</button>
+  `;
+}
+
 function renderRouteBuilder(state) {
   const builder = document.querySelector("[data-route-builder='" + state.routeName + "']");
   if (!builder) return;
+  renderMapActions(state);
 
   const guide = cityWalkGuides[state.routeName];
   const optionalStops = cityWalkOptionalStops[state.routeName] || [];
@@ -938,15 +975,24 @@ function renderRouteBuilder(state) {
   const currentDistance = state.routeDistanceMeters ?? (activePoints.length > 1
     ? distanceBetweenPoints(state.map, activePoints)
     : 0);
-  const distanceLabel = state.routeDistanceSource === "walking"
-    ? "：步行約 "
-    : "：直線估算約 ";
+  const distanceText = state.routeDistanceSource === "walking"
+    ? `：步行約 ${(currentDistance / 1000).toFixed(1)} 公里`
+    : state.routeDistanceSource === "unavailable"
+      ? "：步行路線暫不可用，請依逐站文字或現場導航"
+      : `：正在取得步行路線（暫估 ${(currentDistance / 1000).toFixed(1)} 公里）`;
   const removedMainStops = cityWalkRoutes[state.routeName]
     .map((stop, index) => ({ type: "main", index, stop }))
     .filter(({ index }) => !state.routeItems.some((item) =>
       item.type === "main" && item.index === index
     ));
   const presetShortcuts = cityWalkPresetShortcuts[state.routeName] || [];
+  const routeDisplayName = {
+    zurich: "Zürich",
+    bern: "Bern",
+    freiburg: "Freiburg",
+    heidelberg: "Heidelberg",
+    frankfurt: "Frankfurt"
+  }[state.routeName] || state.routeName;
   const activePresetIndex = (cityWalkPresets[state.routeName] || []).findIndex((preset) =>
     preset.length === state.routeItems.length && preset.every((item, index) =>
       item.type === state.routeItems[index]?.type && item.index === state.routeItems[index]?.index
@@ -1007,7 +1053,7 @@ function renderRouteBuilder(state) {
   builder.innerHTML = localizeRouteText(state.routeName, `
     <h3>自訂行程路線</h3>
     ${presetShortcuts.length ? `
-      <div class="route-preset-shortcuts" aria-label="${state.routeName === "zurich" ? "Zurich 路線快捷組合" : "Bern 路线快捷组合"}">
+      <div class="route-preset-shortcuts" aria-label="${routeDisplayName} 路線快捷組合">
         <div class="route-preset-heading">
           <strong>快捷組合</strong>
           <small>一鍵替換目前路線，之後仍可增減景點或拖動排序。</small>
@@ -1057,12 +1103,7 @@ function renderRouteBuilder(state) {
         `;
       }).join("")}
     </div>
-    <p class="route-distance-editor small">目前已選路線${distanceLabel}${(currentDistance / 1000).toFixed(1)} 公里${state.routeDistanceSource === "walking" ? "" : "（步行路線載入中／暫不可用）"}</p>
-    <div class="route-actions">
-      <button class="route-action" type="button" data-route-action="reset" data-city="${state.routeName}">恢復預設主路線</button>
-      <button class="route-action" type="button" data-route-action="fit-route" data-city="${state.routeName}">聚焦目前路線</button>
-      <button class="route-action" type="button" data-route-action="fit" data-city="${state.routeName}">查看全部標記</button>
-    </div>
+    <p class="route-distance-editor small">目前已選路線${distanceText}</p>
     <div class="route-options route-option-groups">
       <details class="route-option-group" aria-labelledby="${state.routeName}-optional-attractions">
         <summary class="route-option-group-heading">
@@ -1086,7 +1127,7 @@ function renderRouteBuilder(state) {
                 data-city="${state.routeName}"
                 data-kind="main"
                 data-index="${index}">
-              預設景點：加回路線
+              預設景點：加迴路線
             </label>
           </article>
         `).join("")}
@@ -1118,9 +1159,12 @@ function updateDistanceNote(state) {
   const distanceNote = state.mapElement.parentElement.querySelector(".route-distance");
   if (!distanceNote) return;
   const distance = (state.routeDistanceMeters / 1000).toFixed(1);
-  distanceNote.textContent = localizeRouteText(state.routeName, state.routeDistanceSource === "walking"
-    ? "目前已選步行路線：約 " + distance + " 公里"
-    : "步行路線載入中；直線估算：約 " + distance + " 公里");
+  distanceNote.textContent = localizeRouteText(state.routeName,
+    state.routeDistanceSource === "walking"
+      ? "目前已選步行路線：約 " + distance + " 公里"
+      : state.routeDistanceSource === "unavailable"
+        ? "步行路線暫不可用；地圖不以直線代替，請依逐站文字或現場導航。"
+        : "步行路線載入中；暫時距離估算約 " + distance + " 公里");
 }
 
 function fitCurrentRoute(state) {
@@ -1131,6 +1175,12 @@ function fitCurrentRoute(state) {
       return [stop[1], stop[2]];
     });
   if (points.length) state.map.fitBounds(points, { padding: [34, 34], maxZoom: 16 });
+}
+
+function setRouteMarkerVisibility(state, marker, visible) {
+  const isVisible = state.map.hasLayer(marker);
+  if (visible && !isVisible) marker.addTo(state.map);
+  if (!visible && isVisible) state.map.removeLayer(marker);
 }
 
 function updateRouteMap(state) {
@@ -1166,6 +1216,7 @@ function updateRouteMap(state) {
       getStopLetter(state.routeName, "main", index),
       getStopCategory(state.routeName, cityWalkRoutes[state.routeName][index])
     ));
+    setRouteMarkerVisibility(state, marker, active || state.showAllMarkers);
   });
   state.optionalMarkers.forEach((marker, index) => {
     const selected = state.routeItems.some((item) =>
@@ -1176,6 +1227,7 @@ function updateRouteMap(state) {
       selected,
       getStopCategory(state.routeName, cityWalkOptionalStops[state.routeName][index])
     ));
+    setRouteMarkerVisibility(state, marker, selected || state.showAllMarkers);
   });
 
   updateDistanceNote(state);
@@ -1200,7 +1252,12 @@ function updateRouteMap(state) {
     })
     .catch((error) => {
       if (error.name !== "AbortError") {
-        console.warn("Walking route unavailable; using straight-line estimate.", error);
+        if (state.routeLine) state.map.removeLayer(state.routeLine);
+        state.routeLine = null;
+        state.routeDistanceSource = "unavailable";
+        updateDistanceNote(state);
+        renderRouteBuilder(state);
+        console.warn("Walking route unavailable; written checkpoints remain available.", error);
       }
     });
 }
@@ -1229,7 +1286,8 @@ function createCityWalkMap(routeName, mapElement) {
     routeAbortController: null,
     routeRequestId: 0,
     routeDistanceMeters: 0,
-    routeDistanceSource: "estimated"
+    routeDistanceSource: "estimated",
+    showAllMarkers: false
   };
   routeStates[routeName] = state;
 
@@ -1354,13 +1412,17 @@ function handleRouteAction(action, routeName, element) {
   } else if (action === "fit-route") {
     fitCurrentRoute(state);
     return;
-  } else if (action === "fit") {
-    const stops = cityWalkOptionalStops[routeName] || [];
-    state.map.fitBounds(
-      state.routePoints.concat(stops.map((stop) => [stop[1], stop[2]])),
-      { padding: [24, 24] }
-    );
-    return;
+  } else if (action === "toggle-markers") {
+    state.showAllMarkers = !state.showAllMarkers;
+    if (state.showAllMarkers) {
+      const stops = cityWalkOptionalStops[routeName] || [];
+      state.map.fitBounds(
+        state.routePoints.concat(stops.map((stop) => [stop[1], stop[2]])),
+        { padding: [24, 24] }
+      );
+    } else {
+      fitCurrentRoute(state);
+    }
   }
   updateRouteMap(state);
 }
