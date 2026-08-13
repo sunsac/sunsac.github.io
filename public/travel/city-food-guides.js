@@ -9,8 +9,10 @@
 
   const guides = {
     freiburg: {
+      compactLibrary: true,
       eyebrow: "TASTE FREIBURG",
       title: "Freiburg 當地美食：從 Münster 市集吃到 Baden 葡萄酒",
+      libraryTitle: "Freiburg 完整當地食物資料庫",
       intro: "Freiburg 的味道來自三個空間：Münsterplatz 的市集小吃、Old Town 的 Baden 家常菜，以及 Black Forest 與葡萄園帶來的甜點、啤酒和葡萄酒。抵達日最實用的安排是一咸一甜；完整 City Walk 後再選啤酒花園或 Baden 晚餐。",
       specialties: [
         food("Lange Rote", "市集小吃", "Lange Rote Freiburg", "German long red sausage", "約 35 釐米長、無腸衣的 Freiburg 烤豬肉香腸；外層焦香，傳統搭配炒洋蔥，麵包只負責托住香腸。", "第一次可點 mit Zwiebeln；想照當地傳統就不要為了塞進麵包而切短。", "Münsterplatz／Minster checkpoint", "一根足夠當輕午餐；兩人可先分享，再去吃甜點。", "豬肉；素食版並非每個攤位都有。", "https://visit.freiburg.de/en/discover/culinary/sausage-lange-rote"),
@@ -37,8 +39,10 @@
       ],
     },
     heidelberg: {
+      compactLibrary: true,
       eyebrow: "TASTE HEIDELBERG",
       title: "Heidelberg 與 Kurpfalz 的味道：大學城甜點、家常菜與 Neckar 酒",
+      libraryTitle: "Heidelberg 完整當地食物資料庫",
       intro: "Heidelberg 真正獨有的識別點是 Studentenkuss；正餐則來自 Baden 與 Kurpfalz 兩側的區域傳統。不要把所有德國南部食物都說成 Heidelberg 特產：最穩妥的組合是 Studentenkuss、一道區域主菜，再配當地葡萄酒或啤酒。",
       specialties: [
         food("Heidelberger Studentenkuss", "城市甜點／手信", "Heidelberger Studentenkuss", "chocolate wafer confection", "Café Knösel 的巧克力糖點：nougat cream 夾在 wafer 上，再包覆巧克力。19 世紀時被包裝成學生向心上人表達愛意的體面禮物。", "先買一個原味現場吃，再決定是否買盒裝；夏天避免放在曬熱的背包裡。", "Heiliggeistkirche → Old Bridge 之間的 Haspelgasse", "一人一個剛好，不會影響晚餐。", "含堅果、奶、麩質／wafer；逐項看包裝。", "https://www.heidelberg.de/english/Home/Visit/Eating%20out.html"),
@@ -64,8 +68,10 @@
       ],
     },
     frankfurt: {
+      compactLibrary: true,
       eyebrow: "TASTE FRANKFURT",
       title: "Frankfurt 七種代表味道：市場午餐、綠色醬與 Apfelwein 文化",
+      libraryTitle: "Frankfurt 完整當地食物資料庫",
       intro: "Frankfurt 的地方味道非常集中：Kleinmarkthalle 適合白天小吃，Sachsenhausen 適合晚上的 Apfelwein tavern。七種官方代表食物不必全部吃齊；最好的組合是一份冷食／小吃、一份主菜和一種甜點。",
       specialties: [
         food("Apfelwein / Ebbelwei", "城市飲品", "Frankfurt Apfelwein Bembel", "German apple wine jug", "偏酸、清爽的發酵蘋果酒，傳統從灰藍色 Bembel 陶壺倒進有菱格紋的 Geripptes 玻璃杯。", "先點一杯純飲；怕酸可選加礦泉水的 Sauergespritzter。", "Sachsenhausen 晚餐段", "一杯體驗即可；返程日不喝酒。", "含酒精與可能含 sulfites。", "https://www.visitfrankfurt.travel/en/experience/cuisine/frankfurt-specialities"),
@@ -94,6 +100,7 @@
       compactLibrary: true,
       eyebrow: "TASTE ZÜRICH",
       title: "Zürich 美食指南：當地味道、巧克力與城市餐桌",
+      libraryTitle: "Zürich 完整當地食物資料庫",
       intro: "先看這次兩天行程實際怎麼吃，再按興趣展開完整食物資料庫。類別標籤會區分 Zürich 味道、瑞士經典與城市巧克力，不把所有 Swiss food 都說成 Zürich 特產。",
       specialties: [
         food("Züri Gschnätzlets + Rösti", "城市主菜", "Zuercher Geschnetzeltes Roesti", "veal cream sauce rosti", "薄切小牛肉以白酒、cream 和 mushroom sauce 烹調，配酥脆 Rösti，是最明確的 Zürich 主菜。", "醬汁和 Rösti 一起吃；若不吃 veal，不必用普通奶油雞肉版本冒充體驗。", "Old Town 午餐／City Walk 後晚餐", "一份偏飽；同餐不再點 fondue。", "含小牛肉、奶與可能含酒、麩質。", "https://www.zuerich.com/en/zurcher-geschnetzeltes"),
@@ -176,8 +183,8 @@
     root.innerHTML = `<p class="eyebrow section-eyebrow">${local(guide.eyebrow)}</p>
       <h2>${local(guide.title)}</h2><p class="section-intro">${local(guide.intro)}</p>
       ${guide.compactLibrary ? routePlan : specialtyCards}
-      ${guide.compactLibrary ? `<details class="food-library"><summary><span><small>FOOD REFERENCE</small><strong>完整當地食物資料庫</strong></span><em>${guide.specialties.length} 種食物</em></summary><div class="food-library-body">${specialtyCards}</div></details>` : routePlan}
       <aside class="market-note"><strong>${local(guide.marketLabel)}</strong><p>${local(guide.marketNote)}</p></aside>
+      ${guide.compactLibrary ? `<details class="food-library"><summary><span><small>FOOD REFERENCE</small><strong>${local(guide.libraryTitle || "完整當地食物資料庫")}</strong></span><em>${guide.specialties.length} 種食物</em></summary><div class="food-library-body">${specialtyCards}</div></details>` : routePlan}
       <div class="food-guide-sources"><strong>${guide.traditional ? "官方美食資料｜核對" : "官方美食資料｜核對"} ${VERIFIED_ON}</strong>${guide.sources.map((item) => externalLink(item.url, item.label)).join("")}</div>`;
   }
 
