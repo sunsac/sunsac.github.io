@@ -1,15 +1,15 @@
 const freiburgOverviewPlaces = [
-  ["Freiburg", 47.9978, 7.8417, "base", "住宿基地、City Walk 及所有周边行程的出发点"],
-  ["Titisee", 47.8968, 8.1544, "forest", "湖区与慢遊"],
-  ["Triberg", 48.1285, 8.2345, "forest", "瀑布与 Schwarzwaldbahn"],
-  ["Todtnau", 47.8290, 7.9430, "forest", "南黑森林瀑布与夏季活动"],
-  ["Schiltach", 48.2900, 8.3420, "forest", "木骨架小镇与河谷"],
-  ["Baden-Baden", 48.7594, 8.2398, "wellness", "温泉与文化城市"],
-  ["Bad Wildbad", 48.7500, 8.5500, "wellness", "树冠步道、森林与温泉"],
-  ["Europa-Park Rust", 48.2660, 7.7210, "wellness", "主题乐园 Full-day"],
-  ["Basel", 47.5574, 7.5926, "cross-border", "跨境城市、博物馆与 Rhine"],
-  ["Colmar", 48.0770, 7.3570, "cross-border", "Alsace 童话小镇"],
-  ["Strasbourg", 48.5818, 7.7508, "cross-border", "Alsace 首府与城市 Walk"],
+  ["Freiburg", 47.9978, 7.8417, "base", "住宿基地、City Walk 及所有周邊行程的出發點"],
+  ["Titisee", 47.8968, 8.1544, "forest", "湖區與慢遊"],
+  ["Triberg", 48.1285, 8.2345, "forest", "瀑布與 Schwarzwaldbahn"],
+  ["Todtnau", 47.8290, 7.9430, "forest", "南黑森林瀑布與夏季活動"],
+  ["Schiltach", 48.2900, 8.3420, "forest", "木骨架小鎮與河谷"],
+  ["Baden-Baden", 48.7594, 8.2398, "wellness", "溫泉與文化城市"],
+  ["Bad Wildbad", 48.7500, 8.5500, "wellness", "樹冠步道、森林與溫泉"],
+  ["Europa-Park Rust", 48.2660, 7.7210, "wellness", "主題樂園 Full-day"],
+  ["Basel", 47.5574, 7.5926, "cross-border", "跨境城市、博物館與 Rhine"],
+  ["Colmar", 48.0770, 7.3570, "cross-border", "Alsace 童話小鎮"],
+  ["Strasbourg", 48.5818, 7.7508, "cross-border", "Alsace 首府與城市 Walk"],
 ];
 
 const overviewColors = {

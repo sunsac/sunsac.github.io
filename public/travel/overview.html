@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Switzerland–Germany 旅程 Overview</title>
-  <link rel="stylesheet" href="travel.css">
+  <link rel="stylesheet" href="travel.css?v=20260813-2">
 </head>
 <body>
   <header>
@@ -17,11 +17,27 @@
   </header>
 
   <main>
+    <section class="overview-quick-access" aria-labelledby="overview-quick-title">
+      <div class="overview-next-step">
+        <div>
+          <p class="eyebrow section-eyebrow">NEXT MOVE · 8/15</p>
+          <h2 id="overview-quick-title">抵達 Zürich，先放行李再開始 City Walk</h2>
+        </div>
+        <p>09:45 抵達 Zurich Airport → 直達 Zürich HB → 25hours Langstrasse；若延誤，直接改用 Old Town 短版。</p>
+      </div>
+      <nav class="overview-city-shortcuts" aria-label="快速進入各住宿基地">
+        <a href="zurich.html"><span>8/15–16</span><strong>Zürich</strong><small>抵達 · City Walk</small></a>
+        <a href="bern.html"><span>8/16–20</span><strong>Bern</strong><small>Plug &amp; Play</small></a>
+        <a href="freiburg.html"><span>8/20–23</span><strong>Freiburg</strong><small>Black Forest</small></a>
+        <a href="heidelberg.html"><span>8/23–29</span><strong>Heidelberg</strong><small>City · Day Trips</small></a>
+        <a href="frankfurt.html"><span>8/29–30</span><strong>Frankfurt</strong><small>離境前收尾</small></a>
+      </nav>
+    </section>
     <section>
       <h2>整體路線與頁面導航</h2>
       <p class="section-intro">點擊城市節點，進入該住宿基地的詳細行程、City Walk 及周邊 Options。</p>
-      <div class="route-map-illustration" aria-label="Zurich、Bern、Freiburg、Heidelberg、Frankfurt 卡通路线图">
-        <svg class="route-map-art" viewBox="0 0 1000 620" role="img" aria-label="五个住宿基地的相对位置与旅行路线">
+      <div class="route-map-illustration" aria-label="Zürich、Bern、Freiburg、Heidelberg、Frankfurt 卡通路線圖">
+        <svg class="route-map-art" viewBox="0 0 1000 620" role="img" aria-label="五個住宿基地的相對位置與旅行路線">
           <path class="map-river" d="M675 18 C620 110 690 160 625 240 S690 365 620 455 S690 540 635 620" />
           <path class="map-mountain" d="M35 470 L105 385 L155 440 L225 325 L290 415 L365 300 L430 390 L510 270 L575 365" />
           <path class="map-mountain soft" d="M565 535 L645 430 L710 500 L790 375 L865 445 L955 345" />
@@ -46,6 +62,26 @@
         <strong>航班：</strong>8 月 15 日 09:45 抵達 Zurich Airport；8 月 30 日 21:40 由 Frankfurt Airport 離境。
       </div>
       <div class="trip-stats"><span><strong>5</strong>住宿基地</span><span><strong>4</strong>次轉移</span><span><strong>1</strong>條主路線</span></div>
+    </section>
+    <section class="overview-weather" aria-labelledby="overview-weather-title">
+      <div class="weather-section-heading">
+        <div>
+          <p class="eyebrow section-eyebrow">DAILY WEATHER · LIVE FORECAST</p>
+          <h2 id="overview-weather-title">沿途逐日天氣</h2>
+          <p class="section-intro">按住宿區間顯示每日天氣；換城日同時保留出發地與抵達地，便於比較溫差和降雨。山區模組仍需臨行查看目的地本身的高海拔預報。</p>
+        </div>
+        <button class="weather-refresh" id="weather-refresh" type="button">重新整理</button>
+      </div>
+      <div class="weather-status-bar" aria-live="polite">
+        <span id="weather-update-status">正在取得最新預報…</span>
+        <span id="weather-horizon-status">Open-Meteo 最長提供未來 16 日預報</span>
+      </div>
+      <div class="weather-board" id="weather-board" aria-busy="true"></div>
+      <p class="weather-footnote">
+        溫度為當地每日最高／最低氣溫，降雨為當日最高降水機率；數值屬規劃參考，臨行請再核對。
+        資料：<a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Weather Forecast API</a>。
+      </p>
+      <noscript><p class="weather-error">需要啟用 JavaScript 才能載入逐日天氣。</p></noscript>
     </section>
     <section class="travel-vocabulary">
       <p class="eyebrow section-eyebrow">USEFUL GERMAN</p>
@@ -99,8 +135,9 @@
   </main>
 
   <footer>
-    <p>版本：2026-08-06｜各城市詳細行程及互動地圖請由上方卡片進入。</p>
+    <p>版本：2026-08-11｜各城市詳細行程及互動地圖請由上方卡片進入。</p>
   </footer>
   <script src="overview-images.js"></script>
+  <script src="overview-weather.js"></script>
 </body>
 </html>

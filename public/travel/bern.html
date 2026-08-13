@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bern 行程模块库｜Switzerland–Germany 旅程</title>
-  <link rel="stylesheet" href="travel.css?v=20260811-bern8">
+  <title>Bern 行程模塊庫｜Switzerland–Germany 旅程</title>
+  <link rel="stylesheet" href="travel.css?v=20260813-2">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
   <header class="module-catalog-hero"><div class="wrap">
     <p class="eyebrow">BERN BASE · 16–20 AUGUST 2026</p>
     <h1>Bern<br>Plug &amp; Play</h1>
-    <p class="hero-subtitle">不预先锁定日期；每天按天气、体力、时间和兴趣选择。</p>
-    <div class="hero-tags"><span>朋友家住宿基地</span><span>公共交通</span><span>自由组合</span></div>
+    <p class="hero-subtitle">不預先鎖定日期；每天按天氣、體力、時間和興趣選擇。</p>
+    <div class="hero-tags"><span>朋友家住宿基地</span><span>公共交通</span><span>自由組合</span></div>
   </div></header>
 
   <main>
@@ -21,15 +21,15 @@
     <section class="module-intro">
       <div class="module-intro-copy">
         <p class="eyebrow section-eyebrow">HOW TO USE</p>
-        <h2>当天只做决定，不替日期做承诺</h2>
-        <p>先看可用时间，再比较天气依赖、体力、交通和费用。长模块可独立完成；短模块可按详情页的「适合搭配」组合。网页只提供选择框架，不保存决定，也不会自动读取实时天气。</p>
+        <h2>當天只做決定，不替日期做承諾</h2>
+        <p>先看可用時間，再比較天氣依賴、體力、交通和費用。長模塊可獨立完成；短模塊可按詳情頁的「適合搭配」組合。網頁只提供選擇框架，不保存決定，也不會自動讀取實時天氣。</p>
       </div>
       <ol class="module-use-steps">
-        <li><span>1</span><div><strong>确认时间</strong><p>看当天实际可用小时数，包括由朋友家往返 Bern Bahnhof。</p></div></li>
-        <li><span>2</span><div><strong>比较条件</strong><p>优先排除天气或营运不合适的高山、水上活动。</p></div></li>
-        <li><span>3</span><div><strong>打开一个模块</strong><p>按完整交通、时间轴与备案执行；短模块再选择兼容搭配。</p></div></li>
+        <li><span>1</span><div><strong>確認時間</strong><p>看當天實際可用小時數，包括由朋友家往返 Bern Bahnhof。</p></div></li>
+        <li><span>2</span><div><strong>比較條件</strong><p>優先排除天氣或營運不合適的高山、水上活動。</p></div></li>
+        <li><span>3</span><div><strong>打開一個模塊</strong><p>按完整交通、時間軸與備案執行；短模塊再選擇兼容搭配。</p></div></li>
       </ol>
-      <div class="trip-stats" id="bern-module-stats" aria-label="Bern 模块统计"></div>
+      <div class="trip-stats" id="bern-module-stats" aria-label="Bern 模塊統計"></div>
     </section>
 
     <nav class="module-jump-nav" aria-label="Bern module categories">
@@ -37,20 +37,20 @@
       <a href="#modules-bern-local">Bern local</a>
       <a href="#modules-valley-village">山谷村落</a>
       <a href="#modules-alpine">高山</a>
-      <a href="#modules-lake">湖区</a>
+      <a href="#modules-lake">湖區</a>
       <a href="#modules-city">城市文化</a>
-      <a href="#modules-activity">专项活动</a>
+      <a href="#modules-activity">專項活動</a>
     </nav>
 
     <section class="module-overview-section">
       <p class="eyebrow section-eyebrow">GEOGRAPHY</p>
-      <h2>从 Bern 出发的位置关系</h2>
-      <p class="section-intro">地图只用于理解方向和距离，不代表铁路路线，也不与卡片编号绑定。多个模块可能位于同一地区。</p>
-      <div id="bern-overview-map" class="route-map" aria-label="Bern 周边模块地理概览"></div>
+      <h2>從 Bern 出發的位置關係</h2>
+      <p class="section-intro">地圖只用於理解方向和距離，不代表鐵路路線，也不與卡片編號綁定。多個模塊可能位於同一地區。</p>
+      <div id="bern-overview-map" class="route-map" aria-label="Bern 周邊模塊地理概覽"></div>
       <div class="map-legend">
         <span><i class="legend-route"></i>Bern base</span>
         <span><i class="legend-optional"></i>山谷／高山</span>
-        <span><i class="legend-optional overview-lake"></i>湖区</span>
+        <span><i class="legend-optional overview-lake"></i>湖區</span>
         <span><i class="legend-optional overview-city"></i>城市文化</span>
         <span><i class="legend-optional overview-local"></i>Bern local</span>
       </div>
@@ -60,19 +60,19 @@
 
     <section class="module-base-notes">
       <p class="eyebrow section-eyebrow">BASE NOTES</p>
-      <h2>交通与临场判断底线</h2>
+      <h2>交通與臨場判斷底線</h2>
       <div class="grid">
-        <article class="card"><h3>Bern-Ticket 不作预设</h3><p>住朋友家通常不符合住宿提供者发出的 Bern-Ticket 条件。市内交通按朋友家位置和当天搭乘次数购买 Libero 单程或 day pass。</p></article>
-        <article class="card"><h3>高山模块当天确认</h3><p>前一晚和出发早上分别查看能见度、雷雨、风势、铁路／缆车／步道营运；已经买票也不代表必须上山。</p></article>
-        <article class="card"><h3>水上活动由 operator 决定</h3><p>paragliding、raft 和 canyoning 必须使用合资格 operator。Aare 水流快，不把自行游泳当作普通观光模块。</p></article>
+        <article class="card"><h3>Bern-Ticket 不作預設</h3><p>住朋友家通常不符合住宿提供者發出的 Bern-Ticket 條件。市內交通按朋友家位置和當天搭乘次數購買 Libero 單程或 day pass。</p></article>
+        <article class="card"><h3>高山模塊當天確認</h3><p>前一晚和出發早上分別查看能見度、雷雨、風勢、鐵路／纜車／步道營運；已經買票也不代表必須上山。</p></article>
+        <article class="card"><h3>水上活動由 operator 決定</h3><p>paragliding、raft 和 canyoning 必須使用合資格 operator。Aare 水流快，不把自行遊泳當作普通觀光模塊。</p></article>
       </div>
     </section>
   </main>
 
   <footer><p>前一站：<a href="zurich.html">Zurich</a>｜住宿基地：Bern｜下一站：<a href="freiburg.html">Freiburg</a></p></footer>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="bern-modules.js?v=20260811-bern2"></script>
-  <script src="bern-catalog.js?v=20260811-bern2"></script>
-  <script src="bern-overview-map.js?v=20260811-bern2"></script>
+  <script src="bern-modules.js?v=20260813-1"></script>
+  <script src="bern-catalog.js?v=20260811-bern3"></script>
+  <script src="bern-overview-map.js?v=20260811-bern3"></script>
 </body>
 </html>
