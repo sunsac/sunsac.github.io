@@ -115,7 +115,7 @@
       attractions: [
         attraction("Mürren Village Walk", "從 BLM 車站穿過木屋、旅館和農地，主峰對景貫穿村落。", "60–100 分鐘", "公共街區全天", "免費", "無需預約", "村內有服務車輛；坡道與碎石路需穩健鞋", "https://muerren.swiss/en/", 46.5596, 7.8926, "Murren village"),
         attraction("Allmendhubel", "短程 funicular 上至花徑和觀景平臺，適合比 Schilthorn 更輕量的延伸。", "1.5–3 小時", "季節營運", "票價臨行確認", "通常無需訂位", "末班和步道狀態必須在上山前確認", "https://schilthorn.ch/en/Infos/Allmendhubel", 46.5654, 7.8821, "Allmendhubel"),
-        attraction("Northface Trail 起段", "村外步道以草坡、農舍和北壁景觀為主；可以只走短段後原路返回。", "45–120 分鐘", "步道開放依積雪與天氣", "免費", "無需預約", "雷雨或溼滑時取消；不要用城市鞋", "https://muerren.swiss/en/summer/hiking/", 46.5672, 7.8910, "Murren Northface Trail"),
+        attraction("Northface Trail 起段", "村外步道以草坡、農捨和北壁景觀為主；可以只走短段後原路返回。", "45–120 分鐘", "步道開放依積雪與天氣", "免費", "無需預約", "雷雨或溼滑時取消；不要用城市鞋", "https://muerren.swiss/en/summer/hiking/", 46.5672, 7.8910, "Murren Northface Trail"),
       ],
       dining: [
         dining("主餐", "Hotel Edelweiss Restaurant", "村中段、山谷邊緣", "瑞士菜與景觀露臺", "約 CHF 28–50", "酒店季節營業", "景觀位建議訂位", "https://www.edelweiss-muerren.ch/en/restaurant", 46.5593, 7.8923),
@@ -125,10 +125,10 @@
       resources: [resource("Mürren Tourism", "https://muerren.swiss/en/"), resource("Schilthorn cableways", "https://schilthorn.ch/en")],
     },
     gimmelwald: {
-      whyChoose: "喜歡規模很小的農舍村、慢節奏和少商業化環境，可接受長交通換短停留。",
+      whyChoose: "喜歡規模很小的農捨村、慢節奏和少商業化環境，可接受長交通換短停留。",
       skipWhen: "只想密集看景點、纜車受風停運、或雨後坡道溼滑時；餐飲少也不適合臨時空腹前往。",
       attractions: [
-        attraction("Gimmelwald village", "幾十棟農舍散佈在陡坡上，重點是村落尺度、農業景觀和山谷視線。", "60–90 分鐘", "公共街區全天", "免費", "無需預約", "私人農地和住宅勿闖入；保持安靜", "https://muerren.swiss/en/discover/gimmelwald/", 46.5470, 7.8907, "Gimmelwald village"),
+        attraction("Gimmelwald village", "幾十棟農捨散佈在陡坡上，重點是村落尺度、農業景觀和山谷視線。", "60–90 分鐘", "公共街區全天", "免費", "無需預約", "私人農地和住宅勿闖入；保持安靜", "https://muerren.swiss/en/discover/gimmelwald/", 46.5470, 7.8907, "Gimmelwald village"),
         attraction("Honesty Shop / village produce", "以自助小店和本地產品觀察小型山村的生活網絡。", "15–25 分鐘", "開放與庫存不固定", "按標價付款", "無需預約", "準備少量現金並尊重自助規則", "https://muerren.swiss/en/discover/gimmelwald/", 46.5474, 7.8912, "Gimmelwald Switzerland"),
         attraction("Gimmelwald–Mürren trail", "約兩公里上坡連接兩個無車村，是把 Gimmelwald 擴展成半日的自然方式。", "60–90 分鐘", "依積雪、雨水和維護狀態", "免費", "無需預約", "持續上坡；不想爬升則搭纜車", "https://muerren.swiss/en/summer/hiking/", 46.5532, 7.8913, "Gimmelwald Murren trail"),
       ],
@@ -245,7 +245,7 @@
         dining("主餐", "Grandhotel Giessbach restaurant", "Giessbach 延伸段", "季節菜、瑞士菜與湖景", "約 CHF 35–70", "隨酒店季節營業", "建議訂位", "https://www.giessbach.ch/en/restaurants", 46.7333, 8.0203),
         dining("咖啡休息", "Brienz lakeside cafés", "車站至湖岸段", "咖啡、烘焙與輕食", "約 CHF 10–30", "各店營業不同", "通常無需訂位", "https://www.interlaken.ch/en/experiences/food-drink", 46.7538, 8.0385),
       ],
-      background: ["Lake Brienz 較深，冰川沉積物令湖水呈現明亮藍綠色。", "北岸有鐵路，南岸主要靠 bus 和季節船班；路線可靠性在兩岸明顯不同。"],
+      background: ["Lake Brienz 較深，冰川沈積物令湖水呈現明亮藍綠色。", "北岸有鐵路，南岸主要靠 bus 和季節船班；路線可靠性在兩岸明顯不同。"],
       resources: [resource("Lake Brienz / BLS", bls), resource("Giessbach", "https://www.giessbach.ch/en/")],
     },
     lucerne: {
@@ -481,7 +481,7 @@
     ],
     muerren: [
       "村落沿近乎等高的臺地展開，建築朝向主峰排列；從 BLM 車站穿村而過，比只在觀景臺拍照更能感受高山聚落如何利用有限平地。",
-      "傳統農舍、Belle Époque 旅館和現代纜車設施並置，反映 Mürren 從農業社區、登山基地到國際冬季運動目的地的多重身份。",
+      "傳統農捨、Belle Époque 旅館和現代纜車設施並置，反映 Mürren 從農業社區、登山基地到國際冬季運動目的地的多重身份。",
     ],
     gimmelwald: [
       "Gimmelwald 的房屋不像城市街道般連續，而是圍繞農地、坡度和水源疏落分佈；村落空間首先服務農業，其次才服務觀光。",
@@ -537,7 +537,7 @@
     ],
     "aare-riverside": [
       "從 Bundeshaus 附近下降到 Marzili，短距離內會經歷行政高地、住宅坡面和河岸休閒帶，呈現 Bern 極強的垂直城市結構。",
-      "河色來自上游沉積物與光線，但漂亮水面容易掩蓋低溫和流速。觀察入水梯、警示和當地人的路線，有助於理解河流文化建立在經驗之上。",
+      "河色來自上游沈積物與光線，但漂亮水面容易掩蓋低溫和流速。觀察入水梯、警示和當地人的路線，有助於理解河流文化建立在經驗之上。",
     ],
     "interlaken-paragliding": [
       "起飛場位於山坡，降落區位於平坦谷底，垂直地形與穀風共同構成飛行條件；路線會隨風向而改變，並非固定觀光航線。",
