@@ -33,6 +33,73 @@ header .wrap, main, footer {
   margin: 0 auto;
 }
 
+header .wrap { position: relative; }
+
+header .wrap.has-language-switcher { padding-right: 210px; }
+
+.travel-language-switcher {
+  position: absolute;
+  z-index: 1200;
+  top: 0;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, .38);
+  border-radius: 999px;
+  background: rgba(20, 48, 65, .34);
+  box-shadow: 0 6px 18px rgba(13, 36, 49, .14);
+  backdrop-filter: blur(8px);
+}
+
+.travel-language-switcher.is-floating {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  border-color: var(--line);
+  color: var(--ink);
+  background: rgba(255, 255, 255, .96);
+}
+
+.travel-language-label {
+  padding: 0 7px;
+  color: rgba(255, 255, 255, .82);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+.travel-language-switcher.is-floating .travel-language-label { color: var(--muted); }
+
+.travel-language-switcher button {
+  min-width: 48px;
+  padding: 6px 11px;
+  border: 0;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, .84);
+  background: transparent;
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.travel-language-switcher.is-floating button { color: var(--muted); }
+
+.travel-language-switcher button:hover { background: rgba(255, 255, 255, .13); }
+
+.travel-language-switcher button.is-active {
+  color: #21485e;
+  background: white;
+  box-shadow: 0 2px 8px rgba(15, 43, 58, .16);
+}
+
+.travel-language-switcher button:focus-visible {
+  outline: 3px solid #f7c978;
+  outline-offset: 2px;
+}
+
 header p { max-width: 780px; margin: 8px 0; opacity: .92; }
 
 .eyebrow {
@@ -102,6 +169,41 @@ main { padding: 28px 20px 68px; }
 
 .contents-nav a:hover {
   background: #dceff5;
+}
+
+.contents-nav a.is-current,
+.contents-nav a[aria-current="location"] {
+  border-color: var(--blue);
+  color: white;
+  background: var(--blue);
+  box-shadow: 0 3px 10px rgba(45, 111, 149, .18);
+}
+
+.page-tools {
+  position: fixed;
+  z-index: 1200;
+  right: 18px;
+  bottom: 18px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+
+.page-tools.is-visible { visibility: visible; opacity: 1; transform: none; }
+
+.page-tools button {
+  min-height: 44px;
+  padding: 10px 15px;
+  border: 1px solid rgba(255, 255, 255, .45);
+  border-radius: 999px;
+  color: white;
+  background: #214f68;
+  box-shadow: 0 7px 22px rgba(32, 48, 64, .23);
+  font: inherit;
+  font-size: .78rem;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 @media (min-width: 901px) {
@@ -1205,6 +1307,19 @@ main > section { scroll-margin-top: 86px; }
   background: var(--soft-green);
 }
 
+.heidelberg-ticket-decision {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.heidelberg-ticket-decision article:last-child {
+  border-color: var(--line);
+  background: #fbfdfd;
+}
+
+.heidelberg-daytrip-grid .module-card > p {
+  flex: 1;
+}
+
 .ticket-decision strong {
   display: block;
   margin-bottom: 7px;
@@ -1784,6 +1899,14 @@ code {
   cursor: pointer;
 }
 
+.route-stop-controls button:focus-visible,
+.route-preset-button:focus-visible,
+.route-action:focus-visible,
+.page-tools button:focus-visible {
+  outline: 3px solid #f0bd6c;
+  outline-offset: 2px;
+}
+
 .route-stop-controls button:hover { border-color: #6f9bad; background: #e9f3f6; }
 .route-stop-controls button:disabled { opacity: .32; cursor: default; }
 .route-stop-controls .route-remove-button { color: #995149; background: #fff7f5; }
@@ -2007,6 +2130,17 @@ footer {
 
 @media (max-width: 620px) {
   header { padding: 38px 18px; }
+  header .wrap.has-language-switcher { padding-right: 0; }
+  .travel-language-switcher {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: flex;
+    margin: 0 0 20px auto;
+    width: max-content;
+  }
+  .travel-language-switcher button { min-width: 46px; min-height: 44px; }
+  .page-tools { right: 12px; bottom: 12px; }
   main { padding: 18px 12px 48px; }
   section, .card, .day { padding: 19px; border-radius: 12px; }
   .route-map { height: 360px; }
@@ -2017,6 +2151,7 @@ footer {
   .vocabulary-grid { grid-template-columns: 1fr; }
   .transfer-steps,
   .ticket-decision,
+  .heidelberg-ticket-decision,
   .city-transport-grid,
   .emergency-grid,
   .city-planning-grid { grid-template-columns: 1fr; }
@@ -2846,8 +2981,12 @@ footer {
   .route-stop-card h4 { display: flex; gap: 7px; align-items: center; }
   .route-order { display: grid; width: 25px; height: 25px; flex: 0 0 25px; place-items: center; margin: 0; border-radius: 50%; color: white; background: var(--blue); font-size: .7rem; }
   .route-stop-card .stop-category { margin-bottom: 3px; font-size: .65rem; }
-  .route-stop-controls { grid-template-columns: repeat(3, 26px); }
-  .route-stop-controls button { width: 26px; height: 26px; }
+  .route-stop-controls { grid-template-columns: repeat(3, 44px); gap: 5px; }
+  .route-stop-controls button { width: 44px; height: 44px; font-size: .9rem; }
+  .route-action,
+  .route-preset-button,
+  .weather-refresh,
+  [data-day-weather-refresh] { min-height: 44px; }
   .route-actions { display: grid; grid-template-columns: 1fr; }
   .route-map-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .route-map-actions .route-marker-toggle { grid-column: 1 / -1; }

@@ -7,6 +7,9 @@
   const locations = {
     zurich: { name: "Zurich", latitude: 47.3769, longitude: 8.5417 },
     bern: { name: "Bern", latitude: 46.9480, longitude: 7.4474 },
+    freiburg: { name: "Freiburg", latitude: 47.9990, longitude: 7.8421 },
+    heidelberg: { name: "Heidelberg", latitude: 49.3988, longitude: 8.6724 },
+    frankfurt: { name: "Frankfurt", latitude: 50.1109, longitude: 8.6821 },
   };
 
   const weatherCodes = {
@@ -18,7 +21,7 @@
     95: ["雷暴", "⛈️"], 96: ["雷暴伴冰雹", "⛈️"], 99: ["強雷暴伴冰雹", "⛈️"],
   };
 
-  const updateFormatter = new Intl.DateTimeFormat("zh-Hans", {
+  const updateFormatter = new Intl.DateTimeFormat("zh-Hant", {
     month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit",
     hour12: false, timeZone: "Europe/Zurich",
   });
