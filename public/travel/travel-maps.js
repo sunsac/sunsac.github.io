@@ -36,11 +36,16 @@ const cityWalkRoutes = {
   ],
   heidelberg: [
     ["Bismarckplatz", 49.407400, 8.687800],
-    ["Hauptstraße", 49.410000, 8.703000],
-    ["Universitätsplatz", 49.410000, 8.707000],
+    ["Hauptstraße", 49.410000, 8.701500],
+    ["Universitätsplatz", 49.410050, 8.706650],
+    ["Jesuitenkirche", 49.409050, 8.706850],
     ["Heiliggeistkirche", 49.412000, 8.710600],
     ["Marktplatz", 49.412300, 8.710800],
-    ["Old Bridge", 49.414400, 8.712700]
+    ["Kornmarkt", 49.411500, 8.713100],
+    ["Old Bridge", 49.414400, 8.712700],
+    ["Neckarwiese", 49.413850, 8.696200],
+    ["Theodor-Heuss-Brücke", 49.410650, 8.691200],
+    ["Bismarckplatz (return)", 49.407400, 8.687800]
   ],
   frankfurt: [
     ["Frankfurt (Main) Hbf", 50.107100, 8.663800],
@@ -117,18 +122,23 @@ const cityWalkGuides = {
   },
   heidelberg: {
     options: [
-      ["Full City Walk（推薦）", "約 2–3 公里、2–3 小時；由 Bismarckplatz 走進 University / Old Town，最後在 Old Bridge 看 Castle、Neckar 與 Philosophenweg。"],
-      ["抵達日短版", "Bismarckplatz → Hauptstraße → Universitätsplatz → Heiliggeistkirche → Marktplatz → Old Bridge；8/23 不加 Castle 山坡。"],
-      ["Castle / 山景延伸", "Castle 或 Philosophenweg 選一個獨立半日；不將兩側山坡、Heiligenberg 和 Königstuhl 疊加。"],
-      ["雨天文化版", "University Museum（週二至日）→ Student Prison → Kurpfälzisches Museum → Old Town café；週一移除 University Museum。"]
+      ["完整 City Walk（推薦）", "約 5.5–6.5 公里、4.5–5.5 小時；由 Bismarckplatz 穿過大學與 Old Town，經 Old Bridge 到 Neckar 北岸，再由 Theodor-Heuss-Brücke 回到起點。"],
+      ["抵達日短版", "Bismarckplatz → Hauptstraße → Universitätsplatz → Heiliggeistkirche → Marktplatz → Old Bridge；約 2–2.5 小時，不加 Castle 山坡。"],
+      ["Castle 城堡版", "Old Town → Kornmarkt → Heidelberg Castle → Old Bridge → Neckarwiese；使用 Bergbahn 減少上坡，不再加入 Philosophenweg。"],
+      ["雨天文化版", "Kurpfälzisches Museum → Universitätsplatz → Student Prison／University Museum → Jesuitenkirche → Heiliggeistkirche → café；按星期刪減。"]
     ],
     stops: [
-      ["Bismarckplatz", "Heidelberg 公共交通及城市生活的重要節點，是 City Walk 的真正起點。", "由 Heidelberg Hbf tram / bus 約 10 分鐘；先放行李，避免拉長步行。"],
-      ["Hauptstraße", "Old Town 主步行街，商店、餐廳、大學生活及歷史建築集中。", "戶外免費；週日零售較少，8/23 以街景和建築為主。"],
-      ["Universitätsplatz", "大學城文化的代表空間，能感受 Heidelberg 學術傳統。", "University Museum 夏季週二至日 10:00–18:00、週一閉館；Student Prison 夏季每日 10:00–18:00。"],
-      ["Heiliggeistkirche", "Old Town 核心教堂，位於 Castle、Old Bridge 與 Marktplatz 之間。", "週一至六 11:00–17:00；週日 12:00–17:00，11:00 service 時不可作 sightseeing。"],
-      ["Marktplatz", "城市歷史及日常生活交會的廣場，也是觀看 Heidelberg Castle 的重要位置。", "戶外免費；抵達日晚間在此看 Castle 山坡即可，不安排上山。"],
-      ["Old Bridge", "Neckar 河上的經典視角，同時看到 Old Town、Castle 及 Philosophenweg 山坡。", "戶外免費；作主線終點，之後沿河返回或搭公共交通。"]
+      ["Bismarckplatz", "Heidelberg 公共交通與城市生活的西側節點；先由 Hbf 搭 tram／bus 到這裡，再開始真正的 City Walk。", "交通／起點：先放大型行李；同時記下由 Bismarckplatz 或 Neckarmünzplatz 返回住宿的車線。"],
+      ["Hauptstraße", "沿 Old Town 的東西主軸前進，從現代商業段逐步轉入歷史建築、大學生活和較細密的街巷。", "公共步行街、免費；不必逐店停留。週日零售較少，但街道、廣場與餐飲仍可使用。"],
+      ["Universitätsplatz", "德國最古老大學的歷史核心之一；Old University、廣場與周邊學生空間把 1386 年傳統帶入今天的城市生活。", "公共廣場免費；University Museum／Student Prison 是獨立 Optional，先看時段與預約。"],
+      ["Jesuitenkirche", "巴洛克 Jesuit Church 與較樸素的學院街區形成對比，也補足 Heidelberg 在 Reformation 後的天主教歷史。", "教堂開放受禮拜、活動和現場公告影響；只在大門開放且不妨礙宗教活動時入內。"],
+      ["Heiliggeistkirche", "Marktplatz 的城市核心教堂；Bibliotheca Palatina、選帝侯歷史，以及曾被牆分隔的 Catholic／Protestant 空間都集中在這裡。", "宗教活動優先；開放可能調整。無法入內時仍可由外部閱讀教堂、商業攤位與廣場關係。"],
+      ["Marktplatz", "Rathaus、Heiliggeistkirche、噴泉與 café 共同構成 Old Town 的市民中心，從廣場亦可抬頭定位 Castle 山坡。", "公共廣場免費；不要把這裡和 Kornmarkt 混為同一站，兩者提供不同的 Castle 視角。"],
+      ["Kornmarkt", "由 Old Town 平地轉入 Castle Ridge 的門戶；Madonna、城堡視線與 Kornmarkt Bergbahn station 共同構成垂直交通節點。", "不登 Castle 時只停 15–25 分鐘；登城堡則從這裡切換成獨立半日並檢查 Bergbahn。"],
+      ["Old Bridge", "1786–88 年建成的紅砂岩 Carl-Theodor-Brücke，把 Old Town、Castle、Neckar 水位與北岸山坡放進同一視野。", "公共橋樑、免費；拍照靠邊並留意單車／人流。過橋後再決定走平坦河岸或陡峭 Schlangenweg。"],
+      ["Neckarwiese", "北岸草地是 Heidelberg 日常休閒空間；由這裡回望 Old Town 和 Castle，可把明信片景觀轉成完整的河谷剖面。", "公共河岸、免費；夏季補水、防曬。高水位或雷雨時不靠近岸緣，改走城市側街道。"],
+      ["Theodor-Heuss-Brücke", "由北岸跨回城市西端，沿途比較現代橋樑、河流交通和 Old Bridge 的歷史景觀。", "公共橋樑、免費；此處是完整閉環最後一段，體力不足可提前在北岸搭 bus。"],
+      ["Bismarckplatz (return)", "回到可靠的 tram／bus 樞紐，完成不重複折返的 Old Town—Neckar 閉環。", "至少保留 15 分鐘查車與回住宿；已經完成主線時，不再臨時加 Castle 或高地。"]
     ]
   },
   frankfurt: {
@@ -200,15 +210,16 @@ const cityWalkOptionalStops = {
     ["St. Martin Church", 47.995000, 7.851800, "Münsterplatz 附近的歷史教堂，適合順路參觀"]
   ],
   heidelberg: [
-    ["Heidelberg Castle", 49.410600, 8.715700, "Castle 每日 09:00–18:00、最後入場 17:30；adult €11 含 lower funicular return、courtyard、Great Barrel 與 Pharmacy Museum。8/24 獨立安排，勿放進 8/23 抵達日。"],
-    ["Philosopher's Walk", 49.414500, 8.717500, "眺望 Old Town、Neckar 河及 Castle 的步道"],
-    ["Kurpfälzisches Museum", 49.412000, 8.707900, "藝術、考古及 Heidelberg 地區歷史"],
-    ["Student Prison", 49.410200, 8.706200, "大學城獨有的學生歷史空間；夏季每日 10:00–18:00、13:45–14:15 暫停，需 locker 和 €1 coin，樓梯限制多，建議預約。"],
-    ["Königstuhl", 49.381300, 8.716700, "更高角度俯瞰 Heidelberg 及 Rhine plain"],
-    ["Jesuit Church", 49.410900, 8.706800, "Heidelberg Old Town 內宏偉的巴洛克教堂"],
-    ["Hackteufel", 49.414000, 8.709500, "Old Bridge 附近傳統餐廳；Maultaschen、Saumagen、Spätzle。週一至三、週五至日 11:30–22:00，週四休息。"],
-    ["Schnitzelbank Heidelberg", 49.410300, 8.707000, "Old Town 晚餐：Saumagen、Leberknödel、Schnitzel、Käsespätzle。週一至五 17:00–22:00、週六日 12:00–22:00。"],
-    ["Café Knösel", 49.410100, 8.706400, "Student Kiss chocolate 的原創甜點店，適合 University / Hauptstraße 之間短停。"]
+    ["Heidelberg Castle", 49.410600, 8.715700, "城堡庭院、Altan、大酒桶與 German Pharmacy Museum。2026 每日 09:00–18:00、最後入場 17:30；成人 €11 含 Kornmarkt–Schloss–Molkenkur 下段 Bergbahn 往返。至少留 2.5–3 小時，不放進抵達日晚段。"],
+    ["Philosopher's Walk", 49.414900, 8.717500, "由 Schlangenweg 登上北岸山坡的經典觀景段；可回望 Old Town、Castle 與 Neckar。上坡、石階和曝曬明顯，與 Castle 通常分日，雷雨或濕滑時取消。"],
+    ["Kurpfälzisches Museum", 49.411250, 8.700850, "藝術、考古與 Heidelberg／Kurpfalz 城市史的室內選擇，位於 Hauptstraße 主線旁；作為雨天核心前，先查當日展覽、休館與最後入場。"],
+    ["Student Prison + University Museum", 49.410200, 8.706200, "6–9 月 Tue–Sun 10:00–18:00，13:45–14:15 暫停入場、最後入場 17:15；combo 成人 €7.50。Student Prison 容量小、樓梯多，建議預約並準備 locker 的 €1 coin。"],
+    ["Königstuhl", 49.381300, 8.716700, "Heidelberg 567 m local mountain，可由歷史上段 Bergbahn 抵達。晴天看 Rhine plain；與 Heiligenberg 二選一，雷雨、強風或低能見度時取消。"],
+    ["Neckar boat cruise", 49.413300, 8.713900, "由 Neckarstaden 一帶出發的季節性遊船；只在班次與 City Walk 節奏吻合時加入。水位、天氣與 operator 可能改班，不能當作固定回程交通。"],
+    ["Café Knösel", 49.412050, 8.710150, "Haspelgasse 20｜Heidelberg 最老的 café 之一，也是 Studentenkuss 的代表停靠點。現行官網列每日 09:00 起、廚房至 17:00；買一顆 Studentenkuss 或短暫 coffee break 即可。"],
+    ["Hackteufel", 49.413250, 8.711650, "Steingasse 7、Old Bridge 路段｜Maultaschen、Saumagen、Spätzle 與區域菜。現行廚房 Sun–Thu 至 21:30、Fri–Sat 至 22:00；主餐建議訂位。"],
+    ["Schnitzelbank Heidelberg", 49.410300, 8.707000, "Bauamtsgasse 7、University／Old Town 路段｜Saumagen、Leberknödel、Schnitzel、Käsespätzle。2026 Mon–Fri 17:00–22:00、Sat–Sun 12:00–22:00，廚房至 21:00。"],
+    ["Vetter's Alt Heidelberger Brauhaus", 49.412750, 8.711000, "Steingasse 9、Heiliggeistkirche → Old Bridge｜自釀啤酒與德國／區域菜。Sun–Thu 11:30–24:00、Fri–Sat 至 01:00；室內可訂位，Biergarten 以 walk-in 為主。"]
   ],
   frankfurt: [
     ["Städel Museum", 50.103800, 8.675800, "Museum Embankment 的主要藝術博物館"],
@@ -259,6 +270,11 @@ const attractionImageQueries = {
   Heiliggeistkirche: "Church of the Holy Spirit Heidelberg",
   Marktplatz: "Marktplatz Heidelberg",
   "Old Bridge": "Old Bridge Heidelberg",
+  Jesuitenkirche: "Jesuit Church Heidelberg",
+  Kornmarkt: "Kornmarkt Heidelberg",
+  Neckarwiese: "Neckarwiese Heidelberg",
+  "Theodor-Heuss-Brücke": "Theodor Heuss Bridge Heidelberg",
+  "Bismarckplatz (return)": "Bismarckplatz Heidelberg",
   Römerberg: "Römerberg",
   "Frankfurt (Main) Hbf": "Frankfurt Central Station",
   "Frankfurt Cathedral": "Frankfurt Cathedral",
@@ -336,9 +352,13 @@ const attractionImageQueries = {
   Seepark: "Seepark Freiburg",
   "St. Martin Church": "St. Martin Church Freiburg",
   "Kurpfälzisches Museum": "Kurpfälzisches Museum Heidelberg",
-  "Student Prison": "Studentenkarzer Heidelberg",
+  "Student Prison + University Museum": "Studentenkarzer Heidelberg",
   Königstuhl: "Königstuhl Heidelberg",
-  "Jesuit Church": "Jesuit Church Heidelberg",
+  "Neckar boat cruise": "Neckar Heidelberg boat",
+  Hackteufel: "Hackteufel Heidelberg",
+  "Schnitzelbank Heidelberg": "Schnitzelbank Heidelberg",
+  "Café Knösel": "Heidelberger Studentenkuss",
+  "Vetter's Alt Heidelberger Brauhaus": "Vetter Heidelberg Brauhaus",
   "Städel Museum": "Städel Museum",
   "Historical Museum": "Historical Museum Frankfurt",
   "Schirn Kunsthalle": "Schirn Kunsthalle Frankfurt",
@@ -438,23 +458,28 @@ const cityWalkPresets = {
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
       { type: "main", index: 2 }, { type: "main", index: 3 },
-      { type: "main", index: 4 }, { type: "main", index: 5 }
+      { type: "main", index: 4 }, { type: "main", index: 5 },
+      { type: "main", index: 6 }, { type: "main", index: 7 },
+      { type: "main", index: 8 }, { type: "main", index: 9 },
+      { type: "main", index: 10 }
     ],
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
       { type: "main", index: 2 }, { type: "main", index: 4 },
-      { type: "main", index: 5 }
+      { type: "main", index: 5 }, { type: "main", index: 7 }
     ],
     [
       { type: "main", index: 0 }, { type: "main", index: 1 },
-      { type: "main", index: 2 }, { type: "main", index: 3 },
-      { type: "main", index: 4 }, { type: "main", index: 5 },
-      { type: "optional", index: 0 }, { type: "optional", index: 1 }
+      { type: "main", index: 2 }, { type: "main", index: 5 },
+      { type: "main", index: 6 }, { type: "optional", index: 0 },
+      { type: "main", index: 7 }, { type: "main", index: 8 },
+      { type: "main", index: 9 }, { type: "main", index: 10 }
     ],
     [
-      { type: "main", index: 0 }, { type: "main", index: 2 },
+      { type: "main", index: 0 }, { type: "optional", index: 2 },
+      { type: "main", index: 2 }, { type: "optional", index: 3 },
       { type: "main", index: 3 }, { type: "main", index: 4 },
-      { type: "optional", index: 2 }, { type: "optional", index: 3 }
+      { type: "optional", index: 6 }
     ]
   ],
   frankfurt: [
@@ -503,9 +528,9 @@ const cityWalkPresetShortcuts = {
     { label: "雨天文化版", meta: "Minster＋室內 · 彈性路線" }
   ],
   heidelberg: [
-    { label: "完整 City Walk", meta: "推薦 · 2–3 小時" },
-    { label: "抵達日短版", meta: "Old Town 主線 · 不上山" },
-    { label: "Castle 山景版", meta: "城堡＋河岸 · 體力充足" },
+    { label: "完整 City Walk", meta: "推薦 · 4.5–5.5 小時" },
+    { label: "抵達日短版", meta: "Old Town 主線 · 2–2.5 小時" },
+    { label: "Castle 城堡版", meta: "Bergbahn＋河岸 · 6–8 小時" },
     { label: "雨天文化版", meta: "大學＋博物館 · 室內優先" }
   ],
   frankfurt: [
@@ -574,11 +599,32 @@ const cityDiningSchedules = {
       note: "傳統 Bern 菜優先 Kornhauskeller 或 Harmonie；景觀收尾選 Rosengarten；靠近車站選 Lötschberg。",
       optionalIndexes: [6, 7, 8, 9]
     }
+  ],
+  heidelberg: [
+    {
+      id: "lunch",
+      label: "午餐／Brauhaus",
+      note: "Old Bridge 一帶選 Hackteufel 或 Vetter’s；兩者都在路線後段，同一餐只選一家。",
+      optionalIndexes: [7, 9]
+    },
+    {
+      id: "coffee",
+      label: "咖啡／Studentenkuss",
+      note: "Café Knösel 位於 Heiliggeistkirche → Old Bridge 之間，適合 20–40 分鐘甜點停留。",
+      optionalIndexes: [6]
+    },
+    {
+      id: "dinner",
+      label: "晚餐／區域菜",
+      note: "University 一帶選 Schnitzelbank；Old Bridge 一帶選 Hackteufel 或 Vetter’s。山坡行程結束後再吃重菜。",
+      optionalIndexes: [8, 7, 9]
+    }
   ]
 };
 
 const cityWalkDefaultRoutes = {
-  bern: cityWalkPresets.bern[0]
+  bern: cityWalkPresets.bern[0],
+  heidelberg: cityWalkPresets.heidelberg[0]
 };
 
 function getDefaultRouteItems(routeName) {
@@ -668,20 +714,26 @@ const attractionCategories = {
   },
   heidelberg: {
     Bismarckplatz: "交通／城市生活",
+    "Bismarckplatz (return)": "交通／路線終點",
     Hauptstraße: "購物／城市散步",
     Universitätsplatz: "大學／歷史",
+    Jesuitenkirche: "教堂／宗教歷史",
     Heiliggeistkirche: "教堂／宗教歷史",
     Marktplatz: "廣場／城市生活",
+    Kornmarkt: "廣場／城堡交通",
     "Old Bridge": "橋樑／觀景",
+    Neckarwiese: "河岸／城市生活",
+    "Theodor-Heuss-Brücke": "橋樑／路線返回",
     "Heidelberg Castle": "城堡／歷史",
     "Philosopher's Walk": "步道／觀景",
     "Kurpfälzisches Museum": "博物館／藝術歷史",
-    "Student Prison": "歷史／大學文化",
+    "Student Prison + University Museum": "博物館／大學文化",
     Königstuhl: "自然／觀景",
-    "Jesuit Church": "教堂／宗教歷史",
+    "Neckar boat cruise": "遊船／河谷觀景",
     Hackteufel: "餐廳／Palatinate cuisine",
     "Schnitzelbank Heidelberg": "餐廳／傳統美食",
-    "Café Knösel": "咖啡／巧克力"
+    "Café Knösel": "咖啡／巧克力",
+    "Vetter's Alt Heidelberger Brauhaus": "餐廳／Brauhaus"
   },
   frankfurt: {
     "Frankfurt (Main) Hbf": "交通／城市入口",
@@ -1197,15 +1249,6 @@ function updateRouteMap(state) {
     ? distanceBetweenPoints(state.map, activePoints)
     : 0;
   state.routeDistanceSource = "estimated";
-
-  if (activePoints.length > 1) {
-    state.routeLine = L.polyline(activePoints, {
-      color: "#2e6f95",
-      weight: 4,
-      opacity: 0.55,
-      dashArray: "8 8"
-    }).addTo(state.map);
-  }
 
   state.mainMarkers.forEach((marker, index) => {
     const active = state.routeItems.some((item) =>

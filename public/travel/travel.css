@@ -1307,6 +1307,19 @@ main > section { scroll-margin-top: 86px; }
   background: var(--soft-green);
 }
 
+.heidelberg-ticket-decision {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.heidelberg-ticket-decision article:last-child {
+  border-color: var(--line);
+  background: #fbfdfd;
+}
+
+.heidelberg-daytrip-grid .module-card > p {
+  flex: 1;
+}
+
 .ticket-decision strong {
   display: block;
   margin-bottom: 7px;
@@ -2138,6 +2151,7 @@ footer {
   .vocabulary-grid { grid-template-columns: 1fr; }
   .transfer-steps,
   .ticket-decision,
+  .heidelberg-ticket-decision,
   .city-transport-grid,
   .emergency-grid,
   .city-planning-grid { grid-template-columns: 1fr; }

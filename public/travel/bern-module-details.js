@@ -297,6 +297,30 @@
       background: ["Fribourg 建在 Sarine 河曲與砂岩高地上，德法語言邊界在城市生活中交會。", "高城宗教與行政中心、下城工匠區之間的落差，是路線的主要內容。"],
       resources: [resource("Fribourg Tourism", "https://fribourg.ch/en/fribourg/bienvenue-a-fribourg/"), resource("城市交通 TPF", "https://www.tpf.ch/en")],
     },
+    murten: {
+      verifiedOn: "2026-08-18",
+      whyChoose: "想從 Bern 輕鬆抵達一座尺度緊湊的雙語湖畔城，在半日內完成拱廊老街、可步行城牆、地方歷史與湖岸收尾。",
+      skipWhen: "城牆因節慶或安全原因關閉、石階濕滑且同行者不適合登高，或只剩不足三小時而無法保留 Bern 往返緩衝時。",
+      attractions: [
+        attraction("Berntor 與 Hauptgasse", "Berntor 是從車站進入老城最清晰的門戶；Hauptgasse 的巴洛克立面、噴泉與連續拱廊濃縮了 Murten 的雙語商業小城尺度。", "35–55 分鐘", "公共街區全天；商店各自營業", "免費", "無需預約", "石板路雨天較滑；街名可能同時出現德法語版本", "https://www.myswitzerland.com/en-us/destinations/murtenmorat/", 46.9296, 7.1195, "Berntor Murten Hauptgasse"),
+        attraction("Murten Ringmauer", "保存良好的中世紀城牆與 12 座防禦塔環繞老城高側，步道可俯瞰屋頂、湖面，並閱讀 1476 年 Murten 戰役的圖文說明。", "45–70 分鐘", "通常每日日出至日落；Carnival、Solennität 或安全需要時關閉", "免費", "無需預約", "狹窄階梯、低矮通道與高處邊緣；兒童需成人陪同，雨雷天不要登牆", "https://fribourg.ch/en/regionmurtensee/architecture-and-monuments/town-walls-of-murten/", 46.9293, 7.1169, "Town walls of Murten"),
+        attraction("Schloss Murten 與 Lindensaal terrace", "城堡外部和 Lindensaal terrace 位於老城西端，可把防禦位置、湖岸與 Mont Vully 方向放進同一視野。", "25–40 分鐘", "公共觀景區按現場開放；城堡為行政用途，並非一般室內景點", "外部與公共 terrace 免費", "無需預約", "尊重辦公區與活動封閉；不要把城堡外觀誤寫成可自由參觀的 museum", "https://www.myswitzerland.com/en-us/destinations/murtenmorat/", 46.9279, 7.1148, "Murten castle lake view"),
+        attraction("Museum Murten / Musée de Morat", "位於城牆外的舊水磨坊，以五個多世紀的建築和 6,000 年區域史串聯湖畔聚落、中世紀城市、Bern–Fribourg 共治與 1476 年戰役。", "60–90 分鐘", "2026 年 2–12 月：Tue–Sat 14:00–17:00，Sun 10:00–17:00；Mon 通常閉館，公共假日例外", "成人 CHF 8；優惠 CHF 5；6–16 歲 CHF 2", "個人通常現場購票；團體或特別開放先聯絡", "只部分無障礙；Museum 在城牆外下方，參觀後回湖岸比折返高處更順", "https://fribourg.ch/en/regionmurtensee/museums/museum-murten/", 46.9268, 7.1142, "Museum Murten"),
+        attraction("Murtensee promenade 與 harbour", "從老城下降到 Ryf、港口與湖岸，視線由封閉城牆轉為開闊水面；約一小時環湖船可作延伸，但不是主線必選。", "45–75 分鐘", "公共湖岸全天；船班具季節性", "湖岸免費；船票另購", "湖船按營運方時刻表", "湖邊風勢和日照比老城更強；先確定回車站時間再延伸", "https://www.myswitzerland.com/en-gb/destinations/lake-murten/", 46.9218, 7.1118, "Murten harbour Lake Murten"),
+      ],
+      dining: [
+        dining("咖啡／地方甜點", "Bäckerei Aebersold", "Berntor → Hauptgasse 開場", "Murten Nidelkuchen、麵包與可外帶輕食", "約 CHF 6–20", "現行資料：Tue–Fri 06:00–18:30、Sat 07:00–16:00；Sun/Mon 休息，臨行再確認", "通常無需訂位；Nidelkuchen 售完風險隨時段增加", "https://www.nidelkuchen.ch/", 46.9292, 7.1185),
+        dining("主餐", "Hotel Murtenhof & Krone", "Schloss／Lindensaal 一帶", "湖魚、Seeland 蔬菜、Murtner pasta 與 Vully wine", "約 CHF 30–65", "2026 旅遊資料列 Tue–Sun 11:00–23:00；假日另查", "湖景 terrace／晚餐建議訂位", "https://murtenhof.ch/hotel_restaurant/en/21.0.0/14.2.3.0/content.html", 46.9278, 7.1155),
+        dining("主餐", "Freiburger Falle", "Hauptgasse 43、老城中段", "Fribourg fondue、hot-stone meat、木爐 meringue 與區域酒", "約 CHF 35–70", "2026 夏季 Tue–Sun 11:30–15:00、17:30–23:30；冬季規則不同", "座位有限，午晚餐建議預約", "https://www.ff-murten.ch/home-en", 46.9287, 7.1176),
+      ],
+      background: ["Murten / Morat 位於德法語邊界，同一城市在車站、地圖與資料中常同時使用兩種名稱。", "城牆的不同石材與層次記錄了從十二世紀建城到 1476 年 Burgundian Wars 前加固的多階段工程；湖岸則代表城市由防禦和貿易轉向休閒旅遊的另一面。"],
+      resources: [
+        resource("Murten/Morat 官方目的地介紹", "https://www.myswitzerland.com/en-us/destinations/murtenmorat/"),
+        resource("Murten Ringmauer", "https://fribourg.ch/en/regionmurtensee/architecture-and-monuments/town-walls-of-murten/"),
+        resource("Museum Murten", "https://fribourg.ch/en/regionmurtensee/museums/museum-murten/"),
+        resource("Murten/Morat station", "https://www.sbb.ch/en/travel-information/stations/find-station/station.17030.murtenmorat.html", "官方交通"),
+      ],
+    },
     gruyeres: {
       whyChoose: "願意為山丘中世紀村、城堡和 Gruyère 奶酪文化安排一整天，並接受多次轉乘。",
       skipWhen: "只有半天、Bulle 接續不穩，或期待安靜村落但正逢大型活動／客流高峰時。",
@@ -527,6 +551,10 @@
       "Sarine 河在砂岩地形中切出深谷，高城位於易防守的平臺，下城則靠近橋樑和水力資源；路線的下降過程就是城市社會地理的轉換。",
       "街名、標識和日常語言體現法語與德語文化接觸，但邊界並非簡單分成兩半；可留意同一地點在不同資料中的雙語名稱。",
     ],
+    murten: [
+      "由 Berntor 進入 Hauptgasse，再登上 Ringmauer，路線會依次經歷城門、商業主街與防禦高線；三者共同解釋 Murten 如何在很小尺度內保持完整的中世紀城市結構。",
+      "從 Schloss／Lindensaal 下降到 Ryf 與港口，視野由封閉城牆轉成 Murtensee；這個高低差把防禦城市與後來的湖岸休閒連在一起。",
+    ],
     gruyeres: [
       "城堡位於山丘末端，主街像一條通往堡壘的長前庭。無車村落今天看似為觀光而設，其骨架原本服務防禦、集市和領主經濟。",
       "奶酪文化應從牧場、乳品生產、熟成與餐桌連續理解；Maison du Gruyère 與村內餐廳分別呈現生產系統和消費傳統。",
@@ -624,6 +652,25 @@
         checkpoint("Funiculaire Neuveville", 46.8042, 7.1588, "15–25 分鐘", "沿河與下城步行約 12 分鐘", "搭歷史 funicular 返回 St-Pierre 高處，以交通工具完成城市剖面閉環。", "維護或停運時用 bus；不要在疲勞後硬爬回車站。"),
       ],
     },
+    murten: {
+      title: "Murten 城牆與湖岸 City Walk",
+      summary: "由車站經 Berntor 進入拱廊老城，沿 Ringmauer 高線走到 Schloss，再下降至 Museum 與湖岸後回站；標準版約 4 公里。",
+      start: "Murten/Morat Bahnhof",
+      finish: "Murten/Morat Bahnhof",
+      estimatedDistance: "約 4 公里",
+      walkingTime: "淨步行約 1 小時 10 分；含參觀約 4–6 小時",
+      shortCut: "走完 Ringmauer 後由 Hauptgasse 直接回車站；省略 Museum 與湖岸，可縮成約 2–2.5 小時。",
+      checkpoints: [
+        checkpoint("Murten/Morat Bahnhof", 46.9248, 7.1153, "10–15 分鐘", "起點", "先確認 Murten／Morat 是同一座雙語城市，再沿 Bernstrasse 朝 Berntor 前進。", "先記下兩班可接受的直達 Bern 回程；離站前確認月臺與臨時施工。"),
+        checkpoint("Berntor", 46.9296, 7.1195, "15–25 分鐘", "步行約 7 分鐘", "由保存完整的東城門進入老城，從門洞、鐘面與街道軸線讀取城市入口。", "城門仍是通行節點，拍照不要停在車道中央。"),
+        checkpoint("Hauptgasse 與拱廊", 46.9289, 7.1179, "35–50 分鐘", "步行約 3 分鐘", "沿巴洛克立面、噴泉和連續拱廊慢走；可在這一段買 Murten Nidelkuchen 作為沿途甜點。", "商店營業時間各異；先走街道空間，不必逐店停留。"),
+        checkpoint("Ringmauer 入口／Deutsche Kirche", 46.9293, 7.1169, "45–70 分鐘", "步行約 5 分鐘", "登上城牆高線，依次看老城屋頂、Murtensee 和 1476 年戰役解說，理解城門與塔樓的防禦關係。", "通常日出至日落開放；節慶、安全封閉、雷雨或石階濕滑時不要登牆。"),
+        checkpoint("Schloss Murten／Lindensaal", 46.9279, 7.1148, "25–40 分鐘", "城牆出口步行約 8–12 分鐘", "在老城西端由公共觀景區俯瞰湖面與 Mont Vully，完成由東城門到西側防禦端點的主線。", "Schloss 為行政用途，以外觀和公共 terrace 為主；活動封閉時不強行進入。"),
+        checkpoint("Museum Murten", 46.9268, 7.1142, "60–90 分鐘", "下坡步行約 5 分鐘", "在舊水磨坊內補足 6,000 年區域史、Bern–Fribourg 共治與 1476 年戰役背景。", "Tue–Sat 通常 14:00 後開放、週一通常閉館；不合時段便直接去湖岸。", true),
+        checkpoint("Ryf／Murten harbour", 46.9218, 7.1118, "40–60 分鐘", "下坡步行約 10 分鐘", "沿湖岸和港口休息，讓路線由封閉中世紀街區轉成開闊 Murtensee 水面。", "約一小時湖船只在班次剛好且不影響回程時加入；湖邊注意風勢與日曬。"),
+        checkpoint("返回 Murten/Morat Bahnhof", 46.9248, 7.1153, "10–15 分鐘", "由港口步行約 10–12 分鐘", "從湖岸回到車站完成閉環，不必原路穿越整條 Hauptgasse。", "至少提前 15 分鐘抵達車站；錯過目標班次時使用先前記下的第二班。"),
+      ],
+    },
     gruyeres: {
       title: "Gruyères 奶酪工坊到城堡 City Walk",
       summary: "從鐵路站和奶酪工坊出發，沿坡道進入無車中世紀村，經過主街、museum 與城堡後原線返回；標準版約 3.5 公里。",
@@ -647,7 +694,7 @@
 
   function minutesFor(module) {
     if (["bern-city-walk", "gurten", "aare-riverside"].includes(module.id)) return ["09:30", "10:00", "12:00", "14:30", "16:30"];
-    if (["interlaken", "thun", "lake-thun", "fribourg"].includes(module.id)) return ["08:30", "09:45", "12:15", "15:30", "18:30"];
+    if (["interlaken", "thun", "lake-thun", "fribourg", "murten"].includes(module.id)) return ["08:30", "09:45", "12:15", "15:30", "18:30"];
     if (["jungfraujoch", "lausanne", "grindelwald-first"].includes(module.id)) return ["06:30", "09:30", "12:30", "15:30", "20:00"];
     return ["07:30", "09:45", "12:30", "15:30", "19:30"];
   }
@@ -702,7 +749,7 @@
       operators: detail.operators || [],
       cityWalk: detailedCityWalks[module.id] || null,
       foodGuide: detail.foodGuide || null,
-      verifiedOn: VERIFIED_ON,
+      verifiedOn: detail.verifiedOn || VERIFIED_ON,
     };
   }
 

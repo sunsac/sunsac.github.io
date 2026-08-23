@@ -40,6 +40,7 @@
     },
     heidelberg: {
       compactLibrary: true,
+      verifiedOn: "2026-08-23",
       eyebrow: "TASTE HEIDELBERG",
       title: "Heidelberg 與 Kurpfalz 的味道：大學城甜點、家常菜與 Neckar 酒",
       libraryTitle: "Heidelberg 完整當地食物資料庫",
@@ -185,7 +186,7 @@
       ${guide.compactLibrary ? routePlan : specialtyCards}
       <aside class="market-note"><strong>${local(guide.marketLabel)}</strong><p>${local(guide.marketNote)}</p></aside>
       ${guide.compactLibrary ? `<details class="food-library"><summary><span><small>FOOD REFERENCE</small><strong>${local(guide.libraryTitle || "完整當地食物資料庫")}</strong></span><em>${guide.specialties.length} 種食物</em></summary><div class="food-library-body">${specialtyCards}</div></details>` : routePlan}
-      <div class="food-guide-sources"><strong>${guide.traditional ? "官方美食資料｜核對" : "官方美食資料｜核對"} ${VERIFIED_ON}</strong>${guide.sources.map((item) => externalLink(item.url, item.label)).join("")}</div>`;
+      <div class="food-guide-sources"><strong>${guide.traditional ? "官方美食資料｜核對" : "官方美食資料｜核對"} ${guide.verifiedOn || VERIFIED_ON}</strong>${guide.sources.map((item) => externalLink(item.url, item.label)).join("")}</div>`;
   }
 
   async function wikipediaImage(query, size = 760) {

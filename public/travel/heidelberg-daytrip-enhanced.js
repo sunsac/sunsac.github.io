@@ -182,7 +182,7 @@ function icon(label, type = "") {
   return L.divIcon({ className: "", html: `<span class="daytrip-map-number ${type}">${label}</span>`, iconSize: [34, 34], iconAnchor: [17, 17] });
 }
 
-function renderMap(data) {
+async function renderMap(data) {
   const element = document.querySelector("#heidelberg-trip-map");
   if (!element || !window.L) return;
   const all = [...data.transit, ...data.points, ...data.restaurants];
@@ -192,9 +192,21 @@ function renderMap(data) {
   data.transit.forEach(([name, lat, lng, desc], index) => L.marker([lat, lng], { icon: icon(`T${index + 1}`, "transit") }).addTo(map).bindPopup(`<strong>T${index + 1}｜${esc(name)}</strong><br>${esc(desc)}`));
   data.points.forEach(([name, lat, lng, desc], index) => L.marker([lat, lng], { icon: icon(index + 1) }).addTo(map).bindPopup(`<strong>${index + 1}｜${esc(name)}</strong><br>${esc(desc)}`));
   data.restaurants.forEach(([name, lat, lng, desc, link], index) => L.marker([lat, lng], { icon: icon(`R${index + 1}`, "restaurant") }).addTo(map).bindPopup(`<strong>R${index + 1}｜${esc(name)}</strong><br>${esc(desc)}<br><a href="${link}" target="_blank" rel="noreferrer">Google Maps →</a>`));
-  L.polyline(data.transit.map(([, lat, lng]) => [lat, lng]), { color: "#d9782f", dashArray: "8 8", weight: 4 }).addTo(map);
-  L.polyline(data.points.map(([, lat, lng]) => [lat, lng]), { color: "#2e6f95", weight: 4 }).addTo(map);
   map.fitBounds(L.latLngBounds(all.map(([, lat, lng]) => [lat, lng])), { padding: [24, 24] });
+  const status = document.querySelector("#heidelberg-trip-route-status");
+  if (data.points.length < 2) return;
+  try {
+    const coordinates = data.points.map(([, lat, lng]) => `${lng},${lat}`).join(";");
+    const response = await fetch(`https://routing.openstreetmap.de/routed-foot/route/v1/driving/${coordinates}?overview=full&geometries=geojson`);
+    if (!response.ok) throw new Error(`Walking route ${response.status}`);
+    const route = (await response.json()).routes?.[0];
+    if (!route?.geometry?.coordinates?.length) throw new Error("Walking route geometry missing");
+    L.geoJSON(route.geometry, { style: { color: "#2e6f95", weight: 4, opacity: 0.9 } }).addTo(map);
+    if (status) status.textContent = `藍線為沿道路／步道計算的參考步行線，約 ${(route.distance / 1000).toFixed(1)} 公里；橙色交通節點只顯示位置，不以直線連接。`;
+  } catch (error) {
+    if (status) status.textContent = "步行路線服務暫時無法載入；地圖仍保留景點、交通與餐飲位置，請依時間軸及現場導航移動，不以直線代替步行路線。";
+    console.warn("Heidelberg day-trip walking route unavailable", error);
+  }
 }
 
 async function loadImages() {
@@ -224,7 +236,7 @@ function renderTrip(data) {
   document.querySelector("#heidelberg-daytrip-page").innerHTML = `
     <section class="daytrip-hero"><p class="daytrip-category">${esc(data.category)}</p><h2>${esc(data.title)}</h2><p>${esc(data.summary)}</p><div class="daytrip-tags"><span>公共交通</span><span>${esc(data.intensity)}</span><span>8 月可行</span></div></section>
     <section><h2>當日路線與時間軸</h2><p><code>${esc(data.route)}</code></p><div class="daytrip-timeline">${data.schedule.map(([time, detail]) => `<article class="daytrip-time"><strong>${esc(time)}</strong><p>${esc(detail)}</p></article>`).join("")}</div></section>
-    <section><h2>交通與互動地圖</h2><div id="heidelberg-trip-map" class="daytrip-map"></div><div class="daytrip-map-legend"><span><i class="legend-map-number transit">T</i>交通</span><span><i class="legend-map-number">1</i>景點</span><span><i class="legend-map-number restaurant">R</i>餐廳</span></div><p class="small"><strong>橙色虛線：</strong>長途／跨城交通；<strong>藍色實線：</strong>當地步行與短途路線。</p></section>
+    <section><h2>交通與互動地圖</h2><div id="heidelberg-trip-map" class="daytrip-map"></div><div class="daytrip-map-legend"><span><i class="legend-map-number transit">T</i>交通節點</span><span><i class="legend-map-number">1</i>景點</span><span><i class="legend-map-number restaurant">R</i>餐廳</span></div><p id="heidelberg-trip-route-status" class="small">正在沿道路與步道計算參考步行線；若服務離線，文字時間軸與所有標記仍可使用。</p></section>
     <section><h2>主要景點與活動</h2><div class="highlight-detail-grid">${data.highlights.map(([name, desc, link]) => `<article class="card highlight-card"><div class="attraction-image" data-attraction-name="${esc(name)}"></div><h3>${esc(name)}</h3><p>${esc(desc)}</p><a class="activity-link" href="${link}" target="_blank" rel="noreferrer">查看詳情 →</a></article>`).join("")}</div><div class="activity-choice-grid">${data.activities.map(([name, desc, intensity, link]) => `<article class="card activity-choice"><h3>${esc(name)}</h3><p>${esc(desc)}</p><p class="small">強度：${esc(intensity)}</p><a class="activity-link" href="${link}" target="_blank" rel="noreferrer">查看詳情 →</a></article>`).join("")}</div></section>
     <section><h2>推薦餐廳</h2><div class="grid restaurant-list">${data.restaurants.map(([name, , , desc, link], index) => `<article class="card restaurant-card"><h3>R${index + 1}｜${esc(name)}</h3><p>${esc(desc)}</p><a class="restaurant-link" href="${link}" target="_blank" rel="noreferrer">Google Maps →</a></article>`).join("")}</div></section>
     <section><h2>預約、天氣與備案</h2><div class="grid"><article class="card planning-card"><h3>預約／交通</h3><p>${esc(data.booking)}</p></article><article class="card planning-card"><h3>天氣與衣著</h3><p>出發前確認 DWD 天氣、DB／SBB 車次和景點開放；穿舒適步行鞋，攜帶分層衣物、雨具、飲水和行動電源。</p><a class="activity-link" href="https://www.dwd.de/EN/weather/weather_node.html" target="_blank" rel="noreferrer">DWD 官方天氣 →</a></article><article class="card planning-card"><h3>備選方案</h3><p>${esc(data.backup)}</p></article></div></section>
@@ -233,5 +245,12 @@ function renderTrip(data) {
   loadImages();
 }
 
-const tripKey = new URLSearchParams(window.location.search).get("trip") || "old-town-university";
-renderTrip(heidelbergTrips[tripKey] || heidelbergTrips["old-town-university"]);
+const tripKey = new URLSearchParams(window.location.search).get("trip");
+if (heidelbergTrips[tripKey]) {
+  renderTrip(heidelbergTrips[tripKey]);
+} else {
+  document.title = "模組不存在｜Heidelberg";
+  document.querySelector("#heidelberg-daytrip-title").textContent = "模組不存在";
+  document.querySelector("#heidelberg-daytrip-subtitle").textContent = "這個 Heidelberg 行程模組不存在或網址已過期。";
+  document.querySelector("#heidelberg-daytrip-page").innerHTML = `<section class="daytrip-error-state"><h2>找不到指定模組</h2><p>請返回 Heidelberg 目錄，重新選擇本地或周邊行程。</p><a class="module-link" href="heidelberg.html#local-modules">返回 Heidelberg 模組目錄 <span>→</span></a></section>`;
+}
